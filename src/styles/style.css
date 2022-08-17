@@ -103,6 +103,7 @@ nav li:hover a {
   position: relative;
   justify-content: center;
   align-items: center;
+  margin-bottom: 50px;
   height: 300px;
   box-shadow: 1px 5px 2px -1px rgba(0, 0, 0, 0.13);
   -webkit-box-shadow: 1px 5px 2px -1px rgba(0, 0, 0, 0.13);
@@ -172,7 +173,14 @@ nav li:hover a {
   transition: all 2s ease;
 }
 
+.social-media__list {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+}
+
 .image-hover__github {
+  margin-right: 10px;
   width: 50px;
   height: 50px;
   position: relative;
@@ -188,5 +196,58 @@ nav li:hover a {
   100% {
     opacity: 100%;
     top: 0px;
+  }
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  /* Properti */
+  width: fit-content;
+  height: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  background-color: #ffd400;
+  /*card*/
+  box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.flex-row {
+  flex-grow: 50%;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 450px;
+  padding: 20px;
+  margin: 5px;
+  background-color: black;
+  /*border*/
+  border: 0.5px solid black;
+  border-radius: 10px;
+}
+
+.flex-row:hover {
+  box-shadow: 0 8px 16px 2px rgba(0, 0, 0, 0.2);
+
+  /*animation*/
+  position: relative;
+  animation-name: content-card;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes content-card {
+  0% {
+    opacity: 100%;
+    bottom: 0px;
+  }
+  100% {
+    opacity: 100%;
+    bottom: 10px;
   }
 }

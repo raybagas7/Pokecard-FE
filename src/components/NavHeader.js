@@ -7,6 +7,7 @@ const NavHeader = ({ lists }) => {
       <header>
         <nav>
           <ul>
+            {/*Will soon move the list into component*/}
             {lists.map((list) => (
               <li key={list.value}>
                 <a target={list.tar} rel={list.rel} href={list.href}>
