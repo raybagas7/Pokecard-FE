@@ -5,7 +5,7 @@ const CardContent = ({ imageUrl }) => {
   return (
     <div className="flex-row">
       <div className="box first">
-        <img src="/images/jumboront-white-gold.png" alt="images" />
+        <img src="./images/jumboront-white-gold.png" alt="images" />
       </div>
       <div className="box second">
         <p>
