@@ -4,7 +4,12 @@ const SocialMediaWhite = ({ whitemed }) => {
   return (
     <>
       {whitemed.map((white) => (
-        <a target="_blank" rel="noopener noreferrer" href={white.href}>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={white.href}
+          key={white.id}
+        >
           <img
             src={white.imageUrl}
             className="image-hover__github"
