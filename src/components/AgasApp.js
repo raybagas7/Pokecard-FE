@@ -4,7 +4,9 @@ import JumboTron from './JumboTron';
 import NavHeader from './NavHeader';
 import { getLlist } from '../utils/navlist';
 import { getCard } from '../utils/card';
+import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
 import ContainerContent from './ContainerContent';
+import Footer from './Footer';
 
 class AgasApp extends React.Component {
   constructor(props) {
@@ -12,6 +14,8 @@ class AgasApp extends React.Component {
     this.state = {
       list: getLlist(),
       card: getCard(),
+      socmed_black: getSocmedBlack(),
+      socmed_white: getSocmedWhite(),
     };
   }
 
@@ -20,8 +24,12 @@ class AgasApp extends React.Component {
       <div>
         <HeaderParent />
         <NavHeader lists={this.state.list} />
-        <JumboTron />
+        <JumboTron
+          blackmed={this.state.socmed_black}
+          whitemed={this.state.socmed_white}
+        />
         <ContainerContent cards={this.state.card} />
+        <Footer />
       </div>
     );
   }

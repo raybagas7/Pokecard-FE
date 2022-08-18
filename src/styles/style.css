@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Secular+One&display=swap');
+
 * {
   padding: 0;
   margin: 0;
@@ -5,6 +7,7 @@
 }
 
 body {
+  font-family: 'Righteous', cursive;
   margin: 0;
   padding: 0;
 }
@@ -51,9 +54,6 @@ nav li:hover a {
   display: flex;
   flex-direction: row;
   background-color: #161b22;
-  box-shadow: 1px 5px 2px -1px rgba(0, 0, 0, 0.13);
-  -webkit-box-shadow: 1px 5px 2px -1px rgba(0, 0, 0, 0.13);
-  -moz-box-shadow: 1px 5px 2px -1px rgba(0, 0, 0, 0.13);
   padding: 5px;
   justify-content: center;
   align-items: center;
@@ -105,9 +105,9 @@ nav li:hover a {
   align-items: center;
   margin-bottom: 50px;
   height: 300px;
-  box-shadow: 1px 5px 2px -1px rgba(0, 0, 0, 0.13);
-  -webkit-box-shadow: 1px 5px 2px -1px rgba(0, 0, 0, 0.13);
-  -moz-box-shadow: 1px 5px 2px -1px rgba(0, 0, 0, 0.13);
+  box-shadow: 0px 3px 2px -1px rgba(0, 0, 0, 0.13);
+  -webkit-box-shadow: 0px 3px 2px -1px rgba(0, 0, 0, 0.13);
+  -moz-box-shadow: 0px 3px 2px -1px rgba(0, 0, 0, 0.13);
 }
 
 .white-github {
@@ -188,6 +188,13 @@ nav li:hover a {
   animation-duration: 2s;
 }
 
+.image-hover__black {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+
 @keyframes example {
   0% {
     opacity: 10%;
@@ -223,14 +230,40 @@ nav li:hover a {
   flex-direction: column;
   width: 300px;
   height: 450px;
-  padding: 20px;
   margin: 5px;
   background-color: black;
   /*border*/
-  border: 0.5px solid black;
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
+.first {
+  border-radius: 15px 15px 0px 0px;
+  background-color: white;
+  height: 76%;
+}
+
+.second {
+  height: 24%;
+  border-radius: 0px 0px 15px 15px;
+  color: white;
+  background-color: black;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.box img {
+  border-radius: 15px 15px 0px 0px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.second p {
+  text-align: justify;
+  font-size: 0.8em;
+  padding: 10px 13px 10px 13px;
+  text-indent: 0.5cm;
+}
 .flex-row:hover {
   box-shadow: 0 8px 16px 2px rgba(0, 0, 0, 0.2);
 
@@ -250,4 +283,16 @@ nav li:hover a {
     opacity: 100%;
     bottom: 10px;
   }
+}
+
+footer {
+  box-shadow: 0px -3px 2px -1px rgba(0, 0, 0, 0.13);
+  -webkit-box-shadow: 0px -3px 2px -1px rgba(0, 0, 0, 0.13);
+  -moz-box-shadow: 0px -3px 2px -1px rgba(0, 0, 0, 0.13);
+  margin-top: 50px;
+  padding: 20px;
+  font-weight: 700;
+  text-align: center;
+  background: #ffd400;
+  color: black;
 }

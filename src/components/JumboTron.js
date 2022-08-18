@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import WhiteGithubIcon from './WhiteGithubIcon';
 
-const JumboTron = () => {
+const JumboTron = ({ blackmed, whitemed }) => {
   const [isHovering, setIsHovering] = useState(false);
 
   const mouseOverHandler = () => {
@@ -20,7 +20,11 @@ const JumboTron = () => {
       onMouseOut={mouseOutHandler}
     >
       <div className="jumbotron-over"></div>
-      {isHovering ? <WhiteGithubIcon /> : ''}
+      {isHovering ? (
+        <WhiteGithubIcon blackmed={blackmed} whitemed={whitemed} />
+      ) : (
+        ''
+      )}
     </div>
   );
 };
