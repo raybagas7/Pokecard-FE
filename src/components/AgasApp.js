@@ -5,8 +5,8 @@ import NavHeader from './NavHeader';
 import { getLlist } from '../utils/navlist';
 import { getCard } from '../utils/card';
 import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
-import ContainerContent from './ContainerContent';
 import Footer from './Footer';
+import MainContent from './MainContent';
 
 class AgasApp extends React.Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class AgasApp extends React.Component {
           blackmed={this.state.socmed_black}
           whitemed={this.state.socmed_white}
         />
-        <ContainerContent cards={this.state.card} />
+        <MainContent cards={this.state.card} />
         <Footer />
       </div>
     );

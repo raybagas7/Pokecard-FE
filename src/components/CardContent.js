@@ -3,14 +3,14 @@ import React from 'react';
 const CardContent = ({ imageUrl }) => {
   /*imageSoon*/
   return (
-    <div className="flex-row">
-      <div className="box first">
+    <div className="flex-row card-content">
+      <div className="box first-box">
         <img
           src="./IThinkMyPersonal/images/jumboront-white-gold.png"
           alt="images"
         />
       </div>
-      <div className="box second">
+      <div className="box second-box">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam malesuada
           sapien felis, a vestibulum nisl accumsan quis. Fusce lorem metus,
