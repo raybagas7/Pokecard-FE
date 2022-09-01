@@ -10,7 +10,7 @@ const MainContent = ({ cards }) => {
   const shufflePokemon = () => {
     a.splice(0);
     setTimeout(() => {
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 6; i++) {
         const randomId = Math.floor(Math.random() * 898);
         Axios.get(`https://pokeapi.co/api/v2/pokemon/${randomId}/`).then(
           (response) => {
@@ -21,6 +21,7 @@ const MainContent = ({ cards }) => {
               name: response.data.name,
               sprites: response.data.sprites.front_default,
               types: response.data.types,
+              stats: response.data.stats,
             });
           }
         );
@@ -47,7 +48,11 @@ const MainContent = ({ cards }) => {
     <div className="main-content">
       <ContainerContent cards={cards} pokemonId={pokemonId} />
       <div className="flex-column container-content__second">
-        <button onClick={insertPokemon} disabled={isButtonDisabled}>
+        <button
+          className="shuffle-button"
+          onClick={insertPokemon}
+          disabled={isButtonDisabled}
+        >
           Shuffle
         </button>
         {/* <button onClick={show}>ini poke</button> */}

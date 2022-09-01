@@ -3,7 +3,7 @@ import CardContent from './CardContent';
 
 const ContainerContent = ({ cards, pokemonId }) => {
   // const show = () => {
-  //   console.log('ini pokemon id di cc', cards);
+  //   console.log('ini pokemon id di cc', pokemonId);
   // };
   return (
     <div className="flex-column container-content__first">
