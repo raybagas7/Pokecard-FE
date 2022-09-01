@@ -226,6 +226,17 @@ nav li:hover a {
   transition: 0.3s;
 }
 
+.container-content__second {
+  width: fit-content;
+  height: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  background-color: #ffd400;
+}
+
 .flex-row {
   flex-grow: 50%;
   display: flex;
@@ -240,7 +251,8 @@ nav li:hover a {
 
 .first-box {
   border-radius: 15px 15px 0px 0px;
-  background-color: white;
+  background-image: url('../../public/images/jumboront-white-gold.png');
+  background-size: cover;
   height: 76%;
 }
 
@@ -260,11 +272,20 @@ nav li:hover a {
   object-fit: cover;
 }
 
+.box > h4::first-letter {
+  text-transform: capitalize;
+}
+
+.second-box h4 {
+  background-color: rgb(255, 0, 0);
+  padding: 5px 0px 5px 0px;
+  text-align: center;
+}
+
 .second-box p {
   text-align: justify;
   font-size: 0.8em;
-  padding: 10px 13px 10px 13px;
-  text-indent: 0.5cm;
+  padding: 5px 13px 5px 13px;
 }
 
 .first-box:hover {

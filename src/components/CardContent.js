@@ -1,30 +1,46 @@
 import React from 'react';
 
-const CardContent = ({ imageUrl }) => {
+const CardContent = ({ imageUrl, id, name, sprites, types, pokeid }) => {
+  let type = '';
+  if (types) {
+    for (let i = 0; i < types.length; i++) {
+      const take = types[i].type.name;
+      if (i === 0) {
+        type += String(take);
+        console.log(take);
+      } else {
+        type += ' - ' + String(take);
+        console.log(take);
+      }
+    }
+  }
+
+  // const show = () => {
+  //   console.log('ini pokemon id di cc', id, name, sprites, types);
+  // };
   /*imageSoon*/
   return (
     <div className="flex-row card-content">
       <div className="box first-box">
-        <img
-          src="./IThinkMyPersonal/images/jumboront-white-gold.png"
-          alt="images"
-        />
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={!sprites ? '' : sprites}
+        >
+          <img
+            src={
+              !sprites
+                ? './IThinkMyPersonal/images/jumboront-white-gold.png'
+                : sprites
+            }
+            alt="images"
+          />
+        </a>
       </div>
       <div className="box second-box">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam malesuada
-          sapien felis, a vestibulum nisl accumsan quis. Fusce lorem metus,
-          hendrerit interdum mi eu, sodales aliquet est. Maecenas accumsan,
-          tortor at egestas maximus, libero augue consectetur ex, ut venenatis
-          diam dolor id ipsum. Aenean id lacinia lectus. Cras lacus ligula,
-          laoreet ac ligula eget, mollis fringilla metus. Vestibulum pharetra
-          risus ac felis suscipit, eu porta turpis lobortis. Nulla vel dolor nec
-          dolor bibendum lobortis. Aliquam porta est vitae nisi volutpat, quis
-          placerat justo feugiat. Morbi pulvinar erat est, vehicula iaculis urna
-          eleifend vitae. Quisque eu egestas leo, quis ultricies sem. Morbi
-          lobortis augue tellus, eu hendrerit nisi auctor id. Mauris tempor
-          lorem ut rhoncus tempus. Nam ultrices in massa eu faucibus.
-        </p>
+        <h4>{name}</h4>
+        <p>Pokemon Id : {pokeid}</p>
+        <p>Tipe pokemon : {type}</p>
       </div>
     </div>
   );
