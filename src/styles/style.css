@@ -216,6 +216,7 @@ nav li:hover a {
 }
 
 .shuffle-button:disabled {
+  cursor: auto;
   background-color: grey;
 }
 
@@ -282,7 +283,7 @@ nav li:hover a {
 .box img {
   height: 90%;
   width: 90%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   margin: auto;
 }
@@ -541,7 +542,7 @@ footer {
     display: flex;
     flex-direction: column;
     width: 110px;
-    height: 200px;
+    height: 170px;
     margin: 5px;
     background-color: black;
     /*border*/
@@ -588,9 +589,9 @@ footer {
   }
 
   .box img {
-    height: 70%;
-    width: 70%;
-    object-fit: cover;
+    height: 75%;
+    width: 75%;
+    object-fit: contain;
     display: block;
     margin: auto;
     margin-top: 10px;

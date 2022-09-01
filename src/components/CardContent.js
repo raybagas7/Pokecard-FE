@@ -30,16 +30,12 @@ const CardContent = ({ imageUrl, id, name, sprites, types, pokeid, stats }) => {
     <div className="flex-row card-content">
       <div className="box first-box">
         <p>#{pokeid}</p>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={!sprites ? '' : sprites}
-        >
-          <img
-            src={!sprites ? './images/quetion-mark.png' : sprites}
-            alt="images"
-          />
-        </a>
+        {/* <a target="_blank" rel="noopener noreferrer" href=".card-content"> */}
+        <img
+          src={!sprites ? './images/quetion-mark.png' : sprites}
+          alt="images"
+        />
+        {/* </a> */}
       </div>
       <div className="box second-box">
         <h4>{name}</h4>
