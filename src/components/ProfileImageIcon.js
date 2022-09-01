@@ -8,7 +8,7 @@ const ProfileImageIcon = () => {
         rel="noopener noreferrer"
         href="https://github.com/raybagas7"
       >
-        <img src="./IThinkMyPersonal/images/snoop.jpg" alt="snoop" />
+        <img src="./images/snoop.jpg" alt="snoop" />
       </a>
     </div>
   );

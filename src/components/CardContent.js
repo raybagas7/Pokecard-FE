@@ -36,9 +36,7 @@ const CardContent = ({ imageUrl, id, name, sprites, types, pokeid, stats }) => {
           href={!sprites ? '' : sprites}
         >
           <img
-            src={
-              !sprites ? './IThinkMyPersonal/images/quetion-mark.png' : sprites
-            }
+            src={!sprites ? './images/quetion-mark.png' : sprites}
             alt="images"
           />
         </a>
