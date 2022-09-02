@@ -363,8 +363,9 @@ nav li:hover a {
 }
 
 .pokemon-types > img {
-  margin-left: 7px;
   margin-top: 7px;
+  margin-left: 3.5px;
+  margin-right: 3.5px;
   display: inline-block;
   height: 30px;
   width: 30px;
