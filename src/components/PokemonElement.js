@@ -18,7 +18,7 @@ const PokemonElement = ({ types }) => {
         {allType.map((element) => (
           <img
             src={`./images/pokemon_elements/${element}.png`}
-            alt="element"
+            alt={element}
           ></img>
         ))}
         {/* <button onClick={show}>ini elements</button> */}
