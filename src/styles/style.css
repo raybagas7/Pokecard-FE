@@ -267,7 +267,7 @@ nav li:hover a {
   border-radius: 15px 15px 0px 0px;
   background-image: url('../../public/images/jumboront-white-gold.png');
   background-size: cover;
-  height: 76%;
+  height: 73%;
   width: 100%;
   position: relative;
 }
@@ -292,7 +292,6 @@ nav li:hover a {
   width: 100%;
   height: fit-content;
   display: flex;
-  background-color: white;
 }
 
 .flex-column__skills {
@@ -300,37 +299,38 @@ nav li:hover a {
   width: 100%;
   height: fit-content;
   display: flex;
-  background-color: white;
 }
 
 .box-1_stats {
-  background-color: #91da52;
+  background-color: #161b22;
   width: 100%;
   height: 100%;
   flex-basis: 1;
 }
 .box-2_stats {
-  background-color: #966fe4;
+  background-color: #161b22;
   width: 100%;
   height: 100%;
   flex-basis: 1;
 }
 
 .box-1_skills {
-  background-color: #53becc;
+  color: grey;
+  background-color: #161b22;
   width: 100%;
   height: 100%;
   flex-basis: 1;
 }
 .box-2_skills {
-  background-color: #eb9084;
+  color: grey;
+  background-color: #161b22;
   width: 100%;
   height: 100%;
   flex-basis: 1;
 }
 
 .second-box {
-  height: 24%;
+  height: 27%;
   width: 100%;
   bottom: 0;
   position: static;
@@ -350,11 +350,85 @@ nav li:hover a {
 
 @keyframes expand_info {
   0% {
-    height: 24%;
+    height: 27%;
   }
   100% {
     height: 50%;
   }
+}
+
+.all-elemets {
+  display: flex;
+  justify-content: center;
+}
+
+.pokemon-types > img {
+  margin-left: 7px;
+  margin-top: 7px;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+}
+
+.box-2_stats img {
+  height: 20px;
+  width: 20px;
+}
+
+.stat-info {
+  display: flex;
+  margin: 5px 5px 5px 5px;
+}
+
+.stat-icon {
+  padding: 2px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  display: flex;
+  flex-basis: 60%;
+}
+
+.hp-box {
+  background-color: #48bf53;
+}
+
+.attack-box {
+  background-color: #c80808;
+}
+
+.defense-box {
+  background-color: #2f57d1;
+}
+
+.special-attack-box {
+  background-color: #ffbf00;
+}
+
+.special-defense-box {
+  background-color: #a8a9ad;
+}
+
+.speed-box {
+  background-color: #03bb99;
+}
+
+.stat-icon > p {
+  font-size: 0.8em;
+}
+
+.stat-icon > p::first-letter {
+  text-transform: uppercase;
+}
+
+.stat-value {
+  padding: 5px 5px 5px 5px;
+  text-align: left;
+  flex-basis: 30%;
+}
+.stat-value > p {
+  font-size: 0.8em;
 }
 
 .box > h4::first-letter {
@@ -366,12 +440,6 @@ nav li:hover a {
   background-color: #161b22;
   padding: 5px 0px 5px 0px;
   text-align: center;
-}
-
-.second-box p {
-  text-align: justify;
-  font-size: 0.8em;
-  padding: 5px 13px 5px 13px;
 }
 
 .first-box:hover {
@@ -439,31 +507,23 @@ footer {
     font-weight: 100;
   }
 
-  .box-1_stats > p {
-    font-size: 0.6em;
-  }
-
-  .box-2_stats > p {
-    font-size: 0.6em;
-  }
-
-  .box-1_skills > p {
-    font-size: 0.6em;
-  }
-
-  .box-2_skills > p {
-    font-size: 0.6em;
-  }
   .flex-row {
     flex-grow: 50%;
     display: flex;
     flex-direction: column;
-    width: 220px;
+    width: 200px;
     height: 370px;
     margin: 5px;
     background-color: black;
     /*border*/
     border-radius: 15px;
+  }
+
+  .stat-icon > p {
+    font-size: 0.6em;
+  }
+  .stat-value > p {
+    font-size: 0.6em;
   }
 
   .card-content:hover {
@@ -522,21 +582,13 @@ footer {
     height: auto;
   }
 
-  .box-1_stats > p {
-    font-size: 0.45em;
+  .stat-icon > p {
+    font-size: 0.43em;
+  }
+  .stat-value > p {
+    font-size: 0.43em;
   }
 
-  .box-2_stats > p {
-    font-size: 0.45em;
-  }
-
-  .box-1_skills > p {
-    font-size: 0.45em;
-  }
-
-  .box-2_skills > p {
-    font-size: 0.45em;
-  }
   .flex-row {
     flex-grow: 50%;
     display: flex;
@@ -547,6 +599,19 @@ footer {
     background-color: black;
     /*border*/
     border-radius: 15px;
+  }
+
+  .all-elemets {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pokemon-types > img {
+    margin-left: 5px;
+    margin-top: 5px;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
   }
 
   .card-content:hover {
@@ -580,7 +645,7 @@ footer {
 
   @keyframes expand_info {
     0% {
-      height: 24%;
+      height: 27%;
     }
     100% {
       border-radius: 15px;
@@ -588,7 +653,7 @@ footer {
     }
   }
 
-  .box img {
+  .box > img {
     height: 75%;
     width: 75%;
     object-fit: contain;

@@ -1,18 +1,8 @@
 import React from 'react';
+import PokemonElement from './PokemonElement';
+import PokemonStats from './PokemonStats';
 
 const CardContent = ({ imageUrl, id, name, sprites, types, pokeid, stats }) => {
-  let type = '';
-  if (types) {
-    for (let i = 0; i < types.length; i++) {
-      const take = types[i].type.name;
-      if (i === 0) {
-        type += String(take);
-      } else {
-        type += ' - ' + String(take);
-      }
-    }
-  }
-
   let allStat = {};
   if (stats) {
     for (let i = 0; i < stats.length; i++) {
@@ -21,36 +11,27 @@ const CardContent = ({ imageUrl, id, name, sprites, types, pokeid, stats }) => {
       allStat[name_stat] = base_stat;
     }
   }
-
   // const show = () => {
   //   console.log('ini pokemon id di cc', name, allStat);
   // };
-  /*imageSoon*/
   return (
     <div className="flex-row card-content">
       <div className="box first-box">
         <p>#{pokeid}</p>
-        {/* <a target="_blank" rel="noopener noreferrer" href=".card-content"> */}
         <img
           src={!sprites ? './images/quetion-mark.png' : sprites}
           alt="images"
         />
-        {/* </a> */}
       </div>
       <div className="box second-box">
         <h4>{name}</h4>
-        <p>Pokemon types: {type}</p>
+        <PokemonElement types={types} />
         <div className="flex-column__stats">
           <div className="box-1_stats">
-            <p>Hp: {allStat.hp}</p>
-            <p>Defense: {allStat.defense}</p>
-
-            <p>Sp-Defense: {allStat['special-defense']} </p>
+            <PokemonStats pokemonStats={stats} box="left" />
           </div>
           <div className="box-2_stats">
-            <p>Attack: {allStat.attack}</p>
-            <p>Speed: {allStat.speed}</p>
-            <p>Sp-Attack: {allStat['special-attack']} </p>
+            <PokemonStats pokemonStats={stats} box="right" />
           </div>
         </div>
         <div className="flex-column__skills">
