@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.0c09107f.css",
-    "main.js": "./static/js/main.382c8015.js",
+    "main.css": "./static/css/main.958138cb.css",
+    "main.js": "./static/js/main.ac16dc48.js",
     "static/media/jumboront-gold.png": "./static/media/jumboront-gold.fc5e918b39905962a2b0.png",
     "static/media/jumboront-black-gold.png": "./static/media/jumboront-black-gold.f7a9892fa23b1c569a63.png",
     "static/media/jumboront-white-gold.png": "./static/media/jumboront-white-gold.c46eaf33ab70475137e2.png",
     "index.html": "./index.html",
-    "main.0c09107f.css.map": "./static/css/main.0c09107f.css.map",
-    "main.382c8015.js.map": "./static/js/main.382c8015.js.map"
+    "main.958138cb.css.map": "./static/css/main.958138cb.css.map",
+    "main.ac16dc48.js.map": "./static/js/main.ac16dc48.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c09107f.css",
-    "static/js/main.382c8015.js"
+    "static/css/main.958138cb.css",
+    "static/js/main.ac16dc48.js"
   ]
 }
