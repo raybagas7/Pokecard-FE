@@ -34,7 +34,7 @@ const CardContent = ({
   return (
     <div className="flex-row card-content">
       <div className="box first-box">
-        <p>#{pokeid}</p>
+        <p className={`attribute-${attribute}-id`}>#{pokeid}</p>
         <img
           src={
             !spritesNormal ? './images/quetion-mark.png' : attributePokemon()
@@ -47,10 +47,18 @@ const CardContent = ({
         <PokemonElement types={types} />
         <div className="flex-column__stats">
           <div className="box-1_stats">
-            <PokemonStats pokemonStats={stats} box="left" />
+            <PokemonStats
+              pokemonStats={stats}
+              pokemonAttribute={attribute}
+              box="left"
+            />
           </div>
           <div className="box-2_stats">
-            <PokemonStats pokemonStats={stats} box="right" />
+            <PokemonStats
+              pokemonStats={stats}
+              pokemonAttribute={attribute}
+              box="right"
+            />
           </div>
         </div>
         <div className="flex-column__skills">

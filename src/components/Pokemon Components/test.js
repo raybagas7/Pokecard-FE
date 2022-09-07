@@ -8,8 +8,8 @@
 const getRandom = () => {
   var num = Math.random();
   let probability = '';
-  num < 0.9 ? (probability = 'normal') : (probability = 'shiny');
-  return probability;
+  num < 0.97 ? (probability = 'normal') : (probability = 'shiny');
+  return probability + num;
 };
 
 console.log(getRandom());

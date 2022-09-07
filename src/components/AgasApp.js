@@ -6,7 +6,7 @@ import { getLlist } from '../utils/navlist';
 import { getCard } from '../utils/card';
 import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
 import Footer from './Footer';
-import MainContent from './MainContent';
+import MainContent from './Pokemon Components/MainContent';
 
 class AgasApp extends React.Component {
   constructor(props) {

@@ -1,12 +1,18 @@
 import React from 'react';
 
-const PokemonStats = ({ pokemonStats, box }) => {
+const PokemonStats = ({ pokemonStats, pokemonAttribute, box }) => {
   let allStat = [];
   if (pokemonStats) {
     for (let i = 0; i < pokemonStats.length; i++) {
-      const name_stat = pokemonStats[i].stat.name;
-      const base_stat = pokemonStats[i].base_stat;
-      allStat.push({ [name_stat]: base_stat });
+      if (pokemonAttribute === 'shiny') {
+        const name_stat = pokemonStats[i].stat.name;
+        const base_stat = pokemonStats[i].base_stat + 10;
+        allStat.push({ [name_stat]: base_stat });
+      } else {
+        const name_stat = pokemonStats[i].stat.name;
+        const base_stat = pokemonStats[i].base_stat;
+        allStat.push({ [name_stat]: base_stat });
+      }
     }
   }
   const spliceName = (stat) => {

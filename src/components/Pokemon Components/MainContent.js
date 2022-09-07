@@ -10,7 +10,7 @@ const MainContent = ({ cards }) => {
   const getRandom = () => {
     var num = Math.random();
     let probability = '';
-    num < 0.9 ? (probability = 'normal') : (probability = 'shiny');
+    num < 0.99 ? (probability = 'normal') : (probability = 'shiny');
     return probability;
   };
 
