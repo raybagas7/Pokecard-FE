@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Axios from 'axios';
 import ContainerContent from './ContainerContent';
 
-const MainContent = ({ cards }) => {
+const MainContent = ({ cards, elements }) => {
   const [pokemonId, setPokemonId] = useState();
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
 
@@ -22,7 +22,7 @@ const MainContent = ({ cards }) => {
         const randomId = Math.floor(Math.random() * 898);
         Axios.get(`https://pokeapi.co/api/v2/pokemon/${randomId}/`).then(
           (response) => {
-            console.log(response);
+            // console.log(response);
             a.push({
               id: i,
               pokeid: response.data.id,

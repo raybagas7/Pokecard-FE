@@ -406,15 +406,114 @@ nav li:hover a {
   justify-content: center;
 }
 
-.pokemon-types > img {
+.pokemon-types {
+  display: inline-flex;
+}
+.spesific-element {
+  position: relative;
+}
+
+.spesific-element .tooltip-text {
+  visibility: hidden;
+  width: 50px;
+  border: 0.13rem solid white;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 3px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  margin-left: -6px;
+}
+
+.spesific-element .tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+.spesific-element:hover .tooltip-text {
+  visibility: visible;
+}
+
+.tooltip-text,
+.tooltip-content {
+  min-width: fit-content;
+  font-size: 11px;
+}
+
+.tooltip-text > p::first-letter {
+  text-transform: capitalize;
+}
+
+.tooltip-bug {
+  background-color: #84c400;
+}
+.tooltip-dark {
+  background-color: #5b5366;
+}
+.tooltip-dragon {
+  background-color: #0070ca;
+}
+.tooltip-electric {
+  background-color: #fbd200;
+}
+.tooltip-fairy {
+  background-color: #fb8aec;
+}
+.tooltip-fighting {
+  background-color: #e12c6a;
+}
+.tooltip-fire {
+  background-color: #ff983f;
+}
+.tooltip-flying {
+  background-color: #8aace4;
+}
+.tooltip-ghost {
+  background-color: #4b6ab3;
+}
+.tooltip-grass {
+  background-color: #35c04a;
+}
+.tooltip-ground {
+  background-color: #e97333;
+}
+.tooltip-ice {
+  background-color: #4bd2c1;
+}
+.tooltip-normal {
+  background-color: #929ba3;
+}
+.tooltip-poison {
+  background-color: #b667cf;
+}
+.tooltip-psychic {
+  background-color: #fe8792;
+}
+.tooltip-rock {
+  background-color: #c9b787;
+}
+.tooltip-steel {
+  background-color: #598fa3;
+}
+.tooltip-water {
+  background-color: #3393dd;
+}
+.spesific-element > img {
   margin-top: 7px;
   margin-left: 3.5px;
   margin-right: 3.5px;
-  display: inline-block;
+  margin-bottom: 7px;
   height: 30px;
   width: 30px;
 }
-
 .box-2_stats img {
   height: 20px;
   width: 20px;
@@ -733,10 +832,111 @@ footer {
     justify-content: center;
   }
 
-  .pokemon-types > img {
+  .pokemon-types {
+    display: inline-flex;
+  }
+
+  .spesific-element {
+    position: relative;
+  }
+
+  .spesific-element .tooltip-text {
+    visibility: hidden;
+    width: 50px;
+    border: 0.13rem solid white;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 2px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    margin-left: -12.5px;
+  }
+
+  .spesific-element .tooltip-text::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+  }
+
+  .spesific-element:hover .tooltip-text {
+    visibility: visible;
+  }
+
+  .tooltip-text,
+  .tooltip-content {
+    min-width: fit-content;
+    font-size: 0.43em;
+  }
+
+  .tooltip-text > p::first-letter {
+    text-transform: capitalize;
+  }
+
+  .tooltip-bug {
+    background-color: #84c400;
+  }
+  .tooltip-dark {
+    background-color: #5b5366;
+  }
+  .tooltip-dragon {
+    background-color: #0070ca;
+  }
+  .tooltip-electric {
+    background-color: #fbd200;
+  }
+  .tooltip-fairy {
+    background-color: #fb8aec;
+  }
+  .tooltip-fighting {
+    background-color: #e12c6a;
+  }
+  .tooltip-fire {
+    background-color: #ff983f;
+  }
+  .tooltip-flying {
+    background-color: #8aace4;
+  }
+  .tooltip-ghost {
+    background-color: #4b6ab3;
+  }
+  .tooltip-grass {
+    background-color: #35c04a;
+  }
+  .tooltip-ground {
+    background-color: #e97333;
+  }
+  .tooltip-ice {
+    background-color: #4bd2c1;
+  }
+  .tooltip-normal {
+    background-color: #929ba3;
+  }
+  .tooltip-poison {
+    background-color: #b667cf;
+  }
+  .tooltip-psychic {
+    background-color: #fe8792;
+  }
+  .tooltip-rock {
+    background-color: #c9b787;
+  }
+  .tooltip-steel {
+    background-color: #598fa3;
+  }
+  .tooltip-water {
+    background-color: #3393dd;
+  }
+
+  .spesific-element > img {
     margin-left: 5px;
     margin-top: 5px;
-    display: inline-block;
     height: 15px;
     width: 15px;
   }

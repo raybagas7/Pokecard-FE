@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NavHeader = ({ lists }) => {
-  console.log(lists);
+  // console.log(lists);
   return (
     <div className="nav-header">
       <header>

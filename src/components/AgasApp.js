@@ -4,6 +4,7 @@ import JumboTron from './JumboTron';
 import NavHeader from './NavHeader';
 import { getLlist } from '../utils/navlist';
 import { getCard } from '../utils/card';
+import { getElement } from '../utils/element';
 import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
 import Footer from './Footer';
 import MainContent from './Pokemon Components/MainContent';
@@ -14,6 +15,7 @@ class AgasApp extends React.Component {
     this.state = {
       list: getLlist(),
       card: getCard(),
+      elements: getElement(),
       socmed_black: getSocmedBlack(),
       socmed_white: getSocmedWhite(),
     };
@@ -28,7 +30,7 @@ class AgasApp extends React.Component {
           blackmed={this.state.socmed_black}
           whitemed={this.state.socmed_white}
         />
-        <MainContent cards={this.state.card} />
+        <MainContent cards={this.state.card} elements={this.state.elements} />
         <Footer />
       </div>
     );

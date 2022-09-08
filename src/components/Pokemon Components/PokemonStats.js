@@ -36,7 +36,7 @@ const PokemonStats = ({ pokemonStats, pokemonAttribute, box }) => {
     <>
       {box === 'left'
         ? leftStat.map((stat) => (
-            <div className="stat-info">
+            <div className="stat-info" key={Object.keys(stat)}>
               <div className={`stat-icon ${Object.keys(stat)}-box`}>
                 <p>{Object.keys(stat)}</p>
               </div>
@@ -46,7 +46,7 @@ const PokemonStats = ({ pokemonStats, pokemonAttribute, box }) => {
             </div>
           ))
         : rightStat.map((stat) => (
-            <div className="stat-info">
+            <div className="stat-info" key={Object.keys(stat)}>
               <div className={`stat-icon ${Object.keys(stat)}-box`}>
                 <p>{spliceName(`'${Object.keys(stat)}'`)}</p>
               </div>
