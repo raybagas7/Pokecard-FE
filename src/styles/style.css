@@ -265,7 +265,7 @@ nav li:hover a {
 
 .first-box {
   border-radius: 15px 15px 0px 0px;
-  background-image: url('../../public/images/jumboront-white-gold.png');
+  background-image: url('../../public/images/card-white-gold.png');
   background-size: cover;
   height: 73%;
   width: 100%;
@@ -280,6 +280,10 @@ nav li:hover a {
   text-indent: 1em;
 }
 
+.attribute-normal-id::before {
+  content: '#';
+}
+
 .attribute-shiny-id {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -287,6 +291,10 @@ nav li:hover a {
   background-color: orange;
   color: white;
   text-indent: 1em;
+}
+
+.attribute-shiny-id::before {
+  content: '#';
 }
 
 .attribute-shiny-id::after {

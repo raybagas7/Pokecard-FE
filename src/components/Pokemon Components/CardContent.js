@@ -34,7 +34,7 @@ const CardContent = ({
   return (
     <div className="flex-row card-content">
       <div className="box first-box">
-        <p className={`attribute-${attribute}-id`}>#{pokeid}</p>
+        <p className={`attribute-${attribute}-id`}>{pokeid}</p>
         <img
           src={
             !spritesNormal ? './images/quetion-mark.png' : attributePokemon()
