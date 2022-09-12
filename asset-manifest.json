@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.6d160b3b.css",
-    "main.js": "./static/js/main.bddee803.js",
+    "main.css": "./static/css/main.97375790.css",
+    "main.js": "./static/js/main.22b4bff6.js",
     "static/media/jumboront-gold.png": "./static/media/jumboront-gold.fc5e918b39905962a2b0.png",
     "static/media/jumboront-black-gold.png": "./static/media/jumboront-black-gold.f7a9892fa23b1c569a63.png",
-    "static/media/jumboront-white-gold.png": "./static/media/jumboront-white-gold.c46eaf33ab70475137e2.png",
+    "static/media/card-white-gold.png": "./static/media/card-white-gold.1d01c50670c90d8c17b1.png",
     "index.html": "./index.html",
-    "main.6d160b3b.css.map": "./static/css/main.6d160b3b.css.map",
-    "main.bddee803.js.map": "./static/js/main.bddee803.js.map"
+    "main.97375790.css.map": "./static/css/main.97375790.css.map",
+    "main.22b4bff6.js.map": "./static/js/main.22b4bff6.js.map"
   },
   "entrypoints": [
-    "static/css/main.6d160b3b.css",
-    "static/js/main.bddee803.js"
+    "static/css/main.97375790.css",
+    "static/js/main.22b4bff6.js"
   ]
 }
