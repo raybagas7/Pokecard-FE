@@ -305,7 +305,7 @@ nav li:hover a {
   animation-name: star;
   animation-duration: 1s;
   animation-iteration-count: infinite;
-  filter: brightness(1.5);
+  filter: brightness(0);
   filter: contrast(1.5);
   -webkit-filter: brightness(1.5);
   -webkit-filter: contrast(1.5);
@@ -417,8 +417,13 @@ nav li:hover a {
 .pokemon-types {
   display: inline-flex;
 }
+
 .spesific-element {
   position: relative;
+}
+
+.spesific-element:hover {
+  cursor: pointer;
 }
 
 .spesific-element .tooltip-text {
@@ -681,16 +686,29 @@ nav li:hover a {
 }
 .card-content {
   position: relative;
+  animation-duration: 0.5s;
+  animation-name: content-card-default;
+}
+
+@keyframes content-card-default {
+  0% {
+    opacity: 100%;
+    bottom: 10px;
+  }
+  100% {
+    opacity: 100%;
+    bottom: 0px;
+  }
 }
 .card-content:hover {
   box-shadow: 0 8px 16px 2px rgba(0, 0, 0, 0.2);
   /*animation*/
-  animation-name: content-card;
-  animation-duration: 0.4s;
+  animation-name: content-card-up;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 
-@keyframes content-card {
+@keyframes content-card-up {
   0% {
     opacity: 100%;
     bottom: 0px;
@@ -698,6 +716,131 @@ nav li:hover a {
   100% {
     opacity: 100%;
     bottom: 10px;
+  }
+}
+
+.choose-upper {
+  width: 100%;
+  height: 50%;
+}
+
+.choose-bottom {
+  width: 100%;
+  height: 50%;
+}
+
+.poke-choose_upper {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #e41f25;
+  border-radius: 10px 10px 0px 0px;
+  animation-name: close-down;
+  animation-duration: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes close-down {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+.upper-ball {
+  border-radius: 50px 50px 0px 0px;
+  position: absolute;
+  bottom: 0;
+  width: 70px;
+  height: 35px;
+  border-left: 7px solid black;
+  border-top: 7px solid black;
+  border-right: 7px solid black;
+  background-color: white;
+}
+
+.upper-ball__small {
+  border-radius: 50px 50px 0px 0px;
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+  height: 15px;
+  border-left: 3.5px solid black;
+  border-top: 3.5px solid black;
+  border-right: 3.5px solid black;
+  background-color: white;
+}
+
+.line-upper {
+  width: 100%;
+  height: 5px;
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+}
+
+.line-bottom {
+  width: 100%;
+  height: 5px;
+  background-color: black;
+  position: absolute;
+  top: 0;
+}
+
+.bottom-ball {
+  border-radius: 0px 0px 50px 50px;
+  position: absolute;
+  top: 0;
+  width: 70px;
+  height: 35px;
+  border-left: 7px solid black;
+  border-bottom: 7px solid black;
+  border-right: 7px solid black;
+  background-color: white;
+}
+
+.bottom-ball__small {
+  border-radius: 0px 0px 50px 50px;
+  position: absolute;
+  top: 0;
+  width: 30px;
+  height: 15px;
+  border-left: 3.5px solid black;
+  border-bottom: 3.5px solid black;
+  border-right: 3.5px solid black;
+  background-color: white;
+}
+
+.card-content {
+  background-color: black;
+}
+
+.poke-choose_bottom {
+  cursor: pointer;
+  transform-origin: 0 100%;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  animation-name: close-up;
+  border-radius: 0px 0px 10px 10px;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  transform: scaleY(0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@keyframes close-up {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
   }
 }
 
@@ -765,12 +908,12 @@ footer {
 
     /*animation*/
     position: relative;
-    animation-name: content-card;
+    animation-name: content-card-up;
     animation-duration: 0.4s;
     animation-fill-mode: forwards;
   }
 
-  @keyframes content-card {
+  @keyframes content-card-up {
     0% {
       opacity: 100%;
       bottom: 0px;
@@ -954,12 +1097,12 @@ footer {
 
     /*animation*/
     position: relative;
-    animation-name: content-card;
+    animation-name: content-card-up;
     animation-duration: 0.4s;
     animation-fill-mode: forwards;
   }
 
-  @keyframes content-card {
+  @keyframes content-card-up {
     0% {
       opacity: 100%;
       bottom: 0px;

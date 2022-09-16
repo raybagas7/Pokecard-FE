@@ -1,10 +1,9 @@
 import React from 'react';
+import { useState } from 'react';
 import PokemonElement from './PokemonElement';
 import PokemonStats from './PokemonStats';
 
 const CardContent = ({
-  imageUrl,
-  id,
   name,
   spritesNormal,
   spritesShyni,
@@ -13,6 +12,7 @@ const CardContent = ({
   stats,
   attribute,
 }) => {
+  const [Choosed, setChoosed] = useState(false);
   let allStat = {};
   if (stats) {
     for (let i = 0; i < stats.length; i++) {
@@ -21,6 +21,11 @@ const CardContent = ({
       allStat[name_stat] = base_stat;
     }
   }
+
+  const change = () => {
+    const temp = !Choosed;
+    setChoosed(temp);
+  };
 
   const attributePokemon = () => {
     if (attribute === 'shiny') {
@@ -31,8 +36,8 @@ const CardContent = ({
   // const show = () => {
   //   console.log('ini pokemon id di cc', name, allStat);
   // };
-  return (
-    <div className="flex-row card-content">
+  return !Choosed ? (
+    <div className="flex-row card-content" onClick={change}>
       <div className="box first-box">
         <p className={`attribute-${attribute}-id`}>{pokeid}</p>
         <img
@@ -61,17 +66,22 @@ const CardContent = ({
             />
           </div>
         </div>
-        <div className="flex-column__skills">
-          <div className="box-1_skills">
-            <p>SKILL SOON</p>
-            <p>SKILL SOON</p>
-            <p>SKILL SOON</p>
-          </div>
-          <div className="box-2_skills">
-            <p>SKILL SOON</p>
-            <p>SKILL SOON</p>
-            <p>SKILL SOON</p>
-          </div>
+      </div>
+    </div>
+  ) : (
+    <div className="flex-row card-content" onClick={change}>
+      <div className="choose-upper">
+        <div className="poke-choose_upper">
+          <div className="line-upper"></div>
+          <div className="upper-ball"></div>
+          <div className="upper-ball__small"></div>
+        </div>
+      </div>
+      <div className="choose-bottom">
+        <div className="poke-choose_bottom">
+          <div className="line-bottom"></div>
+          <div className="bottom-ball"></div>
+          <div className="bottom-ball__small"></div>
         </div>
       </div>
     </div>
