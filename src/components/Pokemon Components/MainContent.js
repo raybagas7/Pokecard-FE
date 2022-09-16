@@ -29,7 +29,7 @@ const MainContent = ({ cards, elements }) => {
             pokeid: response.data.id,
             name: response.data.name,
             spritesNormal: response.data.sprites.front_default,
-            spritesShyni: response.data.sprites.front_shiny,
+            spritesShiny: response.data.sprites.front_shiny,
             types: response.data.types,
             stats: response.data.stats,
             attribute: getRandom(),

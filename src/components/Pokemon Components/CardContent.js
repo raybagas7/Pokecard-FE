@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
+import CardPokeball from './CardPokeball';
 import PokemonElement from './PokemonElement';
 import PokemonStats from './PokemonStats';
 
 const CardContent = ({
   name,
   spritesNormal,
-  spritesShyni,
+  spritesShiny,
   types,
   pokeid,
   stats,
@@ -29,7 +30,7 @@ const CardContent = ({
 
   const attributePokemon = () => {
     if (attribute === 'shiny') {
-      return spritesShyni;
+      return spritesShiny;
     }
     return spritesNormal;
   };
@@ -69,22 +70,7 @@ const CardContent = ({
       </div>
     </div>
   ) : (
-    <div className="flex-row card-content" onClick={change}>
-      <div className="choose-upper">
-        <div className="poke-choose_upper">
-          <div className="line-upper"></div>
-          <div className="upper-ball"></div>
-          <div className="upper-ball__small"></div>
-        </div>
-      </div>
-      <div className="choose-bottom">
-        <div className="poke-choose_bottom">
-          <div className="line-bottom"></div>
-          <div className="bottom-ball"></div>
-          <div className="bottom-ball__small"></div>
-        </div>
-      </div>
-    </div>
+    <CardPokeball change={change} attribute={attribute} />
   );
 };
 

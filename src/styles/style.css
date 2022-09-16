@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neucha&family=Righteous&family=Secular+One&display=swap');
 
 * {
   padding: 0;
@@ -305,7 +305,7 @@ nav li:hover a {
   animation-name: star;
   animation-duration: 1s;
   animation-iteration-count: infinite;
-  filter: brightness(0);
+  filter: brightness(1.5);
   filter: contrast(1.5);
   -webkit-filter: brightness(1.5);
   -webkit-filter: contrast(1.5);
@@ -743,12 +743,85 @@ nav li:hover a {
   justify-content: center;
 }
 
+.poke-choose_upper-shiny {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #5a5396;
+  border-radius: 10px 10px 0px 0px;
+  animation-name: close-down;
+  animation-duration: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @keyframes close-down {
   0% {
     height: 0%;
   }
   100% {
     height: 100%;
+  }
+}
+
+.master-ball__left {
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px 0px 90px 0px;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  background-color: #bd3a70;
+  animation-name: master-ball;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  filter: brightness(1.5);
+  filter: contrast(1.5);
+  -webkit-filter: brightness(1.5);
+  -webkit-filter: contrast(1.5);
+}
+
+.master-ball__right {
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-left: 5px solid black;
+  border-bottom: 5px solid black;
+  border-radius: 0px 10px 0px 90px;
+  background-color: #bd3a70;
+  animation-name: master-ball;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  filter: brightness(1.5);
+  filter: contrast(1.5);
+  -webkit-filter: brightness(1.5);
+  -webkit-filter: contrast(1.5);
+}
+
+@keyframes master-ball {
+  0% {
+    filter: brightness(1.5);
+    filter: contrast(1.5);
+    -webkit-filter: brightness(1.5);
+    -webkit-filter: contrast(1.5);
+  }
+  50% {
+    filter: brightness(1);
+    filter: contrast(1);
+    -webkit-filter: brightness(1);
+    -webkit-filter: contrast(1);
+  }
+  100% {
+    filter: brightness(1.5);
+    filter: contrast(1.5);
+    -webkit-filter: brightness(1.5);
+    -webkit-filter: contrast(1.5);
   }
 }
 
@@ -842,6 +915,13 @@ nav li:hover a {
   100% {
     transform: scaleY(1);
   }
+}
+
+.master-ball__sign {
+  font-family: 'Neucha', cursive;
+  font-weight: 600;
+  font-size: 4em;
+  color: white;
 }
 
 footer {
@@ -1138,5 +1218,72 @@ footer {
     display: block;
     margin: auto;
     margin-top: 10px;
+  }
+
+  .master-ball__left {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px 0px 30px 0px;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    background-color: #bd3a70;
+    animation-name: master-ball;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    filter: brightness(1.5);
+    filter: contrast(1.5);
+    -webkit-filter: brightness(1.5);
+    -webkit-filter: contrast(1.5);
+  }
+
+  .master-ball__right {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 0px 10px 0px 30px;
+    background-color: #bd3a70;
+    animation-name: master-ball;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    filter: brightness(1.5);
+    filter: contrast(1.5);
+    -webkit-filter: brightness(1.5);
+    -webkit-filter: contrast(1.5);
+  }
+
+  @keyframes master-ball {
+    0% {
+      filter: brightness(1.5);
+      filter: contrast(1.5);
+      -webkit-filter: brightness(1.5);
+      -webkit-filter: contrast(1.5);
+    }
+    50% {
+      filter: brightness(1);
+      filter: contrast(1);
+      -webkit-filter: brightness(1);
+      -webkit-filter: contrast(1);
+    }
+    100% {
+      filter: brightness(1.5);
+      filter: contrast(1.5);
+      -webkit-filter: brightness(1.5);
+      -webkit-filter: contrast(1.5);
+    }
+  }
+
+  .master-ball__sign {
+    font-family: 'Neucha', cursive;
+    font-weight: 600;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: white;
   }
 }
