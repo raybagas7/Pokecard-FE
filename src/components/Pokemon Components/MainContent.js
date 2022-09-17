@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import Axios from 'axios';
 import ContainerContent from './ContainerContent';
+import PokePouch from './PokePouch';
 
 const MainContent = ({ cards, elements }) => {
   const [pokemonId, setPokemonId] = useState();
@@ -58,6 +59,7 @@ const MainContent = ({ cards, elements }) => {
 
   return (
     <div className="main-content">
+      <PokePouch />
       <ContainerContent cards={cards} pokemonId={pokemonId} />
       <div className="flex-column container-content__second">
         <button

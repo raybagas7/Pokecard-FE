@@ -681,6 +681,205 @@ nav li:hover a {
   }
 }
 
+.poke-pouch {
+  display: flex;
+  margin: 0 auto;
+  width: fit-content;
+  height: fit-content;
+  margin-bottom: 10px;
+}
+
+.poke-balls {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 35px;
+  background-color: #ffd400;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.small-pokeball {
+  width: 35px;
+  height: 35px;
+  border-radius: 35px;
+  margin-right: 10px;
+  border: 2px solid black;
+}
+
+.small-pokeball-upper {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  border-radius: 20px 20px 0px 0px;
+  background-color: #e41f25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-name: small-ball-red;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  filter: brightness(2);
+  filter: contrast(2);
+  -webkit-filter: brightness(2);
+  -webkit-filter: contrast(2);
+}
+
+@keyframes small-ball-red {
+  0% {
+    filter: brightness(2);
+    filter: contrast(2);
+    -webkit-filter: brightness(2);
+    -webkit-filter: contrast(2);
+  }
+  50% {
+    filter: brightness(1);
+    filter: contrast(1);
+    -webkit-filter: brightness(1);
+    -webkit-filter: contrast(1);
+  }
+  100% {
+    filter: brightness(2);
+    filter: contrast(2);
+    -webkit-filter: brightness(2);
+    -webkit-filter: contrast(2);
+  }
+}
+
+.xsmall-line-upper {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+}
+
+.small-pokeball-bottom {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  border-radius: 0px 0px 20px 20px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.xsmall-upper-ball {
+  position: absolute;
+  bottom: 0;
+  width: 13px;
+  height: 6.5px;
+  border-radius: 13px 13px 0px 0px;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  background-color: white;
+  animation-name: shake;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.xsmall-upper-ball__xsmall {
+  position: absolute;
+  bottom: 0;
+  width: 5px;
+  height: 2.5px;
+  border-radius: 5px 5px 0px 0px;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  background-color: white;
+  animation-name: shake;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.xsmall-bottom-ball__xsmall {
+  position: absolute;
+  top: 0;
+  width: 5px;
+  height: 2.5px;
+  border-radius: 0px 0px 5px 5px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  background-color: white;
+  animation-name: shake;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.xsmall-bottom-ball {
+  position: absolute;
+  top: 0;
+  width: 13px;
+  height: 6.5px;
+  border-radius: 0px 0px 13px 13px;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  background-color: white;
+  animation-name: shake;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  5% {
+    transform: translateX(1.3px);
+  }
+  10% {
+    transform: translateX(-1.3px);
+  }
+  15% {
+    transform: translateX(1.3px);
+  }
+  20% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.xsmall-line-bottom {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  position: absolute;
+  top: 0;
+}
+
+.poke-coins {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 35px;
+  background-color: #ffd400;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.master-balls {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 35px;
+  background-color: #ffd400;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .first-box:hover {
   cursor: pointer;
 }
@@ -1285,5 +1484,208 @@ footer {
     font-size: 1.5em;
     margin-bottom: 20px;
     color: white;
+  }
+
+  .poke-pouch {
+    display: flex;
+    margin: 0 auto;
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 10px;
+  }
+
+  .poke-pouch p {
+    font-size: 0.6em;
+  }
+
+  .poke-balls {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 35px;
+    background-color: #ffd400;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .small-pokeball {
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    margin-right: 5px;
+    border: 2px solid black;
+  }
+
+  .small-pokeball-upper {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #e41f25;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation-name: small-ball-red;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    filter: brightness(2);
+    filter: contrast(2);
+    -webkit-filter: brightness(2);
+    -webkit-filter: contrast(2);
+  }
+
+  @keyframes small-ball-red {
+    0% {
+      filter: brightness(2);
+      filter: contrast(2);
+      -webkit-filter: brightness(2);
+      -webkit-filter: contrast(2);
+    }
+    50% {
+      filter: brightness(1);
+      filter: contrast(1);
+      -webkit-filter: brightness(1);
+      -webkit-filter: contrast(1);
+    }
+    100% {
+      filter: brightness(2);
+      filter: contrast(2);
+      -webkit-filter: brightness(2);
+      -webkit-filter: contrast(2);
+    }
+  }
+
+  .xsmall-line-upper {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .small-pokeball-bottom {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    border-radius: 0px 0px 20px 20px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .xsmall-upper-ball {
+    position: absolute;
+    bottom: 0;
+    width: 13px;
+    height: 6.5px;
+    border-radius: 13px 13px 0px 0px;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    background-color: white;
+    animation-name: shake;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+  }
+
+  .xsmall-upper-ball__xsmall {
+    position: absolute;
+    bottom: 0;
+    width: 5px;
+    height: 2.5px;
+    border-radius: 5px 5px 0px 0px;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    background-color: white;
+    animation-name: shake;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+  }
+
+  .xsmall-bottom-ball__xsmall {
+    position: absolute;
+    top: 0;
+    width: 5px;
+    height: 2.5px;
+    border-radius: 0px 0px 5px 5px;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    background-color: white;
+    animation-name: shake;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+  }
+
+  .xsmall-bottom-ball {
+    position: absolute;
+    top: 0;
+    width: 13px;
+    height: 6.5px;
+    border-radius: 0px 0px 13px 13px;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    background-color: white;
+    animation-name: shake;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    5% {
+      transform: translateX(1.3px);
+    }
+    10% {
+      transform: translateX(-1.3px);
+    }
+    15% {
+      transform: translateX(1.3px);
+    }
+    20% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .xsmall-line-bottom {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    top: 0;
+  }
+
+  .poke-coins {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 35px;
+    background-color: #ffd400;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .master-balls {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 35px;
+    background-color: #ffd400;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 }
