@@ -727,12 +727,93 @@ nav li:hover a {
   -webkit-filter: contrast(2);
 }
 
-@keyframes small-ball-red {
+.small-masterball-upper {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  border-radius: 20px 20px 0px 0px;
+  background-color: #5a5396;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-name: small-ball-purple;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  filter: brightness(2);
+  filter: contrast(2);
+  -webkit-filter: brightness(2);
+  -webkit-filter: contrast(2);
+}
+
+@keyframes small-ball-purple {
   0% {
     filter: brightness(2);
     filter: contrast(2);
     -webkit-filter: brightness(2);
     -webkit-filter: contrast(2);
+  }
+  50% {
+    filter: brightness(1.3);
+    filter: contrast(1.3);
+    -webkit-filter: brightness(1.3);
+    -webkit-filter: contrast(1.3);
+  }
+  100% {
+    filter: brightness(2);
+    filter: contrast(2);
+    -webkit-filter: brightness(2);
+    -webkit-filter: contrast(2);
+  }
+}
+
+.small-master-ball__left {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px 0px 10px 0px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1.5px solid black;
+  border-top: 1.5px solid black;
+  background-color: #bd3a70;
+  animation-name: master-ball;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  filter: brightness(1.5);
+  filter: contrast(1.5);
+  -webkit-filter: brightness(1.5);
+  -webkit-filter: contrast(1.5);
+}
+
+.small-master-ball__right {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-right: 1.5px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-top: 1.5px solid black;
+  border-radius: 0px 10px 0px 10px;
+  background-color: #bd3a70;
+  animation-name: master-ball;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  filter: brightness(1.5);
+  filter: contrast(1.5);
+  -webkit-filter: brightness(1.5);
+  -webkit-filter: contrast(1.5);
+}
+
+@keyframes master-ball {
+  0% {
+    filter: brightness(1.5);
+    filter: contrast(1.5);
+    -webkit-filter: brightness(1.5);
+    -webkit-filter: contrast(1.5);
   }
   50% {
     filter: brightness(1);
@@ -741,11 +822,19 @@ nav li:hover a {
     -webkit-filter: contrast(1);
   }
   100% {
-    filter: brightness(2);
-    filter: contrast(2);
-    -webkit-filter: brightness(2);
-    -webkit-filter: contrast(2);
+    filter: brightness(1.5);
+    filter: contrast(1.5);
+    -webkit-filter: brightness(1.5);
+    -webkit-filter: contrast(1.5);
   }
+}
+
+.small-master-ball__sign {
+  font-family: 'Neucha', cursive;
+  font-weight: 100;
+  font-size: 0.1em;
+  color: white;
+  margin-bottom: 5px;
 }
 
 .xsmall-line-upper {
@@ -1206,7 +1295,7 @@ footer {
 
 @media screen and (max-width: 554px) {
   .main-content {
-    padding: 20px;
+    padding: 10px;
   }
   .container-content__first {
     justify-content: center;
@@ -1251,8 +1340,7 @@ footer {
     flex-direction: column;
     width: 110px;
     height: 170px;
-    margin: 5px;
-    background-color: black;
+    margin: 2px;
     /*border*/
     border-radius: 15px;
   }
@@ -1495,7 +1583,7 @@ footer {
   }
 
   .poke-pouch p {
-    font-size: 0.6em;
+    font-size: 0.5em;
   }
 
   .poke-balls {
@@ -1555,6 +1643,116 @@ footer {
       -webkit-filter: brightness(2);
       -webkit-filter: contrast(2);
     }
+  }
+
+  .small-masterball-upper {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #5a5396;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation-name: small-ball-purple;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    filter: brightness(2);
+    filter: contrast(2);
+    -webkit-filter: brightness(2);
+    -webkit-filter: contrast(2);
+  }
+
+  @keyframes small-ball-purple {
+    0% {
+      filter: brightness(2);
+      filter: contrast(2);
+      -webkit-filter: brightness(2);
+      -webkit-filter: contrast(2);
+    }
+    50% {
+      filter: brightness(1.3);
+      filter: contrast(1.3);
+      -webkit-filter: brightness(1.3);
+      -webkit-filter: contrast(1.3);
+    }
+    100% {
+      filter: brightness(2);
+      filter: contrast(2);
+      -webkit-filter: brightness(2);
+      -webkit-filter: contrast(2);
+    }
+  }
+
+  .small-master-ball__left {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px 0px 10px 0px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1.5px solid black;
+    border-top: 1.5px solid black;
+    background-color: #bd3a70;
+    animation-name: master-ball;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    filter: brightness(1.5);
+    filter: contrast(1.5);
+    -webkit-filter: brightness(1.5);
+    -webkit-filter: contrast(1.5);
+  }
+
+  .small-master-ball__right {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-right: 1.5px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1.5px solid black;
+    border-radius: 0px 10px 0px 10px;
+    background-color: #bd3a70;
+    animation-name: master-ball;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    filter: brightness(1.5);
+    filter: contrast(1.5);
+    -webkit-filter: brightness(1.5);
+    -webkit-filter: contrast(1.5);
+  }
+
+  @keyframes master-ball {
+    0% {
+      filter: brightness(1.5);
+      filter: contrast(1.5);
+      -webkit-filter: brightness(1.5);
+      -webkit-filter: contrast(1.5);
+    }
+    50% {
+      filter: brightness(1);
+      filter: contrast(1);
+      -webkit-filter: brightness(1);
+      -webkit-filter: contrast(1);
+    }
+    100% {
+      filter: brightness(1.5);
+      filter: contrast(1.5);
+      -webkit-filter: brightness(1.5);
+      -webkit-filter: contrast(1.5);
+    }
+  }
+
+  .small-master-ball__sign {
+    font-family: 'Neucha', cursive;
+    font-weight: 100;
+    font-size: xx-small;
+    color: white;
+    margin-bottom: 5px;
   }
 
   .xsmall-line-upper {
