@@ -8,6 +8,7 @@ import { getElement } from '../utils/element';
 import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
 import Footer from './Footer';
 import MainContent from './Pokemon Components/MainContent';
+import CollectedCardsContainer from './Pokemon Collected Card/CollectedCardsContainer';
 
 class AgasApp extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class AgasApp extends React.Component {
           whitemed={this.state.socmed_white}
         />
         <MainContent cards={this.state.card} elements={this.state.elements} />
+        <CollectedCardsContainer />
         <Footer />
       </div>
     );

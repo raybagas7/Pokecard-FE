@@ -69,6 +69,9 @@ const MainContent = ({ cards, elements }) => {
         >
           Shuffle
         </button>
+        <button className="pick-button" disabled={true}>
+          Pick
+        </button>
         {/* <button onClick={show}>ini poke</button> */}
       </div>
     </div>

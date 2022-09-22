@@ -1,4 +1,5 @@
 import React from 'react';
+import SmallCoin from './SmallCoin';
 import SmallMasterball from './SmallMasterball';
 import SmallPokeball from './SmallPokeball';
 
@@ -10,7 +11,7 @@ const PokePouch = () => {
         <p>PokeBall: NaN</p>
       </div>
       <div className="poke-coins">
-        <SmallPokeball />
+        <SmallCoin />
         <p>Coin: NaN</p>
       </div>
       <div className="master-balls">

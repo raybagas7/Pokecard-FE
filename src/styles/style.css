@@ -220,6 +220,21 @@ nav li:hover a {
   background-color: grey;
 }
 
+.pick-button {
+  margin-left: 10px;
+  cursor: pointer;
+  padding: 10px;
+  color: white;
+  font-family: 'Righteous', cursive;
+  background-color: #e41f25;
+  border-radius: 10px;
+}
+
+.pick-button:disabled {
+  cursor: auto;
+  background-color: grey;
+}
+
 .flex-column {
   display: flex;
   flex-direction: row;
@@ -689,6 +704,39 @@ nav li:hover a {
   margin-bottom: 10px;
 }
 
+.small-coin {
+  width: 35px;
+  height: 35px;
+  border-radius: 35px;
+  margin-right: 5px;
+  border: 3px solid black;
+  background-color: #fdb713;
+  position: relative;
+  color: black;
+  animation: rotation 4s infinite linear;
+}
+
+.small-coin > p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotatey(0deg);
+  }
+  60% {
+    transform: rotatey(0deg);
+  }
+  100% {
+    transform: rotatey(360deg);
+  }
+}
+
 .poke-balls {
   padding: 10px;
   display: flex;
@@ -1023,7 +1071,7 @@ nav li:hover a {
   width: 100%;
   height: 100%;
   background-color: #e41f25;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
   animation-name: close-down;
   animation-duration: 0.2s;
   display: flex;
@@ -1037,7 +1085,7 @@ nav li:hover a {
   width: 100%;
   height: 100%;
   background-color: #5a5396;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
   animation-name: close-down;
   animation-duration: 0.2s;
   display: flex;
@@ -1060,7 +1108,7 @@ nav li:hover a {
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: 10px 0px 90px 0px;
+  border-radius: 15px 0px 90px 0px;
   border-right: 5px solid black;
   border-bottom: 5px solid black;
   background-color: #bd3a70;
@@ -1081,7 +1129,7 @@ nav li:hover a {
   right: 0;
   border-left: 5px solid black;
   border-bottom: 5px solid black;
-  border-radius: 0px 10px 0px 90px;
+  border-radius: 0px 15px 0px 90px;
   background-color: #bd3a70;
   animation-name: master-ball;
   animation-duration: 1s;
@@ -1188,7 +1236,7 @@ nav li:hover a {
   height: 100%;
   background-color: white;
   animation-name: close-up;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 0px 0px 15px 15px;
   animation-duration: 0.2s;
   animation-fill-mode: forwards;
   transform: scaleY(0);
@@ -1513,7 +1561,7 @@ footer {
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 10px 0px 30px 0px;
+    border-radius: 15px 0px 30px 0px;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
     background-color: #bd3a70;
@@ -1534,7 +1582,7 @@ footer {
     right: 0;
     border-left: 2px solid black;
     border-bottom: 2px solid black;
-    border-radius: 0px 10px 0px 30px;
+    border-radius: 0px 15px 0px 30px;
     background-color: #bd3a70;
     animation-name: master-ball;
     animation-duration: 1s;

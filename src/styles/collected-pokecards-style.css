@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Neucha&family=Righteous&family=Secular+One&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Righteous', cursive;
+  margin: 0;
+  padding: 0;
+}
+
+.collections-content {
+  margin-top: 10px;
+  padding: 20px;
+}
+
+.all-cards__container {
+  border: solid white;
+  width: 90%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: #161b22;
+  border-radius: 20px;
+  /* Properti */
+  padding: 20px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  /*card*/
+  box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.collected-card {
+  position: relative;
+  animation-duration: 0.5s;
+  animation-name: content-card-default;
+  margin: 10px;
+  background-color: #ffd400;
+  width: 13%;
+  height: 300px;
+  min-width: 180px;
+  border-radius: 15px;
+}
+
+.collected-card:hover {
+  cursor: pointer;
+  animation-name: content-card-up;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@media screen and (max-width: 1000px) {
+  .collected-card {
+    margin: 10px;
+    width: 13%;
+    min-width: 130px;
+    height: 240px;
+    border-radius: 15px;
+  }
+}
+
+@media screen and (max-width: 554px) {
+  .collections-content {
+    margin-top: 10px;
+    padding: 5px;
+  }
+  .collected-card {
+    margin: 3px;
+    width: 13%;
+    min-width: 110px;
+    height: 170px;
+    border-radius: 15px;
+  }
+  .all-cards__container {
+    padding: 5px;
+  }
+}
