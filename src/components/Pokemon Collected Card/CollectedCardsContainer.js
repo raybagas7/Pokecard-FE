@@ -6,6 +6,9 @@ const CollectedCardsContainer = () => {
   return (
     <div className="collections-content">
       <div className="all-cards__container">
+        <div className="collections-title">
+          <h2>Pokécard Collections</h2>
+        </div>
         <CollectedCard />
         <CollectedCard />
         <CollectedCard />

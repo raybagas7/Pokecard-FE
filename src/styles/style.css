@@ -1923,6 +1923,10 @@ footer {
     margin-right: 5px;
   }
 
+  .small-coin > p {
+    font-size: 1em;
+  }
+
   .master-balls {
     padding: 10px;
     display: flex;

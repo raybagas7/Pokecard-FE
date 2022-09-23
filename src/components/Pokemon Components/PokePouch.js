@@ -8,15 +8,15 @@ const PokePouch = () => {
     <div className="poke-pouch">
       <div className="poke-balls">
         <SmallPokeball />
-        <p>PokeBall: NaN</p>
+        <p>PokéBall: 0</p>
       </div>
       <div className="poke-coins">
         <SmallCoin />
-        <p>Coin: NaN</p>
+        <p>Coin: 0</p>
       </div>
       <div className="master-balls">
         <SmallMasterball />
-        <p>MasterBall: NaN</p>
+        <p>MasterBall: 0</p>
       </div>
     </div>
   );

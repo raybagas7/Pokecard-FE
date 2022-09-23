@@ -35,6 +35,16 @@ body {
   transition: 0.3s;
 }
 
+.collections-title {
+  width: 100%;
+  color: white;
+  margin: 15px;
+}
+
+.collections-title > h2 {
+  text-align: center;
+}
+
 .collected-card {
   position: relative;
   animation-duration: 0.5s;
