@@ -38,8 +38,8 @@ const CardContent = ({
   //   console.log('ini pokemon id di cc', name, allStat);
   // };
   return !Choosed ? (
-    <div className="flex-row card-content" onClick={change}>
-      <div className="box first-box">
+    <div className="flex-row card-content">
+      <div className="box first-box" onClick={change}>
         <p className={`attribute-${attribute}-id`}>{pokeid}</p>
         <img
           src={
