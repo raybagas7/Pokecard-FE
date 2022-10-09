@@ -1652,6 +1652,7 @@ footer {
     border-radius: 35px;
     margin-right: 5px;
     border: 2px solid black;
+    position: relative;
   }
 
   .small-pokeball-upper {
