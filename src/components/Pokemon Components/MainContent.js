@@ -5,7 +5,7 @@ import Axios from 'axios';
 import ContainerContent from './ContainerContent';
 import PokePouch from './PokePouch';
 
-const MainContent = ({ cards, elements }) => {
+const MainContent = ({ cards }) => {
   const [pokemonId, setPokemonId] = useState();
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
 
@@ -15,6 +15,13 @@ const MainContent = ({ cards, elements }) => {
     num < 0.99 ? (probability = 'normal') : (probability = 'shiny');
     return probability;
   };
+
+  // const isLegendary = async (speciesUrl) => {
+  //   Axios.get(`https://pokeapi.co/api/v2/pokemon-species/144/`).then((response) => {
+  //     return response.data.is_legendary;
+  //   }
+  //   )
+  // }
 
   const shufflePokemon = async () => {
     const a = [];
@@ -33,6 +40,7 @@ const MainContent = ({ cards, elements }) => {
             spritesShiny: response.data.sprites.front_shiny,
             types: response.data.types,
             stats: response.data.stats,
+            speciesUrl: response.data.species.url,
             attribute: getRandom(),
             choose: false,
           });

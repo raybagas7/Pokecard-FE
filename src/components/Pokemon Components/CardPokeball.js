@@ -21,7 +21,7 @@ const CardPokeball = ({ change, attribute }) => {
         </div>
       </div>
     </div>
-  ) : (
+  ) : ( attribute === 'normal' ?
     <div className="flex-row card-content" onClick={change}>
       <div className="choose-upper">
         <div className="poke-choose_upper">
@@ -38,7 +38,22 @@ const CardPokeball = ({ change, attribute }) => {
         </div>
       </div>
     </div>
-  );
+  : <div className="flex-row card-content" onClick={change}>
+      <div className="choose-upper">
+        <div className="poke-choose_upper">
+          <div className="line-upper"></div>
+          <div className="upper-ball"></div>
+          <div className="upper-ball__small"></div>
+        </div>
+      </div>
+      <div className="choose-bottom">
+        <div className="poke-choose_bottom">
+          <div className="line-bottom"></div>
+          <div className="bottom-ball"></div>
+          <div className="bottom-ball__small"></div>
+        </div>
+      </div>
+    </div>);
 };
 
 export default CardPokeball;

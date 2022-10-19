@@ -2,9 +2,20 @@ import React from 'react';
 import CardContent from './CardContent';
 
 const ContainerContent = ({ cards, pokemonId }) => {
+  // const [species, setSpecies] = useState();
+  
+  //  const isLegendary = async () => {
+  //   Axios.get(`${pokemonId.speciesUrl}`).then((response) => {
+  //     setSpecies(response.data.is_legendary);
+  //   }
+  //   )
+  // }
+  // isLegendary();
+
   // const show = () => {
-  //   console.log('ini pokemon id di cc', pokemonId);
+  //   console.log('ini pokemon id di cc', species);
   // };
+
   return (
     <div className="flex-column container-content__first">
       {pokemonId

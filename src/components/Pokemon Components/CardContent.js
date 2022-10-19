@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import Axios from 'axios';
 import CardPokeball from './CardPokeball';
 import PokemonElement from './PokemonElement';
 import PokemonStats from './PokemonStats';
@@ -10,6 +11,7 @@ const CardContent = ({
   spritesShiny,
   types,
   pokeid,
+  speciesUrl = 'https://pokeapi.co/api/v2/pokemon-species/',
   stats,
   attribute,
 }) => {
@@ -23,6 +25,15 @@ const CardContent = ({
     }
   }
 
+  const [isLegendary, setIsLegendary] = useState();
+    Axios.get(`${speciesUrl}`).then((response) => {
+      setIsLegendary(response.data.is_legendary);
+    }
+    )
+
+  let isLegend = '';
+  isLegendary === true ? (isLegend = 'LEGEND' ) : (isLegend = '')
+
   const change = () => {
     const temp = !Choosed;
     setChoosed(temp);
@@ -34,13 +45,14 @@ const CardContent = ({
     }
     return spritesNormal;
   };
+
   // const show = () => {
-  //   console.log('ini pokemon id di cc', name, allStat);
+  //   console.log('ini pokemon id di cc', isLegendary);
   // };
   return !Choosed ? (
     <div className="flex-row card-content">
       <div className="box first-box" onClick={change}>
-        <p className={`attribute-${attribute}-id`}>{pokeid}</p>
+        <p className={`attribute-${attribute}-id`}>{pokeid} {isLegend}</p>
         <img
           src={
             !spritesNormal ? './images/quetion-mark.png' : attributePokemon()
@@ -68,6 +80,7 @@ const CardContent = ({
           </div>
         </div>
       </div>
+      {/* <button onClick={show}>ini cards</button> */}
     </div>
   ) : (
     <CardPokeball change={change} attribute={attribute} />
