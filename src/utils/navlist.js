@@ -1,4 +1,4 @@
-const getLlist = () => {
+const getList = () => {
   return [
     {
       tar: '_blank',
@@ -21,4 +21,4 @@ const getLlist = () => {
   ];
 };
 
-export { getLlist };
+export { getList };

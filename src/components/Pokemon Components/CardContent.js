@@ -26,13 +26,12 @@ const CardContent = ({
   }
 
   const [isLegendary, setIsLegendary] = useState();
-    Axios.get(`${speciesUrl}`).then((response) => {
-      setIsLegendary(response.data.is_legendary);
-    }
-    )
+  Axios.get(`${speciesUrl}`).then((response) => {
+    setIsLegendary(response.data.is_legendary);
+  });
 
   let isLegend = '';
-  isLegendary === true ? (isLegend = 'LEGEND' ) : (isLegend = '')
+  isLegendary === true ? (isLegend = 'LEGEND') : (isLegend = '');
 
   const change = () => {
     const temp = !Choosed;
@@ -52,7 +51,9 @@ const CardContent = ({
   return !Choosed ? (
     <div className="flex-row card-content">
       <div className="box first-box" onClick={change}>
-        <p className={`attribute-${attribute}-id`}>{pokeid} {isLegend}</p>
+        <p className={`attribute-${attribute}-id`}>
+          {pokeid} {isLegend}
+        </p>
         <img
           src={
             !spritesNormal ? './images/quetion-mark.png' : attributePokemon()

@@ -16,13 +16,6 @@ const MainContent = ({ cards }) => {
     return probability;
   };
 
-  // const isLegendary = async (speciesUrl) => {
-  //   Axios.get(`https://pokeapi.co/api/v2/pokemon-species/144/`).then((response) => {
-  //     return response.data.is_legendary;
-  //   }
-  //   )
-  // }
-
   const shufflePokemon = async () => {
     const a = [];
     a.splice(0);
@@ -61,9 +54,9 @@ const MainContent = ({ cards }) => {
     }, 1500);
   };
 
-  // const show = () => {
-  //   console.log('ini pokemon id', pokemonId);
-  // };
+  const show = () => {
+    console.log('ini pokemon id', pokemonId);
+  };
 
   return (
     <div className="main-content">
@@ -80,7 +73,7 @@ const MainContent = ({ cards }) => {
         <button className="pick-button" disabled={true}>
           Pick
         </button>
-        {/* <button onClick={show}>ini poke</button> */}
+        <button onClick={show}>ini poke</button>
       </div>
     </div>
   );
