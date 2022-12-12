@@ -12,7 +12,9 @@ import {
   logout,
   putAccessToken,
   putRefreshToken,
+  refreshAccessToken,
 } from '../utils/network-data';
+import RegisterPage from '../pages/RegisterPage';
 
 const AgasApp = () => {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -38,10 +40,20 @@ const AgasApp = () => {
 
   React.useEffect(() => {
     setList(getList());
-    getUserLogged().then(({ data }) => {
-      setAuthedUser(data);
+    getUserLogged().then(({ error, data }) => {
+      if (error) {
+        refreshAccessToken().then(({ data }) => {
+          putAccessToken(data.accessToken);
+          getUserLogged().then(({ data }) => {
+            setAuthedUser(data);
+            setInitializing(false);
+          });
+        });
+      } else {
+        setAuthedUser(data);
+        setInitializing(false);
+      }
       console.log(data);
-      setInitializing(false);
     });
   }, []);
 
@@ -56,7 +68,8 @@ const AgasApp = () => {
           <Route
             path="/*"
             element={<LoginPage loginSuccess={onLoginSuccess} />}
-          ></Route>
+          />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </main>
     </div>

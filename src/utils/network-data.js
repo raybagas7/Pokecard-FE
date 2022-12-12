@@ -8,12 +8,20 @@ const getRefreshToken = () => {
   return localStorage.getItem('refreshToken');
 };
 
+const getCreditId = () => {
+  return localStorage.setItem('creditId');
+};
+
 const putAccessToken = (accessToken) => {
   return localStorage.setItem('accessToken', accessToken);
 };
 
 const putRefreshToken = (refreshToken) => {
   return localStorage.setItem('refreshToken', refreshToken);
+};
+
+const putCreditId = (creditId) => {
+  return localStorage.setItem('creditId', creditId);
 };
 
 const fetchWithToken = async (url, option = {}) => {
@@ -82,7 +90,24 @@ const register = async ({ username, password, trainer_name, email }) => {
   return { error: false };
 };
 
-async function getUserLogged() {
+const refreshAccessToken = async () => {
+  const refreshToken = getRefreshToken();
+  const response = await fetch(`${BASE_URL}/authentications`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ refreshToken }),
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+};
+
+const getUserLogged = async () => {
   const response = await fetchWithToken(`${BASE_URL}/users/me`);
   const responseJson = await response.json();
 
@@ -91,15 +116,74 @@ async function getUserLogged() {
   }
 
   return { error: false, data: responseJson.data };
-}
+};
+
+const addFirstTimeCredit = async () => {
+  const response = await fetchWithToken(`${BASE_URL}/credits`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    alert(responseJson.message);
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+};
+
+const getCreditUser = async () => {
+  const response = await fetchWithToken(`${BASE_URL}/credits`);
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    alert(responseJson.message);
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+};
+
+const shuffleWithCoin = async () => {
+  const creditId = getCreditId();
+  const response = await fetchWithToken(
+    `${BASE_URL}/credits/coin/pokemon/shuffle`,
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ creditId }),
+    }
+  );
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+};
 
 export {
   getAccessToken,
   getRefreshToken,
+  getCreditId,
   putAccessToken,
   putRefreshToken,
+  putCreditId,
   login,
   logout,
   register,
+  refreshAccessToken,
   getUserLogged,
+  addFirstTimeCredit,
+  getCreditUser,
+  shuffleWithCoin,
 };

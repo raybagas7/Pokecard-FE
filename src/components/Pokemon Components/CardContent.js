@@ -6,6 +6,7 @@ import PokemonElement from './PokemonElement';
 import PokemonStats from './PokemonStats';
 
 const CardContent = ({
+  id,
   name,
   spritesNormal,
   spritesShiny,
@@ -26,6 +27,8 @@ const CardContent = ({
       allStat[name_stat] = base_stat;
     }
   }
+
+  // console.log(id);
 
   Axios.get(`${speciesUrl}`).then((response) => {
     setIsLegendary(response.data.is_legendary);
