@@ -1,10 +1,20 @@
-const BASE_URL = 'http://localhost:5000/';
+const BASE_URL = 'http://localhost:5000';
 
 const getAccessToken = () => {
   return localStorage.getItem('accessToken');
 };
 
-const putAccessToken = (accessToken) => {};
+const getRefreshToken = () => {
+  return localStorage.getItem('refreshToken');
+};
+
+const putAccessToken = (accessToken) => {
+  return localStorage.setItem('accessToken', accessToken);
+};
+
+const putRefreshToken = (refreshToken) => {
+  return localStorage.setItem('refreshToken', refreshToken);
+};
 
 const fetchWithToken = async (url, option = {}) => {
   return fetch(url, {
@@ -33,6 +43,24 @@ const login = async ({ username, password }) => {
   }
 
   return { error: false, data: responseJson.data };
+};
+
+const logout = async () => {
+  const refreshToken = getRefreshToken();
+  const response = await fetch(`${BASE_URL}/authentications`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ refreshToken }),
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    alert(responseJson.message);
+    return { error: true };
+  }
+
+  return { error: false };
 };
 
 const register = async ({ username, password, trainer_name, email }) => {
@@ -65,4 +93,13 @@ async function getUserLogged() {
   return { error: false, data: responseJson.data };
 }
 
-export { getAccessToken, putAccessToken, login, register, getUserLogged };
+export {
+  getAccessToken,
+  getRefreshToken,
+  putAccessToken,
+  putRefreshToken,
+  login,
+  logout,
+  register,
+  getUserLogged,
+};

@@ -1,0 +1,20 @@
+:root {
+  --icon-color: #ffffff;
+}
+
+[data-theme='dark'] {
+  --icon-color: #f5f5f5;
+}
+
+.logout-button {
+  color: var(--icon-color);
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-button:hover {
+  color: #c71e1e;
+  scale: 1.2;
+}

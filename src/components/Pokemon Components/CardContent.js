@@ -16,6 +16,8 @@ const CardContent = ({
   attribute,
 }) => {
   const [Choosed, setChoosed] = useState(false);
+  const [isLegendary, setIsLegendary] = useState();
+
   let allStat = {};
   if (stats) {
     for (let i = 0; i < stats.length; i++) {
@@ -25,7 +27,6 @@ const CardContent = ({
     }
   }
 
-  const [isLegendary, setIsLegendary] = useState();
   Axios.get(`${speciesUrl}`).then((response) => {
     setIsLegendary(response.data.is_legendary);
   });

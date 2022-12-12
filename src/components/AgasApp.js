@@ -1,38 +1,80 @@
 import React from 'react';
 import HeaderParent from './HeaderParent';
-import JumboTron from './JumboTron';
 import NavHeader from './NavHeader';
 import { getList } from '../utils/navlist';
-import { getCard } from '../utils/card';
-import { getElement } from '../utils/element';
-import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
 import Footer from './Footer';
-import MainContent from './Pokemon Components/MainContent';
-import CollectedCardsContainer from './Pokemon Collected Card/CollectedCardsContainer';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from '../pages/HomePage';
+import LoginPage from '../pages/LoginPage';
+import NotFoundPage from '../pages/NotFoundPage';
+import {
+  getUserLogged,
+  logout,
+  putAccessToken,
+  putRefreshToken,
+} from '../utils/network-data';
 
 const AgasApp = () => {
+  const [authedUser, setAuthedUser] = React.useState(null);
+  const [initializing, setInitializing] = React.useState(true);
+
   const [list, setList] = React.useState([]);
-  const [socmedBlack, setSocmedBlack] = React.useState([]);
-  const [socmedWhite, setSocmedWhite] = React.useState([]);
-  const [card, setCard] = React.useState([]);
-  const [elements, setElements] = React.useState([]);
+
+  const onLoginSuccess = async ({ accessToken, refreshToken }) => {
+    putAccessToken(accessToken);
+    putRefreshToken(refreshToken);
+    const { data } = await getUserLogged();
+
+    setAuthedUser(data);
+  };
+
+  const onLogout = () => {
+    setAuthedUser(null);
+    logout();
+
+    putAccessToken('');
+    putRefreshToken('');
+  };
 
   React.useEffect(() => {
     setList(getList());
-    setSocmedBlack(getSocmedBlack());
-    setSocmedWhite(getSocmedWhite());
-    setCard(getCard());
-    setElements(getElement());
+    getUserLogged().then(({ data }) => {
+      setAuthedUser(data);
+      console.log(data);
+      setInitializing(false);
+    });
   }, []);
 
-  return (
+  if (initializing) {
+    return null;
+  }
+
+  return authedUser === null ? (
     <div>
-      <HeaderParent />
-      <NavHeader lists={list} />
-      <JumboTron blackmed={socmedBlack} whitemed={socmedWhite} />
-      <MainContent cards={card} elements={elements} />
-      <CollectedCardsContainer />
-      <Footer />
+      <main>
+        <Routes>
+          <Route
+            path="/*"
+            element={<LoginPage loginSuccess={onLoginSuccess} />}
+          ></Route>
+        </Routes>
+      </main>
+    </div>
+  ) : (
+    <div>
+      <header>
+        <HeaderParent logout={onLogout} />
+        <NavHeader lists={list} />
+      </header>
+      <main>
+        <Routes>
+          <Route path="/*" element={<NotFoundPage />} />
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 };
