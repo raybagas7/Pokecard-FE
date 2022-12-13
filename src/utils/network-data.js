@@ -9,7 +9,7 @@ const getRefreshToken = () => {
 };
 
 const getCreditId = () => {
-  return localStorage.setItem('creditId');
+  return localStorage.getItem('creditId');
 };
 
 const putAccessToken = (accessToken) => {
@@ -133,7 +133,7 @@ const addFirstTimeCredit = async () => {
     return { error: true, data: null };
   }
 
-  return { error: false, data: responseJson.data };
+  return { error: false, data: responseJson.data.creditId };
 };
 
 const getCreditUser = async () => {
@@ -142,11 +142,10 @@ const getCreditUser = async () => {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
-    alert(responseJson.message);
     return { error: true, data: null };
   }
 
-  return { error: false, data: responseJson.data };
+  return { error: false, data: responseJson.data.credit };
 };
 
 const shuffleWithCoin = async () => {
@@ -168,7 +167,7 @@ const shuffleWithCoin = async () => {
     return { error: true, data: null };
   }
 
-  return { error: false, data: responseJson.data };
+  return { error: false, data: responseJson.data.coinAmount.coin };
 };
 
 export {

@@ -206,6 +206,21 @@ nav li:hover a {
   }
 }
 
+.open-credit {
+  cursor: pointer;
+  padding: 10px;
+  font-family: 'Righteous', cursive;
+  background-color: #ffd400;
+  border-color: #ffd400;
+  border-radius: 10px;
+  font-size: 1.2em;
+  transition: 0.2s;
+}
+
+.open-credit:hover {
+  scale: 1.2;
+}
+
 .shuffle-button {
   cursor: pointer;
   padding: 10px;
@@ -226,7 +241,7 @@ nav li:hover a {
   padding: 10px;
   color: white;
   font-family: 'Righteous', cursive;
-  background-color: #e41f25;
+  background-color: #161b22;
   border-radius: 10px;
 }
 

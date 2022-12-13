@@ -1,9 +1,9 @@
 import React from 'react';
 import CardContent from './CardContent';
 
-const ContainerContent = ({ cards, pokemonId }) => {
+const ContainerContent = ({ cards, pokemonId, choosenPokeCards }) => {
   // const [species, setSpecies] = useState();
-  
+
   //  const isLegendary = async () => {
   //   Axios.get(`${pokemonId.speciesUrl}`).then((response) => {
   //     setSpecies(response.data.is_legendary);
@@ -20,7 +20,11 @@ const ContainerContent = ({ cards, pokemonId }) => {
     <div className="flex-column container-content__first">
       {pokemonId
         ? pokemonId.map((pokemonId) => (
-            <CardContent key={pokemonId.id} {...pokemonId} />
+            <CardContent
+              key={pokemonId.id}
+              {...pokemonId}
+              choosenPokeCards={choosenPokeCards}
+            />
           ))
         : cards.map((card) => <CardContent key={card.id} {...card} />)}
       {/* {cards.map((card) => (

@@ -4,24 +4,31 @@ import SmallMasterball from './SmallMasterball';
 import SmallPokeball from './SmallPokeball';
 import SmallUltraBall from './SmallUltraBall';
 
-const PokePouch = () => {
-  return (
+const PokePouch = ({ credit, openCredit }) => {
+  // console.log('credit di pouch', credit);
+  return credit === null ? (
+    <div className="poke-pouch">
+      <button className="open-credit" onClick={openCredit}>
+        Open My Credit Bundle
+      </button>
+    </div>
+  ) : (
     <div className="poke-pouch">
       <div className="poke-balls">
         <SmallPokeball />
-        <p>NaN</p>
+        <p>{`${credit.poke_ball}`}</p>
       </div>
       <div className="master-balls">
         <SmallUltraBall />
-        <p>NaN</p>
+        <p>{`${credit.ultra_ball}`}</p>
       </div>
       <div className="master-balls">
         <SmallMasterball />
-        <p>NaN</p>
+        <p>{`${credit.master_ball}`}</p>
       </div>
       <div className="poke-coins">
         <SmallCoin />
-        <p>NaN</p>
+        <p>{`${credit.coin}`}</p>
       </div>
     </div>
   );

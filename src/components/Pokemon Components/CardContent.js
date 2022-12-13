@@ -15,9 +15,30 @@ const CardContent = ({
   speciesUrl = 'https://pokeapi.co/api/v2/pokemon-species/',
   stats,
   attribute,
+  choosenPokeCards,
 }) => {
   const [Choosed, setChoosed] = useState(false);
   const [isLegendary, setIsLegendary] = useState();
+
+  const allType = [];
+  if (types) {
+    for (let i = 0; i < types.length; i++) {
+      const take = { name: types[i].type.name };
+      allType.push(take);
+    }
+  }
+
+  let statsFilter = [];
+  if (stats) {
+    for (let i = 0; i < stats.length; i++) {
+      const take = {
+        base_stat: stats[i].base_stat,
+        effort: stats[i].effort,
+        name: stats[i].stat.name,
+      };
+      statsFilter.push(take);
+    }
+  }
 
   let allStat = {};
   if (stats) {
@@ -28,7 +49,14 @@ const CardContent = ({
     }
   }
 
-  // console.log(id);
+  const cardData = {
+    poke_id: id,
+    name,
+    attribute,
+    legendary: isLegendary,
+    types: allType,
+    stats: statsFilter,
+  };
 
   Axios.get(`${speciesUrl}`).then((response) => {
     setIsLegendary(response.data.is_legendary);
@@ -39,6 +67,7 @@ const CardContent = ({
 
   const change = () => {
     const temp = !Choosed;
+    choosenPokeCards(cardData, temp);
     setChoosed(temp);
   };
 

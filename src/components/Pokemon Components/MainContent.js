@@ -4,10 +4,24 @@ import { nanoid } from 'nanoid';
 import Axios from 'axios';
 import ContainerContent from './ContainerContent';
 import PokePouch from './PokePouch';
+import ActionButtons from '../ActionButtons';
 
-const MainContent = ({ cards }) => {
+const MainContent = ({ cards, credit, openCredit, shuffleCard }) => {
   const [pokemonId, setPokemonId] = useState();
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
+  const [choosenPokemonCards, setChoosenPokemonCards] = useState([]);
+
+  const addOrRemoveCard = (value, status) => {
+    if (status) {
+      setChoosenPokemonCards((oldArray) => [...oldArray, value]);
+    } else {
+      setChoosenPokemonCards(
+        choosenPokemonCards.filter((item) => item.poke_id !== value.poke_id)
+      );
+    }
+
+    console.log('status : ', status);
+  };
 
   const getRandom = () => {
     var num = Math.random();
@@ -50,31 +64,31 @@ const MainContent = ({ cards }) => {
     }, 3200);
     const result = await shufflePokemon();
     setTimeout(() => {
+      shuffleCard();
       setPokemonId(result);
     }, 1500);
   };
 
   const show = () => {
-    console.log('ini pokemon id', pokemonId);
+    console.log('ini pokemon id: ', choosenPokemonCards);
+    console.log('panjangnya: ', choosenPokemonCards.length);
   };
 
   return (
     <div className="main-content">
-      <PokePouch />
-      <ContainerContent cards={cards} pokemonId={pokemonId} />
-      <div className="flex-column container-content__second">
-        <button
-          className="shuffle-button"
-          onClick={insertPokemon}
-          disabled={isButtonDisabled}
-        >
-          Shuffle
-        </button>
-        <button className="pick-button" disabled={true}>
-          Pick
-        </button>
-        <button onClick={show}>ini poke</button>
-      </div>
+      <PokePouch credit={credit} openCredit={openCredit} />
+      <ContainerContent
+        cards={cards}
+        pokemonId={pokemonId}
+        choosenPokeCards={addOrRemoveCard}
+      />
+      <ActionButtons
+        insertPokemon={insertPokemon}
+        buttonDisable={isButtonDisabled}
+        show={show}
+        credit={credit}
+        choosenCardLength={choosenPokemonCards.length}
+      />
     </div>
   );
 };
