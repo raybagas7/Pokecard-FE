@@ -40,8 +40,8 @@ const AgasApp = () => {
 
   React.useEffect(() => {
     setList(getList());
-    getUserLogged().then(({ error, data }) => {
-      if (error) {
+    getUserLogged().then(({ error, data, tokenExpired }) => {
+      if (error && tokenExpired) {
         refreshAccessToken().then(({ data }) => {
           putAccessToken(data.accessToken);
           getUserLogged().then(({ data }) => {

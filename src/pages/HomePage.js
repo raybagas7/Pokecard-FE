@@ -6,6 +6,7 @@ import { getCard } from '../utils/card';
 import {
   addFirstTimeCredit,
   getCreditUser,
+  pickPokeCards,
   putAccessToken,
   putCreditId,
   refreshAccessToken,
@@ -26,6 +27,14 @@ const HomePage = () => {
     await addFirstTimeCredit().then(({ data }) => {
       setCreditId(data);
       console.log(data);
+    });
+  };
+
+  const pickCards = async (choosenCards) => {
+    await pickPokeCards(choosenCards).then(({ error, data, message }) => {
+      console.log('errorpick: ', error);
+      console.log('datapick: ', data);
+      console.log('messagepick', message);
     });
   };
 
@@ -76,6 +85,7 @@ const HomePage = () => {
         credit={creditAvailability}
         openCredit={openCreditBundle}
         shuffleCard={shuffleCard}
+        pickCards={pickCards}
       />
       <CollectedCardsContainer />
     </>

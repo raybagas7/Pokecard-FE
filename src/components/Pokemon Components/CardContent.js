@@ -23,6 +23,22 @@ const CardContent = ({
   let isShiny = false;
   attribute === 'normal' ? (isShiny = false) : (isShiny = true);
 
+  const pokemonType = () => {
+    if (attribute === undefined) {
+      return undefined;
+    }
+    let type = '';
+    isLegendary === true && isShiny === true
+      ? (type = 'legendary-shine')
+      : isLegendary === true && isShiny === false
+      ? (type = 'legendary')
+      : (isLegendary === false && isShiny) === true
+      ? (type = 'shiny')
+      : (type = 'normal');
+
+    return type;
+  };
+
   const allType = [];
   if (types) {
     for (let i = 0; i < types.length; i++) {
@@ -33,13 +49,24 @@ const CardContent = ({
 
   let statsFilter = [];
   if (stats) {
-    for (let i = 0; i < stats.length; i++) {
-      const take = {
-        base_stat: stats[i].base_stat,
-        effort: stats[i].effort,
-        name: stats[i].stat.name,
-      };
-      statsFilter.push(take);
+    if (isShiny) {
+      for (let i = 0; i < stats.length; i++) {
+        const take = {
+          base_stat: stats[i].base_stat + 10,
+          effort: stats[i].effort,
+          name: stats[i].stat.name,
+        };
+        statsFilter.push(take);
+      }
+    } else {
+      for (let i = 0; i < stats.length; i++) {
+        const take = {
+          base_stat: stats[i].base_stat,
+          effort: stats[i].effort,
+          name: stats[i].stat.name,
+        };
+        statsFilter.push(take);
+      }
     }
   }
 
@@ -66,8 +93,8 @@ const CardContent = ({
     setIsLegendary(response.data.is_legendary);
   });
 
-  let isLegend = '';
-  isLegendary === true ? (isLegend = 'LEGEND') : (isLegend = '');
+  // let isLegend = '';
+  // isLegendary === true ? (isLegend = 'LEGEND') : (isLegend = '');
 
   const change = () => {
     const temp = !Choosed;
@@ -91,9 +118,7 @@ const CardContent = ({
   return !Choosed ? (
     <div className="flex-row card-content">
       <div className="box first-box" onClick={change}>
-        <p className={`attribute-${attribute}-id`}>
-          {pokeid} {isLegend}
-        </p>
+        <p className={`attribute-${pokemonType()}-id`}>{pokeid}</p>
         <img
           src={
             !spritesNormal ? './images/quetion-mark.png' : attributePokemon()
@@ -102,7 +127,7 @@ const CardContent = ({
         />
       </div>
       <div className="box second-box">
-        <h4 className={`attribute-${attribute}`}>{name}</h4>
+        <h4 className={`attribute-${pokemonType()}`}>{name}</h4>
         <PokemonElement types={types} />
         <div className="flex-column__stats">
           <div className="box-1_stats">

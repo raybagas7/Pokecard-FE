@@ -228,11 +228,17 @@ nav li:hover a {
   font-family: 'Righteous', cursive;
   background-color: #161b22;
   border-radius: 10px;
+  transition: 0.2s;
+}
+
+.shuffle-button:hover {
+  scale: 1.15;
+  background-color: #f58216;
+  border-color: #f58216;
 }
 
 .shuffle-button:disabled {
   cursor: auto;
-  background-color: grey;
 }
 
 .pick-button {
@@ -243,11 +249,24 @@ nav li:hover a {
   font-family: 'Righteous', cursive;
   background-color: #161b22;
   border-radius: 10px;
+  transition: 0.2s;
+}
+
+.pick-button:hover {
+  scale: 1.15;
+  background-color: #f58216;
+  border-color: #f58216;
 }
 
 .pick-button:disabled {
   cursor: auto;
   background-color: grey;
+  border-color: grey;
+}
+
+.pick-button:disabled:hover {
+  cursor: auto;
+  scale: 1;
 }
 
 .flex-column {
@@ -318,7 +337,7 @@ nav li:hover a {
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 15px 15px 0px 0px;
-  background-color: orange;
+  background-color: #fa9d1b;
   color: white;
   text-indent: 1em;
 }
@@ -328,12 +347,12 @@ nav li:hover a {
 }
 
 .attribute-shiny-id::after {
-  content: '	\002605';
+  content: '	\002666';
   right: 0;
   margin-right: 15px;
   position: absolute;
   animation-name: star;
-  animation-duration: 1s;
+  animation-duration: 1.5s;
   animation-iteration-count: infinite;
   filter: brightness(1.5);
   filter: contrast(1.5);
@@ -341,6 +360,64 @@ nav li:hover a {
   -webkit-filter: contrast(1.5);
 }
 
+.attribute-legendary-id {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 15px 15px 0px 0px;
+  background-color: #9d4edd;
+  color: white;
+  text-indent: 1em;
+}
+
+.attribute-legendary-id::before {
+  content: '#';
+}
+
+.attribute-legendary-id::after {
+  content: '	\002605';
+  right: 0;
+  margin-right: 15px;
+  position: absolute;
+  animation-name: star;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  filter: brightness(1.5);
+  filter: contrast(1.5);
+  -webkit-filter: brightness(1.5);
+  -webkit-filter: contrast(1.5);
+}
+
+.attribute-legendary-shine-id {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 15px 15px 0px 0px;
+  background: rgb(131, 80, 195);
+  background: radial-gradient(
+    circle,
+    rgba(131, 80, 195, 1) 0%,
+    rgba(64, 38, 125, 1) 100%
+  );
+  color: white;
+  text-indent: 1em;
+}
+
+.attribute-legendary-shine-id::before {
+  content: '#';
+}
+
+.attribute-legendary-shine-id::after {
+  content: '	\002605 \002605 \002605';
+  right: 0;
+  margin-right: 15px;
+  position: absolute;
+  animation-name: star;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  filter: brightness(1.5);
+  filter: contrast(1.5);
+  -webkit-filter: brightness(1.5);
+  -webkit-filter: contrast(1.5);
+}
 @keyframes star {
   0% {
     filter: brightness(1.5);
@@ -629,86 +706,30 @@ nav li:hover a {
   text-align: center;
 }
 
-.attribute-shiny {
+.attribute-legendary {
   font-weight: 100;
-  background: rgb(253, 185, 49);
-  background: linear-gradient(
-    0deg,
-    rgba(138, 110, 47, 1) 0%,
-    rgba(253, 185, 49, 1) 100%
+  background-color: purple;
+  padding: 5px 0px 5px 0px;
+  text-align: center;
+}
+
+.attribute-legendary-shine {
+  font-weight: 100;
+  background: rgb(131, 80, 195);
+  background: radial-gradient(
+    circle,
+    rgba(131, 80, 195, 1) 0%,
+    rgba(64, 38, 125, 1) 100%
   );
   padding: 5px 0px 5px 0px;
   text-align: center;
-  filter: brightness(1.5);
-  filter: contrast(1.5);
-  -webkit-filter: brightness(1.5);
-  -webkit-filter: contrast(1.5);
 }
 
-.attribute-shiny:after {
-  content: ' ';
-  /*  */
-  width: 100%;
-  height: 100%;
-  top: 0;
-  position: absolute;
-  z-index: 1;
-  animation: slide 1s infinite 0s;
-
-  background: -moz-linear-gradient(
-    left,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(128, 186, 232, 0) 99%,
-    rgba(125, 185, 232, 0) 100%
-  ); /* FF3.6+ */
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(0%, rgba(255, 255, 255, 0)),
-    color-stop(50%, rgba(255, 255, 255, 0.8)),
-    color-stop(99%, rgba(128, 186, 232, 0)),
-    color-stop(100%, rgba(125, 185, 232, 0))
-  ); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(
-    left,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(128, 186, 232, 0) 99%,
-    rgba(125, 185, 232, 0) 100%
-  ); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(
-    left,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(128, 186, 232, 0) 99%,
-    rgba(125, 185, 232, 0) 100%
-  ); /* Opera 11.10+ */
-  background: -ms-linear-gradient(
-    left,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(128, 186, 232, 0) 99%,
-    rgba(125, 185, 232, 0) 100%
-  ); /* IE10+ */
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(128, 186, 232, 0) 99%,
-    rgba(125, 185, 232, 0) 100%
-  ); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 */
-}
-
-@keyframes slide {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+.attribute-shiny {
+  font-weight: 100;
+  background: #f58216;
+  padding: 5px 0px 5px 0px;
+  text-align: center;
 }
 
 .poke-pouch {
@@ -1099,7 +1120,7 @@ nav li:hover a {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #5a5396;
+  background-color: #3c30a8;
   border-radius: 15px 15px 0px 0px;
   animation-name: close-down;
   animation-duration: 0.2s;

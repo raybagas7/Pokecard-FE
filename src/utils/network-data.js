@@ -112,7 +112,12 @@ const getUserLogged = async () => {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null };
+    let cond = false;
+    responseJson.message === 'Token maximum age exceeded'
+      ? (cond = true)
+      : (cond = false);
+
+    return { error: true, data: null, tokenExpired: cond };
   }
 
   return { error: false, data: responseJson.data };
@@ -170,6 +175,28 @@ const shuffleWithCoin = async () => {
   return { error: false, data: responseJson.data.coinAmount.coin };
 };
 
+const pickPokeCards = async ({ cardsData }) => {
+  const response = await fetchWithToken(`${BASE_URL}/cards`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ cardsData }),
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data.cardsId,
+    message: responseJson.message,
+  };
+};
+
 export {
   getAccessToken,
   getRefreshToken,
@@ -185,4 +212,5 @@ export {
   addFirstTimeCredit,
   getCreditUser,
   shuffleWithCoin,
+  pickPokeCards,
 };

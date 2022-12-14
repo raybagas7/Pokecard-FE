@@ -6,13 +6,19 @@ import ContainerContent from './ContainerContent';
 import PokePouch from './PokePouch';
 import ActionButtons from '../ActionButtons';
 
-const MainContent = ({ cards, credit, openCredit, shuffleCard }) => {
+const MainContent = ({ cards, credit, openCredit, shuffleCard, pickCards }) => {
   const [pokemonId, setPokemonId] = useState();
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
   const [choosenPokemonCards, setChoosenPokemonCards] = useState([]);
   const [pokeBall, setPokeBall] = useState(0);
   const [ultraBall, setUltraBall] = useState(0);
   const [masterBall, setMasterBall] = useState(0);
+
+  const pickedBall = {
+    pokeBall,
+    ultraBall,
+    masterBall,
+  };
 
   const addOrRemoveCard = (value, status) => {
     if (status) {
@@ -110,7 +116,11 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard }) => {
 
   return (
     <div className="main-content">
-      <PokePouch credit={credit} openCredit={openCredit} />
+      <PokePouch
+        credit={credit}
+        openCredit={openCredit}
+        pickedBall={pickedBall}
+      />
       <ContainerContent
         cards={cards}
         pokemonId={pokemonId}
@@ -122,7 +132,9 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard }) => {
         buttonDisable={isButtonDisabled}
         show={show}
         credit={credit}
+        choosenPokemonCards={choosenPokemonCards}
         choosenCardLength={choosenPokemonCards.length}
+        pickCards={pickCards}
       />
     </div>
   );
