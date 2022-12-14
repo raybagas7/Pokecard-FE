@@ -16,9 +16,12 @@ const CardContent = ({
   stats,
   attribute,
   choosenPokeCards,
+  ballRelated,
 }) => {
   const [Choosed, setChoosed] = useState(false);
   const [isLegendary, setIsLegendary] = useState();
+  let isShiny = false;
+  attribute === 'normal' ? (isShiny = false) : (isShiny = true);
 
   const allType = [];
   if (types) {
@@ -50,7 +53,8 @@ const CardContent = ({
   }
 
   const cardData = {
-    poke_id: id,
+    id,
+    poke_id: pokeid,
     name,
     attribute,
     legendary: isLegendary,
@@ -67,7 +71,10 @@ const CardContent = ({
 
   const change = () => {
     const temp = !Choosed;
+    let changeBall = 0;
+    temp === true ? (changeBall = 1) : (changeBall = -1);
     choosenPokeCards(cardData, temp);
+    ballRelated(isLegendary, isShiny, changeBall);
     setChoosed(temp);
   };
 
@@ -117,7 +124,7 @@ const CardContent = ({
       {/* <button onClick={show}>ini cards</button> */}
     </div>
   ) : (
-    <CardPokeball change={change} attribute={attribute} />
+    <CardPokeball change={change} isShiny={isShiny} isLegendary={isLegendary} />
   );
 };
 

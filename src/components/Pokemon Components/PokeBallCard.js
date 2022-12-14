@@ -1,17 +1,7 @@
 import React from 'react';
-import MasterBallCard from './MasterBallCard';
-import PokeBallCard from './PokeBallCard';
-import UltraBallCard from './UltraBallCard';
-
-const CardPokeball = ({ change, isShiny, isLegendary }) => {
-  return isLegendary === true ? (
-    <MasterBallCard change={change} />
-  ) : isShiny === true && isLegendary === false ? (
-    <UltraBallCard change={change} />
-  ) : isShiny === false && isLegendary === false ? (
-    <PokeBallCard change={change} />
-  ) : (
-    <div className="flex-row card-content" onClick={change}>
+const PokeBallCard = (props) => {
+  return (
+    <div className="flex-row card-content" onClick={props.change}>
       <div className="choose-upper">
         <div className="poke-choose_upper">
           <div className="line-upper"></div>
@@ -30,4 +20,4 @@ const CardPokeball = ({ change, isShiny, isLegendary }) => {
   );
 };
 
-export default CardPokeball;
+export default PokeBallCard;

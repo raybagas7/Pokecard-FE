@@ -6,7 +6,9 @@ import { getCard } from '../utils/card';
 import {
   addFirstTimeCredit,
   getCreditUser,
+  putAccessToken,
   putCreditId,
+  refreshAccessToken,
   shuffleWithCoin,
 } from '../utils/network-data';
 import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
@@ -21,14 +23,28 @@ const HomePage = () => {
   const [coins, setCoins] = React.useState(null);
 
   const openCreditBundle = async () => {
-    await addFirstTimeCredit().then((data) => {
+    await addFirstTimeCredit().then(({ data }) => {
       setCreditId(data);
+      console.log(data);
     });
   };
 
   const shuffleCard = async () => {
-    await shuffleWithCoin().then((data) => {
-      setCoins(data);
+    await shuffleWithCoin().then(({ error, data, message }) => {
+      let cond = false;
+      message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
+      console.log(message);
+      console.log(cond);
+      if (error && cond) {
+        refreshAccessToken().then(({ data }) => {
+          putAccessToken(data.accessToken);
+          shuffleWithCoin().then(({ data }) => {
+            setCoins(data);
+          });
+        });
+      } else {
+        setCoins(data);
+      }
     });
   };
 

@@ -10,6 +10,9 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard }) => {
   const [pokemonId, setPokemonId] = useState();
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
   const [choosenPokemonCards, setChoosenPokemonCards] = useState([]);
+  const [pokeBall, setPokeBall] = useState(0);
+  const [ultraBall, setUltraBall] = useState(0);
+  const [masterBall, setMasterBall] = useState(0);
 
   const addOrRemoveCard = (value, status) => {
     if (status) {
@@ -23,10 +26,32 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard }) => {
     console.log('status : ', status);
   };
 
+  const ballRelated = (isLegendary, isShiny, changeBall) => {
+    isLegendary === true
+      ? setMasterBall(masterBall + changeBall)
+      : isShiny === true
+      ? setUltraBall(ultraBall + changeBall)
+      : setPokeBall(pokeBall + changeBall);
+
+    let ball = {
+      pokeBall: pokeBall,
+      ultraBall: ultraBall,
+      masterBall: masterBall,
+    };
+    return ball;
+  };
+
+  const cleanAfterShuffle = () => {
+    setChoosenPokemonCards([]);
+    setPokeBall(0);
+    setUltraBall(0);
+    setMasterBall(0);
+  };
+
   const getRandom = () => {
     var num = Math.random();
     let probability = '';
-    num < 0.99 ? (probability = 'normal') : (probability = 'shiny');
+    num < 0.7 ? (probability = 'normal') : (probability = 'shiny');
     return probability;
   };
 
@@ -58,6 +83,7 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard }) => {
   };
 
   const insertPokemon = async () => {
+    cleanAfterShuffle();
     setisButtonDisabled(true);
     setTimeout(() => {
       setisButtonDisabled(false);
@@ -72,6 +98,14 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard }) => {
   const show = () => {
     console.log('ini pokemon id: ', choosenPokemonCards);
     console.log('panjangnya: ', choosenPokemonCards.length);
+    console.log(
+      'pokeBall: ',
+      pokeBall,
+      ' ultraBall: ',
+      ultraBall,
+      ' masterBall: ',
+      masterBall
+    );
   };
 
   return (
@@ -81,6 +115,7 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard }) => {
         cards={cards}
         pokemonId={pokemonId}
         choosenPokeCards={addOrRemoveCard}
+        ballRelated={ballRelated}
       />
       <ActionButtons
         insertPokemon={insertPokemon}

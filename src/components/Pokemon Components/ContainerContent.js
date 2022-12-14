@@ -1,7 +1,12 @@
 import React from 'react';
 import CardContent from './CardContent';
 
-const ContainerContent = ({ cards, pokemonId, choosenPokeCards }) => {
+const ContainerContent = ({
+  cards,
+  pokemonId,
+  choosenPokeCards,
+  ballRelated,
+}) => {
   // const [species, setSpecies] = useState();
 
   //  const isLegendary = async () => {
@@ -24,6 +29,7 @@ const ContainerContent = ({ cards, pokemonId, choosenPokeCards }) => {
               key={pokemonId.id}
               {...pokemonId}
               choosenPokeCards={choosenPokeCards}
+              ballRelated={ballRelated}
             />
           ))
         : cards.map((card) => <CardContent key={card.id} {...card} />)}
