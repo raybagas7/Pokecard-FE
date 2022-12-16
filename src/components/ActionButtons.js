@@ -2,10 +2,20 @@ import React from 'react';
 
 const ActionButtons = (props) => {
   const choosenCards = { cardsData: props.choosenPokemonCards };
+  const balls = props.pickedBall;
   const pickChoosenCards = async () => {
-    console.log(choosenCards);
     await props.pickCards(choosenCards);
+    await props.reducePokeBalls(balls);
+    props.removePokemonPool();
+    props.cleanAfterAction();
   };
+  // const showError = () => {
+  //   console.log(props.pickError);
+  // };
+
+  // if (props.pickError === false) {
+
+  // }
   let status = true;
   props.choosenCardLength > 0 ? (status = false) : (status = true);
   return props.credit === null ? (
@@ -27,6 +37,7 @@ const ActionButtons = (props) => {
         Pick
       </button>
       <button onClick={props.show}>ini poke</button>
+      {/* <button onClick={showError}>ini error</button> */}
     </div>
   );
 };

@@ -1,0 +1,137 @@
+:root {
+  --font-color: #000000;
+  --background-color: #f5f5f5;
+  --border-color: #000000;
+  --container-color: #f5f5f5;
+  --small-container-color: #ffd400;
+  --container-border: #000000;
+  --container-hover: #ffffff;
+  --input-border-color: #000000;
+  --input-focus-border-color: #000000;
+  --link-color: #5190f5;
+  --link-hover: #00d5ff;
+  --alink-color-hover: #808080;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] {
+  --font-color: #f5f5f5;
+  --background-color: #09192f;
+  --border-color: #f5f5f5;
+  --container-color: #172a46;
+  --small-container-color: #274066;
+  --container-border: #67ffe1;
+  --container-hover: #314e79;
+  --input-border-color: #f5f5f5;
+  --input-focus-border-color: #67ffe1;
+  --link-color: #67ffe1;
+  --link-hover: #ff00f2;
+  --alink-color-hover: #67ffe1;
+  --shadow-color: rgb(103, 255, 225, 0.7);
+}
+
+.register-container {
+  top: 40%;
+  left: 50%;
+  width: 30em;
+  height: fit-content;
+  margin-top: -9em;
+  margin-left: -15em;
+  position: fixed;
+}
+
+.signup-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-input {
+  color: var(--font-color);
+  background-color: var(--small-container-color);
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 8px 0 var(--shadow-color);
+}
+
+.register-input h2 {
+  margin-bottom: 20px;
+}
+
+.register-input input {
+  font-family: 'Kanit', sans-serif;
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+  display: block;
+  margin-bottom: 15px;
+  outline: none;
+  border-color: var(--background-color);
+}
+
+.register-input input:focus {
+  border-color: #161b22;
+}
+
+.register-input button {
+  margin-top: 5px;
+  color: var(--font-color);
+  font-family: 'Kanit', sans-serif;
+  background-color: var(--small-container-color);
+  font-weight: 900;
+  font-size: 1em;
+  padding: 10px;
+  width: 100px;
+  display: block;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 3px solid var(--container-border);
+  transition: 0.3s;
+}
+
+.register-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.register-button button {
+  background-color: #161b22;
+  color: white;
+  transition: 0.2s;
+}
+
+.register-button button:disabled {
+  color: white;
+  width: 250px;
+}
+
+.register-button button:disabled:hover {
+  background-color: rgb(255, 0, 0);
+  border: 3px solid rgb(255, 0, 0);
+}
+
+.register-button button:hover {
+  scale: 1.1;
+  border: 3px solid #f58216;
+  background-color: #f58216;
+}
+
+.back-to__login {
+  color: var(--font-color);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.back-to__login a {
+  text-decoration: none;
+  color: #ff9900;
+}
+
+.back-to__login a:hover {
+  color: #ffd400;
+}

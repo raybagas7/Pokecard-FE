@@ -5,7 +5,7 @@ import SmallPokeball from './SmallPokeball';
 import SmallUltraBall from './SmallUltraBall';
 
 const PokePouch = ({ credit, openCredit, pickedBall }) => {
-  // console.log('credit di pouch', credit);
+  // console.log('credit di pouch', pickedBall);
   return credit === null ? (
     <div className="poke-pouch">
       <button className="open-credit" onClick={openCredit}>
@@ -16,15 +16,30 @@ const PokePouch = ({ credit, openCredit, pickedBall }) => {
     <div className="poke-pouch">
       <div className="poke-balls">
         <SmallPokeball />
-        <p>{`${credit.poke_ball - pickedBall.pokeBall}`}</p>
+        <p>
+          {`${credit.poke_ball} `}
+          {pickedBall.pokeball_amount === 0
+            ? ''
+            : `(${pickedBall.pokeball_amount})`}
+        </p>
       </div>
       <div className="master-balls">
         <SmallUltraBall />
-        <p>{`${credit.ultra_ball - pickedBall.ultraBall}`}</p>
+        <p>
+          {`${credit.ultra_ball} `}
+          {pickedBall.ultraball_amount === 0
+            ? ''
+            : `(${pickedBall.ultraball_amount})`}
+        </p>
       </div>
       <div className="master-balls">
         <SmallMasterball />
-        <p>{`${credit.master_ball - pickedBall.masterBall}`}</p>
+        <p>
+          {`${credit.master_ball} `}
+          {pickedBall.masterball_amount === 0
+            ? ''
+            : `(${pickedBall.masterball_amount})`}
+        </p>
       </div>
       <div className="poke-coins">
         <SmallCoin />

@@ -116,38 +116,54 @@ const CardContent = ({
   //   console.log('ini pokemon id di cc', isLegendary);
   // };
   return !Choosed ? (
-    <div className="flex-row card-content">
-      <div className="box first-box" onClick={change}>
-        <p className={`attribute-${pokemonType()}-id`}>{pokeid}</p>
-        <img
-          src={
-            !spritesNormal ? './images/quetion-mark.png' : attributePokemon()
-          }
-          alt="images"
-        />
+    pokemonType() === undefined ? (
+      <div className="flex-row card-content">
+        <div className={`box first-box-${pokemonType()}`}>
+          <p className={`attribute-${pokemonType()}-id`}>{pokeid}</p>
+          <img
+            src={
+              !spritesNormal ? './images/quetion-mark.png' : attributePokemon()
+            }
+            alt="images"
+          />
+        </div>
+
+        {/* <button onClick={show}>ini cards</button> */}
       </div>
-      <div className="box second-box">
-        <h4 className={`attribute-${pokemonType()}`}>{name}</h4>
-        <PokemonElement types={types} />
-        <div className="flex-column__stats">
-          <div className="box-1_stats">
-            <PokemonStats
-              pokemonStats={stats}
-              pokemonAttribute={attribute}
-              box="left"
-            />
-          </div>
-          <div className="box-2_stats">
-            <PokemonStats
-              pokemonStats={stats}
-              pokemonAttribute={attribute}
-              box="right"
-            />
+    ) : (
+      <div className="flex-row card-content">
+        <div className={`box first-box-${pokemonType()}`} onClick={change}>
+          <p className={`attribute-${pokemonType()}-id`}>{pokeid}</p>
+          <img
+            src={
+              !spritesNormal ? './images/quetion-mark.png' : attributePokemon()
+            }
+            alt="images"
+          />
+        </div>
+        <div className="box second-box">
+          <h4 className={`attribute-${pokemonType()}`}>{name}</h4>
+          <PokemonElement types={types} />
+          <div className="flex-column__stats">
+            <div className="box-1_stats">
+              <PokemonStats
+                pokemonStats={stats}
+                pokemonAttribute={attribute}
+                box="left"
+              />
+            </div>
+            <div className="box-2_stats">
+              <PokemonStats
+                pokemonStats={stats}
+                pokemonAttribute={attribute}
+                box="right"
+              />
+            </div>
           </div>
         </div>
+        {/* <button onClick={show}>ini cards</button> */}
       </div>
-      {/* <button onClick={show}>ini cards</button> */}
-    </div>
+    )
   ) : (
     <CardPokeball change={change} isShiny={isShiny} isLegendary={isLegendary} />
   );

@@ -1,20 +1,6 @@
 import React from 'react';
 
-const PokemonStats = ({ pokemonStats, pokemonAttribute, box }) => {
-  let allStat = [];
-  if (pokemonStats) {
-    for (let i = 0; i < pokemonStats.length; i++) {
-      if (pokemonAttribute === 'shiny') {
-        const name_stat = pokemonStats[i].stat.name;
-        const base_stat = pokemonStats[i].base_stat + 10;
-        allStat.push({ [name_stat]: base_stat });
-      } else {
-        const name_stat = pokemonStats[i].stat.name;
-        const base_stat = pokemonStats[i].base_stat;
-        allStat.push({ [name_stat]: base_stat });
-      }
-    }
-  }
+const CollectedPokemonStats = ({ pokemonStats, box }) => {
   const spliceName = (stat) => {
     if (stat === "'special-attack'") {
       const textStat = 'Sp.Att';
@@ -30,11 +16,11 @@ const PokemonStats = ({ pokemonStats, pokemonAttribute, box }) => {
 
     return stat;
   };
-  const leftStat = allStat.slice(0, 3);
-  const rightStat = allStat.slice(3, 6);
+  const leftStat = pokemonStats.slice(0, 3);
+  const rightStat = pokemonStats.slice(3, 6);
 
   // const show = () => {
-  //   console.log('ini stats', allStat);
+  //   console.log('ini stats', pokemonStats);
   // };
   return (
     <>
@@ -64,4 +50,4 @@ const PokemonStats = ({ pokemonStats, pokemonAttribute, box }) => {
   );
 };
 
-export default PokemonStats;
+export default CollectedPokemonStats;

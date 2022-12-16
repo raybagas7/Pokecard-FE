@@ -1,0 +1,275 @@
+:root {
+  --font-color: #000000;
+  --background-color: #f5f5f5;
+  --border-color: #000000;
+  --container-color: #f5f5f5;
+  --small-container-color: #ffd400;
+  --container-border: #000000;
+  --container-hover: #ffffff;
+  --input-border-color: #000000;
+  --input-focus-border-color: #000000;
+  --link-color: #5190f5;
+  --link-hover: #00d5ff;
+  --alink-color-hover: #808080;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] {
+  --font-color: #f5f5f5;
+  --background-color: #09192f;
+  --border-color: #f5f5f5;
+  --container-color: #172a46;
+  --small-container-color: #274066;
+  --container-border: #67ffe1;
+  --container-hover: #314e79;
+  --input-border-color: #f5f5f5;
+  --input-focus-border-color: #67ffe1;
+  --link-color: #67ffe1;
+  --link-hover: #ff00f2;
+  --alink-color-hover: #67ffe1;
+  --shadow-color: rgb(103, 255, 225, 0.7);
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+.login-container {
+  top: 48%;
+  left: 50%;
+  width: 30em;
+  height: fit-content;
+  margin-top: -9em;
+  margin-left: -15em;
+  position: fixed;
+}
+
+.username-container {
+  display: flex;
+}
+
+.password-container {
+  display: flex;
+}
+
+.login-input {
+  justify-content: center;
+  color: var(--font-color);
+  background-color: var(--small-container-color);
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 8px 0 var(--shadow-color);
+}
+
+.login-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-input h2 {
+  margin-bottom: 20px;
+}
+
+.login-input input {
+  font-family: 'Kanit', sans-serif;
+  padding: 15px;
+  border-radius: 10px;
+  width: 89%;
+  display: block;
+  margin-bottom: 15px;
+  outline: none;
+  border-color: var(--background-color);
+}
+
+.login-input input:focus {
+  border-color: #161b22;
+}
+
+.login-input button {
+  margin-top: 5px;
+  color: var(--font-color);
+  font-family: 'Kanit', sans-serif;
+  background-color: var(--small-container-color);
+  font-weight: 900;
+  font-size: 1em;
+  padding: 10px;
+  width: 100px;
+  display: block;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 3px solid var(--container-border);
+  transition: 0.3s;
+}
+
+.login-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.login-button button {
+  background-color: #161b22;
+  color: white;
+  transition: 0.2s;
+}
+
+.login-button button:disabled {
+  color: var(--font-color);
+  width: 200px;
+}
+
+.login-button button:disabled:hover {
+  border: 3px solid rgb(255, 0, 0);
+}
+
+.login-button button:hover {
+  scale: 1.1;
+  border: 3px solid #f58216;
+  background-color: #f58216;
+}
+
+.go-to__register {
+  color: var(--font-color);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.go-to__register a {
+  text-decoration: none;
+  color: #ff9900;
+}
+
+.go-to__register a:hover {
+  color: #ffd400;
+}
+
+.deco-container {
+  top: 50%;
+  left: 50%;
+  width: 30em;
+  height: fit-content;
+  margin-top: -9em;
+  margin-left: -15em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+}
+
+.deco-pokeball {
+  width: 35px;
+  height: 35px;
+  border-radius: 35px;
+  margin-right: 10px;
+  border: 2px solid black;
+  margin-top: 7px;
+}
+
+.deco-pokeball-upper {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  border-radius: 20px 20px 0px 0px;
+  background-color: #e41f25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-name: small-ball-red;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  filter: brightness(2);
+  filter: contrast(2);
+  -webkit-filter: brightness(2);
+  -webkit-filter: contrast(2);
+}
+
+.deco-pokeball-bottom {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  border-radius: 0px 0px 20px 20px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deco-line-upper {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+}
+
+.deco-upper-ball {
+  position: absolute;
+  bottom: 0;
+  width: 13px;
+  height: 6.5px;
+  border-radius: 13px 13px 0px 0px;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  background-color: white;
+  animation-name: shake;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.deco-upper-ball__xsmall {
+  position: absolute;
+  bottom: 0;
+  width: 5px;
+  height: 2.5px;
+  border-radius: 5px 5px 0px 0px;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  background-color: white;
+  animation-name: shake;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.deco-line-bottom {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  position: absolute;
+  top: 0;
+}
+
+.deco-bottom-ball__xsmall {
+  position: absolute;
+  top: 0;
+  width: 5px;
+  height: 2.5px;
+  border-radius: 0px 0px 5px 5px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  background-color: white;
+  animation-name: shake;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.deco-bottom-ball {
+  position: absolute;
+  top: 0;
+  width: 13px;
+  height: 6.5px;
+  border-radius: 0px 0px 13px 13px;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  background-color: white;
+  animation-name: shake;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}

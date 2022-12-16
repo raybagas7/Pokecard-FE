@@ -5,8 +5,16 @@ import Axios from 'axios';
 import ContainerContent from './ContainerContent';
 import PokePouch from './PokePouch';
 import ActionButtons from '../ActionButtons';
+import { getCreditId } from '../../utils/network-data';
 
-const MainContent = ({ cards, credit, openCredit, shuffleCard, pickCards }) => {
+const MainContent = ({
+  cards,
+  credit,
+  openCredit,
+  shuffleCard,
+  pickCards,
+  reducePokeBalls,
+}) => {
   const [pokemonId, setPokemonId] = useState();
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
   const [choosenPokemonCards, setChoosenPokemonCards] = useState([]);
@@ -15,9 +23,10 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard, pickCards }) => {
   const [masterBall, setMasterBall] = useState(0);
 
   const pickedBall = {
-    pokeBall,
-    ultraBall,
-    masterBall,
+    pokeball_amount: pokeBall,
+    ultraball_amount: ultraBall,
+    masterball_amount: masterBall,
+    creditId: getCreditId(),
   };
 
   const addOrRemoveCard = (value, status) => {
@@ -28,8 +37,32 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard, pickCards }) => {
         choosenPokemonCards.filter((item) => item.poke_id !== value.poke_id)
       );
     }
+  };
 
-    console.log('status : ', status);
+  const removePickedPokemonFromPool = () => {
+    // let choosenArray = [];
+    const choosenArray = choosenPokemonCards.map((pokemonId) => {
+      return pokemonId.id;
+    });
+
+    // const newPool = pokemonId.filter(
+    //   (pool) => choosenArray.indexOf(pool.id) === -1
+    // );
+
+    const newPool = pokemonId.map(
+      (pool) =>
+        choosenArray.indexOf(pool.id) === -1
+          ? pool
+          : {
+              id: `item ${nanoid(6)}`,
+              attribute: undefined,
+              imageUrl: '',
+            }
+      // attribute: choosenArray.indexOf(pool.id) === -1 ? pool.id : undefined,
+    );
+
+    // console.log(newPool);
+    setPokemonId(newPool);
   };
 
   const ballRelated = (isLegendary, isShiny, changeBall) => {
@@ -47,7 +80,7 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard, pickCards }) => {
     return ball;
   };
 
-  const cleanAfterShuffle = () => {
+  const cleanAfterAction = () => {
     setChoosenPokemonCards([]);
     setPokeBall(0);
     setUltraBall(0);
@@ -57,7 +90,7 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard, pickCards }) => {
   const getRandom = () => {
     var num = Math.random();
     let probability = '';
-    num < 0.7 ? (probability = 'normal') : (probability = 'shiny');
+    num < 0.95 ? (probability = 'normal') : (probability = 'shiny');
     return probability;
   };
 
@@ -89,7 +122,7 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard, pickCards }) => {
   };
 
   const insertPokemon = async () => {
-    cleanAfterShuffle();
+    cleanAfterAction();
     setisButtonDisabled(true);
     setTimeout(() => {
       setisButtonDisabled(false);
@@ -102,16 +135,9 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard, pickCards }) => {
   };
 
   const show = () => {
-    console.log('ini pokemon id: ', choosenPokemonCards);
-    console.log('panjangnya: ', choosenPokemonCards.length);
-    console.log(
-      'pokeBall: ',
-      pokeBall,
-      ' ultraBall: ',
-      ultraBall,
-      ' masterBall: ',
-      masterBall
-    );
+    console.log('ini pokemon yang dipilih: ', choosenPokemonCards);
+    console.log('ini pokemon yang shuffle: ', pokemonId);
+    // console.log('pokemon pilih jadi array', removePickedPokemonFromPool());
   };
 
   return (
@@ -135,6 +161,10 @@ const MainContent = ({ cards, credit, openCredit, shuffleCard, pickCards }) => {
         choosenPokemonCards={choosenPokemonCards}
         choosenCardLength={choosenPokemonCards.length}
         pickCards={pickCards}
+        pickedBall={pickedBall}
+        reducePokeBalls={reducePokeBalls}
+        removePokemonPool={removePickedPokemonFromPool}
+        cleanAfterAction={cleanAfterAction}
       />
     </div>
   );

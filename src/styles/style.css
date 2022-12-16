@@ -238,6 +238,8 @@ nav li:hover a {
 }
 
 .shuffle-button:disabled {
+  background-color: grey;
+  border-color: grey;
   cursor: auto;
 }
 
@@ -312,9 +314,49 @@ nav li:hover a {
   border-radius: 15px;
 }
 
-.first-box {
+.first-box-undefined {
+  border-radius: 15px 15px 15px 15px;
+  background-image: url('../../public/images/card-white-gold.png');
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.first-box-normal {
+  cursor: pointer;
   border-radius: 15px 15px 0px 0px;
   background-image: url('../../public/images/card-white-gold.png');
+  background-size: cover;
+  height: 73%;
+  width: 100%;
+  position: relative;
+}
+
+.first-box-shiny {
+  cursor: pointer;
+  border-radius: 15px 15px 0px 0px;
+  background-image: url('../../public/images/card-gold.png');
+  background-size: cover;
+  height: 73%;
+  width: 100%;
+  position: relative;
+}
+
+.first-box-legendary {
+  cursor: pointer;
+  border-radius: 15px 15px 0px 0px;
+  background-image: url('../../public/images/card-purple-gold.png');
+  background-size: cover;
+  height: 73%;
+  width: 100%;
+  position: relative;
+}
+
+.first-box-legendary-shine {
+  cursor: pointer;
+  border-radius: 15px 15px 0px 0px;
+  background-image: url('../../public/images/card-purple-gold-shine.png');
   background-size: cover;
   height: 73%;
   width: 100%;
@@ -708,7 +750,7 @@ nav li:hover a {
 
 .attribute-legendary {
   font-weight: 100;
-  background-color: purple;
+  background-color: #9d4edd;
   padding: 5px 0px 5px 0px;
   text-align: center;
 }

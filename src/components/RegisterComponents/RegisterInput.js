@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import useInput from '../hooks/useInput';
+import useInput from '../../hooks/useInput';
+import '../../styles/register-style.css';
+import { Link } from 'react-router-dom';
+
 const RegisterInput = (props) => {
   const [username, handleUsernameChange] = useInput('');
   const [password, handlePasswordChange] = useInput('');
@@ -27,7 +30,9 @@ const RegisterInput = (props) => {
   return (
     <div className="register-container">
       <form onSubmit={onSubmitHandler} className="register-input">
-        <h2>SIGN UP</h2>
+        <div className="signup-header">
+          <h2>SIGN UP</h2>
+        </div>
         <input
           type="text"
           placeholder="Username"
@@ -73,6 +78,14 @@ const RegisterInput = (props) => {
           )}
         </div>
       </form>
+      <div className="back-to__login">
+        <p>
+          You already have an account?
+          <Link to={'/'} className="link-login">
+            <span> Login here.</span>
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };

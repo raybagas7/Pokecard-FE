@@ -24,7 +24,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  background-color: #161b22;
+  background-color: #ffd400;
   border-radius: 20px;
   /* Properti */
   padding: 20px;
@@ -50,7 +50,7 @@ body {
   animation-duration: 0.5s;
   animation-name: content-card-default;
   margin: 10px;
-  background-color: #ffd400;
+  background-color: white;
   width: 13%;
   height: 300px;
   min-width: 180px;

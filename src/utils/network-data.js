@@ -197,6 +197,49 @@ const pickPokeCards = async ({ cardsData }) => {
   };
 };
 
+const reduceBalls = async (ballsData) => {
+  const response = await fetchWithToken(`${BASE_URL}/credits/pokeball/reduce`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(ballsData),
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const getOwnerCards = async () => {
+  const response = await fetchWithToken(`${BASE_URL}/cards`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
 export {
   getAccessToken,
   getRefreshToken,
@@ -213,4 +256,6 @@ export {
   getCreditUser,
   shuffleWithCoin,
   pickPokeCards,
+  reduceBalls,
+  getOwnerCards,
 };

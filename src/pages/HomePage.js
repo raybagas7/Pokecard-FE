@@ -6,9 +6,11 @@ import { getCard } from '../utils/card';
 import {
   addFirstTimeCredit,
   getCreditUser,
+  getOwnerCards,
   pickPokeCards,
   putAccessToken,
   putCreditId,
+  reduceBalls,
   refreshAccessToken,
   shuffleWithCoin,
 } from '../utils/network-data';
@@ -22,19 +24,53 @@ const HomePage = () => {
   const [cards, setCards] = React.useState([]);
   const [creditId, setCreditId] = React.useState(null);
   const [coins, setCoins] = React.useState(null);
-
+  const [pokeBall, setPokeBall] = React.useState(0);
+  const [ultraBall, setUltraBall] = React.useState(0);
+  const [masterBall, setMasterBall] = React.useState(0);
+  const [ownedCards, setOwnedCards] = React.useState([]);
   const openCreditBundle = async () => {
     await addFirstTimeCredit().then(({ data }) => {
       setCreditId(data);
-      console.log(data);
+      // console.log(data);
     });
   };
 
   const pickCards = async (choosenCards) => {
     await pickPokeCards(choosenCards).then(({ error, data, message }) => {
-      console.log('errorpick: ', error);
-      console.log('datapick: ', data);
-      console.log('messagepick', message);
+      let cond = false;
+      message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
+      if (error && cond) {
+        refreshAccessToken().then(({ data }) => {
+          putAccessToken(data.accessToken);
+          pickPokeCards(choosenCards).then(({ data }) => {
+            console.log(data);
+          });
+        });
+      } else {
+        console.log(data);
+      }
+    });
+  };
+
+  const reducePokeBalls = async (ballsAmount) => {
+    await reduceBalls(ballsAmount).then(({ error, data, message }) => {
+      let cond = false;
+      message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
+
+      if (error && cond) {
+        refreshAccessToken().then(({ data }) => {
+          putAccessToken(data.accessToken);
+          reduceBalls(ballsAmount).then(({ data }) => {
+            setPokeBall(data.pokeBall[0].poke_ball);
+            setUltraBall(data.pokeBall[0].ultra_ball);
+            setMasterBall(data.pokeBall[0].master_ball);
+          });
+        });
+      } else {
+        setPokeBall(data.pokeBall[0].poke_ball);
+        setUltraBall(data.pokeBall[0].ultra_ball);
+        setMasterBall(data.pokeBall[0].master_ball);
+      }
     });
   };
 
@@ -42,8 +78,6 @@ const HomePage = () => {
     await shuffleWithCoin().then(({ error, data, message }) => {
       let cond = false;
       message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
-      console.log(message);
-      console.log(cond);
       if (error && cond) {
         refreshAccessToken().then(({ data }) => {
           putAccessToken(data.accessToken);
@@ -56,6 +90,18 @@ const HomePage = () => {
       }
     });
   };
+
+  React.useEffect(() => {
+    getOwnerCards().then(({ error, data, message }) => {
+      if (error) {
+        setInitializing(false);
+      } else {
+        setOwnedCards(data);
+        setInitializing(false);
+        console.log(data);
+      }
+    });
+  }, [pokeBall, ultraBall, masterBall]);
 
   React.useEffect(() => {
     setSocmedBlack(getSocmedBlack());
@@ -71,7 +117,7 @@ const HomePage = () => {
         setInitializing(false);
       }
     });
-  }, [creditId, coins]);
+  }, [creditId, coins, pokeBall, ultraBall, masterBall]);
 
   if (initializing) {
     return null;
@@ -86,8 +132,9 @@ const HomePage = () => {
         openCredit={openCreditBundle}
         shuffleCard={shuffleCard}
         pickCards={pickCards}
+        reducePokeBalls={reducePokeBalls}
       />
-      <CollectedCardsContainer />
+      <CollectedCardsContainer ownedCards={ownedCards} />
     </>
   );
 };
