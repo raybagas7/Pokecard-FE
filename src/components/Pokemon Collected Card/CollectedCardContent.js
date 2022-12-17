@@ -3,9 +3,6 @@ import CollectedPokemonElement from './CollectedPokemonElement';
 import CollectedPokemonStats from './CollectedPokemonStats';
 
 const CollectedCardContent = ({
-  // spritesNormal,
-  // spritesShiny,
-  card_id,
   poke_id,
   name,
   attribute,
@@ -49,100 +46,30 @@ const CollectedCardContent = ({
 
     return type;
   };
-
-  // const allType = [];
-  // if (types) {
-  //   for (let i = 0; i < types.length; i++) {
-  //     const take = { name: types[i].type.name };
-  //     allType.push(take);
-  //   }
-  // }
-
-  // let statsFilter = [];
-  // if (stats) {
-  //   if (isShiny) {
-  //     for (let i = 0; i < stats.length; i++) {
-  //       const take = {
-  //         base_stat: stats[i].base_stat + 10,
-  //         effort: stats[i].effort,
-  //         name: stats[i].stat.name,
-  //       };
-  //       statsFilter.push(take);
-  //     }
-  //   } else {
-  //     for (let i = 0; i < stats.length; i++) {
-  //       const take = {
-  //         base_stat: stats[i].base_stat,
-  //         effort: stats[i].effort,
-  //         name: stats[i].stat.name,
-  //       };
-  //       statsFilter.push(take);
-  //     }
-  //   }
-  // }
-
-  // let allStat = {};
-  // if (stats) {
-  //   for (let i = 0; i < stats.length; i++) {
-  //     const name_stat = stats[i].stat.name;
-  //     const base_stat = stats[i].base_stat;
-  //     allStat[name_stat] = base_stat;
-  //   }
-  // }
-
-  // const cardData = {
-  //   id,
-  //   poke_id: pokeid,
-  //   name,
-  //   attribute,
-  //   legendary: isLegendary,
-  //   types: allType,
-  //   stats: statsFilter,
-  // };
-
-  // let isLegend = '';
-  // isLegendary === true ? (isLegend = 'LEGEND') : (isLegend = '');
-
-  const change = () => {
-    // const temp = !Choosed;
-    // let changeBall = 0;
-    // temp === true ? (changeBall = 1) : (changeBall = -1);
-    // choosenPokeCards(cardData, temp);
-    // ballRelated(isLegendary, isShiny, changeBall);
-    // setChoosed(temp);
-  };
-
-  // const attributePokemon = () => {
-  //   if (attribute === 'shiny') {
-  //     return spritesShiny;
-  //   }
-  //   return spritesNormal;
-  // };
-
   // const show = () => {
   //   console.log('ini status', stats, 'ini filternya ', allStat);
   // };
   return (
-    <div className="flex-row card-content">
-      <div className={`box first-box-${pokemonType()}`} onClick={change}>
-        <p className={`attribute-${pokemonType()}-id`}>{poke_id}</p>
+    <div className="flex-row_collection card-content_collection">
+      <div className={`box_collection first-box-${pokemonType()}_collection`}>
+        <p className={`attribute-${pokemonType()}-id_collection`}>{poke_id}</p>
         <img
           src={!spritesUrl ? './images/quetion-mark.png' : spritesUrl}
           alt="images"
         />
       </div>
-      <div className="box second-box">
-        <h4 className={`attribute-${pokemonType()}`}>{name}</h4>
+      <div className="box_collection second-box_collection">
+        <h4 className={`attribute-${pokemonType()}_collection`}>{name}</h4>
         <CollectedPokemonElement types={allType} />
-        <div className="flex-column__stats">
-          <div className="box-1_stats">
+        <div className="flex-column-stats_collection">
+          <div className="box-1-stats_collection">
             <CollectedPokemonStats
               pokemonStats={allStat}
               pokemonAttribute={attribute}
               box="left"
             />
           </div>
-          <div className="box-2_stats">
+          <div className="box-2-stats_collection">
             <CollectedPokemonStats
               pokemonStats={allStat}
               pokemonAttribute={attribute}

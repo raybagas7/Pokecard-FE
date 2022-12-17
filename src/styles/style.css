@@ -1340,10 +1340,6 @@ nav li:hover a {
   background-color: white;
 }
 
-.card-content {
-  background-color: black;
-}
-
 .poke-choose_bottom {
   cursor: pointer;
   transform-origin: 0 100%;

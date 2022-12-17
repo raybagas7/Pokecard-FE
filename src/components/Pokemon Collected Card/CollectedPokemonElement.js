@@ -6,17 +6,19 @@ const CollectedPokemonElement = ({ types }) => {
   //   };
 
   return (
-    <div className="all-elemets">
-      <div className="pokemon-types">
+    <div className="all-elemets_collection">
+      <div className="pokemon-types_collection">
         {types.map((element) => (
-          <div className="spesific-element" key={element}>
+          <div className="spesific-element_collection" key={element}>
             <img
               key={element}
               src={`./images/pokemon_elements/${element}.png`}
               alt={element}
             ></img>
-            <div className={`tooltip-text tooltip-${element}`}>
-              <p className="toolip-content">{element}</p>
+            <div
+              className={`tooltip-text_collection tooltip-${element}_collection`}
+            >
+              <p className="toolip-content_collection">{element}</p>
             </div>
           </div>
         ))}

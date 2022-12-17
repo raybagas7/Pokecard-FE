@@ -6,6 +6,7 @@ import CollectedCardContent from './CollectedCardContent';
 const CollectedCardsContainer = ({ ownedCards }) => {
   const cards = getCard();
   const { cards: ownedCollections } = ownedCards;
+
   // const show = () => {
   //   const { cards } = ownedCards;
   //   console.log(cards);
@@ -16,9 +17,9 @@ const CollectedCardsContainer = ({ ownedCards }) => {
         <div className="collections-title">
           <h2>Pokécard Collections</h2>
         </div>
-
         {ownedCollections
-          ? ownedCollections.map((ownedCards) => (
+          ? ownedCollections.sort((a, b) => a.poke_id - b.poke_id) &&
+            ownedCollections.map((ownedCards) => (
               <CollectedCardContent key={ownedCards.card_id} {...ownedCards} />
             ))
           : cards.map((card) => (
