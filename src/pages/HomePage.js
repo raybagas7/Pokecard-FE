@@ -16,7 +16,7 @@ import {
 } from '../utils/network-data';
 import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
 
-const HomePage = () => {
+const HomePage = ({ userData }) => {
   const [creditAvailability, setCreditAvailability] = React.useState(null);
   const [initializing, setInitializing] = React.useState(true);
   const [socmedBlack, setSocmedBlack] = React.useState([]);

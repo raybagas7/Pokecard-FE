@@ -49,14 +49,15 @@ const AgasApp = () => {
           putAccessToken(data.accessToken);
           getUserLogged().then(({ data }) => {
             setAuthedUser(data);
+            console.log(data);
             setInitializing(false);
           });
         });
       } else {
+        console.log(data);
         setAuthedUser(data);
         setInitializing(false);
       }
-      // console.log(data);
     });
   }, []);
 
@@ -79,7 +80,7 @@ const AgasApp = () => {
   ) : (
     <div>
       <header>
-        <HeaderParent logout={onLogout} />
+        <HeaderParent logout={onLogout} userData={authedUser} />
         <NavHeader lists={list} />
       </header>
       <main>

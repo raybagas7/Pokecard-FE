@@ -98,7 +98,14 @@ nav li:hover a {
   transition: all 0.2s ease;
 }
 
+.trainer-name {
+  color: white;
+  right: 0;
+  width: fit-content;
+}
+
 .account-option {
+  width: fit-content;
   margin-right: 20px;
   position: absolute;
   right: 0;
@@ -138,16 +145,19 @@ nav li:hover a {
 }
 
 .dropdown-content a {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   color: black;
-  padding: 12px 16px;
+  padding: 7px 16px;
   text-decoration: none;
-  display: block;
+  line-height: 2;
 }
 
 .icon-dropdown:hover .dropdown-content {
   display: block;
 }
-
 .upper-dropdown:hover {
   background-color: #f58216;
   color: white;
@@ -168,7 +178,7 @@ nav li:hover a {
 .circle-logout {
   display: inline-block;
   position: absolute;
-  margin-top: 2px;
+  margin-top: 9px;
   right: 20px;
 }
 /* .icon-dropdown:hover .dropbtn {
