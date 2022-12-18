@@ -6,6 +6,8 @@ const ContainerContent = ({
   pokemonId,
   choosenPokeCards,
   ballRelated,
+  pickedBall,
+  ownedBall,
 }) => {
   // const [species, setSpecies] = useState();
 
@@ -30,6 +32,8 @@ const ContainerContent = ({
               {...pokemonId}
               choosenPokeCards={choosenPokeCards}
               ballRelated={ballRelated}
+              pickedBall={pickedBall}
+              ownedBall={ownedBall}
             />
           ))
         : cards.map((card) => <CardContent key={card.id} {...card} />)}

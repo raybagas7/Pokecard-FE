@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavHeader = ({ lists }) => {
+const NavHeader = () => {
   // console.log(lists);
   return (
     <div className="nav-header">

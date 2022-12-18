@@ -6,6 +6,7 @@ import ContainerContent from './ContainerContent';
 import PokePouch from './PokePouch';
 import ActionButtons from '../ActionButtons';
 import { getCreditId } from '../../utils/network-data';
+import Swal from 'sweetalert2';
 
 const MainContent = ({
   cards,
@@ -13,19 +14,21 @@ const MainContent = ({
   openCredit,
   shuffleCard,
   pickCards,
+  ownedBall,
+  coins,
   // reducePokeBalls,
 }) => {
   const [pokemonId, setPokemonId] = useState();
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
   const [choosenPokemonCards, setChoosenPokemonCards] = useState([]);
-  const [pokeBall, setPokeBall] = useState(0);
-  const [ultraBall, setUltraBall] = useState(0);
-  const [masterBall, setMasterBall] = useState(0);
+  const [neededPokeBall, setNeededPokeBall] = useState(0);
+  const [neededUltraBall, setNeededUltraBall] = useState(0);
+  const [neededMasterBall, setNeededMasterBall] = useState(0);
 
   const pickedBall = {
-    pokeball_amount: pokeBall,
-    ultraball_amount: ultraBall,
-    masterball_amount: masterBall,
+    pokeball_amount: neededPokeBall,
+    ultraball_amount: neededUltraBall,
+    masterball_amount: neededMasterBall,
     creditId: getCreditId(),
   };
 
@@ -67,24 +70,24 @@ const MainContent = ({
 
   const ballRelated = (isLegendary, isShiny, changeBall) => {
     isLegendary === true
-      ? setMasterBall(masterBall + changeBall)
+      ? setNeededMasterBall(neededMasterBall + changeBall)
       : isShiny === true
-      ? setUltraBall(ultraBall + changeBall)
-      : setPokeBall(pokeBall + changeBall);
+      ? setNeededUltraBall(neededUltraBall + changeBall)
+      : setNeededPokeBall(neededPokeBall + changeBall);
 
-    let ball = {
-      pokeBall: pokeBall,
-      ultraBall: ultraBall,
-      masterBall: masterBall,
-    };
-    return ball;
+    // let ball = {
+    //   pokeBall: neededPokeBall,
+    //   ultraBall: neededUltraBall,
+    //   masterBall: neededMasterBall,
+    // };
+    // return ball;
   };
 
   const cleanAfterAction = () => {
     setChoosenPokemonCards([]);
-    setPokeBall(0);
-    setUltraBall(0);
-    setMasterBall(0);
+    setNeededPokeBall(0);
+    setNeededUltraBall(0);
+    setNeededMasterBall(0);
   };
 
   const getRandom = () => {
@@ -99,7 +102,7 @@ const MainContent = ({
     a.splice(0);
     for (let i = 0; i < 6; i++) {
       const idCard = nanoid(16);
-      const randomId = Math.floor(Math.random() * 898);
+      const randomId = Math.floor(Math.random() * 905);
       Axios.get(`https://pokeapi.co/api/v2/pokemon/${randomId}/`).then(
         (response) => {
           // console.log(response);
@@ -122,21 +125,33 @@ const MainContent = ({
   };
 
   const insertPokemon = async () => {
-    cleanAfterAction();
-    setisButtonDisabled(true);
-    setTimeout(() => {
-      setisButtonDisabled(false);
-    }, 3200);
-    const result = await shufflePokemon();
-    setTimeout(() => {
-      shuffleCard();
-      setPokemonId(result);
-    }, 1500);
+    if (coins < 100) {
+      Swal.fire({
+        title: `No Coin Left`,
+        customClass: {
+          popup: 'colored-toast-coin colored-toast',
+          closeButton: 'colored-toast-close',
+        },
+      });
+    } else {
+      cleanAfterAction();
+      setisButtonDisabled(true);
+      setTimeout(() => {
+        setisButtonDisabled(false);
+      }, 3200);
+      const result = await shufflePokemon();
+      setTimeout(() => {
+        shuffleCard();
+        setPokemonId(result);
+      }, 1500);
+    }
   };
 
   const show = () => {
     console.log('ini pokemon yang dipilih: ', choosenPokemonCards);
     console.log('ini pokemon yang shuffle: ', pokemonId);
+    console.log('picked ', pickedBall);
+    console.log('owned ', ownedBall);
     // console.log('pokemon pilih jadi array', removePickedPokemonFromPool());
   };
 
@@ -152,6 +167,8 @@ const MainContent = ({
         pokemonId={pokemonId}
         choosenPokeCards={addOrRemoveCard}
         ballRelated={ballRelated}
+        pickedBall={pickedBall}
+        ownedBall={ownedBall}
       />
       <ActionButtons
         insertPokemon={insertPokemon}

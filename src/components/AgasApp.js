@@ -15,6 +15,9 @@ import {
   refreshAccessToken,
 } from '../utils/network-data';
 import RegisterPage from '../pages/RegisterPage';
+import ProfilePage from '../pages/ProfilePage';
+import CollectionsPage from '../pages/CollectionsPage';
+import TradesPage from '../pages/TradesPage';
 
 const AgasApp = () => {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -83,6 +86,9 @@ const AgasApp = () => {
         <Routes>
           <Route path="/*" element={<NotFoundPage />} />
           <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/collections" element={<CollectionsPage />} />
+          <Route path="/trades" element={<TradesPage />} />
         </Routes>
       </main>
       <footer>

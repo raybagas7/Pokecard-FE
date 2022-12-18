@@ -92,8 +92,8 @@ body {
 }
 
 .box_collection img {
-  height: 90%;
-  width: 90%;
+  height: 80%;
+  width: 80%;
   object-fit: contain;
   display: block;
   margin: auto;

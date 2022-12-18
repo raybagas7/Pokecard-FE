@@ -176,7 +176,7 @@ const shuffleWithCoin = async () => {
 };
 
 const pickPokeCards = async (pickPayload) => {
-  console.log(pickPayload);
+  // console.log(pickPayload);
   const response = await fetchWithToken(`${BASE_URL}/cards`, {
     method: 'POST',
     headers: {

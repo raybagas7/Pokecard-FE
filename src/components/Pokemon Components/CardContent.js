@@ -4,6 +4,7 @@ import Axios from 'axios';
 import CardPokeball from './CardPokeball';
 import PokemonElement from './PokemonElement';
 import PokemonStats from './PokemonStats';
+import Swal from 'sweetalert2';
 
 const CardContent = ({
   id,
@@ -17,11 +18,58 @@ const CardContent = ({
   attribute,
   choosenPokeCards,
   ballRelated,
+  pickedBall,
+  ownedBall,
 }) => {
   const [Choosed, setChoosed] = useState(false);
   const [isLegendary, setIsLegendary] = useState();
+  // const [ballType, setBallType] = useState(0);
   let isShiny = false;
   attribute === 'normal' ? (isShiny = false) : (isShiny = true);
+
+  let ownedBallType = 0;
+  let pickedBallType = 0;
+  let ballName = '';
+
+  if (ownedBall) {
+    if (isLegendary === true && isShiny === true) {
+      ownedBallType = ownedBall.masterBall;
+      pickedBallType = pickedBall.masterball_amount;
+      ballName = 'MasterBall';
+    } else if (isLegendary === true && isShiny === false) {
+      ownedBallType = ownedBall.masterBall;
+      pickedBallType = pickedBall.masterball_amount;
+      ballName = 'MasterBall';
+    } else if (isLegendary === false && isShiny === true) {
+      ownedBallType = ownedBall.ultraBall;
+      pickedBallType = pickedBall.ultraball_amount;
+      ballName = 'UltraBall';
+    } else {
+      ownedBallType = ownedBall.pokeBall;
+      pickedBallType = pickedBall.pokeball_amount;
+      ballName = 'PokeBall';
+    }
+  }
+
+  // if (ownedBall) {
+  //   isLegendary === true && isShiny === true
+  //     ? (ownedBallType = ownedBall.masterBall)
+  //     : isLegendary === true && isShiny === false
+  //     ? (ownedBallType = ownedBall.masterBall)
+  //     : (isLegendary === false && isShiny) === true
+  //     ? (ownedBallType = ownedBall.ultraBall)
+  //     : (ownedBallType = ownedBall.pokeBall);
+  // }
+
+  // if (pickedBall) {
+  //   isLegendary === true && isShiny === true
+  //     ? (pickedBallType = pickedBall.masterball_amount)
+  //     : isLegendary === true && isShiny === false
+  //     ? (pickedBallType = pickedBall.masterball_amount)
+  //     : (isLegendary === false && isShiny) === true
+  //     ? (pickedBallType = pickedBall.ultraball_amount)
+  //     : (pickedBallType = pickedBall.pokeball_amount);
+  // }
 
   const pokemonType = () => {
     if (attribute === undefined) {
@@ -100,9 +148,22 @@ const CardContent = ({
     const temp = !Choosed;
     let changeBall = 0;
     temp === true ? (changeBall = 1) : (changeBall = -1);
-    choosenPokeCards(cardData, temp);
-    ballRelated(isLegendary, isShiny, changeBall);
-    setChoosed(temp);
+    const pickedBallTemp = pickedBallType + changeBall;
+    // console.log('picked ', pickedBallTemp);
+    // console.log('owned ', ownedBallType);
+    if (ownedBallType < pickedBallTemp) {
+      Swal.fire({
+        title: `You run out of ${ballName}`,
+        customClass: {
+          popup: `colored-toast-${pokemonType()} colored-toast`,
+          closeButton: 'colored-toast-close',
+        },
+      });
+    } else {
+      choosenPokeCards(cardData, temp);
+      ballRelated(isLegendary, isShiny, changeBall);
+      setChoosed(temp);
+    }
   };
 
   const attributePokemon = () => {
