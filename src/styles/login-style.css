@@ -113,15 +113,7 @@ body {
   background-color: #161b22;
   color: white;
   transition: 0.2s;
-}
-
-.login-button button:disabled {
-  color: var(--font-color);
-  width: 200px;
-}
-
-.login-button button:disabled:hover {
-  border: 3px solid rgb(255, 0, 0);
+  border: 3px solid #161b22;
 }
 
 .login-button button:hover {

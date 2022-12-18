@@ -175,13 +175,14 @@ const shuffleWithCoin = async () => {
   return { error: false, data: responseJson.data.coinAmount.coin };
 };
 
-const pickPokeCards = async ({ cardsData }) => {
+const pickPokeCards = async (pickPayload) => {
+  console.log(pickPayload);
   const response = await fetchWithToken(`${BASE_URL}/cards`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ cardsData }),
+    body: JSON.stringify(pickPayload),
   });
 
   const responseJson = await response.json();
@@ -192,7 +193,7 @@ const pickPokeCards = async ({ cardsData }) => {
 
   return {
     error: false,
-    data: responseJson.data.cardsId,
+    data: responseJson.data,
     message: responseJson.message,
   };
 };

@@ -19,7 +19,8 @@ body {
 
 .all-cards__container {
   border: solid white;
-  width: 90%;
+  width: fit-content;
+  max-width: 90%;
   height: fit-content;
   display: flex;
   justify-content: center;
@@ -37,7 +38,7 @@ body {
 
 .collections-title {
   width: 100%;
-  color: white;
+  color: black;
   margin: 15px;
 }
 

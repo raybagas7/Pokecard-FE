@@ -10,7 +10,7 @@ import {
   pickPokeCards,
   putAccessToken,
   putCreditId,
-  reduceBalls,
+  // reduceBalls,
   refreshAccessToken,
   shuffleWithCoin,
 } from '../utils/network-data';
@@ -35,44 +35,50 @@ const HomePage = () => {
     });
   };
 
-  const pickCards = async (choosenCards) => {
-    await pickPokeCards(choosenCards).then(({ error, data, message }) => {
+  const pickCards = async (pickPayload) => {
+    await pickPokeCards(pickPayload).then(({ error, data, message }) => {
       let cond = false;
       message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
       if (error && cond) {
         refreshAccessToken().then(({ data }) => {
           putAccessToken(data.accessToken);
-          pickPokeCards(choosenCards).then(({ data }) => {
-            console.log(data);
+          pickPokeCards(pickPayload).then(({ data }) => {
+            console.log('inipickload', data);
+            setPokeBall(data.balls.poke_ball);
+            setUltraBall(data.balls.ultra_ball);
+            setMasterBall(data.balls.master_ball);
           });
         });
       } else {
-        console.log(data);
+        console.log('inipickload', data);
+        setPokeBall(data.balls.poke_ball);
+        setUltraBall(data.balls.ultra_ball);
+        setMasterBall(data.balls.master_ball);
       }
     });
   };
 
-  const reducePokeBalls = async (ballsAmount) => {
-    await reduceBalls(ballsAmount).then(({ error, data, message }) => {
-      let cond = false;
-      message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
+  // const reducePokeBalls = async (ballsAmount) => {
+  //   await reduceBalls(ballsAmount).then(({ error, data, message }) => {
+  //     let cond = false;
+  //     message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
 
-      if (error && cond) {
-        refreshAccessToken().then(({ data }) => {
-          putAccessToken(data.accessToken);
-          reduceBalls(ballsAmount).then(({ data }) => {
-            setPokeBall(data.pokeBall[0].poke_ball);
-            setUltraBall(data.pokeBall[0].ultra_ball);
-            setMasterBall(data.pokeBall[0].master_ball);
-          });
-        });
-      } else {
-        setPokeBall(data.pokeBall[0].poke_ball);
-        setUltraBall(data.pokeBall[0].ultra_ball);
-        setMasterBall(data.pokeBall[0].master_ball);
-      }
-    });
-  };
+  //     if (error && cond) {
+  //       refreshAccessToken().then(({ data }) => {
+  //         putAccessToken(data.accessToken);
+  //         reduceBalls(ballsAmount).then(({ data }) => {
+  //           setPokeBall(data.pokeBall[0].poke_ball);
+  //           setUltraBall(data.pokeBall[0].ultra_ball);
+  //           setMasterBall(data.pokeBall[0].master_ball);
+  //         });
+  //       });
+  //     } else {
+  //       setPokeBall(data.pokeBall[0].poke_ball);
+  //       setUltraBall(data.pokeBall[0].ultra_ball);
+  //       setMasterBall(data.pokeBall[0].master_ball);
+  //     }
+  //   });
+  // };
 
   const shuffleCard = async () => {
     await shuffleWithCoin().then(({ error, data, message }) => {
@@ -132,7 +138,7 @@ const HomePage = () => {
         openCredit={openCreditBundle}
         shuffleCard={shuffleCard}
         pickCards={pickCards}
-        reducePokeBalls={reducePokeBalls}
+        // reducePokeBalls={reducePokeBalls}
       />
       <CollectedCardsContainer ownedCards={ownedCards} />
     </>

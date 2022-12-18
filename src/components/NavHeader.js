@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NavHeader = ({ lists }) => {
   // console.log(lists);
@@ -8,13 +9,15 @@ const NavHeader = ({ lists }) => {
         <nav>
           <ul>
             {/*Will soon move the list into component*/}
-            {lists.map((list) => (
-              <li key={list.value}>
-                <a target={list.tar} rel={list.rel} href={list.href}>
-                  {list.value}
-                </a>
-              </li>
-            ))}
+            <li>
+              <Link to={'/'}>Home</Link>
+            </li>
+            <li>
+              <Link to={'/profile'}>Profile</Link>
+            </li>
+            <li>
+              <Link to={'/project'}>Project</Link>
+            </li>
           </ul>
         </nav>
       </header>

@@ -1,17 +1,20 @@
 import React from 'react';
 
 const ActionButtons = (props) => {
-  const choosenCards = { cardsData: props.choosenPokemonCards };
-  const balls = props.pickedBall;
+  const pickPayload = {
+    ...props.pickedBall,
+    cardsData: props.choosenPokemonCards,
+  };
+  // const balls = props.pickedBall;
   const pickChoosenCards = async () => {
-    await props.pickCards(choosenCards);
-    await props.reducePokeBalls(balls);
+    await props.pickCards(pickPayload);
+    // await props.reducePokeBalls(balls);
     props.removePokemonPool();
     props.cleanAfterAction();
   };
-  // const showError = () => {
-  //   console.log(props.pickError);
-  // };
+  const showError = () => {
+    console.log(pickPayload);
+  };
 
   // if (props.pickError === false) {
 
@@ -37,7 +40,7 @@ const ActionButtons = (props) => {
         Pick
       </button>
       <button onClick={props.show}>ini poke</button>
-      {/* <button onClick={showError}>ini error</button> */}
+      <button onClick={showError}>ini error</button>
     </div>
   );
 };

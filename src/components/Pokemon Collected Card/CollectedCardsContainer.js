@@ -29,9 +29,7 @@ const CollectedCardsContainer = ({ ownedCards }) => {
       {/* <button onClick={show}>ini poke</button> */}
     </div>
   ) : (
-    <div>
-      <p>empty</p>
-    </div>
+    <></>
   );
 };
 

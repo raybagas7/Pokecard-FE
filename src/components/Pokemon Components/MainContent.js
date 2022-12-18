@@ -13,7 +13,7 @@ const MainContent = ({
   openCredit,
   shuffleCard,
   pickCards,
-  reducePokeBalls,
+  // reducePokeBalls,
 }) => {
   const [pokemonId, setPokemonId] = useState();
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
@@ -90,7 +90,7 @@ const MainContent = ({
   const getRandom = () => {
     var num = Math.random();
     let probability = '';
-    num < 0.73 ? (probability = 'normal') : (probability = 'shiny');
+    num < 0.95 ? (probability = 'normal') : (probability = 'shiny');
     return probability;
   };
 
@@ -162,7 +162,7 @@ const MainContent = ({
         choosenCardLength={choosenPokemonCards.length}
         pickCards={pickCards}
         pickedBall={pickedBall}
-        reducePokeBalls={reducePokeBalls}
+        // reducePokeBalls={reducePokeBalls}
         removePokemonPool={removePickedPokemonFromPool}
         cleanAfterAction={cleanAfterAction}
       />
