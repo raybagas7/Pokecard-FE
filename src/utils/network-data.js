@@ -46,11 +46,14 @@ const login = async ({ username, password }) => {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
-    alert(responseJson.message);
-    return { error: true, data: null };
+    return { error: true, data: null, message: responseJson.message };
   }
 
-  return { error: false, data: responseJson.data };
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
 };
 
 const logout = async () => {
@@ -83,11 +86,10 @@ const register = async ({ username, password, trainer_name, email }) => {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
-    alert(responseJson.message);
-    return { error: true };
+    return { error: true, message: responseJson.message };
   }
 
-  return { error: false };
+  return { error: false, message: responseJson.message };
 };
 
 const refreshAccessToken = async () => {
@@ -147,10 +149,14 @@ const getCreditUser = async () => {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null };
+    return { error: true, data: null, message: responseJson.message };
   }
 
-  return { error: false, data: responseJson.data.credit };
+  return {
+    error: false,
+    data: responseJson.data.credit,
+    message: responseJson.message,
+  };
 };
 
 const shuffleWithCoin = async () => {
@@ -231,7 +237,7 @@ const getOwnerCards = async () => {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null, message: responseJson.message };
+    return { error: true, data: [], message: responseJson.message };
   }
 
   return {

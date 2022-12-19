@@ -16,7 +16,7 @@ import {
 } from '../utils/network-data';
 import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
 
-const HomePage = ({ userData }) => {
+const HomePage = () => {
   const [creditAvailability, setCreditAvailability] = React.useState(null);
   const [initializing, setInitializing] = React.useState(true);
   const [socmedBlack, setSocmedBlack] = React.useState([]);
@@ -133,8 +133,18 @@ const HomePage = ({ userData }) => {
 
   React.useEffect(() => {
     getOwnerCards().then(({ error, data, message }) => {
-      if (error) {
-        setInitializing(false);
+      let cond = false;
+      message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
+      if (error && cond) {
+        refreshAccessToken().then(({ data }) => {
+          putAccessToken(data.accessToken);
+          getOwnerCards().then(({ data }) => {
+            setOwnedCards(data);
+            setInitializing(false);
+            // console.log('after refresh get ownerdcards, ', message);
+            // console.log(data);
+          });
+        });
       } else {
         setOwnedCards(data);
         setInitializing(false);
@@ -147,9 +157,23 @@ const HomePage = ({ userData }) => {
     setSocmedBlack(getSocmedBlack());
     setSocmedWhite(getSocmedWhite());
     setCards(getCard());
-    getCreditUser().then(({ error, data }) => {
-      if (error) {
-        setInitializing(false);
+    getCreditUser().then(({ error, data, message }) => {
+      let cond = false;
+      message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
+      if (error && cond) {
+        refreshAccessToken().then(({ data }) => {
+          putAccessToken(data.accessToken);
+          getCreditUser().then(({ data }) => {
+            setCreditAvailability(data);
+            putCreditId(data.credit_id);
+            setCoins(data.coin);
+            console.log('setCreditAvailability Refreshed Token', data);
+            setPokeBall(data.poke_ball);
+            setUltraBall(data.ultra_ball);
+            setMasterBall(data.master_ball);
+            setInitializing(false);
+          });
+        });
       } else {
         setCreditAvailability(data);
         putCreditId(data.credit_id);

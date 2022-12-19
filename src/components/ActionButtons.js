@@ -12,9 +12,9 @@ const ActionButtons = (props) => {
     props.removePokemonPool();
     props.cleanAfterAction();
   };
-  const showError = () => {
-    console.log(pickPayload);
-  };
+  // const showError = () => {
+  //   console.log(pickPayload);
+  // };
 
   // if (props.pickError === false) {
 
@@ -39,8 +39,8 @@ const ActionButtons = (props) => {
       >
         Pick
       </button>
-      <button onClick={props.show}>ini poke</button>
-      <button onClick={showError}>ini error</button>
+      {/* <button onClick={props.show}>ini poke</button>
+      <button onClick={showError}>ini error</button> */}
     </div>
   );
 };

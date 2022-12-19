@@ -18,6 +18,7 @@ import RegisterPage from '../pages/RegisterPage';
 import ProfilePage from '../pages/ProfilePage';
 import CollectionsPage from '../pages/CollectionsPage';
 import TradesPage from '../pages/TradesPage';
+import '../styles/alert-style.css';
 
 const AgasApp = () => {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -49,12 +50,12 @@ const AgasApp = () => {
           putAccessToken(data.accessToken);
           getUserLogged().then(({ data }) => {
             setAuthedUser(data);
-            console.log(data);
+            // console.log(data);
             setInitializing(false);
           });
         });
       } else {
-        console.log(data);
+        // console.log(data);
         setAuthedUser(data);
         setInitializing(false);
       }
@@ -66,7 +67,7 @@ const AgasApp = () => {
   }
 
   return authedUser === null ? (
-    <div>
+    <div className="container">
       <main>
         <Routes>
           <Route
@@ -78,7 +79,7 @@ const AgasApp = () => {
       </main>
     </div>
   ) : (
-    <div>
+    <div className="content-pokecards">
       <header>
         <HeaderParent logout={onLogout} userData={authedUser} />
         <NavHeader lists={list} />
@@ -92,7 +93,7 @@ const AgasApp = () => {
           <Route path="/trades" element={<TradesPage />} />
         </Routes>
       </main>
-      <footer>
+      <footer className="footer">
         <Footer />
       </footer>
     </div>

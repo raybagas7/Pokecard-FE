@@ -10,6 +10,7 @@ body {
   font-family: 'Righteous', cursive;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 nav li {
@@ -385,7 +386,7 @@ nav li:hover a {
   border-radius: 10px;
   margin: 0 auto;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 30px;
   background-color: #ffd400;
 }
 
@@ -1519,12 +1520,12 @@ nav li:hover a {
   background-color: black;
 }
 
-footer {
+.footer {
+  margin-top: 30px;
   box-shadow: 0px -3px 2px -1px rgba(0, 0, 0, 0.13);
   -webkit-box-shadow: 0px -3px 2px -1px rgba(0, 0, 0, 0.13);
   -moz-box-shadow: 0px -3px 2px -1px rgba(0, 0, 0, 0.13);
   padding: 20px;
-  margin-top: 20px;
   font-weight: 700;
   text-align: center;
   background: #ffd400;

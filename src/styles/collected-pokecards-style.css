@@ -1,20 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Neucha&family=Righteous&family=Secular+One&display=swap');
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Righteous', cursive;
-  margin: 0;
-  padding: 0;
-}
-
 .collections-content {
-  margin-top: 10px;
+  position: relative;
   padding: 20px;
+  margin-top: 10px;
 }
 
 .all-cards__container {
@@ -91,9 +80,10 @@ body {
   animation-fill-mode: forwards;
 }
 
-.box_collection img {
-  height: 80%;
-  width: 80%;
+.sprites-image {
+  height: 85%;
+  width: 85%;
+  padding: 10px;
   object-fit: contain;
   display: block;
   margin: auto;
@@ -317,6 +307,7 @@ body {
 }
 
 .box-1-stats_collection {
+  font-size: smaller;
   background-color: #161b22;
   width: 100%;
   height: 100%;
@@ -324,6 +315,7 @@ body {
 }
 
 .box-2-stats_collection {
+  font-size: smaller;
   background-color: #161b22;
   width: 100%;
   height: 100%;

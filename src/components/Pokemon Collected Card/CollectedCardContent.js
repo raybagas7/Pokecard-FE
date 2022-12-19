@@ -54,6 +54,7 @@ const CollectedCardContent = ({
       <div className={`box_collection first-box-${pokemonType()}_collection`}>
         <p className={`attribute-${pokemonType()}-id_collection`}>{poke_id}</p>
         <img
+          className="sprites-image"
           src={!spritesUrl ? './images/quetion-mark.png' : spritesUrl}
           alt="images"
         />
