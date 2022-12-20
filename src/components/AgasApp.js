@@ -13,24 +13,33 @@ import {
   putAccessToken,
   putRefreshToken,
   refreshAccessToken,
+  verifyAccount,
 } from '../utils/network-data';
 import RegisterPage from '../pages/RegisterPage';
 import ProfilePage from '../pages/ProfilePage';
 import CollectionsPage from '../pages/CollectionsPage';
 import TradesPage from '../pages/TradesPage';
 import '../styles/alert-style.css';
+import ValidationContext from '../context/ValidationContext';
+import ls from 'localstorage-slim';
+import TtlVerifContext from '../context/TtlVerifContext';
 
 const AgasApp = () => {
   const [authedUser, setAuthedUser] = React.useState(null);
   const [initializing, setInitializing] = React.useState(true);
+  const [ttlVerification, setTtlVerification] = React.useState(
+    ls.get('waitingVerfication') || false
+  );
 
   const [list, setList] = React.useState([]);
 
   const onLoginSuccess = async ({ accessToken, refreshToken }) => {
     putAccessToken(accessToken);
     putRefreshToken(refreshToken);
+    //   ls.set('waitingVerfication', data.user.is_valid);
     const { data } = await getUserLogged();
-
+    setTtlVerification(data.user.is_valid);
+    ls.set('waitingVerfication', data.user.is_valid);
     setAuthedUser(data);
   };
 
@@ -40,7 +49,46 @@ const AgasApp = () => {
 
     putAccessToken('');
     putRefreshToken('');
+    ls.remove('waitingVerfication');
   };
+
+  const sendVerification = async (targetEmail) => {
+    await verifyAccount(targetEmail).then(({ error, data, message }) => {
+      let cond = false;
+      message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
+      if (error && cond) {
+        refreshAccessToken().then(({ data }) => {
+          putAccessToken(data.accessToken);
+          verifyAccount(targetEmail).then(({ message }) => {
+            console.log(message);
+          });
+        });
+      } else {
+        console.log(message);
+      }
+    });
+  };
+
+  const toggleTtlVerification = () => {
+    setTtlVerification((prevTheme) => {
+      const newTtl = prevTheme === true ? false : true;
+      ls.set('waitingVerfication', newTtl, { ttl: 86400 });
+      return newTtl;
+    });
+  };
+
+  const validationContextValue = React.useMemo(() => {
+    return {
+      authedUser,
+    };
+  }, [authedUser]);
+
+  const ttlVerificationContextValue = React.useMemo(() => {
+    return {
+      ttlVerification,
+      toggleTtlVerification,
+    };
+  }, [ttlVerification]);
 
   React.useEffect(() => {
     setList(getList());
@@ -48,19 +96,21 @@ const AgasApp = () => {
       if (error && tokenExpired) {
         refreshAccessToken().then(({ data }) => {
           putAccessToken(data.accessToken);
-          getUserLogged().then(({ data }) => {
+          getUserLogged().then(({ error, data }) => {
             setAuthedUser(data);
-            // console.log(data);
+
+            console.log(data);
             setInitializing(false);
           });
         });
       } else {
-        // console.log(data);
+        console.log(data);
         setAuthedUser(data);
+
         setInitializing(false);
       }
     });
-  }, []);
+  }, [ttlVerification]);
 
   if (initializing) {
     return null;
@@ -79,24 +129,32 @@ const AgasApp = () => {
       </main>
     </div>
   ) : (
-    <div className="content-pokecards">
-      <header>
-        <HeaderParent logout={onLogout} userData={authedUser} />
-        <NavHeader lists={list} />
-      </header>
-      <main>
-        <Routes>
-          <Route path="/*" element={<NotFoundPage />} />
-          <Route path="/" element={<HomePage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/collections" element={<CollectionsPage />} />
-          <Route path="/trades" element={<TradesPage />} />
-        </Routes>
-      </main>
-      <footer className="footer">
-        <Footer />
-      </footer>
-    </div>
+    <ValidationContext.Provider value={validationContextValue}>
+      <TtlVerifContext.Provider value={ttlVerificationContextValue}>
+        <div className="content-pokecards">
+          <header>
+            <HeaderParent
+              logout={onLogout}
+              userData={authedUser}
+              sendVerification={sendVerification}
+            />
+            <NavHeader lists={list} />
+          </header>
+          <main>
+            <Routes>
+              <Route path="/*" element={<NotFoundPage />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/collections" element={<CollectionsPage />} />
+              <Route path="/trades" element={<TradesPage />} />
+            </Routes>
+          </main>
+          <footer className="footer">
+            <Footer />
+          </footer>
+        </div>
+      </TtlVerifContext.Provider>
+    </ValidationContext.Provider>
   );
 };
 // class AgasApp extends React.Component {

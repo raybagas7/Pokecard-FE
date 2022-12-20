@@ -156,6 +156,31 @@ nav li:hover a {
   line-height: 2;
 }
 
+.dropdown-content p {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: black;
+  padding: 7px 16px;
+  text-decoration: none;
+  line-height: 2;
+}
+
+.dropdown-content p::after {
+  content: '	\2755';
+  right: 0;
+  margin-right: 15px;
+  position: absolute;
+  animation-name: star;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  filter: brightness(1.5);
+  filter: contrast(1.5);
+  -webkit-filter: brightness(1.5);
+  -webkit-filter: contrast(1.5);
+}
+
 .icon-dropdown:hover .dropdown-content {
   display: block;
 }

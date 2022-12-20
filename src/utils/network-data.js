@@ -247,6 +247,29 @@ const getOwnerCards = async () => {
   };
 };
 
+const verifyAccount = async (targetEmail) => {
+  console.log('email', targetEmail);
+  const response = await fetchWithToken(`${BASE_URL}/export/email/verify`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(targetEmail),
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
 export {
   getAccessToken,
   getRefreshToken,
@@ -265,4 +288,5 @@ export {
   pickPokeCards,
   reduceBalls,
   getOwnerCards,
+  verifyAccount,
 };

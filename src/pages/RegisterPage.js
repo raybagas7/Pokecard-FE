@@ -30,7 +30,7 @@ const RegisterPage = () => {
     } else {
       Toast.fire({
         icon: 'error',
-        title: `${message} as ${user.username}`,
+        title: `${message}`,
       });
     }
   };

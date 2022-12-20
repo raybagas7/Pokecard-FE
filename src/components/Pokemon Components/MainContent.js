@@ -74,13 +74,6 @@ const MainContent = ({
       : isShiny === true
       ? setNeededUltraBall(neededUltraBall + changeBall)
       : setNeededPokeBall(neededPokeBall + changeBall);
-
-    // let ball = {
-    //   pokeBall: neededPokeBall,
-    //   ultraBall: neededUltraBall,
-    //   masterBall: neededMasterBall,
-    // };
-    // return ball;
   };
 
   const cleanAfterAction = () => {
