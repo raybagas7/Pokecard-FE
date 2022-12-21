@@ -19,6 +19,7 @@ import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
 const HomePage = () => {
   const [creditAvailability, setCreditAvailability] = React.useState(null);
   const [initializing, setInitializing] = React.useState(true);
+  const [initializing2, setInitializing2] = React.useState(true);
   const [socmedBlack, setSocmedBlack] = React.useState([]);
   const [socmedWhite, setSocmedWhite] = React.useState([]);
   const [cards, setCards] = React.useState([]);
@@ -46,9 +47,9 @@ const HomePage = () => {
       let cond = false;
       message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
       if (error && cond) {
-        refreshAccessToken().then(({ data }) => {
+        refreshAccessToken().then(async ({ data }) => {
           putAccessToken(data.accessToken);
-          pickPokeCards(pickPayload).then(({ data }) => {
+          await pickPokeCards(pickPayload).then(({ data }) => {
             // console.log('inipickload', data);
             setPokeBall(data.balls.poke_ball);
             setUltraBall(data.balls.ultra_ball);
@@ -105,9 +106,9 @@ const HomePage = () => {
       let cond = false;
       message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
       if (error && cond) {
-        refreshAccessToken().then(({ data }) => {
+        refreshAccessToken().then(async ({ data }) => {
           putAccessToken(data.accessToken);
-          shuffleWithCoin().then(({ data }) => {
+          await shuffleWithCoin().then(({ data }) => {
             setCoins(data);
             setCreditAvailability({
               credit_id: creditAvailability.credit_id,
@@ -131,6 +132,7 @@ const HomePage = () => {
     });
   };
 
+  // Owned Cards
   React.useEffect(() => {
     getOwnerCards().then(({ error, data, message }) => {
       let cond = false;
@@ -141,14 +143,14 @@ const HomePage = () => {
           getOwnerCards().then(({ data }) => {
             setOwnedCards(data);
             setInitializing(false);
-            // console.log('after refresh get ownerdcards, ', message);
+            console.log('after refresh get ownerdcards, ', data);
             // console.log(data);
           });
         });
       } else {
         setOwnedCards(data);
         setInitializing(false);
-        // console.log('data bola', data);
+        console.log('get ownerdcards', data);
       }
     });
   }, [pokeBall, ultraBall, masterBall]);
@@ -167,27 +169,27 @@ const HomePage = () => {
             setCreditAvailability(data);
             putCreditId(data.credit_id);
             setCoins(data.coin);
-            console.log('setCreditAvailability Refreshed Token', data);
             setPokeBall(data.poke_ball);
             setUltraBall(data.ultra_ball);
             setMasterBall(data.master_ball);
-            setInitializing(false);
+            setInitializing2(false);
+            console.log('setCreditAvailability Refreshed Token', data);
           });
         });
       } else {
         setCreditAvailability(data);
         putCreditId(data.credit_id);
         setCoins(data.coin);
-        console.log('setCreditAvailability', data);
         setPokeBall(data.poke_ball);
         setUltraBall(data.ultra_ball);
         setMasterBall(data.master_ball);
-        setInitializing(false);
+        setInitializing2(false);
+        console.log('setCreditAvailability', data);
       }
     });
   }, [creditId]);
 
-  if (initializing) {
+  if (initializing && initializing2) {
     return null;
   }
 

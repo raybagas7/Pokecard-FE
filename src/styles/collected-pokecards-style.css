@@ -8,8 +8,7 @@
 
 .all-cards__container {
   border: solid white;
-  width: fit-content;
-  max-width: 90%;
+  width: 90%;
   height: fit-content;
   display: flex;
   justify-content: center;

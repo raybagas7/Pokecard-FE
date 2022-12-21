@@ -29,3 +29,13 @@
 .colored-toast .swal2-html-container {
   color: white;
 }
+
+.my-actions {
+  margin: 0 2em;
+}
+.order-2 {
+  order: 2;
+}
+.order-3 {
+  order: 3;
+}

@@ -1,12 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import Axios from 'axios';
+// import Axios from 'axios';
 import ContainerContent from './ContainerContent';
 import PokePouch from './PokePouch';
 import ActionButtons from '../ActionButtons';
 import { getCreditId } from '../../utils/network-data';
 import Swal from 'sweetalert2';
+import axios from 'axios';
+// import axiosRetry from 'axios-retry';
 
 const MainContent = ({
   cards,
@@ -90,14 +92,43 @@ const MainContent = ({
     return probability;
   };
 
+  function* shuffleMoveGenerator(array) {
+    var i = array.length;
+
+    while (i--) {
+      yield array.splice(Math.floor(Math.random() * (i + 1)), 1)[0];
+    }
+  }
+
+  const getMovesLength = (moves) => {
+    // const totalMoves = moves.length;
+    const shuffleMoves = shuffleMoveGenerator(moves);
+    const tempMoves = [];
+
+    for (let i = 0; i < 2; i++) {
+      tempMoves.push(shuffleMoves.next().value);
+    }
+
+    const takenMoves = [];
+    for (let i = 0; i < 2; i++) {
+      takenMoves.push(moves[i].move.name);
+    }
+
+    return takenMoves;
+  };
+
   const shufflePokemon = async () => {
     const a = [];
+    let temp = 0;
     a.splice(0);
-    for (let i = 0; i < 6; i++) {
+    do {
+      temp++;
+      // retryWrapper(axios, { retry_time: 3 });
       const idCard = nanoid(16);
-      const randomId = Math.floor(Math.random() * 905);
-      Axios.get(`https://pokeapi.co/api/v2/pokemon/${randomId}/`).then(
-        (response) => {
+      const randomId = Math.floor(1 + Math.random() * 905);
+      axios
+        .get(`https://pokeapi.co/api/v2/pokemon/${randomId}/`)
+        .then((response) => {
           // console.log(response);
           a.push({
             id: idCard,
@@ -108,12 +139,25 @@ const MainContent = ({
             types: response.data.types,
             stats: response.data.stats,
             speciesUrl: response.data.species.url,
+            moves: getMovesLength(response.data.moves),
             attribute: getRandom(),
             choose: false,
           });
-        }
-      );
-    }
+        })
+        .catch((err) => {
+          console.log('ini error axios ', err);
+        });
+      // .catch((err) => {
+      //   if (err.response.status !== 200) {
+      //     throw new Error(
+      //       `API call failed with status code: ${err.response.status} after 3 retry attempts`
+      //     );
+      //   }
+      // });
+      // .catch((errors) => {
+      //   console.log('ini axio error', errors);
+      // });
+    } while (temp < 6);
     return a;
   };
 

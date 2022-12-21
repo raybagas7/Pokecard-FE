@@ -70,8 +70,8 @@ const AgasApp = () => {
   };
 
   const toggleTtlVerification = () => {
-    setTtlVerification((prevTheme) => {
-      const newTtl = prevTheme === true ? false : true;
+    setTtlVerification((prevVerify) => {
+      const newTtl = prevVerify === true ? false : true;
       ls.set('waitingVerfication', newTtl, { ttl: 86400 });
       return newTtl;
     });
@@ -98,7 +98,6 @@ const AgasApp = () => {
           putAccessToken(data.accessToken);
           getUserLogged().then(({ error, data }) => {
             setAuthedUser(data);
-
             console.log(data);
             setInitializing(false);
           });
@@ -106,7 +105,6 @@ const AgasApp = () => {
       } else {
         console.log(data);
         setAuthedUser(data);
-
         setInitializing(false);
       }
     });
@@ -157,33 +155,5 @@ const AgasApp = () => {
     </ValidationContext.Provider>
   );
 };
-// class AgasApp extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       list: getLlist(),
-//       card: getCard(),
-//       elements: getElement(),
-//       socmed_black: getSocmedBlack(),
-//       socmed_white: getSocmedWhite(),
-//     };
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <HeaderParent />
-//         <NavHeader lists={this.state.list} />
-//         <JumboTron
-//           blackmed={this.state.socmed_black}
-//           whitemed={this.state.socmed_white}
-//         />
-//         <MainContent cards={this.state.card} elements={this.state.elements} />
-//         <CollectedCardsContainer />
-//         <Footer />
-//       </div>
-//     );
-//   }
-// }
 
 export default AgasApp;

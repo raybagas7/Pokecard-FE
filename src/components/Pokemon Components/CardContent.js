@@ -51,26 +51,6 @@ const CardContent = ({
     }
   }
 
-  // if (ownedBall) {
-  //   isLegendary === true && isShiny === true
-  //     ? (ownedBallType = ownedBall.masterBall)
-  //     : isLegendary === true && isShiny === false
-  //     ? (ownedBallType = ownedBall.masterBall)
-  //     : (isLegendary === false && isShiny) === true
-  //     ? (ownedBallType = ownedBall.ultraBall)
-  //     : (ownedBallType = ownedBall.pokeBall);
-  // }
-
-  // if (pickedBall) {
-  //   isLegendary === true && isShiny === true
-  //     ? (pickedBallType = pickedBall.masterball_amount)
-  //     : isLegendary === true && isShiny === false
-  //     ? (pickedBallType = pickedBall.masterball_amount)
-  //     : (isLegendary === false && isShiny) === true
-  //     ? (pickedBallType = pickedBall.ultraball_amount)
-  //     : (pickedBallType = pickedBall.pokeball_amount);
-  // }
-
   const pokemonType = () => {
     if (attribute === undefined) {
       return undefined;
@@ -140,9 +120,6 @@ const CardContent = ({
   Axios.get(`${speciesUrl}`).then((response) => {
     setIsLegendary(response.data.is_legendary);
   });
-
-  // let isLegend = '';
-  // isLegendary === true ? (isLegend = 'LEGEND') : (isLegend = '');
 
   const change = () => {
     const temp = !Choosed;

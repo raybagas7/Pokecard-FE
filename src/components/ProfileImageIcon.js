@@ -3,16 +3,46 @@ import { Link } from 'react-router-dom';
 import { RiLogoutCircleLine } from 'react-icons/ri';
 import ValidationContext from '../context/ValidationContext';
 import TtlVerifContext from '../context/TtlVerifContext';
+import Swal from 'sweetalert2';
 
 const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
   const { authedUser } = React.useContext(ValidationContext);
   const { ttlVerification, toggleTtlVerification } =
     React.useContext(TtlVerifContext);
+
   console.log('ttl ', ttlVerification);
+
   const send = async () => {
     toggleTtlVerification();
     await sendVerification({ targetEmail: userData.user.email });
   };
+
+  const showAlert = () => {
+    Swal.fire({
+      title: 'Do you want to send another verification link to your email?',
+      showDenyButton: true,
+      confirmButtonText: 'Yes',
+      denyButtonText: 'No',
+      customClass: {
+        popup: 'verification-swal',
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'You will recieve new email, please check your inbox or spam email!',
+          '',
+          'success'
+        );
+        send();
+      } else if (result.isDenied) {
+        Swal.fire('Please check your inbox or spam email!', '', 'info');
+      }
+    });
+  };
+
   return (
     <>
       <div className="account-option">
@@ -27,7 +57,8 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
               >
                 {userData.user.trainer_name}
               </Link>
-              {/* {ttlVerification === true ? null : (
+              {authedUser.user.is_valid === false &&
+              authedUser.user.wait_verify === false ? (
                 <p
                   className="middle-dropdown"
                   title="Verification Button"
@@ -35,14 +66,14 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
                 >
                   Verify
                 </p>
-              )} */}
-              {ttlVerification === false ? (
+              ) : authedUser.user.is_valid === false &&
+                authedUser.user.wait_verify === true ? (
                 <p
                   className="middle-dropdown"
-                  title="Verification Button"
-                  onClick={send}
+                  title="Wait user to verify account, please check your email"
+                  onClick={showAlert}
                 >
-                  Verify
+                  Waiting
                 </p>
               ) : null}
               <Link
