@@ -2,6 +2,7 @@ import useInput from '../../hooks/useInput';
 import { Link } from 'react-router-dom';
 import '../../styles/login-style.css';
 import PokeballLoginDecoration from './PokeballLoginDecoration';
+import PropTypes from 'prop-types';
 
 const LoginInput = (props) => {
   const [username, handleUsernameChange] = useInput('');
@@ -58,6 +59,10 @@ const LoginInput = (props) => {
       </div>
     </div>
   );
+};
+
+LoginInput.propTypes = {
+  login: PropTypes.func.isRequired,
 };
 
 export default LoginInput;

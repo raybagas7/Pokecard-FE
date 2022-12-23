@@ -8,6 +8,7 @@ import ActionButtons from '../ActionButtons';
 import { getCreditId } from '../../utils/network-data';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 // import axiosRetry from 'axios-retry';
 
 const MainContent = ({
@@ -224,8 +225,11 @@ const MainContent = ({
   };
 
   const show = () => {
-    console.log('ini pokemon yang dipilih: ', choosenPokemonCards);
-    console.log('ini pokemon yang shuffle: ', pokemonId);
+    console.log(
+      'ini pokemon yang dipilih choosenPokemon : ',
+      choosenPokemonCards
+    );
+    console.log('ini pokemon yang shuffle pokemonId : ', pokemonId);
     console.log('picked ', pickedBall);
     console.log('owned ', ownedBall);
     // console.log('pokemon pilih jadi array', removePickedPokemonFromPool());
@@ -241,7 +245,7 @@ const MainContent = ({
       <ContainerContent
         cards={cards}
         pokemonId={pokemonId}
-        choosenPokeCards={addOrRemoveCard}
+        addOrRemoveCard={addOrRemoveCard}
         ballRelated={ballRelated}
         pickedBall={pickedBall}
         ownedBall={ownedBall}
@@ -261,6 +265,16 @@ const MainContent = ({
       />
     </div>
   );
+};
+
+MainContent.propTypes = {
+  cards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  credit: PropTypes.object,
+  openCredit: PropTypes.func.isRequired,
+  shuffleCard: PropTypes.func.isRequired,
+  pickCards: PropTypes.func.isRequired,
+  ownedBall: PropTypes.objectOf(PropTypes.number),
+  coins: PropTypes.number,
 };
 
 export default MainContent;

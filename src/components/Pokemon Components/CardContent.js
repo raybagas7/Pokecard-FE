@@ -20,7 +20,7 @@ const CardContent = ({
   moves,
   stats,
   attribute,
-  choosenPokeCards,
+  addOrRemoveCard,
   ballRelated,
   pickedBall,
   ownedBall,
@@ -177,7 +177,7 @@ const CardContent = ({
         },
       });
     } else {
-      choosenPokeCards(cardData, temp);
+      addOrRemoveCard(cardData, temp);
       ballRelated(isLegendary, isShiny, changeBall);
       setChoosed(temp);
     }

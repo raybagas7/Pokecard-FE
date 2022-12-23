@@ -1,10 +1,11 @@
 import React from 'react';
 import CardContent from './CardContent';
+import PropTypes from 'prop-types';
 
 const ContainerContent = ({
   cards,
   pokemonId,
-  choosenPokeCards,
+  addOrRemoveCard,
   ballRelated,
   pickedBall,
   ownedBall,
@@ -30,7 +31,7 @@ const ContainerContent = ({
             <CardContent
               key={pokemonId.id}
               {...pokemonId}
-              choosenPokeCards={choosenPokeCards}
+              addOrRemoveCard={addOrRemoveCard}
               ballRelated={ballRelated}
               pickedBall={pickedBall}
               ownedBall={ownedBall}
@@ -43,6 +44,17 @@ const ContainerContent = ({
       {/* <button onClick={show}>ini cards</button> */}
     </div>
   );
+};
+
+ContainerContent.propTypes = {
+  cards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  pokemonId: PropTypes.arrayOf(PropTypes.object),
+  addOrRemoveCard: PropTypes.func.isRequired,
+  ballRelated: PropTypes.func.isRequired,
+  pickedBall: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ).isRequired,
+  ownedBall: PropTypes.objectOf(PropTypes.number),
 };
 
 export default ContainerContent;

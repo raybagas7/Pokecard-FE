@@ -388,7 +388,7 @@
   position: absolute;
   z-index: 1;
   bottom: 100%;
-  margin-left: -6px;
+  margin-left: -9px;
 }
 
 .spesific-element_collection .tooltip-text_collection::after {

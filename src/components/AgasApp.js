@@ -1,7 +1,6 @@
 import React from 'react';
 import HeaderParent from './HeaderParent';
 import NavHeader from './NavHeader';
-import { getList } from '../utils/navlist';
 import Footer from './Footer';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
@@ -30,8 +29,6 @@ const AgasApp = () => {
   const [ttlVerification, setTtlVerification] = React.useState(
     ls.get('waitingVerfication') || false
   );
-
-  const [list, setList] = React.useState([]);
 
   const onLoginSuccess = async ({ accessToken, refreshToken }) => {
     putAccessToken(accessToken);
@@ -91,19 +88,18 @@ const AgasApp = () => {
   }, [ttlVerification]);
 
   React.useEffect(() => {
-    setList(getList());
     getUserLogged().then(({ error, data, tokenExpired }) => {
       if (error && tokenExpired) {
         refreshAccessToken().then(({ data }) => {
           putAccessToken(data.accessToken);
           getUserLogged().then(({ error, data }) => {
             setAuthedUser(data);
-            console.log(data);
+            // console.log(data);
             setInitializing(false);
           });
         });
       } else {
-        console.log(data);
+        // console.log(data);
         setAuthedUser(data);
         setInitializing(false);
       }
@@ -136,7 +132,7 @@ const AgasApp = () => {
               userData={authedUser}
               sendVerification={sendVerification}
             />
-            <NavHeader lists={list} />
+            <NavHeader />
           </header>
           <main>
             <Routes>

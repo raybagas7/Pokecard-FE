@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import WhiteGithubIcon from './WhiteGithubIcon';
+import PropTypes from 'prop-types';
 
 const JumboTron = ({ blackmed, whitemed }) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -27,6 +28,11 @@ const JumboTron = ({ blackmed, whitemed }) => {
       )}
     </div>
   );
+};
+
+JumboTron.propTypes = {
+  blackmed: PropTypes.arrayOf(PropTypes.object).isRequired,
+  whitemed: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default JumboTron;

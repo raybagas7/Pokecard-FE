@@ -4,13 +4,13 @@ import { RiLogoutCircleLine } from 'react-icons/ri';
 import ValidationContext from '../context/ValidationContext';
 import TtlVerifContext from '../context/TtlVerifContext';
 import Swal from 'sweetalert2';
+import PropTypes from 'prop-types';
 
 const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
   const { authedUser } = React.useContext(ValidationContext);
-  const { ttlVerification, toggleTtlVerification } =
-    React.useContext(TtlVerifContext);
+  const { toggleTtlVerification } = React.useContext(TtlVerifContext);
 
-  console.log('ttl ', ttlVerification);
+  // console.log('ttl ', ttlVerification);
 
   const send = async () => {
     toggleTtlVerification();
@@ -103,6 +103,12 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
       </div>
     </>
   );
+};
+
+ProfileImageIcon.propTypes = {
+  logout: PropTypes.func.isRequired,
+  userData: PropTypes.object.isRequired,
+  sendVerification: PropTypes.func.isRequired,
 };
 
 export default ProfileImageIcon;

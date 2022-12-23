@@ -3,6 +3,7 @@ import SmallCoin from './SmallCoin';
 import SmallMasterball from './SmallMasterball';
 import SmallPokeball from './SmallPokeball';
 import SmallUltraBall from './SmallUltraBall';
+import PropTypes from 'prop-types';
 
 const PokePouch = ({ credit, openCredit, pickedBall }) => {
   // console.log('credit di pouch', pickedBall);
@@ -47,6 +48,14 @@ const PokePouch = ({ credit, openCredit, pickedBall }) => {
       </div>
     </div>
   );
+};
+
+PokePouch.propTypes = {
+  credit: PropTypes.object,
+  openCredit: PropTypes.func.isRequired,
+  pickedBall: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  ).isRequired,
 };
 
 export default PokePouch;

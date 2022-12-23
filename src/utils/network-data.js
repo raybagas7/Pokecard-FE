@@ -147,6 +147,28 @@ const addFirstTimeCredit = async () => {
   };
 };
 
+const addFirstTimeCreditWithRefresh = async () => {
+  const result = await addFirstTimeCredit().then(({ error, data, message }) => {
+    if (message === 'Token maximum age exceeded') {
+      const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+        putAccessToken(data.accessToken);
+        const result = await addFirstTimeCredit().then(
+          ({ error, data, message }) => {
+            // console.log('refres shuffle', error, data, message);
+            return { error, data, message };
+          }
+        );
+        return result;
+      });
+
+      return afterRefresh;
+    }
+    return { error, data, message };
+  });
+  // console.log('hasil shuffle', result);
+  return result;
+};
+
 const getCreditUser = async () => {
   const response = await fetchWithToken(`${BASE_URL}/credits`);
 
@@ -161,6 +183,28 @@ const getCreditUser = async () => {
     data: responseJson.data.credit,
     message: responseJson.message,
   };
+};
+
+const getCreditUserWithRefresh = async () => {
+  const result = await getCreditUser().then(({ error, data, message }) => {
+    if (message === 'Token maximum age exceeded') {
+      const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+        putAccessToken(data.accessToken);
+        const result = await getCreditUser().then(
+          ({ error, data, message }) => {
+            // console.log('refres shuffle', error, data, message);
+            return { error, data, message };
+          }
+        );
+        return result;
+      });
+
+      return afterRefresh;
+    }
+    return { error, data, message };
+  });
+  // console.log('hasil shuffle', result);
+  return result;
 };
 
 const shuffleWithCoin = async () => {
@@ -182,7 +226,33 @@ const shuffleWithCoin = async () => {
     return { error: true, data: null, message: responseJson.message };
   }
 
-  return { error: false, data: responseJson.data.coinAmount.coin };
+  return {
+    error: false,
+    data: responseJson.data.coinAmount.coin,
+    message: responseJson.message,
+  };
+};
+
+const shuffleWithCoinRefresh = async () => {
+  const result = await shuffleWithCoin().then(({ error, data, message }) => {
+    if (message === 'Token maximum age exceeded') {
+      const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+        putAccessToken(data.accessToken);
+        const result = await shuffleWithCoin().then(
+          ({ error, data, message }) => {
+            // console.log('refres shuffle', error, data, message);
+            return { error, data, message };
+          }
+        );
+        return result;
+      });
+
+      return afterRefresh;
+    }
+    return { error, data, message };
+  });
+  // console.log('hasil shuffle', result);
+  return result;
 };
 
 const pickPokeCards = async (pickPayload) => {
@@ -200,12 +270,36 @@ const pickPokeCards = async (pickPayload) => {
   if (responseJson.status !== 'success') {
     return { error: true, data: null, message: responseJson.message };
   }
-
+  // console.log('pertama', responseJson.data, responseJson.message);
   return {
     error: false,
     data: responseJson.data,
     message: responseJson.message,
   };
+};
+
+const pickPokeCardsWithRefresh = async (pickPayload) => {
+  const result = await pickPokeCards(pickPayload).then(
+    ({ error, data, message }) => {
+      if (message === 'Token maximum age exceeded') {
+        const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+          putAccessToken(data.accessToken);
+          const result = await pickPokeCards(pickPayload).then(
+            ({ error, data, message }) => {
+              // console.log('refres', error, data, message);
+              return { error, data, message };
+            }
+          );
+          return result;
+        });
+
+        return afterRefresh;
+      }
+      return { error, data, message };
+    }
+  );
+  // console.log('hasil', result);
+  return result;
 };
 
 const reduceBalls = async (ballsData) => {
@@ -251,6 +345,31 @@ const getOwnerCards = async () => {
   };
 };
 
+const getOwnerCardsRefresh = async (pickPayload) => {
+  const result = await getOwnerCards(pickPayload).then(
+    ({ error, data, message }) => {
+      if (message === 'Token maximum age exceeded') {
+        // console.log('refres ownedcard');
+        const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+          putAccessToken(data.accessToken);
+          const result = await getOwnerCards(pickPayload).then(
+            ({ error, data, message }) => {
+              // console.log('refres ownedcard', error, data, message);
+              return { error, data, message };
+            }
+          );
+          return result;
+        });
+
+        return afterRefresh;
+      }
+      return { error, data, message };
+    }
+  );
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
 const verifyAccount = async (targetEmail) => {
   console.log('email', targetEmail);
   const response = await fetchWithToken(`${BASE_URL}/export/email/verify`, {
@@ -287,10 +406,15 @@ export {
   refreshAccessToken,
   getUserLogged,
   addFirstTimeCredit,
+  addFirstTimeCreditWithRefresh,
   getCreditUser,
+  getCreditUserWithRefresh,
   shuffleWithCoin,
+  shuffleWithCoinRefresh,
   pickPokeCards,
   reduceBalls,
   getOwnerCards,
+  getOwnerCardsRefresh,
   verifyAccount,
+  pickPokeCardsWithRefresh,
 };

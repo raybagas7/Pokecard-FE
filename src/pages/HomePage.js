@@ -4,15 +4,13 @@ import CollectedCardsContainer from '../components/Pokemon Collected Card/Collec
 import MainContent from '../components/Pokemon Components/MainContent';
 import { getCard } from '../utils/card';
 import {
-  addFirstTimeCredit,
-  getCreditUser,
-  getOwnerCards,
-  pickPokeCards,
-  putAccessToken,
+  addFirstTimeCreditWithRefresh,
+  getCreditUserWithRefresh,
+  getOwnerCardsRefresh,
+  pickPokeCardsWithRefresh,
   putCreditId,
   // reduceBalls,
-  refreshAccessToken,
-  shuffleWithCoin,
+  shuffleWithCoinRefresh,
 } from '../utils/network-data';
 import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
 
@@ -31,21 +29,8 @@ const HomePage = () => {
   const [ownedCards, setOwnedCards] = React.useState([]);
 
   const openCreditBundle = async () => {
-    await addFirstTimeCredit().then(({ error, data, message }) => {
-      let cond = false;
-      message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
-      if (error && cond) {
-        refreshAccessToken().then(async ({ data }) => {
-          putAccessToken(data.accessToken);
-          await addFirstTimeCredit().then(({ data }) => {
-            setCreditId(data);
-          });
-        });
-      } else {
-        setCreditId(data);
-      }
-
-      // console.log(data);
+    await addFirstTimeCreditWithRefresh().then(({ error, data, message }) => {
+      setCreditId(data);
     });
   };
 
@@ -56,85 +41,31 @@ const HomePage = () => {
   };
 
   const pickCards = async (pickPayload) => {
-    await pickPokeCards(pickPayload).then(({ error, data, message }) => {
-      let cond = false;
-      message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
-      if (error && cond) {
-        refreshAccessToken().then(async ({ data }) => {
-          putAccessToken(data.accessToken);
-          await pickPokeCards(pickPayload).then(({ error, data, message }) => {
-            // console.log('inipickload', data);
-            // console.log('inipickloaderrorRefresh', error, message);
-            setPokeBall(data.balls.poke_ball);
-            setUltraBall(data.balls.ultra_ball);
-            setMasterBall(data.balls.master_ball);
-            setCreditAvailability({
-              credit_id: creditAvailability.credit_id,
-              poke_ball: data.balls.poke_ball,
-              ultra_ball: data.balls.ultra_ball,
-              master_ball: data.balls.master_ball,
-              coin: creditAvailability.coin,
-            });
+    try {
+      await pickPokeCardsWithRefresh(pickPayload).then(
+        ({ error = false, data = {}, message = '' }) => {
+          // console.log('home pickcard', error, data, message);
+          setPokeBall(data.balls.poke_ball);
+          setUltraBall(data.balls.ultra_ball);
+          setMasterBall(data.balls.master_ball);
+          setCreditAvailability({
+            credit_id: creditAvailability.credit_id,
+            poke_ball: data.balls.poke_ball,
+            ultra_ball: data.balls.ultra_ball,
+            master_ball: data.balls.master_ball,
+            coin: creditAvailability.coin,
           });
-        });
-      } else {
-        // console.log('inipickload', data);
-        // console.log('inipickloaderror', error, message);
-        setPokeBall(data.balls.poke_ball);
-        setUltraBall(data.balls.ultra_ball);
-        setMasterBall(data.balls.master_ball);
-        setCreditAvailability({
-          credit_id: creditAvailability.credit_id,
-          poke_ball: data.balls.poke_ball,
-          ultra_ball: data.balls.ultra_ball,
-          master_ball: data.balls.master_ball,
-          coin: creditAvailability.coin,
-        });
-      }
-    });
+        }
+      );
+    } catch (e) {
+      console.log(e);
+    }
   };
 
-  // const reducePokeBalls = async (ballsAmount) => {
-  //   await reduceBalls(ballsAmount).then(({ error, data, message }) => {
-  //     let cond = false;
-  //     message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
-
-  //     if (error && cond) {
-  //       refreshAccessToken().then(({ data }) => {
-  //         putAccessToken(data.accessToken);
-  //         reduceBalls(ballsAmount).then(({ data }) => {
-  //           setPokeBall(data.pokeBall[0].poke_ball);
-  //           setUltraBall(data.pokeBall[0].ultra_ball);
-  //           setMasterBall(data.pokeBall[0].master_ball);
-  //         });
-  //       });
-  //     } else {
-  //       setPokeBall(data.pokeBall[0].poke_ball);
-  //       setUltraBall(data.pokeBall[0].ultra_ball);
-  //       setMasterBall(data.pokeBall[0].master_ball);
-  //     }
-  //   });
-  // };
-
   const shuffleCard = async () => {
-    await shuffleWithCoin().then(({ error, data, message }) => {
-      let cond = false;
-      message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
-      if (error && cond) {
-        refreshAccessToken().then(async ({ data }) => {
-          putAccessToken(data.accessToken);
-          await shuffleWithCoin().then(({ data }) => {
-            setCoins(data);
-            setCreditAvailability({
-              credit_id: creditAvailability.credit_id,
-              poke_ball: creditAvailability.poke_ball,
-              ultra_ball: creditAvailability.ultra_ball,
-              master_ball: creditAvailability.master_ball,
-              coin: data,
-            });
-          });
-        });
-      } else {
+    await shuffleWithCoinRefresh().then(({ error, data, message }) => {
+      // console.log('home shuffle', error, data, message);
+      try {
         setCoins(data);
         setCreditAvailability({
           credit_id: creditAvailability.credit_id,
@@ -143,55 +74,20 @@ const HomePage = () => {
           master_ball: creditAvailability.master_ball,
           coin: data,
         });
+      } catch (e) {
+        console.log(e);
       }
     });
   };
 
   // Owned Cards
-  React.useEffect(() => {
-    getOwnerCards().then(({ error, data, message }) => {
-      let cond = false;
-      message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
-      if (error && cond) {
-        refreshAccessToken().then(({ data }) => {
-          putAccessToken(data.accessToken);
-          getOwnerCards().then(({ data }) => {
-            setOwnedCards(data);
-            setInitializing(false);
-            console.log('after refresh get ownerdcards, ', data);
-            // console.log(data);
-          });
-        });
-      } else {
-        setOwnedCards(data);
-        setInitializing(false);
-        console.log('get ownerdcards', data);
-      }
-    });
-  }, [pokeBall, ultraBall, masterBall]);
 
   React.useEffect(() => {
     setSocmedBlack(getSocmedBlack());
     setSocmedWhite(getSocmedWhite());
     setCards(getCard());
-    getCreditUser().then(({ error, data, message }) => {
-      let cond = false;
-      message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
-      if (error && cond) {
-        refreshAccessToken().then(({ data }) => {
-          putAccessToken(data.accessToken);
-          getCreditUser().then(({ data }) => {
-            setCreditAvailability(data);
-            putCreditId(data.credit_id);
-            setCoins(data.coin);
-            setPokeBall(data.poke_ball);
-            setUltraBall(data.ultra_ball);
-            setMasterBall(data.master_ball);
-            setInitializing2(false);
-            console.log('setCreditAvailability Refreshed Token', data);
-          });
-        });
-      } else {
+    getCreditUserWithRefresh().then(({ error, data, message }) => {
+      try {
         setCreditAvailability(data);
         putCreditId(data.credit_id);
         setCoins(data.coin);
@@ -200,14 +96,29 @@ const HomePage = () => {
         setMasterBall(data.master_ball);
         setInitializing2(false);
         console.log('setCreditAvailability', data);
+      } catch (e) {
+        console.log(e);
       }
     });
   }, [creditId]);
 
+  React.useEffect(() => {
+    getOwnerCardsRefresh().then(({ error, data, message }) => {
+      // console.log('home ownedcard', error, data, message);
+      try {
+        setOwnedCards(data);
+        setInitializing(false);
+        console.log('get ownerdcards', data);
+      } catch (e) {
+        console.log(e);
+      }
+    });
+  }, [pokeBall, ultraBall, masterBall]);
+
   if (initializing && initializing2) {
     return null;
   }
-
+  // console.log('CA', creditAvailability);
   return (
     <>
       <JumboTron blackmed={socmedBlack} whitemed={socmedWhite} />
