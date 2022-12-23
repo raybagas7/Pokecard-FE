@@ -657,7 +657,7 @@ nav li:hover a {
 
 .second-box:hover {
   position: absolute;
-  height: 50%;
+  height: 70%;
   animation-name: expand_info;
   animation-duration: 1s;
 }
@@ -667,7 +667,7 @@ nav li:hover a {
     height: 27%;
   }
   100% {
-    height: 50%;
+    height: 70%;
   }
 }
 
@@ -1626,6 +1626,157 @@ nav li:hover a {
   }
 }
 
+@media screen and (max-width: 724px) {
+  .main-content {
+    padding: 10px;
+  }
+  .container-content__first {
+    justify-content: center;
+    /* Properti */
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    background-color: #ffd400;
+    /*card*/
+    box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+  }
+
+  .box > p {
+    font-size: 0.7em;
+  }
+
+  .box h4 {
+    font-size: 0.7em;
+    font-weight: 100;
+  }
+  .box-1_stats {
+    height: auto;
+  }
+  .box-2_stats {
+    height: auto;
+  }
+
+  .stat-icon > p {
+    font-size: 0.6em;
+  }
+  .stat-value > p {
+    font-size: 0.6em;
+  }
+
+  .flex-row {
+    flex-grow: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 159px;
+    height: 220px;
+    margin: 2px;
+    /*border*/
+    border-radius: 15px;
+  }
+
+  .all-elemets {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pokemon-types {
+    display: inline-flex;
+  }
+
+  .spesific-element {
+    position: relative;
+  }
+
+  .spesific-element .tooltip-text {
+    visibility: hidden;
+    width: 50px;
+    border: 0.13rem solid white;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 3px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    margin-left: -12.5px;
+  }
+
+  .spesific-element .tooltip-text::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+  }
+
+  .spesific-element:hover .tooltip-text {
+    visibility: visible;
+  }
+
+  .tooltip-text,
+  .tooltip-content {
+    min-width: fit-content;
+    font-size: 0.6em;
+  }
+
+  .tooltip-text > p::first-letter {
+    text-transform: capitalize;
+  }
+
+  .spesific-element > img {
+    margin-left: 5px;
+    margin-top: 5px;
+    height: 25px;
+    width: 25px;
+  }
+
+  .card-content:hover {
+    box-shadow: 0 8px 16px 2px rgba(0, 0, 0, 0.2);
+
+    /*animation*/
+    position: relative;
+    animation-name: content-card-up;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes content-card-up {
+    0% {
+      opacity: 100%;
+      bottom: 0px;
+    }
+    100% {
+      opacity: 100%;
+      bottom: 3px;
+    }
+  }
+
+  .second-box:hover {
+    position: absolute;
+    height: 100%;
+    animation-name: expand_info;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes expand_info {
+    0% {
+      height: 27%;
+    }
+    100% {
+      border-radius: 15px;
+      height: 100%;
+    }
+  }
+}
+
 @media screen and (max-width: 554px) {
   .main-content {
     padding: 10px;
@@ -1728,61 +1879,6 @@ nav li:hover a {
 
   .tooltip-text > p::first-letter {
     text-transform: capitalize;
-  }
-
-  .tooltip-bug {
-    background-color: #84c400;
-  }
-  .tooltip-dark {
-    background-color: #5b5366;
-  }
-  .tooltip-dragon {
-    background-color: #0070ca;
-  }
-  .tooltip-electric {
-    background-color: #fbd200;
-  }
-  .tooltip-fairy {
-    background-color: #fb8aec;
-  }
-  .tooltip-fighting {
-    background-color: #e12c6a;
-  }
-  .tooltip-fire {
-    background-color: #ff983f;
-  }
-  .tooltip-flying {
-    background-color: #8aace4;
-  }
-  .tooltip-ghost {
-    background-color: #4b6ab3;
-  }
-  .tooltip-grass {
-    background-color: #35c04a;
-  }
-  .tooltip-ground {
-    background-color: #e97333;
-  }
-  .tooltip-ice {
-    background-color: #4bd2c1;
-  }
-  .tooltip-normal {
-    background-color: #929ba3;
-  }
-  .tooltip-poison {
-    background-color: #b667cf;
-  }
-  .tooltip-psychic {
-    background-color: #fe8792;
-  }
-  .tooltip-rock {
-    background-color: #c9b787;
-  }
-  .tooltip-steel {
-    background-color: #598fa3;
-  }
-  .tooltip-water {
-    background-color: #3393dd;
   }
 
   .spesific-element > img {

@@ -48,7 +48,10 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
       <div className="account-option">
         <div className="icon-dropdown">
           <div className="icon-image">
-            <img src="./images/pokemon_elements/normal.png" alt="snoop" />
+            <img
+              src="./images/pokemon_elements/normal.png"
+              alt="profile pictures"
+            />
             <div className="dropdown-content">
               <Link
                 to={'/profile'}

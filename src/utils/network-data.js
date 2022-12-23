@@ -137,10 +137,14 @@ const addFirstTimeCredit = async () => {
 
   if (responseJson.status !== 'success') {
     alert(responseJson.message);
-    return { error: true, data: null };
+    return { error: true, data: null, message: response.json.message };
   }
 
-  return { error: false, data: responseJson.data.creditId };
+  return {
+    error: false,
+    data: responseJson.data.creditId,
+    message: response.json.message,
+  };
 };
 
 const getCreditUser = async () => {

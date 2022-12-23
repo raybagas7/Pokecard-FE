@@ -66,7 +66,7 @@ const MainContent = ({
       // attribute: choosenArray.indexOf(pool.id) === -1 ? pool.id : undefined,
     );
 
-    // console.log(newPool);
+    console.log(newPool);
     setPokemonId(newPool);
   };
 
@@ -93,6 +93,7 @@ const MainContent = ({
   };
 
   function* shuffleMoveGenerator(array) {
+    // console.log('aneh', array);
     var i = array.length;
 
     while (i--) {
@@ -102,19 +103,56 @@ const MainContent = ({
 
   const getMovesLength = (moves) => {
     // const totalMoves = moves.length;
-    const shuffleMoves = shuffleMoveGenerator(moves);
-    const tempMoves = [];
+    if (moves.length > 0) {
+      const shuffleMoves = shuffleMoveGenerator(moves);
+      // console.log('ehe', shuffleMoves);
+      const tempMoves = [];
 
-    for (let i = 0; i < 2; i++) {
-      tempMoves.push(shuffleMoves.next().value);
+      for (let i = 0; i < 2; i++) {
+        tempMoves.push(shuffleMoves.next().value);
+      }
+
+      const takenMoves = [];
+      for (let i = 0; i < 2; i++) {
+        takenMoves.push({
+          name: tempMoves[i].move.name,
+          url: tempMoves[i].move.url,
+        });
+      }
+
+      return takenMoves;
+    } else {
+      const dummy = [
+        {
+          move: {
+            name: 'stomp',
+            url: 'https://pokeapi.co/api/v2/move/23/',
+          },
+        },
+        {
+          move: {
+            name: 'double-kick',
+            url: 'https://pokeapi.co/api/v2/move/24/',
+          },
+        },
+      ];
+      const shuffleMoves = shuffleMoveGenerator(dummy);
+      const tempMoves = [];
+
+      for (let i = 0; i < 2; i++) {
+        tempMoves.push(shuffleMoves.next().value);
+      }
+
+      const takenMoves = [];
+      for (let i = 0; i < 2; i++) {
+        takenMoves.push({
+          name: tempMoves[i].move.name,
+          url: tempMoves[i].move.url,
+        });
+      }
+
+      return takenMoves;
     }
-
-    const takenMoves = [];
-    for (let i = 0; i < 2; i++) {
-      takenMoves.push(moves[i].move.name);
-    }
-
-    return takenMoves;
   };
 
   const shufflePokemon = async () => {
@@ -140,23 +178,24 @@ const MainContent = ({
             stats: response.data.stats,
             speciesUrl: response.data.species.url,
             moves: getMovesLength(response.data.moves),
+            animatedSpritesNormal:
+              response.data.sprites.versions['generation-v']['black-white']
+                .animated.front_default,
+            animatedSpritesShiny:
+              response.data.sprites.versions['generation-v']['black-white']
+                .animated.front_shiny,
             attribute: getRandom(),
             choose: false,
           });
         })
         .catch((err) => {
-          console.log('ini error axios ', err);
+          a.push({
+            id: `item ${nanoid(6)}`,
+            imageUrl: '',
+            attribute: undefined,
+          });
+          console.log('FREE, AND ERROR: ', err);
         });
-      // .catch((err) => {
-      //   if (err.response.status !== 200) {
-      //     throw new Error(
-      //       `API call failed with status code: ${err.response.status} after 3 retry attempts`
-      //     );
-      //   }
-      // });
-      // .catch((errors) => {
-      //   console.log('ini axio error', errors);
-      // });
     } while (temp < 6);
     return a;
   };

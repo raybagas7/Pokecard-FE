@@ -136,3 +136,15 @@
 .back-to__login a:hover {
   color: #ffd400;
 }
+
+@media screen and (max-width: 724px) {
+  .register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .register-input {
+    width: 70%;
+  }
+}

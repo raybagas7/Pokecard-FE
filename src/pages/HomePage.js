@@ -29,9 +29,22 @@ const HomePage = () => {
   const [ultraBall, setUltraBall] = React.useState(0);
   const [masterBall, setMasterBall] = React.useState(0);
   const [ownedCards, setOwnedCards] = React.useState([]);
+
   const openCreditBundle = async () => {
-    await addFirstTimeCredit().then(({ data }) => {
-      setCreditId(data);
+    await addFirstTimeCredit().then(({ error, data, message }) => {
+      let cond = false;
+      message === 'Token maximum age exceeded' ? (cond = true) : (cond = false);
+      if (error && cond) {
+        refreshAccessToken().then(async ({ data }) => {
+          putAccessToken(data.accessToken);
+          await addFirstTimeCredit().then(({ data }) => {
+            setCreditId(data);
+          });
+        });
+      } else {
+        setCreditId(data);
+      }
+
       // console.log(data);
     });
   };
@@ -49,8 +62,9 @@ const HomePage = () => {
       if (error && cond) {
         refreshAccessToken().then(async ({ data }) => {
           putAccessToken(data.accessToken);
-          await pickPokeCards(pickPayload).then(({ data }) => {
+          await pickPokeCards(pickPayload).then(({ error, data, message }) => {
             // console.log('inipickload', data);
+            // console.log('inipickloaderrorRefresh', error, message);
             setPokeBall(data.balls.poke_ball);
             setUltraBall(data.balls.ultra_ball);
             setMasterBall(data.balls.master_ball);
@@ -65,6 +79,7 @@ const HomePage = () => {
         });
       } else {
         // console.log('inipickload', data);
+        // console.log('inipickloaderror', error, message);
         setPokeBall(data.balls.poke_ball);
         setUltraBall(data.balls.ultra_ball);
         setMasterBall(data.balls.master_ball);

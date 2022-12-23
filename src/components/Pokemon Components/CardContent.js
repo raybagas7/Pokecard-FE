@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Axios from 'axios';
 import CardPokeball from './CardPokeball';
 import PokemonElement from './PokemonElement';
 import PokemonStats from './PokemonStats';
 import Swal from 'sweetalert2';
+import PokemonMoves from './PokemonMoves';
 
 const CardContent = ({
   id,
   name,
   spritesNormal,
   spritesShiny,
+  animatedSpritesNormal,
+  animatedSpritesShiny,
   types,
   pokeid,
-  speciesUrl = 'https://pokeapi.co/api/v2/pokemon-species/',
+  speciesUrl,
+  moves,
   stats,
   attribute,
   choosenPokeCards,
@@ -23,6 +27,9 @@ const CardContent = ({
 }) => {
   const [Choosed, setChoosed] = useState(false);
   const [isLegendary, setIsLegendary] = useState();
+  const [moveOne, setMoveOne] = useState();
+  const [moveTwo, setMoveTwo] = useState();
+
   // const [ballType, setBallType] = useState(0);
   let isShiny = false;
   attribute === 'normal' ? (isShiny = false) : (isShiny = true);
@@ -107,6 +114,40 @@ const CardContent = ({
     }
   }
 
+  useEffect(() => {
+    if (speciesUrl) {
+      Axios.get(`${speciesUrl}`).then((response) => {
+        setIsLegendary(response.data.is_legendary);
+      });
+    }
+    if (moves) {
+      Axios.get(`${moves[0].url}`).then((response) => {
+        // console.log('cc', response.data);
+        setMoveOne({
+          id: response.data.id,
+          name: moves[0].name,
+          accuracy: response.data.accuracy,
+          power: response.data.power,
+          pp: response.data.pp,
+          ailment: response.data.meta.ailment.name,
+          type: response.data.type.name,
+        });
+      });
+      Axios.get(`${moves[1].url}`).then((response) => {
+        // console.log(response);
+        setMoveTwo({
+          id: response.data.id,
+          name: moves[1].name,
+          accuracy: response.data.accuracy,
+          power: response.data.power,
+          pp: response.data.pp,
+          ailment: response.data.meta.ailment.name,
+          type: response.data.type.name,
+        });
+      });
+    }
+  }, [speciesUrl, moves]);
+
   const cardData = {
     id,
     poke_id: pokeid,
@@ -115,11 +156,10 @@ const CardContent = ({
     legendary: isLegendary,
     types: allType,
     stats: statsFilter,
+    move1: moveOne,
+    move2: moveTwo,
   };
-
-  Axios.get(`${speciesUrl}`).then((response) => {
-    setIsLegendary(response.data.is_legendary);
-  });
+  // console.log('aa', moves[1].url);
 
   const change = () => {
     const temp = !Choosed;
@@ -144,6 +184,12 @@ const CardContent = ({
   };
 
   const attributePokemon = () => {
+    // if (animatedSpritesNormal && animatedSpritesShiny) {
+    //   if (attribute === 'shiny') {
+    //     return animatedSpritesShiny;
+    //   }
+    //   return animatedSpritesNormal;
+    // }
     if (attribute === 'shiny') {
       return spritesShiny;
     }
@@ -151,7 +197,8 @@ const CardContent = ({
   };
 
   // const show = () => {
-  //   console.log('ini pokemon id di cc', isLegendary);
+  //   console.log('firstMoveDetail ', moveOne);
+  //   console.log('secondMoveDetail ', moveTwo);
   // };
   return !Choosed ? (
     pokemonType() === undefined ? (
@@ -198,6 +245,7 @@ const CardContent = ({
               />
             </div>
           </div>
+          <PokemonMoves move1={moveOne} move2={moveTwo} />
         </div>
         {/* <button onClick={show}>ini cards</button> */}
       </div>

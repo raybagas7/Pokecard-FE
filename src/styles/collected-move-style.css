@@ -1,0 +1,256 @@
+.moves-container_collected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #161b22;
+  padding: 5px;
+  gap: 5px;
+}
+
+.move-small-container_collected {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.move-identifier_collected {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 5px 5px 0px 0px;
+  padding: 3px;
+}
+
+.ailment-unknown_collected {
+  background-color: #404040;
+}
+
+.ailment-none_collected {
+  background-color: #a8a878;
+}
+
+.ailment-paralysis_collected {
+  background-color: #ffc90e;
+}
+
+.ailment-sleep_collected {
+  background-color: #7092be;
+}
+
+.ailment-freeze_collected {
+  background-color: #99d9ea;
+}
+
+.ailment-burn_collected {
+  background-color: #ed1c24;
+}
+
+.ailment-poison_collected {
+  background-color: #dd48fd;
+}
+.ailment-confusion_collected {
+  background-color: #d2e900;
+}
+.ailment-infatuation_collected {
+  background-color: #ff80ff;
+}
+.ailment-trap_collected {
+  background-color: #e0c068;
+}
+.ailment-nightmare_collected {
+  background-color: #333333;
+}
+.ailment-torment_collected {
+  background-color: #999999;
+}
+.ailment-disable_collected {
+  background-color: #d5f5e9;
+}
+.ailment-yawn_collected {
+  background-color: #c6c6a7;
+}
+.ailment-heal-block_collected {
+  background-color: #fa92b2;
+}
+.ailment-no-type-immunity_collected {
+  background-color: #a040a0;
+}
+.ailment-leech-seed_collected {
+  background-color: #a7db8d;
+}
+.ailment-embargo_collected {
+  background-color: #a29288;
+}
+.ailment-perish-song_collected {
+  background-color: #c6c6a7;
+}
+.ailment-ingrain_collected {
+  background-color: #80af69;
+}
+
+.move-id_collected {
+  font-size: 0.5em;
+}
+
+.move-ailment_collected {
+  font-size: 0.5em;
+}
+
+.move-ailment_collected::first-letter {
+  text-transform: capitalize;
+}
+
+.move-core_collected {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.55em;
+  background-color: white;
+  color: black;
+  width: 100%;
+  height: 30px;
+}
+.move-name_collected::first-letter {
+  text-transform: capitalize;
+}
+
+.move-detail_collected {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-radius: 0px 0px 5px 5px;
+  font-size: 0.5em;
+}
+
+.move-power_collected {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #e41f25;
+  border-bottom-left-radius: 5px;
+  padding: 2px;
+}
+
+.move-accuracy_collected {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: goldenrod;
+  padding: 2px;
+}
+
+.move-pp_collected {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: royalblue;
+  border-bottom-right-radius: 5px;
+  padding: 2px;
+}
+
+.move-element_collected {
+  position: static;
+  width: 15px;
+  height: fit-content;
+  border-radius: 50%;
+  margin-right: 3px;
+  margin-top: 3px;
+}
+
+.move-element_collected img {
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+/* @media screen and (max-width: 724px) {
+  .moves-container_collected {
+    margin-top: 5px;
+  }
+  .move-id_collected {
+    font-size: 0.5em;
+  }
+
+  .move-ailment_collected {
+    font-size: 0.5em;
+  }
+
+  .move-core_collected {
+    font-size: 0.6em;
+    height: 25px;
+  }
+
+  .move-detail_collected {
+    font-size: 0.5em;
+  }
+
+  .move-power_collected {
+    padding: 1px;
+  }
+
+  .move-accuracy_collected {
+    padding: 1px;
+  }
+
+  .move-pp_collected {
+    padding: 1px;
+  }
+} */
+
+@media screen and (max-width: 724px) {
+  .moves-container_collected {
+    margin-top: 0px;
+    padding: 0px 1px 0px 1px;
+    gap: 1px;
+  }
+
+  .move-small-container_collected {
+    width: 100%;
+  }
+
+  .move-identifier_collected {
+    padding: 2px;
+  }
+
+  .move-id_collected {
+    padding-left: 1px;
+    font-size: 0.4em;
+  }
+
+  .move-ailment_collected {
+    padding-right: 1px;
+    font-size: 0.4em;
+  }
+
+  .move-core_collected {
+    display: flex;
+    font-size: 0.4em;
+    width: 100%;
+    height: 18px;
+  }
+
+  .move-detail_collected {
+    font-size: 0.4em;
+  }
+
+  .move-element_collected {
+    position: static;
+    width: 11px;
+    height: fit-content;
+    border-radius: 50%;
+    margin-right: 2px;
+    margin-left: 2px;
+    margin-top: 3px;
+  }
+
+  .move-element_collected img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid white;
+    border-radius: 50%;
+  }
+}

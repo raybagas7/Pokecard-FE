@@ -265,3 +265,15 @@ body {
   animation-duration: 3s;
   animation-iteration-count: infinite;
 }
+
+@media screen and (max-width: 724px) {
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-input {
+    width: 70%;
+  }
+}

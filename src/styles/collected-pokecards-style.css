@@ -7,19 +7,21 @@
 }
 
 .all-cards__container {
+  /*flex*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.2em;
+  justify-content: center;
+  /*properties*/
   border: solid white;
   width: 90%;
   height: fit-content;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
   background-color: #ffd400;
   border-radius: 20px;
-  /* Properti */
   padding: 20px;
   margin: 0 auto;
-  flex-wrap: wrap;
-  /*card*/
+
   box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.2);
   transition: 0.3s;
 }
@@ -33,25 +35,62 @@
 .collections-title > h2 {
   text-align: center;
 }
-/* 
-.collected-card {
-  position: relative;
-  animation-duration: 0.5s;
-  animation-name: content-card-default;
-  margin: 10px;
-  background-color: white;
-  width: 13%;
-  height: 300px;
-  min-width: 180px;
-  border-radius: 15px;
+
+.stat-info_collection {
+  display: flex;
+  margin: 5px 5px 5px 5px;
 }
 
-.collected-card:hover {
-  cursor: pointer;
-  animation-name: content-card-up;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-} */
+.stat-icon_collection {
+  padding: 2px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  display: flex;
+  flex-basis: 60%;
+}
+.stat-icon_collection > p::first-letter {
+  text-transform: uppercase;
+}
+
+.stat-value_collection {
+  padding: 5px 5px 5px 5px;
+  text-align: left;
+  flex-basis: 30%;
+}
+
+.stat-value_collection > p {
+  font-size: 0.7em;
+}
+
+.stat-icon_collection > p {
+  font-size: 0.7em;
+}
+
+.hp-box_collection {
+  background-color: #48bf53;
+}
+
+.attack-box_collection {
+  background-color: #c80808;
+}
+
+.defense-box_collection {
+  background-color: #2f57d1;
+}
+
+.special-attack-box_collection {
+  background-color: #ffbf00;
+}
+
+.special-defense-box_collection {
+  background-color: #a8a9ad;
+}
+
+.speed-box_collection {
+  background-color: #03bb99;
+}
 
 .flex-row_collection {
   flex-grow: 50%;
@@ -292,7 +331,7 @@
   position: absolute;
   height: 90%;
   animation-name: collection-expand_info;
-  animation-duration: 1s;
+  animation-duration: 0.7s;
 }
 
 .box_collection > h4::first-letter {
@@ -433,10 +472,10 @@
 }
 
 .spesific-element_collection > img {
-  margin-top: 7px;
+  margin-top: 8px;
   margin-left: 3.5px;
   margin-right: 3.5px;
-  margin-bottom: 7px;
+  margin-bottom: 4px;
   height: 25px;
   width: 25px;
 }
@@ -472,29 +511,166 @@
   }
 }
 
-@media screen and (max-width: 1000px) {
-  /* .collected-card {
-    margin: 10px;
-    width: 13%;
-    min-width: 130px;
-    height: 240px;
-    border-radius: 15px;
-  } */
-}
-
-@media screen and (max-width: 554px) {
+@media screen and (max-width: 724px) {
   .collections-content {
     margin-top: 10px;
-    padding: 5px;
+    padding: 0px;
+    width: 100%;
   }
-  /* .collected-card {
-    margin: 3px;
-    width: 13%;
-    min-width: 110px;
-    height: 170px;
-    border-radius: 15px;
-  } */
+
+  .box_collection > p {
+    font-size: 0.5em;
+  }
+
+  .box_collection h4 {
+    font-size: 0.5em;
+    font-weight: 100;
+  }
+
+  .box-1_stats_collection {
+    height: auto;
+  }
+
+  .box-2_stats_collection {
+    height: auto;
+  }
+
+  .stat-icon_collection > p {
+    font-size: 0.43em;
+  }
+
+  .stat-value_collection > p {
+    font-size: 0.43em;
+  }
+
   .all-cards__container {
     padding: 5px;
+    width: 95%;
   }
+
+  .flex-row_collection {
+    flex-grow: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 90px;
+    height: 150px;
+    margin: 1px;
+    /*border*/
+    border-radius: 15px;
+  }
+  .attribute-normal_collection {
+    padding: 3px 0px 3px 0px;
+  }
+  .attribute-shiny_collection {
+    padding: 3px 0px 3px 0px;
+  }
+
+  .attribute-legendary_collection {
+    padding: 3px 0px 3px 0px;
+  }
+
+  .attribute-legendary-shine_collection {
+    padding: 3px 0px 3px 0px;
+  }
+
+  /*border*/
+  .all-elemets_collection {
+    display: flex;
+    justify-content: center;
+  }
+  .pokemon-types_collection {
+    display: inline-flex;
+  }
+  .spesific-element_collection {
+    position: relative;
+  }
+  .spesific-element_collection .tooltip-text_collection {
+    visibility: hidden;
+    width: 50px;
+    border: 0.13rem solid white;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 1px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    margin-left: -12.5px;
+  }
+
+  .spesific-element_collection .tooltip-text_collection::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+  }
+  .spesific-element_collection:hover .tooltip-text_collection {
+    visibility: visible;
+  }
+  /**/
+  .tooltip-text_collection,
+  .tooltip-content_collection {
+    min-width: fit-content;
+    font-size: 0.43em;
+  }
+
+  .spesific-element_collection > img {
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    height: 15px;
+    width: 15px;
+  }
+
+  .card-content_collection:hover {
+    box-shadow: 0 8px 16px 2px rgba(0, 0, 0, 0.2);
+
+    /*animation*/
+    position: relative;
+    animation-name: content-card-up;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes content-card-up {
+    0% {
+      opacity: 100%;
+      bottom: 0px;
+    }
+    100% {
+      opacity: 100%;
+      bottom: 3px;
+    }
+  }
+
+  .second-box_collection:hover {
+    position: absolute;
+    height: 100%;
+    animation-name: expand_info;
+    animation-duration: 0.7s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes expand_info {
+    0% {
+      height: 27%;
+    }
+    100% {
+      border-radius: 15px;
+      height: 100%;
+    }
+  }
+
+  .stat-info_collection {
+    display: flex;
+    margin: 1px 1px 1px 1px;
+  }
+
+  /* .tooltip-text > p::first-letter {
+    text-transform: capitalize;
+  } */
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import CollectedPokemonElement from './CollectedPokemonElement';
+import CollectedPokemonMoves from './CollectedPokemonMoves';
 import CollectedPokemonStats from './CollectedPokemonStats';
 
 const CollectedCardContent = ({
@@ -9,6 +10,8 @@ const CollectedCardContent = ({
   types,
   legendary,
   stats,
+  move1,
+  move2,
 }) => {
   let isShiny = false;
 
@@ -78,6 +81,7 @@ const CollectedCardContent = ({
             />
           </div>
         </div>
+        <CollectedPokemonMoves move1={move1} move2={move2} />
       </div>
       {/* <button onClick={show}>ini stats</button> */}
     </div>

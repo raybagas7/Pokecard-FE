@@ -27,21 +27,29 @@ const CollectedPokemonStats = ({ pokemonStats, box }) => {
       {/* <button onClick={show}>ini stats</button> */}
       {box === 'left'
         ? leftStat.map((stat) => (
-            <div className="stat-info" key={Object.keys(stat)}>
-              <div className={`stat-icon ${Object.keys(stat)}-box`}>
+            <div className="stat-info_collection" key={Object.keys(stat)}>
+              <div
+                className={`stat-icon_collection ${Object.keys(
+                  stat
+                )}-box_collection`}
+              >
                 <p>{Object.keys(stat)}</p>
               </div>
-              <div className="stat-value">
+              <div className="stat-value_collection">
                 <p>{stat[Object.keys(stat)]}</p>
               </div>
             </div>
           ))
         : rightStat.map((stat) => (
-            <div className="stat-info" key={Object.keys(stat)}>
-              <div className={`stat-icon ${Object.keys(stat)}-box`}>
+            <div className="stat-info_collection" key={Object.keys(stat)}>
+              <div
+                className={`stat-icon_collection ${Object.keys(
+                  stat
+                )}-box_collection`}
+              >
                 <p>{spliceName(`'${Object.keys(stat)}'`)}</p>
               </div>
-              <div className="stat-value">
+              <div className="stat-value_collection">
                 <p>{stat[Object.keys(stat)]}</p>
               </div>
             </div>
