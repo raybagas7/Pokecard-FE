@@ -6,6 +6,7 @@ import PokemonElement from './PokemonElement';
 import PokemonStats from './PokemonStats';
 import Swal from 'sweetalert2';
 import PokemonMoves from './PokemonMoves';
+import PropTypes from 'prop-types';
 
 const CardContent = ({
   id,
@@ -253,6 +254,27 @@ const CardContent = ({
   ) : (
     <CardPokeball change={change} isShiny={isShiny} isLegendary={isLegendary} />
   );
+};
+
+CardContent.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  spritesNormal: PropTypes.string,
+  spritesShiny: PropTypes.string,
+  animatedSpritesNormal: PropTypes.string,
+  animatedSpritesShiny: PropTypes.string,
+  types: PropTypes.arrayOf(PropTypes.object),
+  pokeid: PropTypes.number,
+  speciesUrl: PropTypes.string,
+  moves: PropTypes.arrayOf(PropTypes.object),
+  stats: PropTypes.arrayOf(PropTypes.object),
+  attribute: PropTypes.string,
+  addOrRemoveCard: PropTypes.func,
+  ballRelated: PropTypes.func,
+  pickedBall: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ),
+  ownedBall: PropTypes.objectOf(PropTypes.number),
 };
 
 export default CardContent;

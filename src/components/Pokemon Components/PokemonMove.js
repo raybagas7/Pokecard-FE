@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PokemonMove = ({ move }) => {
   return (
@@ -20,6 +21,12 @@ const PokemonMove = ({ move }) => {
       </div>
     </div>
   );
+};
+
+PokemonMove.propTypes = {
+  move: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ),
 };
 
 export default PokemonMove;

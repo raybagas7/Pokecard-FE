@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PokemonStats = ({ pokemonStats, pokemonAttribute, box }) => {
   let allStat = [];
@@ -62,6 +63,12 @@ const PokemonStats = ({ pokemonStats, pokemonAttribute, box }) => {
           ))}
     </>
   );
+};
+
+PokemonStats.propTypes = {
+  pokemonStats: PropTypes.arrayOf(PropTypes.object),
+  pokemonAttribute: PropTypes.string,
+  box: PropTypes.string.isRequired,
 };
 
 export default PokemonStats;

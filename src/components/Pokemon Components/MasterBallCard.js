@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 const MasterBallCard = (props) => {
   return (
     <div className="flex-row card-content" onClick={props.change}>
@@ -21,6 +23,10 @@ const MasterBallCard = (props) => {
       </div>
     </div>
   );
+};
+
+MasterBallCard.propTypes = {
+  change: PropTypes.func.isRequired,
 };
 
 export default MasterBallCard;

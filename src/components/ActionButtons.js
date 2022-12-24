@@ -46,4 +46,21 @@ const ActionButtons = (props) => {
   );
 };
 
+ActionButtons.propTypes = {
+  insertPokemon: PropTypes.func.isRequired,
+  buttonDisable: PropTypes.bool.isRequired,
+  credit: PropTypes.object,
+  choosenPokemonCards: PropTypes.arrayOf(PropTypes.object.isRequired)
+    .isRequired,
+  choosenCardLength: PropTypes.number.isRequired,
+  pickCards: PropTypes.func.isRequired,
+  pickedBall: PropTypes.objectOf(
+    PropTypes.oneOfType([
+      PropTypes.number.isRequired,
+      PropTypes.string.isRequired,
+    ])
+  ).isRequired,
+  removePokemonPool: PropTypes.func.isRequired,
+  cleanAfterAction: PropTypes.func.isRequired,
+};
 export default ActionButtons;

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 const PokeBallCard = (props) => {
   return (
     <div className="flex-row card-content" onClick={props.change}>
@@ -18,6 +20,10 @@ const PokeBallCard = (props) => {
       </div>
     </div>
   );
+};
+
+PokeBallCard.propTypes = {
+  change: PropTypes.func.isRequired,
 };
 
 export default PokeBallCard;

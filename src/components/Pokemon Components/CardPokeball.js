@@ -2,6 +2,7 @@ import React from 'react';
 import MasterBallCard from './MasterBallCard';
 import PokeBallCard from './PokeBallCard';
 import UltraBallCard from './UltraBallCard';
+import PropTypes from 'prop-types';
 
 const CardPokeball = ({ change, isShiny, isLegendary }) => {
   return isLegendary === true ? (
@@ -28,6 +29,12 @@ const CardPokeball = ({ change, isShiny, isLegendary }) => {
       </div>
     </div>
   );
+};
+
+CardPokeball.propTypes = {
+  change: PropTypes.func.isRequired,
+  isShiny: PropTypes.bool.isRequired,
+  isLegendary: PropTypes.bool.isRequired,
 };
 
 export default CardPokeball;

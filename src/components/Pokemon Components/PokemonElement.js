@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PokemonElement = ({ types }) => {
   const allType = [];
@@ -32,6 +33,10 @@ const PokemonElement = ({ types }) => {
       </div>
     </div>
   );
+};
+
+PokemonElement.propTypes = {
+  types: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default PokemonElement;

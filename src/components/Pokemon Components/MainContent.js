@@ -259,9 +259,9 @@ const MainContent = ({
         choosenCardLength={choosenPokemonCards.length}
         pickCards={pickCards}
         pickedBall={pickedBall}
-        // reducePokeBalls={reducePokeBalls}
         removePokemonPool={removePickedPokemonFromPool}
         cleanAfterAction={cleanAfterAction}
+        // reducePokeBalls={reducePokeBalls}
       />
     </div>
   );
