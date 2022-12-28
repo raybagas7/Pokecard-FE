@@ -9,6 +9,7 @@ const CollectedCardContent = ({
   attribute,
   types,
   legendary,
+  mythical,
   stats,
   move1,
   move2,
@@ -39,11 +40,11 @@ const CollectedCardContent = ({
       return undefined;
     }
     let type = '';
-    legendary === true && isShiny === true
+    (legendary === true || mythical === true) && isShiny === true
       ? (type = 'legendary-shine')
-      : legendary === true && isShiny === false
+      : (legendary === true || mythical === true) && isShiny === false
       ? (type = 'legendary')
-      : (legendary === false && isShiny) === true
+      : ((legendary === false || mythical === false) && isShiny) === true
       ? (type = 'shiny')
       : (type = 'normal');
 

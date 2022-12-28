@@ -136,14 +136,13 @@ const addFirstTimeCredit = async () => {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
-    alert(responseJson.message);
-    return { error: true, data: null, message: response.json.message };
+    return { error: true, data: null, message: responseJson.message };
   }
 
   return {
     error: false,
     data: responseJson.data.creditId,
-    message: response.json.message,
+    message: responseJson.message,
   };
 };
 
@@ -370,6 +369,93 @@ const getOwnerCardsRefresh = async (pickPayload) => {
   return result;
 };
 
+const updateShuffledCard = async (payload) => {
+  const response = await fetchWithToken(`${BASE_URL}/shuffle/card`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const updateShuffledCardRefresh = async (payload) => {
+  const result = await updateShuffledCard(payload).then(
+    ({ error, data, message }) => {
+      if (message === 'Token maximum age exceeded') {
+        const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+          putAccessToken(data.accessToken);
+          const result = await updateShuffledCard(payload).then(
+            ({ error, data, message }) => {
+              return { error, data, message };
+            }
+          );
+          return result;
+        });
+
+        return afterRefresh;
+      }
+      return { error, data, message };
+    }
+  );
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
+const getShuffledCard = async () => {
+  const response = await fetchWithToken(`${BASE_URL}/shuffle/card`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const getShuffledCardRefresh = async () => {
+  const result = await getShuffledCard().then(({ error, data, message }) => {
+    if (message === 'Token maximum age exceeded') {
+      const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+        putAccessToken(data.accessToken);
+        const result = await getShuffledCard().then(
+          ({ error, data, message }) => {
+            return { error, data, message };
+          }
+        );
+        return result;
+      });
+
+      return afterRefresh;
+    }
+    return { error, data, message };
+  });
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
 const verifyAccount = async (targetEmail) => {
   console.log('email', targetEmail);
   const response = await fetchWithToken(`${BASE_URL}/export/email/verify`, {
@@ -415,6 +501,10 @@ export {
   reduceBalls,
   getOwnerCards,
   getOwnerCardsRefresh,
+  updateShuffledCard,
+  updateShuffledCardRefresh,
+  getShuffledCard,
+  getShuffledCardRefresh,
   verifyAccount,
   pickPokeCardsWithRefresh,
 };

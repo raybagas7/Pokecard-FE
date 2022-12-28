@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const CardContentUndefined = ({ id, imageUrl }) => {
   return (
-    <div className="flex-row card-content">
+    <div className="flex-row-card card-content">
       <div className={`box first-box-undefined`}>
         <img src={'./images/quetion-mark.png'} alt="images" />
       </div>

@@ -21,6 +21,7 @@
   border-radius: 20px;
   padding: 20px;
   margin: 0 auto;
+  margin-bottom: 20px;
 
   box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -97,7 +98,7 @@
   display: flex;
   flex-direction: column;
   width: 180px;
-  height: 250px;
+  height: 260px;
   margin: 5px;
   background-color: black;
   /*border*/
@@ -552,7 +553,7 @@
     flex-grow: 50%;
     display: flex;
     flex-direction: column;
-    width: 90px;
+    width: 110px;
     height: 150px;
     margin: 1px;
     /*border*/

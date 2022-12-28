@@ -10,7 +10,31 @@ body {
   font-family: 'Righteous', cursive;
   margin: 0;
   padding: 0;
-  position: relative;
+}
+
+.content-pokecards {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 nav li {
@@ -415,7 +439,7 @@ nav li:hover a {
   background-color: #ffd400;
 }
 
-.flex-row {
+.flex-row-card {
   flex-grow: 50%;
   display: flex;
   flex-direction: column;
@@ -547,11 +571,7 @@ nav li:hover a {
   padding-bottom: 5px;
   border-radius: 15px 15px 0px 0px;
   background: rgb(131, 80, 195);
-  background: radial-gradient(
-    circle,
-    rgba(131, 80, 195, 1) 0%,
-    rgba(64, 38, 125, 1) 100%
-  );
+  background: radial-gradient(circle, #8350c3 0%, #40267d 100%);
   color: white;
   text-indent: 1em;
 }
@@ -644,7 +664,7 @@ nav li:hover a {
 }
 
 .second-box {
-  height: 27%;
+  height: 30%;
   width: 100%;
   bottom: 0;
   position: static;
@@ -657,17 +677,17 @@ nav li:hover a {
 
 .second-box:hover {
   position: absolute;
-  height: 70%;
+  height: 72%;
   animation-name: expand_info;
   animation-duration: 1s;
 }
 
 @keyframes expand_info {
   0% {
-    height: 27%;
+    height: 30%;
   }
   100% {
-    height: 70%;
+    height: 72%;
   }
 }
 
@@ -1546,7 +1566,6 @@ nav li:hover a {
 }
 
 .footer {
-  margin-top: 30px;
   box-shadow: 0px -3px 2px -1px rgba(0, 0, 0, 0.13);
   -webkit-box-shadow: 0px -3px 2px -1px rgba(0, 0, 0, 0.13);
   -moz-box-shadow: 0px -3px 2px -1px rgba(0, 0, 0, 0.13);
@@ -1585,7 +1604,7 @@ nav li:hover a {
     font-weight: 100;
   }
 
-  .flex-row {
+  .flex-row-card {
     flex-grow: 50%;
     display: flex;
     flex-direction: column;
@@ -1667,7 +1686,7 @@ nav li:hover a {
     font-size: 0.6em;
   }
 
-  .flex-row {
+  .flex-row-card {
     flex-grow: 50%;
     display: flex;
     flex-direction: column;
@@ -1786,7 +1805,6 @@ nav li:hover a {
     /* Properti */
     width: fit-content;
     height: fit-content;
-    padding: 20px;
     border-radius: 10px;
     margin: 0 auto;
     flex-wrap: wrap;
@@ -1818,12 +1836,12 @@ nav li:hover a {
     font-size: 0.43em;
   }
 
-  .flex-row {
+  .flex-row-card {
     flex-grow: 50%;
     display: flex;
     flex-direction: column;
-    width: 110px;
-    height: 170px;
+    width: 120px;
+    height: 180px;
     margin: 2px;
     /*border*/
     border-radius: 15px;
@@ -2012,7 +2030,7 @@ nav li:hover a {
   }
 
   .poke-pouch p {
-    font-size: 0.5em;
+    font-size: 0.7em;
   }
 
   .poke-balls {

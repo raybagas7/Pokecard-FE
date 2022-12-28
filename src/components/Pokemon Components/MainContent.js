@@ -1,15 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-// import Axios from 'axios';
 import ContainerContent from './ContainerContent';
 import PokePouch from './PokePouch';
 import ActionButtons from '../ActionButtons';
-import { getCreditId } from '../../utils/network-data';
+import {
+  getCreditId,
+  getShuffledCardRefresh,
+  updateShuffledCardRefresh,
+} from '../../utils/network-data';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-// import axiosRetry from 'axios-retry';
 
 const MainContent = ({
   cards,
@@ -19,7 +21,6 @@ const MainContent = ({
   pickCards,
   ownedBall,
   coins,
-  // reducePokeBalls,
 }) => {
   const [pokemonId, setPokemonId] = useState();
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
@@ -45,34 +46,37 @@ const MainContent = ({
     }
   };
 
-  const removePickedPokemonFromPool = () => {
-    // let choosenArray = [];
+  const removePickedPokemonFromPool = async () => {
     const choosenArray = choosenPokemonCards.map((pokemonId) => {
       return pokemonId.id;
     });
-
-    // const newPool = pokemonId.filter(
-    //   (pool) => choosenArray.indexOf(pool.id) === -1
-    // );
-
-    const newPool = pokemonId.map(
-      (pool) =>
-        choosenArray.indexOf(pool.id) === -1
-          ? pool
-          : {
-              id: `item ${nanoid(6)}`,
-              attribute: undefined,
-              imageUrl: '',
-            }
-      // attribute: choosenArray.indexOf(pool.id) === -1 ? pool.id : undefined,
+    const newPool = pokemonId.map((pool) =>
+      choosenArray.indexOf(pool.id) === -1
+        ? pool
+        : {
+            id: `${nanoid(16)}`,
+            pokeid: null,
+            name: null,
+            spritesNormal: null,
+            spritesShiny: null,
+            types: null,
+            stats: null,
+            speciesUrl: null,
+            moves: null,
+            animatedSpritesNormal: null,
+            animatedSpritesShiny: null,
+            attribute: null,
+            choose: null,
+          }
     );
 
     console.log(newPool);
+    await saveShuffledPokemon({ cardsData: newPool });
     setPokemonId(newPool);
   };
 
-  const ballRelated = (isLegendary, isShiny, changeBall) => {
-    isLegendary === true
+  const ballRelated = (isLegendary, isMythical, isShiny, changeBall) => {
+    isLegendary === true || isMythical === true
       ? setNeededMasterBall(neededMasterBall + changeBall)
       : isShiny === true
       ? setNeededUltraBall(neededUltraBall + changeBall)
@@ -103,10 +107,8 @@ const MainContent = ({
   }
 
   const getMovesLength = (moves) => {
-    // const totalMoves = moves.length;
     if (moves.length > 0) {
       const shuffleMoves = shuffleMoveGenerator(moves);
-      // console.log('ehe', shuffleMoves);
       const tempMoves = [];
 
       for (let i = 0; i < 2; i++) {
@@ -162,13 +164,11 @@ const MainContent = ({
     a.splice(0);
     do {
       temp++;
-      // retryWrapper(axios, { retry_time: 3 });
       const idCard = nanoid(16);
       const randomId = Math.floor(1 + Math.random() * 905);
       axios
         .get(`https://pokeapi.co/api/v2/pokemon/${randomId}/`)
         .then((response) => {
-          // console.log(response);
           a.push({
             id: idCard,
             pokeid: response.data.id,
@@ -201,6 +201,18 @@ const MainContent = ({
     return a;
   };
 
+  const saveShuffledPokemon = async (payload) => {
+    try {
+      await updateShuffledCardRefresh(payload).then(
+        ({ error, data, message }) => {
+          console.log(data);
+        }
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const insertPokemon = async () => {
     if (coins < 100) {
       Swal.fire({
@@ -217,12 +229,20 @@ const MainContent = ({
         setisButtonDisabled(false);
       }, 3200);
       const result = await shufflePokemon();
-      setTimeout(() => {
-        shuffleCard();
+      setTimeout(async () => {
+        await shuffleCard();
+        await saveShuffledPokemon({ cardsData: result });
         setPokemonId(result);
       }, 1500);
     }
   };
+
+  React.useEffect(() => {
+    getShuffledCardRefresh().then(({ error, data, message }) => {
+      // console.log('dataku', data.cards);
+      setPokemonId(data.cards);
+    });
+  }, []);
 
   const show = () => {
     console.log(
@@ -232,7 +252,6 @@ const MainContent = ({
     console.log('ini pokemon yang shuffle pokemonId : ', pokemonId);
     console.log('picked ', pickedBall);
     console.log('owned ', ownedBall);
-    // console.log('pokemon pilih jadi array', removePickedPokemonFromPool());
   };
 
   return (
@@ -261,7 +280,6 @@ const MainContent = ({
         pickedBall={pickedBall}
         removePokemonPool={removePickedPokemonFromPool}
         cleanAfterAction={cleanAfterAction}
-        // reducePokeBalls={reducePokeBalls}
       />
     </div>
   );

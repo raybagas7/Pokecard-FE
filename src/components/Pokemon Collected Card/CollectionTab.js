@@ -7,6 +7,8 @@ const CollectionTab = ({ activePage, indexPage, jumpActivePage }) => {
   const change = () => {
     jumpActivePage(indexPage);
   };
+
+  // console.log('me', indexPage);
   return (
     <>
       <button

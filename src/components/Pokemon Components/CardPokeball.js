@@ -4,15 +4,15 @@ import PokeBallCard from './PokeBallCard';
 import UltraBallCard from './UltraBallCard';
 import PropTypes from 'prop-types';
 
-const CardPokeball = ({ change, isShiny, isLegendary }) => {
-  return isLegendary === true ? (
+const CardPokeball = ({ change, isShiny, isLegendary, isMythical }) => {
+  return isLegendary === true || isMythical === true ? (
     <MasterBallCard change={change} />
-  ) : isShiny === true && isLegendary === false ? (
+  ) : isShiny === true && (isLegendary === false || isMythical === false) ? (
     <UltraBallCard change={change} />
-  ) : isShiny === false && isLegendary === false ? (
+  ) : isShiny === false && (isLegendary === false || isMythical === false) ? (
     <PokeBallCard change={change} />
   ) : (
-    <div className="flex-row card-content" onClick={change}>
+    <div className="flex-row-card card-content" onClick={change}>
       <div className="choose-upper">
         <div className="poke-choose_upper">
           <div className="line-upper"></div>
@@ -35,6 +35,7 @@ CardPokeball.propTypes = {
   change: PropTypes.func.isRequired,
   isShiny: PropTypes.bool.isRequired,
   isLegendary: PropTypes.bool.isRequired,
+  isMythical: PropTypes.bool.isRequired,
 };
 
 export default CardPokeball;

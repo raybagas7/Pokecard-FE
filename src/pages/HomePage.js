@@ -29,9 +29,13 @@ const HomePage = () => {
   const [ownedCards, setOwnedCards] = React.useState([]);
 
   const openCreditBundle = async () => {
-    await addFirstTimeCreditWithRefresh().then(({ error, data, message }) => {
-      setCreditId(data);
-    });
+    try {
+      await addFirstTimeCreditWithRefresh().then(({ error, data, message }) => {
+        setCreditId(data);
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const ownedBall = {
@@ -63,9 +67,10 @@ const HomePage = () => {
   };
 
   const shuffleCard = async () => {
-    await shuffleWithCoinRefresh().then(({ error, data, message }) => {
-      // console.log('home shuffle', error, data, message);
-      try {
+    try {
+      await shuffleWithCoinRefresh().then(({ error, data, message }) => {
+        // console.log('home shuffle', error, data, message);
+
         setCoins(data);
         setCreditAvailability({
           credit_id: creditAvailability.credit_id,
@@ -74,10 +79,10 @@ const HomePage = () => {
           master_ball: creditAvailability.master_ball,
           coin: data,
         });
-      } catch (e) {
-        console.log(e);
-      }
-    });
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   // Owned Cards
@@ -116,11 +121,22 @@ const HomePage = () => {
   }, [pokeBall, ultraBall, masterBall]);
 
   if (initializing && initializing2) {
-    return null;
+    return (
+      <section className="flex items-center justify-center">
+        <div className="flex items-center justify-center">
+          <span className="relative inline-flex">
+            <span className="absolute top-0 right-0 -mt-16 -mr-14 flex h-32 w-32">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-400 opacity-75"></span>
+              <span className="relative inline-flex h-32 w-32 rounded-full bg-yellow-500"></span>
+            </span>
+          </span>
+        </div>
+      </section>
+    );
   }
   // console.log('CA', creditAvailability);
   return (
-    <>
+    <section>
       <JumboTron blackmed={socmedBlack} whitemed={socmedWhite} />
       <MainContent
         cards={cards}
@@ -133,7 +149,7 @@ const HomePage = () => {
         // reducePokeBalls={reducePokeBalls}
       />
       <CollectedCardsContainer ownedCards={ownedCards} />
-    </>
+    </section>
   );
 };
 

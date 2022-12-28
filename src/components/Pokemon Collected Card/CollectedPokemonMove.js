@@ -7,7 +7,11 @@ const CollectedPokemonMove = ({ move }) => {
         className={`move-identifier_collected ailment-${move.ailment}_collected`}
       >
         <p className="move-id_collected">#{move.id}</p>
-        <p className="move-ailment_collected">{move.ailment}</p>
+        <p
+          className={`move-ailment_collected ailment-text-${move.ailment}_collected`}
+        >
+          {move.ailment}
+        </p>
       </div>
       <div className={`move-core_collected move-type-${move.type}`}>
         <div className="move-element_collected">

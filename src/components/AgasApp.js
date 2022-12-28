@@ -94,12 +94,12 @@ const AgasApp = () => {
           putAccessToken(data.accessToken);
           getUserLogged().then(({ error, data }) => {
             setAuthedUser(data);
-            // console.log(data);
+            console.log('userdata', data);
             setInitializing(false);
           });
         });
       } else {
-        // console.log(data);
+        console.log('userdata', data);
         setAuthedUser(data);
         setInitializing(false);
       }
@@ -134,15 +134,20 @@ const AgasApp = () => {
             />
             <NavHeader />
           </header>
-          <main>
-            <Routes>
-              <Route path="/*" element={<NotFoundPage />} />
-              <Route path="/" element={<HomePage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/collections" element={<CollectionsPage />} />
-              <Route path="/trades" element={<TradesPage />} />
-            </Routes>
-          </main>
+          <article>
+            <main>
+              <Routes>
+                <Route path="/*" element={<NotFoundPage />} />
+                <Route path="/" element={<HomePage />} />
+                <Route
+                  path="/profile"
+                  element={<ProfilePage userData={authedUser} />}
+                />
+                <Route path="/collections" element={<CollectionsPage />} />
+                <Route path="/trades" element={<TradesPage />} />
+              </Routes>
+            </main>
+          </article>
           <footer className="footer">
             <Footer />
           </footer>

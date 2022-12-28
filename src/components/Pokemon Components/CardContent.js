@@ -28,9 +28,10 @@ const CardContent = ({
 }) => {
   const [Choosed, setChoosed] = useState(false);
   const [isLegendary, setIsLegendary] = useState();
+  const [isMythical, setIsMythical] = useState();
   const [moveOne, setMoveOne] = useState();
   const [moveTwo, setMoveTwo] = useState();
-
+  // console.log('myth', isMythical);
   // const [ballType, setBallType] = useState(0);
   let isShiny = false;
   attribute === 'normal' ? (isShiny = false) : (isShiny = true);
@@ -40,15 +41,21 @@ const CardContent = ({
   let ballName = '';
 
   if (ownedBall) {
-    if (isLegendary === true && isShiny === true) {
+    if ((isLegendary === true || isMythical === true) && isShiny === true) {
       ownedBallType = ownedBall.masterBall;
       pickedBallType = pickedBall.masterball_amount;
       ballName = 'MasterBall';
-    } else if (isLegendary === true && isShiny === false) {
+    } else if (
+      (isLegendary === true || isMythical === true) &&
+      isShiny === false
+    ) {
       ownedBallType = ownedBall.masterBall;
       pickedBallType = pickedBall.masterball_amount;
       ballName = 'MasterBall';
-    } else if (isLegendary === false && isShiny === true) {
+    } else if (
+      (isLegendary === false || isMythical === false) &&
+      isShiny === true
+    ) {
       ownedBallType = ownedBall.ultraBall;
       pickedBallType = pickedBall.ultraball_amount;
       ballName = 'UltraBall';
@@ -60,15 +67,15 @@ const CardContent = ({
   }
 
   const pokemonType = () => {
-    if (attribute === undefined) {
+    if (attribute === null || attribute === undefined) {
       return undefined;
     }
     let type = '';
-    isLegendary === true && isShiny === true
+    (isLegendary === true || isMythical === true) && isShiny === true
       ? (type = 'legendary-shine')
-      : isLegendary === true && isShiny === false
+      : (isLegendary === true || isMythical === true) && isShiny === false
       ? (type = 'legendary')
-      : (isLegendary === false && isShiny) === true
+      : ((isLegendary === false || isMythical === false) && isShiny) === true
       ? (type = 'shiny')
       : (type = 'normal');
 
@@ -119,6 +126,7 @@ const CardContent = ({
     if (speciesUrl) {
       Axios.get(`${speciesUrl}`).then((response) => {
         setIsLegendary(response.data.is_legendary);
+        setIsMythical(response.data.is_mythical);
       });
     }
     if (moves) {
@@ -155,6 +163,7 @@ const CardContent = ({
     name,
     attribute,
     legendary: isLegendary,
+    mythical: isMythical,
     types: allType,
     stats: statsFilter,
     move1: moveOne,
@@ -179,7 +188,7 @@ const CardContent = ({
       });
     } else {
       addOrRemoveCard(cardData, temp);
-      ballRelated(isLegendary, isShiny, changeBall);
+      ballRelated(isLegendary, isMythical, isShiny, changeBall);
       setChoosed(temp);
     }
   };
@@ -203,7 +212,7 @@ const CardContent = ({
   // };
   return !Choosed ? (
     pokemonType() === undefined ? (
-      <div className="flex-row card-content">
+      <div className="card-content flex-row-card">
         <div className={`box first-box-${pokemonType()}`}>
           <p className={`attribute-${pokemonType()}-id`}>{pokeid}</p>
           <img
@@ -217,7 +226,7 @@ const CardContent = ({
         {/* <button onClick={show}>ini cards</button> */}
       </div>
     ) : (
-      <div className="flex-row card-content">
+      <div className="card-content flex-row-card">
         <div className={`box first-box-${pokemonType()}`} onClick={change}>
           <p className={`attribute-${pokemonType()}-id`}>{pokeid}</p>
           <img
@@ -252,7 +261,12 @@ const CardContent = ({
       </div>
     )
   ) : (
-    <CardPokeball change={change} isShiny={isShiny} isLegendary={isLegendary} />
+    <CardPokeball
+      change={change}
+      isShiny={isShiny}
+      isLegendary={isLegendary}
+      isMythical={isMythical}
+    />
   );
 };
 
@@ -269,8 +283,8 @@ CardContent.propTypes = {
   moves: PropTypes.arrayOf(PropTypes.object),
   stats: PropTypes.arrayOf(PropTypes.object),
   attribute: PropTypes.string,
-  addOrRemoveCard: PropTypes.func,
-  ballRelated: PropTypes.func,
+  addOrRemoveCard: PropTypes.func.isRequired,
+  ballRelated: PropTypes.func.isRequired,
   pickedBall: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   ),

@@ -17,6 +17,7 @@
   display: flex;
   align-items: flex-start;
   flex-direction: row;
+
   justify-content: space-between;
   border-radius: 5px 5px 0px 0px;
   padding: 3px;
@@ -95,6 +96,13 @@
 
 .move-ailment_collected {
   font-size: 0.5em;
+}
+
+.ailment-text-no-type-immunity_collected {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50px;
 }
 
 .move-ailment_collected::first-letter {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const MasterBallCard = (props) => {
   return (
-    <div className="flex-row card-content" onClick={props.change}>
+    <div className="flex-row-card card-content" onClick={props.change}>
       <div className="choose-upper">
         <div className="poke-choose_upper-master">
           <div className="master-ball__left" />

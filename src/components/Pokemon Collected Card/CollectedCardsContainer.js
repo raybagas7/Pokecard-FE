@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../styles/collected-pokecards-style.css';
 import '../../styles/page-button-style.css';
 import { getCard } from '../../utils/card';
@@ -6,7 +6,10 @@ import CollectedCardContent from './CollectedCardContent';
 import CollectionPageButton from './CollectionPageButton';
 
 const CollectedCardsContainer = ({ ownedCards }) => {
-  const [activePage, setActivePage] = React.useState(0);
+  const [activePage, setActivePage] = useState(0);
+  // const [isBack, setIsBack] = useState(false);
+  // const [isNext, setIsNext] = useState(false);
+  // const [listen, setListen] = useState(false);
 
   const cards = getCard();
   const { cards: ownedCollections = [] } = ownedCards;
@@ -46,12 +49,34 @@ const CollectedCardsContainer = ({ ownedCards }) => {
 
   const jumpActivePage = (number) => {
     setActivePage(number);
+    // console.log(number);
   };
 
-  // const show = () => {
-  //   const { cards } = ownedCards;
-  //   console.log(cards);
+  // const detectKeydown = (e) => {
+  //   if (e) {
+  //     if (e.key === 'ArrowLeft') {
+  //       setIsNext(false);
+  //       setIsBack(true);
+  //     }
+  //     if (e.key === 'ArrowRight') {
+  //       setIsNext(true);
+  //       setIsBack(false);
+  //     }
+  //   }
   // };
+
+  // useEffect(() => {
+  //   document.addEventListener('keydown', detectKeydown, true);
+  // }, []);
+
+  // if (isBack && activePage !== 0) {
+  //   setIsBack(false);
+  //   previousActivePage();
+  // }
+  // if (isNext && activePage <= filteredByPageCollection.length - 2) {
+  //   setIsNext(false);
+  //   nextActivePage();
+  // }
 
   return ownedCards.length !== 0 ? (
     <div className="collections-content">

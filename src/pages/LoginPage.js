@@ -24,7 +24,7 @@ const LoginPage = ({ loginSuccess }) => {
     // console.log(data);
     if (!error) {
       loginSuccess(data);
-      Toast.fire({
+      Toast.fire({  
         icon: 'success',
         title: `Welcome ${username}`,
       });
