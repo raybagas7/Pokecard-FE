@@ -28,7 +28,7 @@ const ProfileUserData = ({ userData }) => {
     });
   };
   return (
-    <div className="relative flex flex-1 rounded-lg">
+    <div className="relative flex flex-1 rounded-lg ">
       <div className="relative flex flex-1 flex-col rounded-lg p-2.5  text-sm">
         <div className="flex flex-2">
           <img

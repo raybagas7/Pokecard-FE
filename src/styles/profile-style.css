@@ -5,6 +5,48 @@
 .profile-container {
   background-image: url('../../public/images/jumboront-black-gold.png');
 }
+
+.profile-attr-legendary-shine::after {
+  content: '	\002605 \002605 \002605';
+  right: 0;
+  margin-right: 15px;
+  position: absolute;
+  animation-name: star;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  filter: brightness(1.5);
+  filter: contrast(1.5);
+  -webkit-filter: brightness(1.5);
+  -webkit-filter: contrast(1.5);
+}
+
+.profile-attr-shiny::after {
+  content: '	\002666';
+  right: 0;
+  margin-right: 15px;
+  position: absolute;
+  animation-name: star;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  filter: brightness(1.5);
+  filter: contrast(1.5);
+  -webkit-filter: brightness(1.5);
+  -webkit-filter: contrast(1.5);
+}
+
+.profile-attr-legendary::after {
+  content: '	\002605';
+  right: 0;
+  margin-right: 15px;
+  position: absolute;
+  animation-name: star;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  filter: brightness(1.5);
+  filter: contrast(1.5);
+  -webkit-filter: brightness(1.5);
+  -webkit-filter: contrast(1.5);
+}
 /* .profile-container {
   position: relative;
   display: flex;

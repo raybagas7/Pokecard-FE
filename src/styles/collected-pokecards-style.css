@@ -2,8 +2,7 @@
 
 .collections-content {
   position: relative;
-  padding: 20px;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .all-cards__container {
@@ -15,7 +14,7 @@
   justify-content: center;
   /*properties*/
   border: solid white;
-  width: 90%;
+  width: 95%;
   height: fit-content;
   background-color: #ffd400;
   border-radius: 20px;
