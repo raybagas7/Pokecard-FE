@@ -456,6 +456,93 @@ const getShuffledCardRefresh = async () => {
   return result;
 };
 
+const updateCardToCase = async (payload) => {
+  const response = await fetchWithToken(`${BASE_URL}/showcases`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const updateCardToCaseRefresh = async (payload) => {
+  const result = await updateCardToCase(payload).then(
+    ({ error, data, message }) => {
+      if (message === 'Token maximum age exceeded') {
+        const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+          putAccessToken(data.accessToken);
+          const result = await updateCardToCase(payload).then(
+            ({ error, data, message }) => {
+              return { error, data, message };
+            }
+          );
+          return result;
+        });
+
+        return afterRefresh;
+      }
+      return { error, data, message };
+    }
+  );
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
+const getUserShowcases = async () => {
+  const response = await fetchWithToken(`${BASE_URL}/showcases`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const getUserShowcasesRefresh = async () => {
+  const result = await getUserShowcases().then(({ error, data, message }) => {
+    if (message === 'Token maximum age exceeded') {
+      const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+        putAccessToken(data.accessToken);
+        const result = await getUserShowcases().then(
+          ({ error, data, message }) => {
+            return { error, data, message };
+          }
+        );
+        return result;
+      });
+
+      return afterRefresh;
+    }
+    return { error, data, message };
+  });
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
 const verifyAccount = async (targetEmail) => {
   console.log('email', targetEmail);
   const response = await fetchWithToken(`${BASE_URL}/export/email/verify`, {
@@ -505,6 +592,9 @@ export {
   updateShuffledCardRefresh,
   getShuffledCard,
   getShuffledCardRefresh,
+  updateCardToCaseRefresh,
+  getUserShowcases,
+  getUserShowcasesRefresh,
   verifyAccount,
   pickPokeCardsWithRefresh,
 };

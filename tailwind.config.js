@@ -6,6 +6,9 @@ module.exports = {
       flex: {
         2: '2 2 0%',
       },
+      borderRadius: {
+        'poke-15': '15px',
+      },
       zIndex: {
         1: '1',
       },
@@ -17,6 +20,9 @@ module.exports = {
         'red-poke': '#e41f25',
         'purple-legend-light': '#8350c3',
         'purple-legend-dark': '#40267d',
+        'orange-poke': '#f58216',
+        'yellow-poke': '#ffff00',
+        'purple-poke': '#9d4edd',
       },
       blur: {
         xs: '2px',
@@ -65,10 +71,25 @@ module.exports = {
           '0%': { bottom: '0px' },
           '100%': { bottom: '5px' },
         },
+        fade_in: {
+          '0%': { opacity: '0%' },
+          '100%': { opacity: '100%' },
+        },
+        fade_in_slide_up: {
+          '0%': { opacity: '0%', transform: 'translateY(20px)' },
+          '100%': { opacity: '100%', transform: 'translateY(0px)' },
+        },
+        fade_in_slide_left: {
+          '0%': { opacity: '0%', transform: 'translateX(50px)' },
+          '100%': { opacity: '100%', transform: 'translateX(0px)' },
+        },
       },
       animation: {
         expand_info_showcase: 'expand_info_showcase 0.5s forwards',
         lift_card: 'lift_card 0.25s forwards',
+        fade_in_slide_up: 'fade_in_slide_up 1s forwards',
+        fade_in_slide_left: 'fade_in_slide_left 1.5s forwards',
+        fade_in: 'fade_in 1s forwards',
       },
     },
   },

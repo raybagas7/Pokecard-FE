@@ -92,15 +92,73 @@
   background-color: #03bb99;
 }
 
-.flex-row_collection {
+.show-card-container_collection {
   flex-grow: 50%;
   display: flex;
   flex-direction: column;
   width: 180px;
   height: 260px;
   margin: 5px;
-  background-color: black;
   /*border*/
+  border-radius: 15px;
+
+  position: relative;
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -o-perspective: 800px;
+  perspective: 800px;
+}
+
+.show-card_collection {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transition: -webkit-transform 0.7s;
+  -moz-transition: -moz-transform 0.7s;
+  -o-transition: -o-transform 0.7s;
+  transition: transform 0.7s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+.show-card_collection > div {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.back-card_collection {
+  cursor: pointer;
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-name: collection-card-up;
+  box-shadow: 0 8px 16px 2px rgba(0, 0, 0, 0.2);
+}
+
+.show-card_collection.flipped {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.flex-row_collection {
+  width: 100%;
+  height: 100%;
   border-radius: 15px;
 }
 
@@ -363,6 +421,7 @@
 .all-elemets_collection {
   display: flex;
   justify-content: center;
+  margin-bottom: 3px;
 }
 
 .pokemon-types_collection {
@@ -548,7 +607,7 @@
     width: 95%;
   }
 
-  .flex-row_collection {
+  .show-card-container_collection {
     flex-grow: 50%;
     display: flex;
     flex-direction: column;
@@ -557,7 +616,23 @@
     margin: 1px;
     /*border*/
     border-radius: 15px;
+
+    position: relative;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
   }
+
+  .back-card_collection {
+    width: 110px;
+    height: 150px;
+    margin: 1px;
+    animation-name: content-card-up;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+  }
+
   .attribute-normal_collection {
     padding: 3px 0px 3px 0px;
   }

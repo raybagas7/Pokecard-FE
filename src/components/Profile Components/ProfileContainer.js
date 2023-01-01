@@ -6,7 +6,10 @@ import PropTypes from 'prop-types';
 import ProfileTopDetailShowcase from './ProfileTopDetailShowcase';
 import ProfileBottomDetailShowcase from './ProfileBottomDetailShowcase';
 
-const ProfileContainer = ({ userData }) => {
+const ProfileContainer = ({ userData, userShowcases }) => {
+  const { showcases } = userShowcases;
+  const topShowcases = showcases.slice(0, 3);
+  const botShowcases = showcases.slice(3, 6);
   return (
     <div className="profile-container flex min-h-screen flex-1 text-white">
       <div className="relative m-10 mr-2 min-h-screen flex-1 flex-col items-center justify-center gap-1">
@@ -16,10 +19,10 @@ const ProfileContainer = ({ userData }) => {
               <ProfileUserData userData={userData} />
             </div>
             <div className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md">
-              <ProfileTopShowcases />
+              <ProfileTopShowcases showcases={topShowcases} />
             </div>
             <div className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md">
-              <ProfileTopShowcases />
+              <ProfileTopShowcases showcases={botShowcases} />
             </div>
           </div>
         </div>

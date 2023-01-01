@@ -1,9 +1,11 @@
 import React from 'react';
+import CollectedBackCard from './CollectedBackCard';
 import CollectedPokemonElement from './CollectedPokemonElement';
 import CollectedPokemonMoves from './CollectedPokemonMoves';
 import CollectedPokemonStats from './CollectedPokemonStats';
 
 const CollectedCardContent = ({
+  card_id,
   poke_id,
   name,
   attribute,
@@ -14,6 +16,7 @@ const CollectedCardContent = ({
   move1,
   move2,
 }) => {
+  const [isFlipped, setIsFlipped] = React.useState(false);
   let isShiny = false;
 
   attribute === 'normal' ? (isShiny = false) : (isShiny = true);
@@ -50,41 +53,64 @@ const CollectedCardContent = ({
 
     return type;
   };
+
+  const toggleFlip = () => {
+    setIsFlipped(!isFlipped);
+  };
   // const show = () => {
   //   console.log('ini status', stats, 'ini filternya ', allStat);
   // };
   return (
-    <div className="flex-row_collection card-content_collection">
-      <div className={`box_collection first-box-${pokemonType()}_collection`}>
-        <p className={`attribute-${pokemonType()}-id_collection`}>{poke_id}</p>
-        <img
-          className="sprites-image"
-          src={!spritesUrl ? './images/quetion-mark.png' : spritesUrl}
-          alt="images"
+    <div className="show-card-container_collection">
+      <div
+        className={`show-card_collection ${
+          isFlipped === true ? 'flipped' : ''
+        }`}
+      >
+        <div className="flex-row_collection card-content_collection front-card_collection">
+          <div
+            className={`box_collection first-box-${pokemonType()}_collection`}
+            onClick={toggleFlip}
+          >
+            <p className={`attribute-${pokemonType()}-id_collection`}>
+              {poke_id}
+            </p>
+            <img
+              className="sprites-image"
+              src={!spritesUrl ? './images/quetion-mark.png' : spritesUrl}
+              alt="images"
+            />
+          </div>
+          <div className="box_collection second-box_collection">
+            <h4 className={`attribute-${pokemonType()}_collection`}>{name}</h4>
+            <CollectedPokemonElement types={allType} />
+            <div className="flex-column-stats_collection">
+              <div className="box-1-stats_collection">
+                <CollectedPokemonStats
+                  pokemonStats={allStat}
+                  pokemonAttribute={attribute}
+                  box="left"
+                />
+              </div>
+              <div className="box-2-stats_collection">
+                <CollectedPokemonStats
+                  pokemonStats={allStat}
+                  pokemonAttribute={attribute}
+                  box="right"
+                />
+              </div>
+            </div>
+            <CollectedPokemonMoves move1={move1} move2={move2} />
+          </div>
+          {/* <button onClick={show}>ini stats</button> */}
+        </div>
+        <CollectedBackCard
+          toggleFlip={toggleFlip}
+          cardId={card_id}
+          name={name}
+          type={pokemonType()}
         />
       </div>
-      <div className="box_collection second-box_collection">
-        <h4 className={`attribute-${pokemonType()}_collection`}>{name}</h4>
-        <CollectedPokemonElement types={allType} />
-        <div className="flex-column-stats_collection">
-          <div className="box-1-stats_collection">
-            <CollectedPokemonStats
-              pokemonStats={allStat}
-              pokemonAttribute={attribute}
-              box="left"
-            />
-          </div>
-          <div className="box-2-stats_collection">
-            <CollectedPokemonStats
-              pokemonStats={allStat}
-              pokemonAttribute={attribute}
-              box="right"
-            />
-          </div>
-        </div>
-        <CollectedPokemonMoves move1={move1} move2={move2} />
-      </div>
-      {/* <button onClick={show}>ini stats</button> */}
     </div>
   );
 };
