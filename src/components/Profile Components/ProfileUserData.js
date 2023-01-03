@@ -13,6 +13,7 @@ import ExtraSmallCircleSVG from './ExtraSmallCircleSVG';
 import MasterShineBallCardSVG from './MasterShineBallCardSVG';
 
 const ProfileUserData = ({ userData, userCredit }) => {
+  console.log('creditnya', userCredit);
   const Toast = Swal.mixin({
     toast: true,
     position: 'top',
@@ -59,19 +60,27 @@ const ProfileUserData = ({ userData, userCredit }) => {
           <div className="flex-1 ">
             <div className="flex items-center p-1 pl-3">
               <SmallPokeball />
-              <p className="text-sm">{userCredit.poke_ball}</p>
+              <p className="text-sm">
+                {userCredit ? userCredit.poke_ball : '0'}
+              </p>
             </div>
             <div className="flex items-center p-1 pl-3">
               <SmallUltraBall />
-              <p className="text-sm">{userCredit.ultra_ball}</p>
+              <p className="text-sm">
+                {userCredit ? userCredit.ultra_ball : '0'}
+              </p>
             </div>
             <div className=" flex items-center p-1 pl-3">
               <SmallMasterball />
-              <p className="text-sm">{userCredit.master_ball}</p>
+              <p className="text-sm">
+                {userCredit ? userCredit.master_ball : '0'}
+              </p>
             </div>
             <div className="flex items-center p-1 pl-3">
               <SmallCoin />
-              <p className="ml-1 text-sm">{userCredit.coin}</p>
+              <p className="ml-1 text-sm">
+                {userCredit ? userCredit.coin : '0'}
+              </p>
             </div>
           </div>
           <div className="flex flex-1 flex-col justify-center border-l border-white/50">
@@ -84,7 +93,9 @@ const ProfileUserData = ({ userData, userCredit }) => {
                   <ExtraSmallCircleSVG />
                 </div>
               </div>
-              <p className="ml-2 text-sm">{userCredit.normal}</p>
+              <p className="ml-2 text-sm">
+                {userCredit ? userCredit.normal : '0'}
+              </p>
             </div>
             <div className="flex items-center p-1 pl-3">
               <div className="flex h-fit w-fit items-center justify-center">
@@ -95,7 +106,9 @@ const ProfileUserData = ({ userData, userCredit }) => {
                   <ExtraSmallCircleSVG />
                 </div>
               </div>
-              <p className="ml-2 text-sm">{userCredit.shiny}</p>
+              <p className="ml-2 text-sm">
+                {userCredit ? userCredit.shiny : '0'}
+              </p>
             </div>
             <div className="flex items-center p-1 pl-3">
               <div className="flex h-fit w-fit items-center justify-center">
@@ -106,7 +119,9 @@ const ProfileUserData = ({ userData, userCredit }) => {
                   <ExtraSmallCircleSVG />
                 </div>
               </div>
-              <p className="ml-2 text-sm">{userCredit.legendarymyth}</p>
+              <p className="ml-2 text-sm">
+                {userCredit ? userCredit.legendarymyth : '0'}
+              </p>
             </div>
             <div className="flex items-center p-1 pl-3">
               <div className="flex h-fit w-fit items-center justify-center">
@@ -117,7 +132,9 @@ const ProfileUserData = ({ userData, userCredit }) => {
                   <ExtraSmallCircleSVG />
                 </div>
               </div>
-              <p className="ml-2 text-sm">{userCredit.lmshine}</p>
+              <p className="ml-2 text-sm">
+                {userCredit ? userCredit.lmshine : '0'}
+              </p>
             </div>
           </div>
         </div>
