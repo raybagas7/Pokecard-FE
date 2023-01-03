@@ -206,6 +206,46 @@ const getCreditUserWithRefresh = async () => {
   return result;
 };
 
+const getCreditAndTotalCards = async () => {
+  const response = await fetchWithToken(`${BASE_URL}/credits/totalcards`);
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data.credit,
+    message: responseJson.message,
+  };
+};
+
+const getCreditAndTotalCardsWithRefresh = async () => {
+  const result = await getCreditAndTotalCards().then(
+    ({ error, data, message }) => {
+      if (message === 'Token maximum age exceeded') {
+        const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+          putAccessToken(data.accessToken);
+          const result = await getCreditAndTotalCards().then(
+            ({ error, data, message }) => {
+              // console.log('refres shuffle', error, data, message);
+              return { error, data, message };
+            }
+          );
+          return result;
+        });
+
+        return afterRefresh;
+      }
+      return { error, data, message };
+    }
+  );
+  // console.log('hasil shuffle', result);
+  return result;
+};
+
 const shuffleWithCoin = async () => {
   const creditId = getCreditId();
   const response = await fetchWithToken(
@@ -595,6 +635,7 @@ export {
   updateCardToCaseRefresh,
   getUserShowcases,
   getUserShowcasesRefresh,
+  getCreditAndTotalCardsWithRefresh,
   verifyAccount,
   pickPokeCardsWithRefresh,
 };

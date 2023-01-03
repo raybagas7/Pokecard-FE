@@ -1,22 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProfileContainer from '../components/Profile Components/ProfileContainer';
-import { getUserShowcasesRefresh } from '../utils/network-data';
+import {
+  getCreditAndTotalCardsWithRefresh,
+  getUserShowcasesRefresh,
+} from '../utils/network-data';
 
 function ProfilePage({ userData }) {
   console.log('profile page', userData);
 
   const [userShowcases, setUserShowcases] = React.useState();
+  const [userCredit, setUserCredit] = React.useState();
   const [initializing, setInitializing] = React.useState(true);
 
   React.useEffect(() => {
     getUserShowcasesRefresh().then(({ error, data, message }) => {
       try {
         setUserShowcases(data);
-        setInitializing(false);
       } catch (e) {
         console.log(message);
       }
+
+      getCreditAndTotalCardsWithRefresh().then(({ error, data, message }) => {
+        try {
+          setUserCredit(data);
+          setInitializing(false);
+        } catch (e) {
+          console.log(e);
+        }
+      });
     });
   }, []);
 
@@ -37,7 +49,11 @@ function ProfilePage({ userData }) {
 
   return (
     <section>
-      <ProfileContainer userData={userData} userShowcases={userShowcases} />
+      <ProfileContainer
+        userData={userData}
+        userShowcases={userShowcases}
+        userCredit={userCredit}
+      />
     </section>
   );
 }

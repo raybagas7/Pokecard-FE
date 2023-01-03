@@ -7,7 +7,13 @@ const ProfileCardShowcase = ({
   legendary,
   mythical,
   types,
+  case_number,
+  changePokemonDetails,
 }) => {
+  const chageDetailShowcase = () => {
+    changePokemonDetails(case_number - 1);
+  };
+
   let type = '';
   (legendary === true || mythical === true) && attribute === 'shiny'
     ? (type = 'legendary-shine')
@@ -15,7 +21,9 @@ const ProfileCardShowcase = ({
     ? (type = 'legendary')
     : ((legendary === false || mythical === false) && attribute) === 'shiny'
     ? (type = 'shiny')
-    : (type = 'normal');
+    : (legendary === false || mythical === false) && attribute === 'normal'
+    ? (type = 'normal')
+    : (type = undefined);
 
   const attributePokemon = () => {
     if (attribute === 'shiny') {
@@ -28,13 +36,38 @@ const ProfileCardShowcase = ({
     }/${poke_id}.png`;
   };
 
-  const allElement = types.map((element) => {
-    return element.name;
-  });
+  let allElement = [];
+  if (types) {
+    allElement = types.map((element) => {
+      return element.name;
+    });
+  }
+
+  if (type === null || undefined || attribute === null || undefined) {
+    return (
+      <div
+        className={`rounded-xlhover:animate-lift_card relative m-1 flex h-56 w-36 cursor-pointer flex-col`}
+      >
+        <div
+          className={`relative flex h-full w-full flex-col rounded-xl bg-fb-undefined bg-cover`}
+        >
+          <div className="flex flex-1">
+            <img
+              src={`./images/quetion-mark.png`}
+              alt="pokemon-images"
+              className="m-auto block h-full w-full object-contain"
+            ></img>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
-      className={`relative m-1 flex h-56 w-36 cursor-pointer flex-col rounded-xl bg-black hover:animate-lift_card`}
+      onClick={chageDetailShowcase}
+      className={`relative m-1 flex h-52 w-36 cursor-pointer flex-col rounded-xl bg-black hover:animate-lift_card 
+      max-2xl:h-44 max-2xl:w-28`}
     >
       <div
         className={`relative flex w-full flex-col bg-cover ${
@@ -74,7 +107,11 @@ const ProfileCardShowcase = ({
         </p>
         <div className="flex flex-1">
           <img
-            src={attributePokemon()}
+            src={
+              attribute === undefined || attribute === null
+                ? `./images/quetion-mark.png`
+                : attributePokemon()
+            }
             alt="pokemon-images"
             className=" m-auto block h-9/10 w-9/10 object-contain"
           ></img>
@@ -84,7 +121,7 @@ const ProfileCardShowcase = ({
         className={`${
           type === undefined || null
             ? ''
-            : `static bottom-0 h-1/4 w-full cursor-default overflow-hidden text-ellipsis 
+            : `static bottom-0 h-1/4 w-full cursor-default overflow-hidden text-ellipsis
           rounded-b-xl bg-black text-white `
         }`}
       >
@@ -92,17 +129,19 @@ const ProfileCardShowcase = ({
           className={`${
             type === undefined || null
               ? ''
-              : `pt-1 pb-1 text-center text-xxs first-letter:capitalize ${
-                  type === 'normal'
-                    ? 'bg-red-poke'
-                    : type === 'shiny'
-                    ? 'bg-orange-400'
-                    : type === 'legendary'
-                    ? 'bg-purple-600'
-                    : type === 'legendary-shine'
-                    ? 'bg-gradient-to-r from-purple-legend-dark via-purple-legend-light to-purple-legend-dark '
-                    : ''
-                }`
+              : `pt-1 pb-1 text-center text-xxs first-letter:capitalize 
+                max-2xl:pt-0.5 max-2xl:pb-0.5
+              ${
+                type === 'normal'
+                  ? 'bg-red-poke'
+                  : type === 'shiny'
+                  ? 'bg-orange-400'
+                  : type === 'legendary'
+                  ? 'bg-purple-600'
+                  : type === 'legendary-shine'
+                  ? 'bg-gradient-to-r from-purple-legend-dark via-purple-legend-light to-purple-legend-dark '
+                  : ''
+              }`
           } `}
         >
           {type === undefined || null ? '' : name}
@@ -111,21 +150,13 @@ const ProfileCardShowcase = ({
           <div className="flex items-center justify-center">
             {allElement.map((element) => (
               <img
+                key={element}
                 src={`./images/pokemon_elements/${element}.png`}
                 alt="normal"
-                className="m-1.5 h-5 w-5"
+                className={`m-1 h-5 w-5
+                max-2xl:h-4 max-2xl:w-4`}
               />
             ))}
-            {/* <img
-              src={`./images/pokemon_elements/normal.png`}
-              alt="normal"
-              className="m-1.5 h-5 w-5"
-            />
-            <img
-              src={`./images/pokemon_elements/normal.png`}
-              alt="normal"
-              className="m-1.5 h-5 w-5"
-            /> */}
           </div>
         )}
       </div>

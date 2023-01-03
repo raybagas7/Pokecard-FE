@@ -41,7 +41,8 @@ const CollectedCaseButton = ({ caseNumber, cardId, name }) => {
     <div className="flex flex-1 items-center justify-center">
       <button
         onClick={showAlert}
-        className="absolute rounded-lg bg-black-steam p-2 text-sm text-white transition hover:scale-125 hover:bg-orange-poke"
+        className={`absolute rounded-lg bg-black-steam p-2 text-sm text-white transition hover:scale-125 hover:bg-orange-poke 
+        max-tablet:p-1 max-tablet:text-xxs`}
       >
         Case {caseNumber}
       </button>

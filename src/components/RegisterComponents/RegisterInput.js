@@ -31,7 +31,7 @@ const RegisterInput = (props) => {
     <div className="register-container">
       <form onSubmit={onSubmitHandler} className="register-input">
         <div className="signup-header">
-          <h2>SIGN UP</h2>
+          <h2 className="text-2xl">SIGN UP</h2>
         </div>
         <input
           type="text"

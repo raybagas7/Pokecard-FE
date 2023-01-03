@@ -2,6 +2,7 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
+    screens: { tablet: '724px', '2xl': '1536px' },
     extend: {
       flex: {
         2: '2 2 0%',
@@ -69,7 +70,7 @@ module.exports = {
         },
         lift_card: {
           '0%': { bottom: '0px' },
-          '100%': { bottom: '5px' },
+          '100%': { bottom: '10px' },
         },
         fade_in: {
           '0%': { opacity: '0%' },
@@ -83,6 +84,22 @@ module.exports = {
           '0%': { opacity: '0%', transform: 'translateX(50px)' },
           '100%': { opacity: '100%', transform: 'translateX(0px)' },
         },
+        default_lift_card: {
+          '0%': { bottom: '10px' },
+          '100%': { bottom: '0px' },
+        },
+        default_slide_left: {
+          '0%': { opacity: '0%', transform: 'translateX(0px)' },
+          '100%': { opacity: '100%', transform: 'translateX(50px)' },
+        },
+        horizontal_shake: {
+          '0%': { transform: 'translateX(0px)' },
+          '5%': { transform: 'translateX(1.3px)' },
+          '10%': { transform: 'translateX(-1.3px)' },
+          '15%': { transform: 'translateX(1.3px)' },
+          '20%': { transform: 'translateX(0px)' },
+          '100%': { transform: 'translateX(0px)' },
+        },
       },
       animation: {
         expand_info_showcase: 'expand_info_showcase 0.5s forwards',
@@ -90,6 +107,9 @@ module.exports = {
         fade_in_slide_up: 'fade_in_slide_up 1s forwards',
         fade_in_slide_left: 'fade_in_slide_left 1.5s forwards',
         fade_in: 'fade_in 1s forwards',
+        default_lift_card: 'default_lift_card 0.25s forwards',
+        default_slide_left: 'default_slide_left 1.5s forwards',
+        horizontal_shake: 'horizontal_shake 3s infinite',
       },
     },
   },

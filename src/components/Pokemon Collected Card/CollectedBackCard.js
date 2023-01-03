@@ -19,7 +19,8 @@ const CollectedBackCard = ({ toggleFlip, cardId, name, type }) => {
             : type === 'legendary-shine'
             ? 'rounded-t-poke-15 bg-gradient-to-r from-purple-legend-dark via-purple-legend-light to-purple-legend-dark '
             : ''
-        } `}
+        } 
+        max-tablet:text-xxs`}
       >
         Apply To Showcases
       </p>

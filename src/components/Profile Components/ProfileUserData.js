@@ -6,8 +6,13 @@ import SmallUltraBall from '../Pokemon Components/SmallUltraBall';
 import PropTypes from 'prop-types';
 import { IoCopy } from 'react-icons/io5';
 import Swal from 'sweetalert2';
+import PokeBallCardSVG from './PokeBallCardSVG';
+import UltraBallCardSVG from './UltraBallCardSVG';
+import MasterBallCardSVG from './MasterBallCardSVG';
+import ExtraSmallCircleSVG from './ExtraSmallCircleSVG';
+import MasterShineBallCardSVG from './MasterShineBallCardSVG';
 
-const ProfileUserData = ({ userData }) => {
+const ProfileUserData = ({ userData, userCredit }) => {
   const Toast = Swal.mixin({
     toast: true,
     position: 'top',
@@ -29,20 +34,17 @@ const ProfileUserData = ({ userData }) => {
   };
   return (
     <div className="relative flex flex-1 rounded-lg ">
-      <div className="relative flex flex-1 flex-col rounded-lg p-2.5  text-sm">
-        <div className="flex flex-2">
+      <div className="relative flex flex-1 flex-col rounded-lg p-2.5 text-sm">
+        <div className="flex flex-1 items-center justify-center">
           <img
             src="./images/snoop.jpg"
             alt="profile pictures"
-            className="mr-auto block h-fit w-fit rounded-lg border-2 border-white object-contain p-3"
+            className="mr-auto block h-fit w-fit rounded-lg border-2 border-white/50 object-contain p-3"
           ></img>
-        </div>
-        <div className="flex flex-1 items-center justify-center ">
-          POKEMON OWNED
         </div>
       </div>
       <div className="flex flex-2 flex-col p-1.5">
-        <header className="flex flex-row items-start justify-between border-b  text-sm">
+        <header className="flex flex-row items-start justify-between border-b border-white/50 text-sm">
           <div className="p-1.5">{userData.user.trainer_name}</div>
           <div className="header-info flex items-center justify-center p-1.5">
             Friend Id
@@ -57,22 +59,67 @@ const ProfileUserData = ({ userData }) => {
           <div className="flex-1 ">
             <div className="flex items-center p-1 pl-3">
               <SmallPokeball />
-              <p className="text-sm">10000</p>
+              <p className="text-sm">{userCredit.poke_ball}</p>
             </div>
             <div className="flex items-center p-1 pl-3">
               <SmallUltraBall />
-              <p className="text-sm">10000</p>
+              <p className="text-sm">{userCredit.ultra_ball}</p>
             </div>
             <div className=" flex items-center p-1 pl-3">
               <SmallMasterball />
-              <p className="text-sm">10000</p>
+              <p className="text-sm">{userCredit.master_ball}</p>
             </div>
             <div className="flex items-center p-1 pl-3">
               <SmallCoin />
-              <p className="ml-1 text-sm">10000</p>
+              <p className="ml-1 text-sm">{userCredit.coin}</p>
             </div>
           </div>
-          <div className="flex-1 "></div>
+          <div className="flex flex-1 flex-col justify-center border-l border-white/50">
+            <div className="flex flex-row items-center p-1 pl-3">
+              <div className="flex h-fit w-fit items-center justify-center">
+                <div className="relative">
+                  <PokeBallCardSVG />
+                </div>
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <p className="ml-2 text-sm">{userCredit.normal}</p>
+            </div>
+            <div className="flex items-center p-1 pl-3">
+              <div className="flex h-fit w-fit items-center justify-center">
+                <div className="relative">
+                  <UltraBallCardSVG />
+                </div>
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <p className="ml-2 text-sm">{userCredit.shiny}</p>
+            </div>
+            <div className="flex items-center p-1 pl-3">
+              <div className="flex h-fit w-fit items-center justify-center">
+                <div className="relative">
+                  <MasterBallCardSVG />
+                </div>
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <p className="ml-2 text-sm">{userCredit.legendarymyth}</p>
+            </div>
+            <div className="flex items-center p-1 pl-3">
+              <div className="flex h-fit w-fit items-center justify-center">
+                <div className="relative">
+                  <MasterShineBallCardSVG />
+                </div>
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <p className="ml-2 text-sm">{userCredit.lmshine}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

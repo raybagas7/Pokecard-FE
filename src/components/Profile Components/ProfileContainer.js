@@ -6,23 +6,35 @@ import PropTypes from 'prop-types';
 import ProfileTopDetailShowcase from './ProfileTopDetailShowcase';
 import ProfileBottomDetailShowcase from './ProfileBottomDetailShowcase';
 
-const ProfileContainer = ({ userData, userShowcases }) => {
+const ProfileContainer = ({ userData, userShowcases, userCredit }) => {
   const { showcases } = userShowcases;
+  const [pokemonData, setPokemonData] = React.useState(showcases[0]);
   const topShowcases = showcases.slice(0, 3);
   const botShowcases = showcases.slice(3, 6);
+
+  const changePokemonDetails = (showCaseNumber) => {
+    setPokemonData(showcases[showCaseNumber]);
+  };
+
   return (
     <div className="profile-container flex min-h-screen flex-1 text-white">
       <div className="relative m-10 mr-2 min-h-screen flex-1 flex-col items-center justify-center gap-1">
         <div className="border-1 border-1 absolute h-full w-full rounded-lg border-y-2 border-white bg-white/30 drop-shadow-lg backdrop-blur-md">
           <div className="absolute flex h-full w-full flex-col gap-1 p-5">
             <div className="flex items-center justify-center rounded-lg bg-black-steam/90 drop-shadow-md">
-              <ProfileUserData userData={userData} />
+              <ProfileUserData userData={userData} userCredit={userCredit} />
             </div>
             <div className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md">
-              <ProfileTopShowcases showcases={topShowcases} />
+              <ProfileTopShowcases
+                showcases={topShowcases}
+                changePokemonDetails={changePokemonDetails}
+              />
             </div>
             <div className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md">
-              <ProfileTopShowcases showcases={botShowcases} />
+              <ProfileTopShowcases
+                showcases={botShowcases}
+                changePokemonDetails={changePokemonDetails}
+              />
             </div>
           </div>
         </div>
@@ -31,7 +43,7 @@ const ProfileContainer = ({ userData, userShowcases }) => {
         <div className="border-1 border-1 absolute h-full w-full rounded-lg border-y-2 border-white bg-white/30 drop-shadow-lg backdrop-blur-md"></div>
         <div className="absolute flex h-full w-full flex-col gap-4 p-5">
           <div className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md">
-            <ProfileTopDetailShowcase />
+            <ProfileTopDetailShowcase pokemonData={pokemonData} />
           </div>
           <div className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md">
             <ProfileBottomDetailShowcase />

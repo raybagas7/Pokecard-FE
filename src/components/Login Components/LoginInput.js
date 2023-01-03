@@ -1,8 +1,9 @@
 import useInput from '../../hooks/useInput';
 import { Link } from 'react-router-dom';
 import '../../styles/login-style.css';
-import PokeballLoginDecoration from './PokeballLoginDecoration';
 import PropTypes from 'prop-types';
+import SmallPokeball from '../Pokemon Components/SmallPokeball';
+import SmallMasterball from '../Pokemon Components/SmallMasterball';
 
 const LoginInput = (props) => {
   const [username, handleUsernameChange] = useInput('');
@@ -21,10 +22,12 @@ const LoginInput = (props) => {
     <div className="login-container">
       <form onSubmit={onSubmitHandler} className="login-input">
         <div className="login-header">
-          <h2>LOGIN</h2>
+          <h2 className="text-2xl">LOGIN</h2>
         </div>
         <div className="username-container">
-          <PokeballLoginDecoration />
+          <div className="mt-3">
+            <SmallPokeball />
+          </div>
           <input
             type="text"
             placeholder="Username"
@@ -34,7 +37,9 @@ const LoginInput = (props) => {
           />
         </div>
         <div className="password-container">
-          <PokeballLoginDecoration />
+          <div className="mt-3">
+            <SmallMasterball />
+          </div>
           <input
             type="password"
             placeholder="Password"
@@ -50,7 +55,6 @@ const LoginInput = (props) => {
       </form>
       <div className="go-to__register">
         <p>
-          {' '}
           You don't have an account?{' '}
           <Link to="/register" className="link-signup">
             Sign up here.

@@ -10,13 +10,29 @@ import {
 
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
-const ProfilePokemonStat = () => {
+const ProfilePokemonStat = ({ stats }) => {
+  let allStat = [];
+  if (stats) {
+    for (let i = 0; i < stats.length; i++) {
+      const name_stat = stats[i].name;
+      const base_stat = stats[i].base_stat;
+      allStat.push({ [name_stat]: base_stat });
+    }
+  }
+
   const data = {
     labels: ['Hp', 'Attack', 'Defense', 'Sp.Defense', 'Sp.Attack', 'Speed'],
     datasets: [
       {
         label: ' ',
-        data: [120, 120, 120, 120, 120, 120],
+        data: [
+          allStat.length === 0 ? 10 : allStat[0].hp,
+          allStat.length === 0 ? 10 : allStat[1].attack,
+          allStat.length === 0 ? 10 : allStat[2].defense,
+          allStat.length === 0 ? 10 : allStat[4]['special-defense'],
+          allStat.length === 0 ? 10 : allStat[3]['special-attack'],
+          allStat.length === 0 ? 10 : allStat[5].speed,
+        ],
         backgroundColor: [
           'rgba(74, 222, 128, 0.8)',
           'rgba(248, 113, 113, 0.8)',
@@ -66,7 +82,7 @@ const ProfilePokemonStat = () => {
   };
 
   return (
-    <div className="flex h-full w-full flex-1 items-center justify-center rounded-tl-lg rounded-bl-lg">
+    <div className="flex h-full w-full flex-1 items-center justify-center rounded-tl-lg rounded-bl-lg max-2xl:h-9/10 max-2xl:w-9/10">
       <PolarArea data={data} options={options} />
     </div>
   );
