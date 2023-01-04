@@ -21,6 +21,8 @@ const MainContent = ({
   pickCards,
   ownedBall,
   coins,
+  claimDaily,
+  dailyGift,
 }) => {
   const [pokemonId, setPokemonId] = useState();
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
@@ -260,6 +262,8 @@ const MainContent = ({
         credit={credit}
         openCredit={openCredit}
         pickedBall={pickedBall}
+        claimDaily={claimDaily}
+        dailyGift={dailyGift}
       />
       <ContainerContent
         cards={cards}

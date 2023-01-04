@@ -1,6 +1,5 @@
 import React from 'react';
 import ProfileCardShowcase from './ProfileCardShowcase';
-import { nanoid } from 'nanoid';
 
 const ProfileTopShowcases = ({ showcases, changePokemonDetails }) => {
   return (
@@ -11,7 +10,7 @@ const ProfileTopShowcases = ({ showcases, changePokemonDetails }) => {
       <div className="flex h-9/10 w-full flex-1 items-center justify-evenly rounded-lg">
         {showcases.map((showcase) => (
           <ProfileCardShowcase
-            key={showcase.card_id ? showcase.card_id : nanoid(6)}
+            key={`case-${showcase.case_number}`}
             {...showcase}
             changePokemonDetails={changePokemonDetails}
           />

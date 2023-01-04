@@ -11,6 +11,7 @@
     "axios-retry": "^3.3.1",
     "chart.js": "^4.1.1",
     "localstorage-slim": "^2.3.0",
+    "moment-timezone": "^0.5.40",
     "postcss": "^8.4.20",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.1.0",

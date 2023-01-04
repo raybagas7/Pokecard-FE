@@ -4,8 +4,15 @@ import SmallMasterball from './SmallMasterball';
 import SmallPokeball from './SmallPokeball';
 import SmallUltraBall from './SmallUltraBall';
 import PropTypes from 'prop-types';
+import DailyGiftSVG from '../DailyGiftSVG';
 
-const PokePouch = ({ credit, openCredit, pickedBall }) => {
+const PokePouch = ({
+  credit,
+  openCredit,
+  pickedBall,
+  claimDaily,
+  dailyGift,
+}) => {
   // console.log('credit di pouch', pickedBall);
   return credit === null ? (
     <div className="poke-pouch">
@@ -46,6 +53,11 @@ const PokePouch = ({ credit, openCredit, pickedBall }) => {
         <SmallCoin />
         <p>{`${credit.coin}`}</p>
       </div>
+      {dailyGift ? (
+        <div className="mt-1.5" onClick={claimDaily}>
+          <DailyGiftSVG />
+        </div>
+      ) : null}
     </div>
   );
 };

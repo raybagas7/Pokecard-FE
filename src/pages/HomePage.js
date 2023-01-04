@@ -2,9 +2,11 @@ import React from 'react';
 import JumboTron from '../components/JumboTron';
 import CollectedCardsContainer from '../components/Pokemon Collected Card/CollectedCardsContainer';
 import MainContent from '../components/Pokemon Components/MainContent';
+import Swal from 'sweetalert2';
 import { getCard } from '../utils/card';
 import {
   addFirstTimeCreditWithRefresh,
+  claimUserDailyGiftRefresh,
   getCreditUserWithRefresh,
   getOwnerCardsRefresh,
   pickPokeCardsWithRefresh,
@@ -13,9 +15,15 @@ import {
   shuffleWithCoinRefresh,
 } from '../utils/network-data';
 import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
+const moment = require('moment-timezone');
 
-const HomePage = () => {
+const HomePage = ({ nextDaily }) => {
+  const waktuIndoNow = moment().tz('Asia/Jakarta').format('YYYY-MM-DD');
+  const userNextDaily = moment(nextDaily).format('YYYY-MM-DD');
+  const ableToClaim = moment(userNextDaily).isSameOrBefore(waktuIndoNow, 'day');
+
   const [creditAvailability, setCreditAvailability] = React.useState(null);
+  const [dailyGift, setDailyGift] = React.useState(ableToClaim);
   const [initializing, setInitializing] = React.useState(true);
   const [initializing2, setInitializing2] = React.useState(true);
   const [socmedBlack, setSocmedBlack] = React.useState([]);
@@ -42,6 +50,30 @@ const HomePage = () => {
     pokeBall,
     ultraBall,
     masterBall,
+  };
+
+  const claimDaily = async () => {
+    try {
+      await claimUserDailyGiftRefresh().then(({ error, data, message }) => {
+        setCreditAvailability({
+          credit_id: creditAvailability.credit_id,
+          poke_ball: data.creditAmount.poke_ball,
+          ultra_ball: data.creditAmount.ultra_ball,
+          master_ball: data.creditAmount.master_ball,
+          coin: data.creditAmount.coin,
+        });
+        Swal.fire({
+          title: `Daily Gift! You recieve PokeBall (7), UltraBall(3), MasterBall(1), and Coin(1000)`,
+          customClass: {
+            popup: 'colored-toast-coin colored-toast',
+            closeButton: 'colored-toast-close',
+          },
+        });
+        setDailyGift(!dailyGift);
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const pickCards = async (pickPayload) => {
@@ -146,6 +178,8 @@ const HomePage = () => {
         pickCards={pickCards}
         ownedBall={ownedBall}
         coins={coins}
+        claimDaily={claimDaily}
+        dailyGift={dailyGift}
         // reducePokeBalls={reducePokeBalls}
       />
       <CollectedCardsContainer ownedCards={ownedCards} />

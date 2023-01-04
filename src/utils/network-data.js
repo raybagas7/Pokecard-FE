@@ -583,6 +583,48 @@ const getUserShowcasesRefresh = async () => {
   return result;
 };
 
+const claimUserDailyGift = async () => {
+  const response = await fetchWithToken(`${BASE_URL}/credits/claim/daily`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const claimUserDailyGiftRefresh = async () => {
+  const result = await claimUserDailyGift().then(({ error, data, message }) => {
+    if (message === 'Token maximum age exceeded') {
+      const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+        putAccessToken(data.accessToken);
+        const result = await claimUserDailyGift().then(
+          ({ error, data, message }) => {
+            return { error, data, message };
+          }
+        );
+        return result;
+      });
+
+      return afterRefresh;
+    }
+    return { error, data, message };
+  });
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
 const verifyAccount = async (targetEmail) => {
   console.log('email', targetEmail);
   const response = await fetchWithToken(`${BASE_URL}/export/email/verify`, {
@@ -636,6 +678,7 @@ export {
   getUserShowcases,
   getUserShowcasesRefresh,
   getCreditAndTotalCardsWithRefresh,
+  claimUserDailyGiftRefresh,
   verifyAccount,
   pickPokeCardsWithRefresh,
 };

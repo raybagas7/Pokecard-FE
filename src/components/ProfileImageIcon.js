@@ -8,9 +8,10 @@ import PropTypes from 'prop-types';
 
 const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
   const { authedUser } = React.useContext(ValidationContext);
-  const { toggleTtlVerification } = React.useContext(TtlVerifContext);
+  const { ttlVerification, toggleTtlVerification } =
+    React.useContext(TtlVerifContext);
 
-  // console.log('ttl ', ttlVerification);
+  console.log('ttl ', ttlVerification);
 
   const send = async () => {
     toggleTtlVerification();
@@ -61,7 +62,8 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
                 {userData.user.trainer_name}
               </Link>
               {authedUser.user.is_valid === false &&
-              authedUser.user.wait_verify === false ? (
+              authedUser.user.wait_verify === false &&
+              ttlVerification === false ? (
                 <p
                   className="middle-dropdown"
                   title="Verification Button"
@@ -70,7 +72,8 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
                   Verify
                 </p>
               ) : authedUser.user.is_valid === false &&
-                authedUser.user.wait_verify === true ? (
+                (authedUser.user.wait_verify === true ||
+                  ttlVerification === true) ? (
                 <p
                   className="middle-dropdown"
                   title="Wait user to verify account, please check your email"
