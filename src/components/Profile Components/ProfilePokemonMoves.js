@@ -31,12 +31,14 @@ const ProfilePokemonMoves = ({ move }) => {
             }
             className={`mr-1 h-14 w-14 animate-fade_in_slide_left 
             max-2xl:h-8 max-2xl:w-8
+            max-xl:h-6 max-xl:w-6
             ${move !== null ? `rounded-full border-2 border-white` : ''}`}
             alt={`${move !== null ? move.type : ''}`}
           />
           <p
             className={`ml-1 animate-fade_in text-2xl first-letter:capitalize
-          max-2xl:text-base`}
+          max-2xl:text-base
+          max-xl:text-sm`}
           >
             {move !== null ? move.name : ''}
           </p>
@@ -44,9 +46,12 @@ const ProfilePokemonMoves = ({ move }) => {
         <div className="flex items-center rounded-b-lg">
           <div
             className={`flex flex-1 items-center justify-center rounded-bl-lg bg-black-steam p-2 text-sm
-          max-2xl:text-xxs`}
+          max-2xl:text-xxs
+          max-xl:overflow-hidden max-xl:text-ellipsis max-xl:whitespace-nowrap`}
           >
-            Move Category
+            <p className="first-letter:capitalize">
+              {move !== null ? move.category : '-'}
+            </p>
           </div>
           <div className="flex h-full flex-1 rounded-br-lg">
             <div className="flex flex-1 items-center justify-center bg-red-poke p-2 text-sm max-2xl:text-xxs">

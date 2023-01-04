@@ -34,20 +34,21 @@ const ProfileUserData = ({ userData, userCredit }) => {
     });
   };
   return (
-    <div className="relative flex flex-1 rounded-lg ">
-      <div className="relative flex flex-1 flex-col rounded-lg p-2.5 text-sm">
+    <div className="relative flex flex-1 rounded-lg max-xl:flex-col">
+      <div className="relative flex flex-1 flex-col rounded-lg p-2.5 text-sm max-xl:mt-2 max-xl:items-center max-xl:justify-center max-xl:p-0.5">
         <div className="flex flex-1 items-center justify-center">
           <img
             src="./images/snoop.jpg"
             alt="profile pictures"
-            className="mr-auto block h-fit w-fit rounded-lg border-2 border-white/50 object-contain p-3"
+            className={`mr-auto block h-fit w-fit rounded-lg border-2 border-white/50 object-contain p-3 
+            max-xl:h-20 max-xl:w-20 max-xl:p-1`}
           ></img>
         </div>
       </div>
       <div className="flex flex-2 flex-col p-1.5">
-        <header className="flex flex-row items-start justify-between border-b border-white/50 text-sm">
+        <header className="flex flex-row items-start justify-between border-b border-white/50 text-sm max-xl:text-xs">
           <div className="p-1.5">{userData.user.trainer_name}</div>
-          <div className="header-info flex items-center justify-center p-1.5">
+          <div className="header-info flex items-center justify-center p-1.5 ">
             Friend Id
             <IoCopy
               className="mr-1 ml-3 cursor-pointer hover:text-yellow-300"
@@ -56,35 +57,35 @@ const ProfileUserData = ({ userData, userCredit }) => {
             {userData.user.search_id}
           </div>
         </header>
-        <div className="flex flex-1 p-1.5">
-          <div className="flex-1 ">
-            <div className="flex items-center p-1 pl-3">
+        <div className="flex flex-1 p-1.5 max-xl:flex-col">
+          <div className="flex-1 max-xl:flex max-xl:justify-center">
+            <div className="flex items-center p-1 pl-3 max-xl:pl-1">
               <SmallPokeball />
-              <p className="text-sm">
+              <p className="text-sm max-xl:text-xxs">
                 {userCredit ? userCredit.poke_ball : '0'}
               </p>
             </div>
-            <div className="flex items-center p-1 pl-3">
+            <div className="flex items-center p-1 pl-3 max-xl:pl-1">
               <SmallUltraBall />
-              <p className="text-sm">
+              <p className="text-sm max-xl:text-xxs">
                 {userCredit ? userCredit.ultra_ball : '0'}
               </p>
             </div>
-            <div className=" flex items-center p-1 pl-3">
+            <div className=" flex items-center p-1 pl-3 max-xl:pl-1">
               <SmallMasterball />
-              <p className="text-sm">
+              <p className="text-sm max-xl:text-xxs">
                 {userCredit ? userCredit.master_ball : '0'}
               </p>
             </div>
-            <div className="flex items-center p-1 pl-3">
+            <div className="flex items-center p-1 pl-3 max-xl:pl-1 ">
               <SmallCoin />
-              <p className="ml-1 text-sm">
+              <p className="ml-1 text-sm max-xl:ml-0 max-xl:text-xxs">
                 {userCredit ? userCredit.coin : '0'}
               </p>
             </div>
           </div>
-          <div className="flex flex-1 flex-col justify-center border-l border-white/50">
-            <div className="flex flex-row items-center p-1 pl-3">
+          <div className="flex flex-1 flex-col justify-center border-l border-white/50 max-xl:mt-2 max-xl:flex-row max-xl:border-l-0 max-xl:border-t">
+            <div className="flex items-center p-1 pl-3 max-xl:mt-1">
               <div className="flex h-fit w-fit items-center justify-center">
                 <div className="relative">
                   <PokeBallCardSVG />
@@ -93,11 +94,11 @@ const ProfileUserData = ({ userData, userCredit }) => {
                   <ExtraSmallCircleSVG />
                 </div>
               </div>
-              <p className="ml-2 text-sm">
+              <p className="ml-2 text-sm max-xl:text-xxs">
                 {userCredit ? userCredit.normal : '0'}
               </p>
             </div>
-            <div className="flex items-center p-1 pl-3">
+            <div className="flex items-center p-1 pl-3 max-xl:mt-1">
               <div className="flex h-fit w-fit items-center justify-center">
                 <div className="relative">
                   <UltraBallCardSVG />
@@ -106,11 +107,11 @@ const ProfileUserData = ({ userData, userCredit }) => {
                   <ExtraSmallCircleSVG />
                 </div>
               </div>
-              <p className="ml-2 text-sm">
+              <p className="ml-2 text-sm max-xl:text-xxs">
                 {userCredit ? userCredit.shiny : '0'}
               </p>
             </div>
-            <div className="flex items-center p-1 pl-3">
+            <div className="flex items-center p-1 pl-3 max-xl:mt-1">
               <div className="flex h-fit w-fit items-center justify-center">
                 <div className="relative">
                   <MasterBallCardSVG />
@@ -119,11 +120,11 @@ const ProfileUserData = ({ userData, userCredit }) => {
                   <ExtraSmallCircleSVG />
                 </div>
               </div>
-              <p className="ml-2 text-sm">
+              <p className="ml-2 text-sm max-xl:text-xxs">
                 {userCredit ? userCredit.legendarymyth : '0'}
               </p>
             </div>
-            <div className="flex items-center p-1 pl-3">
+            <div className="flex items-center p-1 pl-3 max-xl:mt-1">
               <div className="flex h-fit w-fit items-center justify-center">
                 <div className="relative">
                   <MasterShineBallCardSVG />
@@ -132,7 +133,7 @@ const ProfileUserData = ({ userData, userCredit }) => {
                   <ExtraSmallCircleSVG />
                 </div>
               </div>
-              <p className="ml-2 text-sm">
+              <p className="ml-2 text-sm max-xl:text-xxs">
                 {userCredit ? userCredit.lmshine : '0'}
               </p>
             </div>

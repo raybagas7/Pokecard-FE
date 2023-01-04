@@ -46,7 +46,9 @@ const ProfileCardShowcase = ({
   if (type === null || undefined || attribute === null || undefined) {
     return (
       <div
-        className={`rounded-xlhover:animate-lift_card relative m-1 flex h-56 w-36 cursor-pointer flex-col`}
+        className={`rounded-xlhover:animate-lift_card relative m-1 flex h-56 w-36 cursor-pointer flex-col
+        max-2xl:h-44 max-2xl:w-28
+        max-xl:h-36 max-xl:w-20`}
       >
         <div
           className={`relative flex h-full w-full flex-col rounded-xl bg-fb-undefined bg-cover`}
@@ -67,7 +69,8 @@ const ProfileCardShowcase = ({
     <div
       onClick={chageDetailShowcase}
       className={`relative m-1 flex h-52 w-36 cursor-pointer flex-col rounded-xl bg-black hover:animate-lift_card 
-      max-2xl:h-44 max-2xl:w-28`}
+      max-2xl:h-44 max-2xl:w-28
+      max-xl:h-32 max-xl:w-20`}
     >
       <div
         className={`relative flex w-full flex-col bg-cover ${
@@ -90,7 +93,8 @@ const ProfileCardShowcase = ({
       >
         <p
           className={`rounded-t-xl pt-1 pb-1 indent-2 text-xxs
-           before:content-['#']
+          before:content-['#']
+           max-xl:text-xxxs
             ${
               type === 'normal'
                 ? 'bg-yellow-300 text-black'
@@ -113,7 +117,8 @@ const ProfileCardShowcase = ({
                 : attributePokemon()
             }
             alt="pokemon-images"
-            className=" m-auto block h-9/10 w-9/10 object-contain"
+            className={`m-auto block h-9/10 w-9/10 object-contain
+            max-xl:h-8/10 max-xl:w-8/10`}
           ></img>
         </div>
       </div>
@@ -131,6 +136,7 @@ const ProfileCardShowcase = ({
               ? ''
               : `pt-1 pb-1 text-center text-xxs first-letter:capitalize 
                 max-2xl:pt-0.5 max-2xl:pb-0.5
+                max-xl:text-xxxs
               ${
                 type === 'normal'
                   ? 'bg-red-poke'
@@ -154,7 +160,8 @@ const ProfileCardShowcase = ({
                 src={`./images/pokemon_elements/${element}.png`}
                 alt="normal"
                 className={`m-1 h-5 w-5
-                max-2xl:h-4 max-2xl:w-4`}
+                max-2xl:h-4 max-2xl:w-4
+                max-xl:h-2.5 max-xl:w-2.5`}
               />
             ))}
           </div>

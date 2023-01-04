@@ -2,7 +2,7 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    screens: { tablet: '724px', '2xl': '1536px' },
+    screens: { tablet: '724px', '2xl': '1536px', xl: '1280px' },
     extend: {
       flex: {
         2: '2 2 0%',
@@ -15,6 +15,8 @@ module.exports = {
       },
       fontSize: {
         xxs: '0.6rem',
+        xxxs: '0.5rem',
+        xxxxs: '0.4rem',
       },
       colors: {
         'black-steam': '#161b22',

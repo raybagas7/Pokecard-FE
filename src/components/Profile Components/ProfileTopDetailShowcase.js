@@ -7,12 +7,12 @@ const ProfileTopDetailShowcase = ({ pokemonData }) => {
   return (
     <div
       key={pokemonData.poke_id ? pokemonData.poke_id : 'undefined'}
-      className="flex h-full w-full rounded-lg"
+      className="flex h-full w-full rounded-lg "
     >
-      <div className="flex flex-2 flex-col rounded-l-lg ">
-        <div className="flex flex-1 items-center justify-center rounded-tl-lg ">
+      <div className="flex flex-2 rounded-l-lg">
+        <div className="flex flex-1 items-center justify-center rounded-tl-lg max-xl:flex-col">
           <ProfilePokemonStat stats={pokemonData.stats} />
-          <div className="flex h-full w-full flex-1 flex-col items-center justify-center ">
+          <div className="flex h-full w-full flex-1 flex-col items-center justify-center max-xl:flex-row">
             <ProfilePokemonMoves move={pokemonData.move1} />
             <ProfilePokemonMoves move={pokemonData.move2} />
           </div>
@@ -21,17 +21,19 @@ const ProfileTopDetailShowcase = ({ pokemonData }) => {
       {pokemonData.poke_id ? (
         <PokemonOfficialAvatar pokemonData={pokemonData} />
       ) : (
-        <div
-          className={`m-3 flex flex-1 flex-col rounded-lg border-2 border-gray-500 bg-fb-undefined bg-cover`}
-        >
-          <div>
-            <img
-              alt={`${pokemonData.poke_id}`}
-              src={`./images/quetion-mark.png`}
-              className="h-auto w-full animate-fade_in_slide_left rounded-lg "
-            />
+        <div className="flex flex-1 items-center">
+          <div
+            className={`m-3 flex h-9/10 w-9/10 flex-1 flex-col justify-center rounded-lg border-2 border-gray-500 bg-fb-undefined bg-cover
+          max-xl:h-8/10 max-xl:w-8/10 `}
+          >
+            <div>
+              <img
+                alt={`${pokemonData.poke_id}`}
+                src={`./images/quetion-mark.png`}
+                className="h-auto w-full animate-fade_in_slide_left rounded-lg "
+              />
+            </div>
           </div>
-          <div className="flex h-full w-full flex-1 flex-col rounded-b-lg"></div>
         </div>
       )}
       {/* <PokemonOfficialAvatar pokemonData={pokemonData} /> */}

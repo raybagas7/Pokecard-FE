@@ -19,8 +19,11 @@ const PokemonOfficialAvatar = ({ pokemonData }) => {
     : (type = 'normal');
 
   return (
-    <div
-      className={`m-3 flex flex-1 flex-col rounded-lg border-2 border-gray-500 ${
+    <div className="flex flex-1 items-center">
+      <div
+        className={`m-3 flex h-9/10 w-9/10 flex-1 flex-col rounded-lg border-2 border-gray-500 
+      max-xl:h-8/10 max-xl:w-8/10 
+      ${
         type === undefined || null
           ? 'bg-fb-undefined'
           : type === 'normal'
@@ -33,45 +36,46 @@ const PokemonOfficialAvatar = ({ pokemonData }) => {
           ? 'bg-fb-legendary-shine'
           : ''
       } bg-cover`}
-    >
-      <div className="flex justify-center">
-        <img
-          alt={`${pokemonData.poke_id}`}
-          src={
-            pokemonData === undefined || null
-              ? `./images/quetion-mark.png`
-              : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.poke_id}.png`
-          }
-          className="h-auto w-9/10 animate-fade_in_slide_left rounded-lg "
-        />
-      </div>
-      <div className="flex h-full w-full flex-1 flex-col rounded-b-lg">
-        <div
-          className={`flex flex-1 items-center justify-center  ${
-            type === 'normal'
-              ? 'bg-yellow-300 text-black'
-              : type === 'shiny'
-              ? 'bg-orange-400'
-              : type === 'legendary'
-              ? 'bg-purple-600 '
-              : type === 'legendary-shine'
-              ? 'bg-gradient-to-r from-purple-legend-dark via-purple-legend-light to-purple-legend-dark '
-              : ''
-          }`}
-        >
-          <p className="animate-fade_in text-2xl first-letter:capitalize max-2xl:text-base">
-            {pokemonData.name}
-          </p>
+      >
+        <div className="flex justify-center">
+          <img
+            alt={`${pokemonData.poke_id}`}
+            src={
+              pokemonData === undefined || null
+                ? `./images/quetion-mark.png`
+                : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.poke_id}.png`
+            }
+            className="h-auto w-9/10 animate-fade_in_slide_left rounded-lg "
+          />
         </div>
-        <div className="flex flex-1 items-center justify-center rounded-b-lg bg-black-steam ">
-          {allType.map((element) => (
-            <img
-              key={element}
-              src={`./images/pokemon_elements/${element}.png`}
-              alt={element}
-              className="m-1.5 h-9 w-9 animate-fade_in max-2xl:h-7 max-2xl:w-7"
-            />
-          ))}
+        <div className="flex h-full w-full flex-1 flex-col rounded-b-lg">
+          <div
+            className={`flex flex-1 items-center justify-center  ${
+              type === 'normal'
+                ? 'bg-yellow-300 text-black'
+                : type === 'shiny'
+                ? 'bg-orange-400'
+                : type === 'legendary'
+                ? 'bg-purple-600 '
+                : type === 'legendary-shine'
+                ? 'bg-gradient-to-r from-purple-legend-dark via-purple-legend-light to-purple-legend-dark '
+                : ''
+            }`}
+          >
+            <p className="animate-fade_in text-2xl first-letter:capitalize max-2xl:text-base">
+              {pokemonData.name}
+            </p>
+          </div>
+          <div className="flex flex-1 items-center justify-center rounded-b-lg bg-black-steam ">
+            {allType.map((element) => (
+              <img
+                key={element}
+                src={`./images/pokemon_elements/${element}.png`}
+                alt={element}
+                className="m-1.5 h-9 w-9 animate-fade_in max-2xl:h-7 max-2xl:w-7"
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

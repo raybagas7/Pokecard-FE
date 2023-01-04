@@ -82,7 +82,11 @@ const ProfilePokemonStat = ({ stats }) => {
   };
 
   return (
-    <div className="flex h-full w-full flex-1 items-center justify-center rounded-tl-lg rounded-bl-lg max-2xl:h-9/10 max-2xl:w-9/10">
+    <div
+      className={`flex h-full w-full flex-1 items-center justify-center rounded-tl-lg rounded-bl-lg 
+    max-2xl:h-9/10 max-2xl:w-9/10
+    max-xl:h-7/10 max-xl:w-7/10`}
+    >
       <PolarArea data={data} options={options} />
     </div>
   );
