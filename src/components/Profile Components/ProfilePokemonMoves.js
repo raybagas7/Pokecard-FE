@@ -5,16 +5,16 @@ const ProfilePokemonMoves = ({ move }) => {
     <div className="flex h-full w-full flex-1 animate-fade_in_slide_up items-center justify-center">
       <div className="flex h-9/10 w-9/10 flex-col rounded-lg">
         <div
-          className={`flex items-center justify-between rounded-t-lg ailment-${
+          className={`flex items-center justify-between rounded-t-lg max-2xl:text-xxs ailment-${
             move !== null ? move.ailment : 'none'
           }`}
         >
           <p
-            className={`p-1 pl-3 text-sm before:content-['#'] max-2xl:text-xxs`}
+            className={`p-1 pl-3 text-sm before:content-['#'] max-2xl:text-xxs max-md:p-0 max-md:pl-3 max-md:text-xxxs`}
           >
             {move !== null ? move.id : '0'}
           </p>
-          <p className="pr-3 text-sm first-letter:capitalize max-2xl:text-xxs">
+          <p className="pr-3 text-sm first-letter:capitalize max-2xl:text-xxs max-md:text-xxxs">
             {move !== null ? move.ailment : 'none'}
           </p>
         </div>
@@ -38,7 +38,8 @@ const ProfilePokemonMoves = ({ move }) => {
           <p
             className={`ml-1 animate-fade_in text-2xl first-letter:capitalize
           max-2xl:text-base
-          max-xl:text-sm`}
+          max-xl:text-sm
+          max-md:text-xs`}
           >
             {move !== null ? move.name : ''}
           </p>
@@ -49,18 +50,18 @@ const ProfilePokemonMoves = ({ move }) => {
           max-2xl:text-xxs
           max-xl:overflow-hidden max-xl:text-ellipsis max-xl:whitespace-nowrap`}
           >
-            <p className="first-letter:capitalize">
+            <p className="first-letter:capitalize max-md:text-xxxs">
               {move !== null ? move.category : '-'}
             </p>
           </div>
           <div className="flex h-full flex-1 rounded-br-lg">
-            <div className="flex flex-1 items-center justify-center bg-red-poke p-2 text-sm max-2xl:text-xxs">
+            <div className="flex flex-1 items-center justify-center bg-red-poke p-2 text-sm max-2xl:text-xxs max-md:text-xxxs">
               {move === null || move.power === null ? '-' : move.power}
             </div>
-            <div className="flex flex-1 items-center justify-center bg-amber-400 p-2 text-sm max-2xl:text-xxs">
+            <div className="flex flex-1 items-center justify-center bg-amber-400 p-2 text-sm max-2xl:text-xxs max-md:text-xxxs">
               {move === null || move.accuracy === null ? '-' : move.accuracy}
             </div>
-            <div className="flex flex-1 items-center justify-center rounded-br-lg bg-blue-500 p-2 text-sm max-2xl:text-xxs">
+            <div className="flex flex-1 items-center justify-center rounded-br-lg bg-blue-500 p-2 text-sm max-2xl:text-xxs max-md:text-xxxs">
               {move === null || move.pp === null ? '-' : move.pp}
             </div>
           </div>

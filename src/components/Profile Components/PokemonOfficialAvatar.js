@@ -19,10 +19,14 @@ const PokemonOfficialAvatar = ({ pokemonData }) => {
     : (type = 'normal');
 
   return (
-    <div className="flex flex-1 items-center">
+    <div
+      className="flex flex-1 items-center
+    max-md:h-auto max-md:w-48"
+    >
       <div
         className={`m-3 flex h-9/10 w-9/10 flex-1 flex-col rounded-lg border-2 border-gray-500 
       max-xl:h-8/10 max-xl:w-8/10 
+      max-md:h-9/10 max-md:w-9/10
       ${
         type === undefined || null
           ? 'bg-fb-undefined'
@@ -45,7 +49,7 @@ const PokemonOfficialAvatar = ({ pokemonData }) => {
                 ? `./images/quetion-mark.png`
                 : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.poke_id}.png`
             }
-            className="h-auto w-9/10 animate-fade_in_slide_left rounded-lg "
+            className="h-auto w-9/10 animate-fade_in_slide_left rounded-lg"
           />
         </div>
         <div className="flex h-full w-full flex-1 flex-col rounded-b-lg">
@@ -62,7 +66,10 @@ const PokemonOfficialAvatar = ({ pokemonData }) => {
                 : ''
             }`}
           >
-            <p className="animate-fade_in text-2xl first-letter:capitalize max-2xl:text-base">
+            <p
+              className="animate-fade_in text-2xl first-letter:capitalize max-2xl:text-base
+            max-md:text-xs"
+            >
               {pokemonData.name}
             </p>
           </div>
@@ -72,7 +79,8 @@ const PokemonOfficialAvatar = ({ pokemonData }) => {
                 key={element}
                 src={`./images/pokemon_elements/${element}.png`}
                 alt={element}
-                className="m-1.5 h-9 w-9 animate-fade_in max-2xl:h-7 max-2xl:w-7"
+                className="m-1.5 h-9 w-9 animate-fade_in max-2xl:h-7 max-2xl:w-7
+                max-md:h-5 max-md:w-5"
               />
             ))}
           </div>

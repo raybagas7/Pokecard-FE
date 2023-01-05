@@ -63,7 +63,7 @@ const ProfilePokemonStat = ({ stats }) => {
       legend: {
         labels: {
           font: {
-            size: 10,
+            size: 9,
             family: 'Righteous',
           },
         },
@@ -85,7 +85,8 @@ const ProfilePokemonStat = ({ stats }) => {
     <div
       className={`flex h-full w-full flex-1 items-center justify-center rounded-tl-lg rounded-bl-lg 
     max-2xl:h-9/10 max-2xl:w-9/10
-    max-xl:h-7/10 max-xl:w-7/10`}
+    max-xl:h-7/10 max-xl:w-7/10
+    max-md:h-8/10 max-md:w-8/10`}
     >
       <PolarArea data={data} options={options} />
     </div>

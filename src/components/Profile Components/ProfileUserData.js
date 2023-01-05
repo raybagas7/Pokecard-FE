@@ -34,14 +34,25 @@ const ProfileUserData = ({ userData, userCredit }) => {
     });
   };
   return (
-    <div className="relative flex flex-1 rounded-lg max-xl:flex-col">
-      <div className="relative flex flex-1 flex-col rounded-lg p-2.5 text-sm max-xl:mt-2 max-xl:items-center max-xl:justify-center max-xl:p-0.5">
+    <div
+      className={`relative flex flex-1 rounded-lg 
+    max-xl:flex-col
+    max-lg:flex-none max-lg:flex-row
+    max-md:w-9/10 max-md:flex-col`}
+    >
+      <div
+        className={`relative flex flex-1 flex-col rounded-lg p-2.5 text-sm 
+      max-xl:mt-2 max-xl:items-center max-xl:justify-center max-xl:p-0.5
+      max-lg:mt-0`}
+      >
         <div className="flex flex-1 items-center justify-center">
           <img
             src="./images/snoop.jpg"
             alt="profile pictures"
-            className={`mr-auto block h-fit w-fit rounded-lg border-2 border-white/50 object-contain p-3 
-            max-xl:h-20 max-xl:w-20 max-xl:p-1`}
+            className={`block h-fit w-fit rounded-lg border-2 border-white/50 object-contain p-3 
+            max-xl:h-20 max-xl:w-20 max-xl:p-1
+            max-lg:m-2 max-lg:h-auto max-lg:w-7/10
+            max-md:h-auto max-md:w-32`}
           ></img>
         </div>
       </div>
@@ -57,7 +68,10 @@ const ProfileUserData = ({ userData, userCredit }) => {
             {userData.user.search_id}
           </div>
         </header>
-        <div className="flex flex-1 p-1.5 max-xl:flex-col">
+        <div
+          className={`flex flex-1 p-1.5 
+        max-xl:flex-col`}
+        >
           <div className="flex-1 max-xl:flex max-xl:justify-center">
             <div className="flex items-center p-1 pl-3 max-xl:pl-1">
               <SmallPokeball />

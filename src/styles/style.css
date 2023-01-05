@@ -1838,7 +1838,7 @@ nav li:hover a {
     display: flex;
     flex-direction: column;
     width: 110px;
-    height: 180px;
+    height: 170px;
     margin: 2px;
     /*border*/
     border-radius: 15px;

@@ -7,9 +7,13 @@ const ProfileTopDetailShowcase = ({ pokemonData }) => {
   return (
     <div
       key={pokemonData.poke_id ? pokemonData.poke_id : 'undefined'}
-      className="flex h-full w-full rounded-lg "
+      className="flex h-full w-full rounded-lg 
+      max-md:flex-col max-md:items-center max-md:justify-center"
     >
-      <div className="flex flex-2 rounded-l-lg">
+      <div
+        className="flex flex-2 rounded-l-lg  max-md:order-1
+      max-md:h-full max-md:w-full"
+      >
         <div className="flex flex-1 items-center justify-center rounded-tl-lg max-xl:flex-col">
           <ProfilePokemonStat stats={pokemonData.stats} />
           <div className="flex h-full w-full flex-1 flex-col items-center justify-center max-xl:flex-row">

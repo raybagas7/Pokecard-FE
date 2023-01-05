@@ -17,20 +17,39 @@ const ProfileContainer = ({ userData, userShowcases, userCredit }) => {
   };
 
   return (
-    <div className="profile-container flex min-h-screen flex-1 text-white">
-      <div className="relative m-10 mr-2 min-h-screen flex-1 flex-col items-center justify-center gap-1">
+    <div
+      className={`profile-container flex min-h-screen flex-1 text-white 
+    max-lg:flex-col`}
+    >
+      <div
+        className={`relative m-10 mr-2 min-h-screen flex-1 flex-col items-center justify-center gap-1
+      max-lg:m-5`}
+      >
         <div className="border-1 border-1 absolute h-full w-full rounded-lg border-y-2 border-white bg-white/30 drop-shadow-lg backdrop-blur-md">
-          <div className="absolute flex h-full w-full flex-col gap-1 p-5">
-            <div className="flex items-center justify-center rounded-lg bg-black-steam/90 drop-shadow-md">
+          <div
+            className={`absolute flex h-full w-full flex-col gap-1 p-5
+          max-lg:items-center max-lg:justify-center`}
+          >
+            <div
+              className={`flex items-center justify-center rounded-lg bg-black-steam/90 drop-shadow-md
+            max-lg:w-fit
+            max-md:w-8/10`}
+            >
               <ProfileUserData userData={userData} userCredit={userCredit} />
             </div>
-            <div className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md">
+            <div
+              className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md
+            max-lg:h-96 max-lg:w-9/10"
+            >
               <ProfileTopShowcases
                 showcases={topShowcases}
                 changePokemonDetails={changePokemonDetails}
               />
             </div>
-            <div className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md">
+            <div
+              className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md
+            max-lg:h-auto max-lg:w-9/10"
+            >
               <ProfileTopShowcases
                 showcases={botShowcases}
                 changePokemonDetails={changePokemonDetails}
@@ -39,7 +58,10 @@ const ProfileContainer = ({ userData, userShowcases, userCredit }) => {
           </div>
         </div>
       </div>
-      <div className="relative m-10  ml-2 min-h-screen flex-2 flex-col items-center justify-center gap-1 ">
+      <div
+        className={`relative m-10  ml-2 min-h-screen flex-2 flex-col items-center justify-center gap-1 
+      max-lg:m-5`}
+      >
         <div className="border-1 border-1 absolute h-full w-full rounded-lg border-y-2 border-white bg-white/30 drop-shadow-lg backdrop-blur-md"></div>
         <div className="absolute flex h-full w-full flex-col gap-4 p-5">
           <div className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md">
