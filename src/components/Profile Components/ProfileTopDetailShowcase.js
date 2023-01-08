@@ -11,8 +11,9 @@ const ProfileTopDetailShowcase = ({ pokemonData }) => {
       max-md:flex-col max-md:items-center max-md:justify-center"
     >
       <div
-        className="flex flex-2 rounded-l-lg  max-md:order-1
-      max-md:h-full max-md:w-full"
+        className="flex flex-2 rounded-l-lg  max-xl:items-center
+      max-xl:justify-center max-md:order-1
+      max-md:h-full max-md:w-full "
       >
         <div className="flex flex-1 items-center justify-center rounded-tl-lg max-xl:flex-col">
           <ProfilePokemonStat stats={pokemonData.stats} />

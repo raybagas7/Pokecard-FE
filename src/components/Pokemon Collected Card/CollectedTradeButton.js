@@ -1,9 +1,9 @@
 import React from 'react';
 import Swal from 'sweetalert2';
-import { updateCardToCaseRefresh } from '../../utils/network-data';
+import { updateCardToWindowRefresh } from '../../utils/network-data';
 
-const CollectedCaseButton = ({ caseNumber, cardId, name }) => {
-  const casePayload = { card_id: cardId, case_number: caseNumber };
+const CollectedTradeButton = ({ windowNumber, cardId, name }) => {
+  const tradesPayload = { card_id: cardId, window_number: windowNumber };
 
   const Toast = Swal.mixin({
     toast: true,
@@ -17,10 +17,9 @@ const CollectedCaseButton = ({ caseNumber, cardId, name }) => {
     timerProgressBar: true,
   });
 
-  const updateCardCase = async (payload) => {
-    const result = await updateCardToCaseRefresh(payload).then(
+  const updateCardWindow = async (payload) => {
+    const result = await updateCardToWindowRefresh(payload).then(
       ({ error, data, message }) => {
-        console.log(message);
         return { error, message };
       }
     );
@@ -29,7 +28,7 @@ const CollectedCaseButton = ({ caseNumber, cardId, name }) => {
 
   const showAlert = () => {
     Swal.fire({
-      title: `Set ${name} into showcase number #${caseNumber}?`,
+      title: `Set ${name} into trades window number #${windowNumber}?`,
       showDenyButton: true,
       confirmButtonText: 'Yes',
       denyButtonText: 'No',
@@ -41,7 +40,8 @@ const CollectedCaseButton = ({ caseNumber, cardId, name }) => {
       },
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const result = await updateCardCase(casePayload);
+        const result = await updateCardWindow(tradesPayload);
+        // console.log(result);
         if (!result.error) {
           Toast.fire({
             icon: 'success',
@@ -61,13 +61,13 @@ const CollectedCaseButton = ({ caseNumber, cardId, name }) => {
     <div className="flex flex-1 items-center justify-center">
       <button
         onClick={showAlert}
-        className={`absolute rounded-lg bg-black-steam p-1.5 text-xxs text-white transition hover:scale-125 hover:bg-orange-poke 
-        max-tablet:p-1 max-tablet:text-xxxs`}
+        className={`absolute text-ellipsis rounded-lg bg-black-steam p-1.5 text-xxs text-white transition hover:scale-125 
+        hover:bg-orange-poke max-tablet:overflow-hidden max-tablet:whitespace-nowrap max-tablet:p-1 max-tablet:text-xxxs`}
       >
-        Case {caseNumber}
+        Trade {windowNumber}
       </button>
     </div>
   );
 };
 
-export default CollectedCaseButton;
+export default CollectedTradeButton;

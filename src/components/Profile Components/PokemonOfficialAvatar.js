@@ -24,8 +24,8 @@ const PokemonOfficialAvatar = ({ pokemonData }) => {
     max-md:h-auto max-md:w-48"
     >
       <div
-        className={`m-3 flex h-9/10 w-9/10 flex-1 flex-col rounded-lg border-2 border-gray-500 
-      max-xl:h-8/10 max-xl:w-8/10 
+        className={`m-3 flex h-auto w-9/10 flex-1 flex-col rounded-lg border-2 border-gray-500 
+      max-xl:h-auto max-xl:w-8/10 
       max-md:h-9/10 max-md:w-9/10
       ${
         type === undefined || null
@@ -52,7 +52,7 @@ const PokemonOfficialAvatar = ({ pokemonData }) => {
             className="h-auto w-9/10 animate-fade_in_slide_left rounded-lg"
           />
         </div>
-        <div className="flex h-full w-full flex-1 flex-col rounded-b-lg">
+        <div className="flex h-full w-full flex-col rounded-b-lg">
           <div
             className={`flex flex-1 items-center justify-center  ${
               type === 'normal'

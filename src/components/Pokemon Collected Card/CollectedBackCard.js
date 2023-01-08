@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CollectedCaseButton from './CollectedCaseButton';
+import CollectedTradeButton from './CollectedTradeButton';
 
 const CollectedBackCard = ({ toggleFlip, cardId, name, type }) => {
   return (
@@ -20,22 +21,32 @@ const CollectedBackCard = ({ toggleFlip, cardId, name, type }) => {
             ? 'rounded-t-poke-15 bg-gradient-to-r from-purple-legend-dark via-purple-legend-light to-purple-legend-dark '
             : ''
         } 
-        max-tablet:text-xxs`}
+        max-tablet:p-0.5 max-tablet:text-xxs`}
       >
-        Apply To Showcases
+        Showcases Or Trades
       </p>
       <div className="flex flex-1 flex-col">
         <div className="flex flex-1 ">
           <CollectedCaseButton caseNumber={1} cardId={cardId} name={name} />
           <CollectedCaseButton caseNumber={2} cardId={cardId} name={name} />
-        </div>
-        <div className="flex flex-1">
           <CollectedCaseButton caseNumber={3} cardId={cardId} name={name} />
-          <CollectedCaseButton caseNumber={4} cardId={cardId} name={name} />
         </div>
         <div className="flex flex-1 rounded-b-poke-15">
+          <CollectedCaseButton caseNumber={4} cardId={cardId} name={name} />
           <CollectedCaseButton caseNumber={5} cardId={cardId} name={name} />
           <CollectedCaseButton caseNumber={6} cardId={cardId} name={name} />
+        </div>
+      </div>
+      <div className="flex flex-1 flex-col border-t-2 border-black-steam">
+        <div className="flex flex-1 ">
+          <CollectedTradeButton windowNumber={1} cardId={cardId} name={name} />
+          <CollectedTradeButton windowNumber={2} cardId={cardId} name={name} />
+          <CollectedTradeButton windowNumber={3} cardId={cardId} name={name} />
+        </div>
+        <div className="flex flex-1 rounded-b-poke-15">
+          <CollectedTradeButton windowNumber={4} cardId={cardId} name={name} />
+          <CollectedTradeButton windowNumber={5} cardId={cardId} name={name} />
+          <CollectedTradeButton windowNumber={6} cardId={cardId} name={name} />
         </div>
       </div>
     </div>

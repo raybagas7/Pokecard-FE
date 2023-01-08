@@ -46,7 +46,7 @@ const ProfileCardShowcase = ({
   if (type === null || undefined || attribute === null || undefined) {
     return (
       <div
-        className={`rounded-xlhover:animate-lift_card relative m-1 flex h-56 w-36 cursor-pointer flex-col
+        className={`relative m-1 flex h-52 w-36 animate-default_lift_card cursor-pointer flex-col rounded-xl hover:animate-lift_card
         max-2xl:h-44 max-2xl:w-28
         max-xl:h-36 max-xl:w-20
         max-lg:h-52 max-lg:w-36
@@ -70,7 +70,7 @@ const ProfileCardShowcase = ({
   return (
     <div
       onClick={chageDetailShowcase}
-      className={`relative m-1 flex h-52 w-36 cursor-pointer flex-col rounded-xl bg-black hover:animate-lift_card 
+      className={`relative m-1 flex h-52 w-36 animate-default_lift_card cursor-pointer flex-col rounded-xl bg-black hover:animate-lift_card hover:drop-shadow-md 
       max-2xl:h-44 max-2xl:w-28
       max-xl:h-32 max-xl:w-20
       max-lg:h-52 max-lg:w-36
@@ -134,8 +134,8 @@ const ProfileCardShowcase = ({
         className={`${
           type === undefined || null
             ? ''
-            : `static bottom-0 h-1/4 w-full cursor-default overflow-hidden text-ellipsis
-          rounded-b-xl bg-black text-white `
+            : `static bottom-0 h-1/4 w-full cursor-pointer overflow-hidden
+          text-ellipsis rounded-b-xl bg-black text-white`
         }`}
       >
         <p

@@ -4,27 +4,41 @@ import ProfileContainer from '../components/Profile Components/ProfileContainer'
 import {
   getCreditAndTotalCardsWithRefresh,
   getUserShowcasesRefresh,
+  getUserTradesRefresh,
 } from '../utils/network-data';
 
 function ProfilePage({ userData }) {
   console.log('profile page', userData);
 
   const [userShowcases, setUserShowcases] = React.useState();
+  const [userTrades, setUserTrades] = React.useState();
   const [userCredit, setUserCredit] = React.useState();
-  const [initializing, setInitializing] = React.useState(true);
+  const [initializing1, setInitializing1] = React.useState(true);
+  const [initializing2, setInitializing2] = React.useState(true);
+  const [initializing3, setInitializing3] = React.useState(true);
 
   React.useEffect(() => {
     getUserShowcasesRefresh().then(({ error, data, message }) => {
       try {
         setUserShowcases(data);
+        setInitializing1(false);
       } catch (e) {
         console.log(message);
       }
 
+      getUserTradesRefresh().then(({ error, data, message }) => {
+        try {
+          setUserTrades(data);
+          setInitializing2(false);
+        } catch (e) {
+          console.log(message);
+        }
+      });
+
       getCreditAndTotalCardsWithRefresh().then(({ error, data, message }) => {
         try {
           setUserCredit(data);
-          setInitializing(false);
+          setInitializing3(false);
         } catch (e) {
           console.log(e);
         }
@@ -32,7 +46,7 @@ function ProfilePage({ userData }) {
     });
   }, []);
 
-  if (initializing) {
+  if (initializing1 || initializing2 || initializing3) {
     return (
       <section className="flex items-center justify-center">
         <div className="flex items-center justify-center">
@@ -52,6 +66,7 @@ function ProfilePage({ userData }) {
       <ProfileContainer
         userData={userData}
         userShowcases={userShowcases}
+        userTrades={userTrades}
         userCredit={userCredit}
       />
     </section>

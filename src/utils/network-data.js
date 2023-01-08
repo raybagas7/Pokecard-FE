@@ -541,6 +541,51 @@ const updateCardToCaseRefresh = async (payload) => {
   return result;
 };
 
+const updateCardToWindow = async (payload) => {
+  const response = await fetchWithToken(`${BASE_URL}/trades`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const updateCardToWindowRefresh = async (payload) => {
+  const result = await updateCardToWindow(payload).then(
+    ({ error, data, message }) => {
+      if (message === 'Token maximum age exceeded') {
+        const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+          putAccessToken(data.accessToken);
+          const result = await updateCardToWindow(payload).then(
+            ({ error, data, message }) => {
+              return { error, data, message };
+            }
+          );
+          return result;
+        });
+
+        return afterRefresh;
+      }
+      return { error, data, message };
+    }
+  );
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
 const getUserShowcases = async () => {
   const response = await fetchWithToken(`${BASE_URL}/showcases`, {
     method: 'GET',
@@ -568,6 +613,48 @@ const getUserShowcasesRefresh = async () => {
       const afterRefresh = refreshAccessToken().then(async ({ data }) => {
         putAccessToken(data.accessToken);
         const result = await getUserShowcases().then(
+          ({ error, data, message }) => {
+            return { error, data, message };
+          }
+        );
+        return result;
+      });
+
+      return afterRefresh;
+    }
+    return { error, data, message };
+  });
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
+const getUserTrades = async () => {
+  const response = await fetchWithToken(`${BASE_URL}/trades`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const getUserTradesRefresh = async () => {
+  const result = await getUserTrades().then(({ error, data, message }) => {
+    if (message === 'Token maximum age exceeded') {
+      const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+        putAccessToken(data.accessToken);
+        const result = await getUserTrades().then(
           ({ error, data, message }) => {
             return { error, data, message };
           }
@@ -675,8 +762,10 @@ export {
   getShuffledCard,
   getShuffledCardRefresh,
   updateCardToCaseRefresh,
+  updateCardToWindowRefresh,
   getUserShowcases,
   getUserShowcasesRefresh,
+  getUserTradesRefresh,
   getCreditAndTotalCardsWithRefresh,
   claimUserDailyGiftRefresh,
   verifyAccount,

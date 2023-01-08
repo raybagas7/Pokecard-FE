@@ -10,6 +10,11 @@ module.exports = {
       md: '769px',
       sm: '641px',
     },
+
+    minHeight: {
+      'half-screen': '50vh',
+      screen: '100vh',
+    },
     extend: {
       flex: {
         2: '2 2 0%',
@@ -25,6 +30,11 @@ module.exports = {
         xxxs: '0.5rem',
         xxxxs: '0.4rem',
       },
+      maxWidth: {
+        '60px': '60px',
+        '40px': '40px',
+        '20px': '20px',
+      },
       colors: {
         'black-steam': '#161b22',
         'red-poke': '#e41f25',
@@ -33,6 +43,12 @@ module.exports = {
         'orange-poke': '#f58216',
         'yellow-poke': '#ffff00',
         'purple-poke': '#9d4edd',
+        'hp-box': '#48bf53',
+        'attack-box': '#c80808',
+        'defense-box': '#2f57d1',
+        'special-attack-box': '#ffbf00',
+        'special-defense-box': '#a8a9ad',
+        'speed-box': '#03bb99',
       },
       blur: {
         xs: '2px',
@@ -75,7 +91,11 @@ module.exports = {
       keyframes: {
         expand_info_showcase: {
           '0%': { height: '25%' },
-          '100%': { height: '100%', 'border-radius': '0.5rem' },
+          '100%': { height: '100%', 'border-radius': '0.75rem' },
+        },
+        default_expand_info: {
+          '0%': { height: '100%', 'border-radius': '0.75rem' },
+          '100%': { height: '25%' },
         },
         lift_card: {
           '0%': { bottom: '0px' },
@@ -125,6 +145,7 @@ module.exports = {
       },
       animation: {
         expand_info_showcase: 'expand_info_showcase 0.5s forwards',
+        default_expand_info: 'default_expand_info 0.5s forwards',
         lift_card: 'lift_card 0.25s forwards',
         fade_in_slide_up: 'fade_in_slide_up 1s forwards',
         fade_in_slide_left: 'fade_in_slide_left 1.5s forwards',
