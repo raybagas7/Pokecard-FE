@@ -8,7 +8,7 @@ import {
 } from '../utils/network-data';
 
 function ProfilePage({ userData }) {
-  console.log('profile page', userData);
+  // console.log('profile page', userData);
 
   const [userShowcases, setUserShowcases] = React.useState();
   const [userTrades, setUserTrades] = React.useState();

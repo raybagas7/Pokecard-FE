@@ -15,6 +15,7 @@
   border: solid white;
   width: 95%;
   height: fit-content;
+  min-height: 1025px;
   background-color: #ffd400;
   border-radius: 20px;
   padding: 20px;
@@ -27,6 +28,7 @@
 
 .collections-title {
   width: 100%;
+  height: fit-content;
   color: black;
   margin: 15px;
 }

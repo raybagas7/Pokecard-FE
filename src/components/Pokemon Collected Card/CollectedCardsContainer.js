@@ -4,35 +4,33 @@ import '../../styles/page-button-style.css';
 import { getCard } from '../../utils/card';
 import CollectedCardContent from './CollectedCardContent';
 import CollectionPageButton from './CollectionPageButton';
+import useInput from '../../hooks/useInput';
 
 const CollectedCardsContainer = ({ ownedCards }) => {
+  const [searchPokemon, handleSearchPokemon] = useInput('');
   const [activePage, setActivePage] = useState(0);
-  // const [isBack, setIsBack] = useState(false);
-  // const [isNext, setIsNext] = useState(false);
-  // const [listen, setListen] = useState(false);
 
   const cards = getCard();
   const { cards: ownedCollections = [] } = ownedCards;
-
   ownedCollections.sort((a, b) => a.poke_id - b.poke_id);
 
-  // const min = (activePage + 1) * 24 - 24;
-  // const max = (activePage + 1) * 24;
-  // console.log(min, max);
+  const onSearchPokemonHandler = () => {
+    const foundPokemon = ownedCollections.filter((collection) =>
+      collection.name.toLowerCase().includes(searchPokemon.toLowerCase())
+    );
+
+    return foundPokemon;
+  };
+
   const filteredByPageCollection = [];
-  const devideOwnedPokemon = Math.ceil(ownedCollections.length / 24);
-  // console.log('divide', devideOwnedPokemon);
+  const devideOwnedPokemon = Math.ceil(onSearchPokemonHandler().length / 24);
+
   for (let i = 0; i < devideOwnedPokemon; i++) {
     const min2 = (i + 1) * 24 - 24;
     const max2 = (i + 1) * 24;
-    filteredByPageCollection.push(ownedCollections.slice(min2, max2));
+    filteredByPageCollection.push(onSearchPokemonHandler().slice(min2, max2));
   }
-  // console.log(filteredByPageCollection);
 
-  // console.log(activePage);
-  // console.log(Math.round(ownedCollections.length / 24));
-
-  // filteredByPageCollection.push(pageCollection);
   const nextActivePage = () => {
     setActivePage((prevPage) => {
       const newPage = prevPage + 1;
@@ -49,40 +47,16 @@ const CollectedCardsContainer = ({ ownedCards }) => {
 
   const jumpActivePage = (number) => {
     setActivePage(number);
-    // console.log(number);
+    // if (searchPokemon !== '') {
+    //   setActivePage(0);
+    // }
   };
 
-  // const detectKeydown = (e) => {
-  //   if (e) {
-  //     if (e.key === 'ArrowLeft') {
-  //       setIsNext(false);
-  //       setIsBack(true);
-  //     }
-  //     if (e.key === 'ArrowRight') {
-  //       setIsNext(true);
-  //       setIsBack(false);
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   document.addEventListener('keydown', detectKeydown, true);
-  // }, []);
-
-  // if (isBack && activePage !== 0) {
-  //   setIsBack(false);
-  //   previousActivePage();
-  // }
-  // if (isNext && activePage <= filteredByPageCollection.length - 2) {
-  //   setIsNext(false);
-  //   nextActivePage();
-  // }
-
-  return ownedCards.length !== 0 ? (
+  return onSearchPokemonHandler().length !== 0 ? (
     <div className="collections-content">
       <div className="all-cards__container">
         <div className="collections-title">
-          <h2>Pokécard Collections</h2>
+          <p className="text-center text-2xl">Pokécard Collections</p>
           <CollectionPageButton
             array={filteredByPageCollection}
             activePage={activePage}
@@ -90,19 +64,60 @@ const CollectedCardsContainer = ({ ownedCards }) => {
             previousActivePage={previousActivePage}
             jumpActivePage={jumpActivePage}
           />
+          <div className="mt-2 flex justify-center">
+            <form>
+              <input
+                type="text"
+                className="rounded-full p-2 indent-2 text-sm"
+                value={searchPokemon}
+                onChange={handleSearchPokemon}
+                placeholder={'Search by name'}
+                disabled={activePage > 0 ? true : false}
+              />
+            </form>
+          </div>
+          <div className="mt-5 flex h-fit w-full flex-wrap justify-center">
+            {filteredByPageCollection
+              ? filteredByPageCollection[activePage].map((ownedCards) => (
+                  <CollectedCardContent
+                    key={ownedCards.card_id}
+                    {...ownedCards}
+                  />
+                ))
+              : cards.map((card) => (
+                  <CollectedCardContent key={card.id} {...card} />
+                ))}
+          </div>
         </div>
-        {filteredByPageCollection
-          ? filteredByPageCollection[activePage].map((ownedCards) => (
-              <CollectedCardContent key={ownedCards.card_id} {...ownedCards} />
-            ))
-          : cards.map((card) => (
-              <CollectedCardContent key={card.id} {...card} />
-            ))}
       </div>
       {/* <button onClick={show}>ini poke</button> */}
     </div>
   ) : (
-    <></>
+    <div className="collections-content">
+      <div className="all-cards__container">
+        <div className="collections-title">
+          <p className="text-center text-2xl">Pokécard Collections</p>
+          <CollectionPageButton
+            array={filteredByPageCollection}
+            activePage={activePage}
+            nextActivePage={nextActivePage}
+            previousActivePage={previousActivePage}
+            jumpActivePage={jumpActivePage}
+          />
+          <div className="mt-2 flex justify-center">
+            <form>
+              <input
+                type="text"
+                className="rounded-full p-1 indent-2"
+                value={searchPokemon}
+                onChange={handleSearchPokemon}
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+      {/* <button onClick={show}>ini poke</button> */}
+    </div>
   );
 };
 

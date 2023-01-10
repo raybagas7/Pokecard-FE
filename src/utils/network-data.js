@@ -670,6 +670,92 @@ const getUserTradesRefresh = async () => {
   return result;
 };
 
+const getRandomUsers = async () => {
+  const response = await fetchWithToken(`${BASE_URL}/users`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const getRandomUsersRefresh = async () => {
+  const result = await getRandomUsers().then(({ error, data, message }) => {
+    if (message === 'Token maximum age exceeded') {
+      const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+        putAccessToken(data.accessToken);
+        const result = await getRandomUsers().then(
+          ({ error, data, message }) => {
+            return { error, data, message };
+          }
+        );
+        return result;
+      });
+
+      return afterRefresh;
+    }
+    return { error, data, message };
+  });
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
+const getUserDetailBySearchId = async (searchId) => {
+  const response = await fetchWithToken(`${BASE_URL}/users/${searchId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const getUserDetailBySearchIdRefresh = async (searchId) => {
+  const result = await getUserDetailBySearchId(searchId).then(
+    ({ error, data, message }) => {
+      if (message === 'Token maximum age exceeded') {
+        const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+          putAccessToken(data.accessToken);
+          const result = await getUserDetailBySearchId(searchId).then(
+            ({ error, data, message }) => {
+              return { error, data, message };
+            }
+          );
+          return result;
+        });
+
+        return afterRefresh;
+      }
+      return { error, data, message };
+    }
+  );
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
 const claimUserDailyGift = async () => {
   const response = await fetchWithToken(`${BASE_URL}/credits/claim/daily`, {
     method: 'PUT',
@@ -766,7 +852,9 @@ export {
   getUserShowcases,
   getUserShowcasesRefresh,
   getUserTradesRefresh,
+  getRandomUsersRefresh,
   getCreditAndTotalCardsWithRefresh,
+  getUserDetailBySearchIdRefresh,
   claimUserDailyGiftRefresh,
   verifyAccount,
   pickPokeCardsWithRefresh,

@@ -16,7 +16,7 @@ const NavHeader = () => {
               <Link to={'/profile'}>Profile</Link>
             </li>
             <li>
-              <Link to={'/project'}>Project</Link>
+              <Link to={'/social'}>Social</Link>
             </li>
           </ul>
         </nav>

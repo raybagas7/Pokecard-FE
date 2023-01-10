@@ -13,7 +13,7 @@ import ExtraSmallCircleSVG from './ExtraSmallCircleSVG';
 import MasterShineBallCardSVG from './MasterShineBallCardSVG';
 
 const ProfileUserData = ({ userData, userCredit }) => {
-  console.log('creditnya', userCredit);
+  // console.log('creditnya', userCredit);
   const Toast = Swal.mixin({
     toast: true,
     position: 'top',

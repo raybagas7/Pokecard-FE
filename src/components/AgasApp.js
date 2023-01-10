@@ -22,6 +22,7 @@ import '../styles/alert-style.css';
 import ValidationContext from '../context/ValidationContext';
 import ls from 'localstorage-slim';
 import TtlVerifContext from '../context/TtlVerifContext';
+import SocialPage from '../pages/SocialPage';
 
 const AgasApp = () => {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -146,6 +147,7 @@ const AgasApp = () => {
                   path="/profile"
                   element={<ProfilePage userData={authedUser} />}
                 />
+                <Route path="/social" element={<SocialPage />} />
                 <Route path="/collections" element={<CollectionsPage />} />
                 <Route path="/trades" element={<TradesPage />} />
               </Routes>

@@ -42,6 +42,7 @@ module.exports = {
         'purple-legend-dark': '#40267d',
         'orange-poke': '#f58216',
         'yellow-poke': '#ffff00',
+        'gold-poke': '#ffd400',
         'purple-poke': '#9d4edd',
         'hp-box': '#48bf53',
         'attack-box': '#c80808',
@@ -142,6 +143,22 @@ module.exports = {
           '90%': { transform: 'translate(1px, 2px)', rotate: '(0deg)' },
           '100%': { transform: 'translate(1px, -2px)', rotate: '(-1deg)' },
         },
+        expand_user_profile: {
+          '0%': {
+            height: '5rem',
+            width: '5rem',
+          },
+          '100%': {
+            margin: '0px',
+            height: '100%',
+            'max-height': '6rem',
+            width: '18rem',
+          },
+        },
+        fade_out: {
+          '0%': { opacity: '0%' },
+          '100%': { opacity: '100%' },
+        },
       },
       animation: {
         expand_info_showcase: 'expand_info_showcase 0.5s forwards',
@@ -154,6 +171,8 @@ module.exports = {
         default_slide_left: 'default_slide_left 1.5s forwards',
         horizontal_shake: 'horizontal_shake 3s infinite',
         shaking_brutally: 'shaking_brutally 2s infinite',
+        expand_user_profile: 'expand_user_profile 0.5s forwards',
+        fade_out: 'fade_out 1.5s forwards',
       },
     },
   },

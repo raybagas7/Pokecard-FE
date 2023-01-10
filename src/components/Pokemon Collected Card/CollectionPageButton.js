@@ -16,15 +16,11 @@ const CollectionPageButton = ({
           <IoArrowBackCircle
             onClick={previousActivePage}
             className="prev-button"
-          >
-            previous
-          </IoArrowBackCircle>
+          ></IoArrowBackCircle>
         </div>
       ) : (
         <div className="prev-button-coat-disabled">
-          <IoArrowBackCircle className="prev-button-disabled">
-            previous
-          </IoArrowBackCircle>
+          <IoArrowBackCircle className="prev-button-disabled"></IoArrowBackCircle>
         </div>
       )}
       {array
@@ -44,18 +40,14 @@ const CollectionPageButton = ({
             onClick={nextActivePage}
             className="next-button"
             disabled={false}
-          >
-            next
-          </IoArrowForwardCircle>
+          ></IoArrowForwardCircle>
         </div>
       ) : (
         <div className="next-button-coat-disabled">
           <IoArrowForwardCircle
             className="next-button-disabled"
             disabled={true}
-          >
-            next
-          </IoArrowForwardCircle>
+          ></IoArrowForwardCircle>
         </div>
       )}
       {/* <p>{array[activePage]}</p> */}

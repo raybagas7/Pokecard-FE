@@ -13,7 +13,6 @@ const ProfileContainer = ({
   userCredit,
 }) => {
   const { showcases } = userShowcases;
-  // const { trades } = userTrades;
   const [pokemonData, setPokemonData] = React.useState(showcases[0]);
   const topShowcases = showcases.slice(0, 3);
   const botShowcases = showcases.slice(3, 6);
@@ -76,19 +75,6 @@ const ProfileContainer = ({
             <ProfileBottomDetailShowcase userTrades={userTrades} />
           </div>
         </div>
-
-        {/* <div className="absolute flex h-full w-full flex-col gap-4 p-5">
-          <div className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md">
-            <ProfileTopDetailShowcase pokemonData={pokemonData} />
-          </div>
-          <div className="flex flex-1 rounded-lg bg-black-steam/90 drop-shadow-md">
-            <ProfileBottomDetailShowcase />
-          </div>
-        </div> */}
-        {/* <div className="absolute flex h-full w-full flex-col gap-1 rounded-lg p-5">
-          <div className="flex-1 rounded-lg "></div>
-          <div className="flex-1 rounded-lg "></div>
-        </div> */}
       </div>
     </div>
   );
