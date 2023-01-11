@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { getUserDetailBySearchIdRefresh } from '../../../utils/network-data';
 import SocialUserLeftContainer from './SocialUserLeftContainer';
-import SocialUserRightContainer from './SocialUserRightContainer';
 
 const SocialUserContainer = ({ searchId }) => {
   const [userData, setUserData] = useState();
@@ -35,7 +34,7 @@ const SocialUserContainer = ({ searchId }) => {
     );
   }
 
-  //   console.log(userData);
+  // console.log(userData);
 
   return (
     <div
@@ -45,8 +44,8 @@ const SocialUserContainer = ({ searchId }) => {
       <SocialUserLeftContainer
         showcases={userData.showcaseCards}
         totalCards={userData.totalCards}
+        tradeCards={userData.tradeCards}
       />
-      <SocialUserRightContainer />
     </div>
   );
 };

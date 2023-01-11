@@ -1,8 +1,9 @@
 import React from 'react';
-import ProfileTradeMove from './ProfileTradeMove';
-import ProfileTradeStats from './ProfileTradeStats';
+import ProfileTradeMove from '../../Profile Components/Trades Components/ProfileTradeMove';
+import ProfileTradeStats from '../../Profile Components/Trades Components/ProfileTradeStats';
 
-const ProfileTradeCard = ({
+const SocialTradeCard = ({
+  card_id,
   attribute,
   legendary,
   mythical,
@@ -12,9 +13,33 @@ const ProfileTradeCard = ({
   stats,
   move1,
   move2,
+  change = null,
+  pickTradeCard,
 }) => {
   // let type = 'normal';
   // console.log('stats', stats);
+  const chosenCard = {
+    card_id,
+    attribute,
+    legendary,
+    mythical,
+    poke_id,
+    name,
+    types,
+    stats,
+    move1,
+    move2,
+  };
+
+  const pickCardToOffer = () => {
+    if (change) {
+      change();
+    }
+    if (pickTradeCard) {
+      pickTradeCard(chosenCard);
+    }
+  };
+
   let type = '';
   (legendary === true || mythical === true) && attribute === 'shiny'
     ? (type = 'legendary-shine')
@@ -68,8 +93,9 @@ const ProfileTradeCard = ({
 
   return (
     <div
-      className={`relative m-5 h-80 w-52 animate-default_lift_card rounded-xl bg-yellow-500 hover:animate-lift_card hover:drop-shadow-md
+      className={`relative m-5 h-80 w-52 animate-default_lift_card rounded-xl hover:animate-lift_card hover:drop-shadow-md
     max-xl:h-48 max-xl:w-32`}
+      onClick={pickCardToOffer}
     >
       <div
         className={`relative flex h-3/4 w-full cursor-pointer flex-col rounded-t-xl bg-cover
@@ -186,4 +212,4 @@ const ProfileTradeCard = ({
   );
 };
 
-export default ProfileTradeCard;
+export default SocialTradeCard;

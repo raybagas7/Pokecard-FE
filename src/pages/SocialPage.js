@@ -5,7 +5,7 @@ import useQuery from '../hooks/useQuery';
 const SocialPage = () => {
   let query = useQuery();
   const searched = query.get('search_id');
-  console.log('a', searched);
+  // console.log('a', searched);
 
   return searched ? (
     <SocialUserContainer searchId={searched} />

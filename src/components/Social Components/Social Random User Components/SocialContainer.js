@@ -35,14 +35,14 @@ const SocialContainer = () => {
   const { pool } = randUser;
   return (
     <>
-      <div className="flex w-full items-center justify-center bg-yellow-500 p-3">
-        <p className="mr-1 text-2xl">#</p>
-        <form>
-          <input type="text" className="rounded-full p-2 text-sm" />
-        </form>
-      </div>
       <div className="flex h-fit w-full items-center p-10">
-        <div className="flex h-fit w-full flex-wrap justify-center gap-3 rounded-2xl bg-gold-poke p-10 drop-shadow-lg">
+        <div className="flex h-fit w-full flex-wrap justify-center gap-3 rounded-2xl bg-gold-poke p-10 pt-3 drop-shadow-lg">
+          <div className="flex w-full items-center justify-center">
+            <p className="mr-1 text-2xl">#</p>
+            <form>
+              <input type="text" className="rounded-full p-2 text-sm" />
+            </form>
+          </div>
           {pool
             ? pool.map((user) => (
                 <SocialRandomUser key={user.search_id} {...user} />

@@ -65,6 +65,7 @@ module.exports = {
         '8/10': '80%',
         '9/10': '90%',
         '10/10': '100%',
+        720: '720px',
       },
       width: {
         '1/10': '10%',
@@ -152,12 +153,36 @@ module.exports = {
             margin: '0px',
             height: '100%',
             'max-height': '6rem',
-            width: '18rem',
+            width: '20rem',
           },
         },
-        fade_out: {
+        default_user_profile: {
+          '0%': {
+            margin: '0px',
+            height: '100%',
+            'max-height': '6rem',
+            width: '20rem',
+          },
+          '100%': {
+            height: '5rem',
+            width: '5rem',
+          },
+        },
+        fade_in_visit: {
           '0%': { opacity: '0%' },
           '100%': { opacity: '100%' },
+        },
+        fade_out_quantum: {
+          '0%': { opacity: '100%', transform: 'scale(1)' },
+          '100%': { opacity: '0%', transform: 'scale(0)' },
+        },
+        default_quantum: {
+          '0%': { opacity: '0%', transform: 'scale(0)' },
+          '100%': { opacity: '100%', transform: 'scale(1)' },
+        },
+        spinner: {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
         },
       },
       animation: {
@@ -172,9 +197,13 @@ module.exports = {
         horizontal_shake: 'horizontal_shake 3s infinite',
         shaking_brutally: 'shaking_brutally 2s infinite',
         expand_user_profile: 'expand_user_profile 0.5s forwards',
-        fade_out: 'fade_out 1.5s forwards',
+        default_user_profile: 'default_user_profile 0.5s forwards',
+        fade_in_visit: 'fade_in_visit 0.5s forwards',
+        fade_out_quantum: 'fade_out_quantum 0.5s forwards',
+        default_quantum: 'default_quantum 0.7s forwards',
+        spinner: 'spinner 1.5s forwards',
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animation-delay')],
 };

@@ -16,7 +16,7 @@ const SocialCardsOwned = ({ normal, shiny, legendarymyth, lmshine }) => {
           <ExtraSmallCircleSVG />
         </div>
       </div>
-      <p className="text-sm">{normal ? normal : '0'}</p>
+      <p className="text-xs">{normal ? normal : '0'}</p>
       <div className="m-1 flex h-fit w-fit items-center justify-center">
         <div className="relative">
           <UltraBallCardSVG />
@@ -25,7 +25,7 @@ const SocialCardsOwned = ({ normal, shiny, legendarymyth, lmshine }) => {
           <ExtraSmallCircleSVG />
         </div>
       </div>
-      <p className="text-sm">{shiny ? shiny : '0'}</p>
+      <p className="text-xs">{shiny ? shiny : '0'}</p>
       <div className="m-1 flex h-fit w-fit items-center justify-center">
         <div className="relative">
           <MasterBallCardSVG />
@@ -34,7 +34,7 @@ const SocialCardsOwned = ({ normal, shiny, legendarymyth, lmshine }) => {
           <ExtraSmallCircleSVG />
         </div>
       </div>
-      <p className="text-sm">{legendarymyth ? legendarymyth : '0'}</p>
+      <p className="text-xs">{legendarymyth ? legendarymyth : '0'}</p>
       <div className="m-1 flex h-fit w-fit items-center justify-center">
         <div className="relative">
           <MasterShineBallCardSVG />
@@ -43,7 +43,7 @@ const SocialCardsOwned = ({ normal, shiny, legendarymyth, lmshine }) => {
           <ExtraSmallCircleSVG />
         </div>
       </div>
-      <p className="text-sm">{lmshine ? lmshine : '0'}</p>
+      <p className="text-xs">{lmshine ? lmshine : '0'}</p>
     </div>
   );
 };
