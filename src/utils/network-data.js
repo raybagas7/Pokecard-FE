@@ -586,6 +586,50 @@ const updateCardToWindowRefresh = async (payload) => {
   return result;
 };
 
+const getTraderOfferList = async (cardId) => {
+  const response = await fetchWithToken(`${BASE_URL}/offers/trader/${cardId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const getTraderOfferListRefresh = async (cardId) => {
+  const result = await getTraderOfferList(cardId).then(
+    ({ error, data, message }) => {
+      if (message === 'Token maximum age exceeded') {
+        const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+          putAccessToken(data.accessToken);
+          const result = await getTraderOfferList(cardId).then(
+            ({ error, data, message }) => {
+              return { error, data, message };
+            }
+          );
+          return result;
+        });
+
+        return afterRefresh;
+      }
+      return { error, data, message };
+    }
+  );
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
 const getUserShowcases = async () => {
   const response = await fetchWithToken(`${BASE_URL}/showcases`, {
     method: 'GET',
@@ -756,6 +800,51 @@ const getUserDetailBySearchIdRefresh = async (searchId) => {
   return result;
 };
 
+const postOfferToTradeCard = async (payload) => {
+  const response = await fetchWithToken(`${BASE_URL}/offers`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const postOfferToTradeCardRefresh = async (searchId) => {
+  const result = await postOfferToTradeCard(searchId).then(
+    ({ error, data, message }) => {
+      if (message === 'Token maximum age exceeded') {
+        const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+          putAccessToken(data.accessToken);
+          const result = await postOfferToTradeCard(searchId).then(
+            ({ error, data, message }) => {
+              return { error, data, message };
+            }
+          );
+          return result;
+        });
+
+        return afterRefresh;
+      }
+      return { error, data, message };
+    }
+  );
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
 const claimUserDailyGift = async () => {
   const response = await fetchWithToken(`${BASE_URL}/credits/claim/daily`, {
     method: 'PUT',
@@ -851,9 +940,11 @@ export {
   updateCardToWindowRefresh,
   getUserShowcases,
   getUserShowcasesRefresh,
+  postOfferToTradeCardRefresh,
   getUserTradesRefresh,
   getRandomUsersRefresh,
   getCreditAndTotalCardsWithRefresh,
+  getTraderOfferListRefresh,
   getUserDetailBySearchIdRefresh,
   claimUserDailyGiftRefresh,
   verifyAccount,

@@ -16,13 +16,13 @@ import {
 } from '../utils/network-data';
 import RegisterPage from '../pages/RegisterPage';
 import ProfilePage from '../pages/ProfilePage';
-import CollectionsPage from '../pages/CollectionsPage';
 import TradesPage from '../pages/TradesPage';
 import '../styles/alert-style.css';
 import ValidationContext from '../context/ValidationContext';
 import ls from 'localstorage-slim';
 import TtlVerifContext from '../context/TtlVerifContext';
 import SocialPage from '../pages/SocialPage';
+import OffersPage from '../pages/OffersPage';
 
 const AgasApp = () => {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -148,7 +148,7 @@ const AgasApp = () => {
                   element={<ProfilePage userData={authedUser} />}
                 />
                 <Route path="/social" element={<SocialPage />} />
-                <Route path="/collections" element={<CollectionsPage />} />
+                <Route path="/offers" element={<OffersPage />} />
                 <Route path="/trades" element={<TradesPage />} />
               </Routes>
             </main>

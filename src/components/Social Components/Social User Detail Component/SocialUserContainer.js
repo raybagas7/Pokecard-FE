@@ -1,25 +1,57 @@
 import React, { useState } from 'react';
-import { getUserDetailBySearchIdRefresh } from '../../../utils/network-data';
+import {
+  getOwnerCardsRefresh,
+  getUserDetailBySearchIdRefresh,
+} from '../../../utils/network-data';
 import SocialUserLeftContainer from './SocialUserLeftContainer';
 
 const SocialUserContainer = ({ searchId }) => {
   const [userData, setUserData] = useState();
-  const [initializing, setInitializing] = useState(true);
+  const [initializing1, setInitializing1] = useState(true);
+  const [userDataMessage, setUserDataMessage] = useState();
+  const [initializing2, setInitializing2] = useState(true);
+  const [ownedCards, setOwnedCards] = useState([]);
 
   React.useEffect(() => {
     getUserDetailBySearchIdRefresh(searchId).then(
       ({ error, data, message }) => {
         try {
           setUserData(data);
-          setInitializing(false);
+          setUserDataMessage(message);
+          setInitializing1(false);
         } catch (e) {
+          // setUserDataMessage(message);
           console.log(message);
         }
       }
     );
+
+    getOwnerCardsRefresh().then(({ error, data, message }) => {
+      // console.log('home ownedcard', error, data, message);
+      try {
+        setOwnedCards(data);
+        setInitializing2(false);
+        // console.log('get ownerdcards', data);
+      } catch (e) {
+        console.log(e);
+      }
+    });
   }, [searchId]);
 
-  if (initializing) {
+  // React.useEffect(() => {
+  //   getOwnerCardsRefresh().then(({ error, data, message }) => {
+  //     // console.log('home ownedcard', error, data, message);
+  //     try {
+  //       setOwnedCards(data);
+  //       setInitializing2(false);
+  //       // console.log('get ownerdcards', data);
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   });
+  // }, []);
+
+  if (initializing1 || initializing2) {
     return (
       <section className="flex items-center justify-center">
         <div className="flex items-center justify-center">
@@ -35,8 +67,9 @@ const SocialUserContainer = ({ searchId }) => {
   }
 
   // console.log(userData);
+  // console.log('own', ownedCards);
 
-  return (
+  return userData ? (
     <div
       className={`profile-container flex flex-1 text-white 
     max-lg:flex-col`}
@@ -45,7 +78,12 @@ const SocialUserContainer = ({ searchId }) => {
         showcases={userData.showcaseCards}
         totalCards={userData.totalCards}
         tradeCards={userData.tradeCards}
+        ownedCards={ownedCards}
       />
+    </div>
+  ) : (
+    <div className="flex h-screen w-full items-center justify-center text-3xl ">
+      <div>{userDataMessage}</div>
     </div>
   );
 };

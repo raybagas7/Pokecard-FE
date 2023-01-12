@@ -41,7 +41,13 @@ const PokemonOfficialAvatar = ({ pokemonData }) => {
           : ''
       } bg-cover`}
       >
-        <div className="flex justify-center">
+        <div
+          className="flex h-96 w-auto items-center justify-center
+        max-2xl:h-80
+        max-xl:h-60
+        max-lg:h-72
+        max-md:h-44"
+        >
           <img
             alt={`${pokemonData.poke_id}`}
             src={

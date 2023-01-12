@@ -1,11 +1,18 @@
 import React from 'react';
 
-const ProfileTradeStats = ({ statName, statValue }) => {
+const SocialOfferStats = ({ statName, statValue }) => {
+  // console.log('my', statValue);
+  // let trueStat = null;
+  // if (stat) {
+  //   trueStat = `${Object.keys(stat)}`;
+  //   // console.log('2', statName2);
+  // }
+  // console.log(trueStat);
   return (
     <div className="flex w-full justify-center">
       <div
-        className={`mt-1 mb-1 w-6/10 rounded-full p-1 text-center text-xs
-        max-xl:p-0 max-xl:text-xxxs
+        className={`mt-1 mb-1 w-6/10 rounded-full p-0 text-center
+        text-xs text-xxxs
       ${
         statName === undefined || null
           ? null
@@ -32,11 +39,11 @@ const ProfileTradeStats = ({ statName, statValue }) => {
             : statName}
         </p>
       </div>
-      <div className="flex w-7 items-center justify-center max-xl:w-5">
-        <p className="text-xs max-xl:text-xxxs">{statValue}</p>
+      <div className="flex w-5 items-center justify-center">
+        <p className="text-xs text-xxxs">{statValue}</p>
       </div>
     </div>
   );
 };
 
-export default ProfileTradeStats;
+export default SocialOfferStats;

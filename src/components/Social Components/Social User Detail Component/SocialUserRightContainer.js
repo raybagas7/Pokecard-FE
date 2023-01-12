@@ -6,6 +6,7 @@ const SocialUserRightContainer = ({
   pokemonData,
   tradeCards,
   userTrainerName,
+  ownedCards,
 }) => {
   // console.log('data', pokemonData.poke_id);
   // console.log('showtrade', tradeCards);
@@ -24,7 +25,10 @@ const SocialUserRightContainer = ({
           {/* <div className="mt-3 w-full text-center">
             {userTrainerName}'s Available Trade Cards
           </div> */}
-          <SocialTradesContainer tradeCards={tradeCards} />
+          <SocialTradesContainer
+            tradeCards={tradeCards}
+            ownedCards={ownedCards}
+          />
         </div>
       </div>
     </div>

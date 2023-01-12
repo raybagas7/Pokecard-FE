@@ -82,12 +82,8 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
                   Waiting
                 </p>
               ) : null}
-              <Link
-                to={'/collections'}
-                className="middle-dropdown"
-                title="Card Collection"
-              >
-                Card Collections
+              <Link to={'/offers'} className="middle-dropdown" title="Offers">
+                Offers
               </Link>
               <Link to={'/trades'} className="middle-dropdown" title="Trades">
                 Trades

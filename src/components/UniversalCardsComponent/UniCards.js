@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import ProfileTradeMove from './ProfileTradeMove';
-import ProfileTradeStats from './ProfileTradeStats';
+import UniCardMove from './UniCardMove';
+import UniCardStats from './UniCardStats';
 
-const ProfileTradeCard = ({
+const UniCards = ({
   card_id,
   attribute,
   legendary,
@@ -14,9 +13,33 @@ const ProfileTradeCard = ({
   stats,
   move1,
   move2,
+  change = null,
+  pickTradeCard,
 }) => {
   // let type = 'normal';
   // console.log('stats', stats);
+  const chosenCard = {
+    card_id,
+    attribute,
+    legendary,
+    mythical,
+    poke_id,
+    name,
+    types,
+    stats,
+    move1,
+    move2,
+  };
+
+  const pickCardToTrade = () => {
+    if (change) {
+      change();
+    }
+    if (pickTradeCard) {
+      pickTradeCard(chosenCard);
+    }
+  };
+
   let type = '';
   (legendary === true || mythical === true) && attribute === 'shiny'
     ? (type = 'legendary-shine')
@@ -61,7 +84,8 @@ const ProfileTradeCard = ({
     return (
       <div
         className="m-5 flex h-80 w-52 animate-default_lift_card items-center justify-center rounded-xl bg-fb-undefined bg-cover
-      max-xl:h-48 max-xl:w-32"
+      max-xl:h-48 max-xl:w-32
+      max-sm:m-2"
       >
         <img src={`./images/quetion-mark.png`} alt="undefined" />
       </div>
@@ -69,12 +93,13 @@ const ProfileTradeCard = ({
   }
 
   return (
-    <Link
-      className="relative m-5 h-80 w-52 animate-default_lift_card rounded-xl bg-yellow-500 hover:animate-lift_card hover:drop-shadow-md
-    max-xl:h-48 max-xl:w-32"
-      to={`/trades?trader_card_id=${card_id}`}
+    <div
+      className={`relative m-5 h-80 w-52 animate-default_lift_card rounded-xl hover:animate-lift_card hover:drop-shadow-md
+    max-xl:h-48 max-xl:w-32
+    max-sm:m-2`}
     >
       <div
+        onClick={pickCardToTrade}
         className={`relative flex h-3/4 w-full cursor-pointer flex-col rounded-t-xl bg-cover
       ${
         type === undefined || null
@@ -158,7 +183,7 @@ const ProfileTradeCard = ({
           <div className="mt-2 flex flex-1 flex-col">
             {leftStat !== null
               ? leftStat.map((stat) => (
-                  <ProfileTradeStats
+                  <UniCardStats
                     statName={`${Object.keys(stat)}`}
                     key={Object.keys(stat)}
                     statValue={`${Object.values(stat)}`}
@@ -166,13 +191,13 @@ const ProfileTradeCard = ({
                 ))
               : null}
             <div className="flex flex-1 flex-col justify-center p-1 max-xl:justify-start">
-              <ProfileTradeMove move={move1} />
+              <UniCardMove move={move1} />
             </div>
           </div>
           <div className="mt-2 flex flex-1 flex-col">
             {rightStat !== null
               ? rightStat.map((stat) => (
-                  <ProfileTradeStats
+                  <UniCardStats
                     statName={`${Object.keys(stat)}`}
                     key={Object.keys(stat)}
                     statValue={`${Object.values(stat)}`}
@@ -180,13 +205,13 @@ const ProfileTradeCard = ({
                 ))
               : null}
             <div className="flex flex-1 flex-col justify-center p-1 max-xl:justify-start">
-              <ProfileTradeMove move={move2} />
+              <UniCardMove move={move2} />
             </div>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
-export default ProfileTradeCard;
+export default UniCards;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProfileTradeStats = ({ statName, statValue }) => {
+const UniCardStats = ({ statName, statValue }) => {
   return (
     <div className="flex w-full justify-center">
       <div
@@ -39,4 +39,4 @@ const ProfileTradeStats = ({ statName, statValue }) => {
   );
 };
 
-export default ProfileTradeStats;
+export default UniCardStats;

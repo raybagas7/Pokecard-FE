@@ -181,8 +181,12 @@ module.exports = {
           '100%': { opacity: '100%', transform: 'scale(1)' },
         },
         spinner: {
-          from: { transform: 'rotate(0deg)' },
-          to: { transform: 'rotate(360deg)' },
+          '0%, 40%': { transform: 'rotate(0deg)' },
+          '60%, 100%': { transform: 'rotate(-180deg)' },
+        },
+        spin_back: {
+          '0%, 20%': { transform: 'rotate(0deg)' },
+          '30%, 100%': { transform: 'rotate(-180deg)' },
         },
       },
       animation: {
@@ -201,7 +205,8 @@ module.exports = {
         fade_in_visit: 'fade_in_visit 0.5s forwards',
         fade_out_quantum: 'fade_out_quantum 0.5s forwards',
         default_quantum: 'default_quantum 0.7s forwards',
-        spinner: 'spinner 1.5s forwards',
+        spinner: 'spinner 4s linear infinite',
+        spin_back: 'spin_back 2s linear infinite',
       },
     },
   },

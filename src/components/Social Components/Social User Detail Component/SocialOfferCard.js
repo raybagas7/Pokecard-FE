@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import ProfileTradeMove from './ProfileTradeMove';
-import ProfileTradeStats from './ProfileTradeStats';
+import SocialOfferMove from './SocialOfferMove';
+import SocialOfferStats from './SocialOfferStats';
 
-const ProfileTradeCard = ({
+const SocialOfferCard = ({
   card_id,
   attribute,
   legendary,
@@ -14,9 +13,27 @@ const ProfileTradeCard = ({
   stats,
   move1,
   move2,
+  pickOfferCard,
 }) => {
-  // let type = 'normal';
-  // console.log('stats', stats);
+  const chosenOfferCard = {
+    card_id,
+    attribute,
+    legendary,
+    mythical,
+    poke_id,
+    name,
+    types,
+    stats,
+    move1,
+    move2,
+  };
+
+  const pickCardToOffer = () => {
+    if (pickOfferCard) {
+      pickOfferCard(chosenOfferCard);
+    }
+  };
+
   let type = '';
   (legendary === true || mythical === true) && attribute === 'shiny'
     ? (type = 'legendary-shine')
@@ -58,23 +75,24 @@ const ProfileTradeCard = ({
   const rightStat = allStat.slice(3, 6);
 
   if (attribute === null || attribute === undefined) {
-    return (
-      <div
-        className="m-5 flex h-80 w-52 animate-default_lift_card items-center justify-center rounded-xl bg-fb-undefined bg-cover
-      max-xl:h-48 max-xl:w-32"
-      >
-        <img src={`./images/quetion-mark.png`} alt="undefined" />
-      </div>
-    );
+    return null;
+    // <div
+    //   className="m-1 mt-3 flex h-56 w-40 animate-default_lift_card items-center justify-center rounded-xl
+    // bg-fb-undefined bg-cover
+    // max-sm:m-2"
+    // >
+    //   <img src={`./images/quetion-mark.png`} alt="undefined" />
+    // </div>
   }
 
   return (
-    <Link
-      className="relative m-5 h-80 w-52 animate-default_lift_card rounded-xl bg-yellow-500 hover:animate-lift_card hover:drop-shadow-md
-    max-xl:h-48 max-xl:w-32"
-      to={`/trades?trader_card_id=${card_id}`}
+    <div
+      className={`relative m-1 mt-3 h-56 w-40 animate-default_lift_card rounded-xl
+    hover:animate-lift_card hover:drop-shadow-md
+    max-sm:m-2`}
     >
       <div
+        onClick={pickCardToOffer}
         className={`relative flex h-3/4 w-full cursor-pointer flex-col rounded-t-xl bg-cover
       ${
         type === undefined || null
@@ -91,8 +109,8 @@ const ProfileTradeCard = ({
       }`}
       >
         <p
-          className={`rounded-t-xl p-1 indent-2 text-sm before:content-['#']
-          max-xl:p-0 max-xl:text-xxs
+          className={`rounded-t-xl p-0 indent-2 text-sm
+          text-xxs before:content-['#']
           ${
             type === 'normal'
               ? 'bg-yellow-300 text-black'
@@ -126,8 +144,8 @@ const ProfileTradeCard = ({
           className={`${
             type === undefined || null
               ? ''
-              : `p-1 text-center text-sm first-letter:capitalize
-              max-xl:p-0 max-xl:text-xxs
+              : `p-0 text-center text-sm
+              text-xxs first-letter:capitalize
               ${
                 type === 'normal'
                   ? 'bg-red-poke'
@@ -149,8 +167,8 @@ const ProfileTradeCard = ({
               key={element}
               src={`./images/pokemon_elements/${element}.png`}
               alt="normal"
-              className={`mt-3 mb-3 ml-2 mr-2 h-7 w-7
-              max-xl:m-1 max-xl:h-5 max-xl:w-5`}
+              className={`mt-2 mb-2 ml-1
+              mr-1 h-6 w-6`}
             />
           ))}
         </div>
@@ -158,35 +176,35 @@ const ProfileTradeCard = ({
           <div className="mt-2 flex flex-1 flex-col">
             {leftStat !== null
               ? leftStat.map((stat) => (
-                  <ProfileTradeStats
+                  <SocialOfferStats
                     statName={`${Object.keys(stat)}`}
                     key={Object.keys(stat)}
                     statValue={`${Object.values(stat)}`}
                   />
                 ))
               : null}
-            <div className="flex flex-1 flex-col justify-center p-1 max-xl:justify-start">
-              <ProfileTradeMove move={move1} />
+            <div className="flex flex-1 flex-col justify-start p-1">
+              <SocialOfferMove move={move1} />
             </div>
           </div>
           <div className="mt-2 flex flex-1 flex-col">
             {rightStat !== null
               ? rightStat.map((stat) => (
-                  <ProfileTradeStats
+                  <SocialOfferStats
                     statName={`${Object.keys(stat)}`}
                     key={Object.keys(stat)}
                     statValue={`${Object.values(stat)}`}
                   />
                 ))
               : null}
-            <div className="flex flex-1 flex-col justify-center p-1 max-xl:justify-start">
-              <ProfileTradeMove move={move2} />
+            <div className="flex flex-1 flex-col justify-start p-1">
+              <SocialOfferMove move={move2} />
             </div>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
-export default ProfileTradeCard;
+export default SocialOfferCard;

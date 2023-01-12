@@ -117,8 +117,6 @@ const HomePage = ({ nextDaily }) => {
     }
   };
 
-  // Owned Cards
-
   React.useEffect(() => {
     setSocmedBlack(getSocmedBlack());
     setSocmedWhite(getSocmedWhite());
@@ -152,7 +150,7 @@ const HomePage = ({ nextDaily }) => {
     });
   }, [pokeBall, ultraBall, masterBall]);
 
-  if (initializing && initializing2) {
+  if (initializing || initializing2) {
     return (
       <section className="flex items-center justify-center">
         <div className="flex items-center justify-center">

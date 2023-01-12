@@ -3,7 +3,12 @@ import SocialUserData from './SocialUserData';
 import SocialUserRightContainer from './SocialUserRightContainer';
 import SocialUserShowcases from './SocialUserShowcases';
 
-const SocialUserLeftContainer = ({ showcases, totalCards, tradeCards }) => {
+const SocialUserLeftContainer = ({
+  showcases,
+  totalCards,
+  tradeCards,
+  ownedCards,
+}) => {
   //   console.log(showcases, totalCards);
   // console.log('showc', showcases);
   // console.log('showtrade', tradeCards);
@@ -58,6 +63,7 @@ const SocialUserLeftContainer = ({ showcases, totalCards, tradeCards }) => {
         pokemonData={pokemonData}
         tradeCards={tradeCards}
         userTrainerName={totalCards.trainer_name}
+        ownedCards={ownedCards}
       />
     </>
   );
