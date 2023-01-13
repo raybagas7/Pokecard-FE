@@ -66,6 +66,7 @@ module.exports = {
         '9/10': '90%',
         '10/10': '100%',
         720: '720px',
+        460: '460px',
       },
       width: {
         '1/10': '10%',
@@ -188,6 +189,50 @@ module.exports = {
           '0%, 20%': { transform: 'rotate(0deg)' },
           '30%, 100%': { transform: 'rotate(-180deg)' },
         },
+        default_offerer_profile: {
+          '0%': {
+            margin: '0px',
+            height: '100%',
+            'max-height': '460px',
+            width: '15rem',
+          },
+          '100%': {
+            height: '6rem',
+            width: '13rem',
+          },
+        },
+        expand_offerer_profile: {
+          '0%': {
+            height: '6rem',
+            width: '13rem',
+          },
+          '100%': {
+            margin: '0px',
+            height: '100%',
+            'max-height': '460px',
+            width: '15rem',
+          },
+        },
+        moving_profile_img: {
+          '0%': { left: '0px', top: '180px' },
+          '50%': { left: '0px', top: '100px' },
+          '100%': { left: '75px', top: '100px' },
+        },
+        moving_offerer_name: {
+          '0%': {
+            top: '180px',
+            right: '0px',
+            transform: 'scale(1)',
+            'margin-top': '6px',
+          },
+          // '50%': { left: '0px', top: '100px' },
+          '100%': {
+            top: '180px',
+            right: '58px',
+            transform: 'scale(1.5)',
+            'margin-top': '12px',
+          },
+        },
       },
       animation: {
         expand_info_showcase: 'expand_info_showcase 0.5s forwards',
@@ -207,6 +252,10 @@ module.exports = {
         default_quantum: 'default_quantum 0.7s forwards',
         spinner: 'spinner 4s linear infinite',
         spin_back: 'spin_back 2s linear infinite',
+        default_offerer_profile: 'default_offerer_profile 0.5s forwards',
+        expand_offerer_profile: 'expand_offerer_profile 0.5s forwards',
+        moving_profile_img: 'moving_profile_img 0.5s forwards',
+        moving_offerer_name: 'moving_offerer_name 0.5s forwards',
       },
     },
   },
