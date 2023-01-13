@@ -3,12 +3,12 @@ import { getTraderOfferListRefresh } from '../../../utils/network-data';
 import TradeDetail from './TradeDetail';
 
 const TradeCardContainer = ({ cardId }) => {
-  const [offererCards, setOffererCards] = useState();
+  const [offererTraderCards, setOffererTraderCards] = useState();
   const [initializing, setInitializing] = useState(true);
   React.useEffect(() => {
     getTraderOfferListRefresh(cardId).then(({ error, data, message }) => {
       try {
-        setOffererCards(data);
+        setOffererTraderCards(data);
         setInitializing(false);
       } catch (e) {
         console.log(message);
@@ -30,10 +30,10 @@ const TradeCardContainer = ({ cardId }) => {
       </section>
     );
   }
-
-  return offererCards ? (
+  // console.log(offererTraderCards);
+  return offererTraderCards ? (
     <div>
-      <TradeDetail offererCards={offererCards} />
+      <TradeDetail offererTraderCards={offererTraderCards} />
     </div>
   ) : (
     <div>NOTHING</div>

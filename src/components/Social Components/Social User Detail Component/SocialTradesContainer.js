@@ -29,15 +29,6 @@ const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
       }
     );
     return result;
-    // try {
-    //   await postOfferToTradeCardRefresh(cards).then(
-    //     ({ error, data, message }) => {
-    //       console.log(message);
-    //     }
-    //   );
-    // } catch (e) {
-    //   console.log(e);
-    // }
   };
 
   const Toast = Swal.mixin({

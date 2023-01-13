@@ -3,6 +3,7 @@ import UniCardMove from './UniCardMove';
 import UniCardStats from './UniCardStats';
 
 const UniCards = ({
+  offer_id,
   card_id,
   attribute,
   legendary,
@@ -15,10 +16,12 @@ const UniCards = ({
   move2,
   change = null,
   pickTradeCard,
+  showOffererCard = null,
 }) => {
   // let type = 'normal';
   // console.log('stats', stats);
   const chosenCard = {
+    offer_id,
     card_id,
     attribute,
     legendary,
@@ -32,11 +35,11 @@ const UniCards = ({
   };
 
   const pickCardToTrade = () => {
-    if (change) {
-      change();
-    }
-    if (pickTradeCard) {
-      pickTradeCard(chosenCard);
+    // if (change) {
+    //   change();
+    // }
+    if (showOffererCard) {
+      showOffererCard(chosenCard);
     }
   };
 

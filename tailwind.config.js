@@ -233,6 +233,10 @@ module.exports = {
             'margin-top': '12px',
           },
         },
+        button_scale: {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1.3)' },
+        },
       },
       animation: {
         expand_info_showcase: 'expand_info_showcase 0.5s forwards',
@@ -256,6 +260,7 @@ module.exports = {
         expand_offerer_profile: 'expand_offerer_profile 0.5s forwards',
         moving_profile_img: 'moving_profile_img 0.5s forwards',
         moving_offerer_name: 'moving_offerer_name 0.5s forwards',
+        button_scale: 'button_scale 0.5s forwards',
       },
     },
   },

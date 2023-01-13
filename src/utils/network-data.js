@@ -845,6 +845,51 @@ const postOfferToTradeCardRefresh = async (searchId) => {
   return result;
 };
 
+const acceptTheOffer = async (payload) => {
+  const response = await fetchWithToken(`${BASE_URL}/offers/trader/accept`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const acceptTheOfferRefresh = async (payload) => {
+  const result = await acceptTheOffer(payload).then(
+    ({ error, data, message }) => {
+      if (message === 'Token maximum age exceeded') {
+        const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+          putAccessToken(data.accessToken);
+          const result = await acceptTheOffer(payload).then(
+            ({ error, data, message }) => {
+              return { error, data, message };
+            }
+          );
+          return result;
+        });
+
+        return afterRefresh;
+      }
+      return { error, data, message };
+    }
+  );
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
 const claimUserDailyGift = async () => {
   const response = await fetchWithToken(`${BASE_URL}/credits/claim/daily`, {
     method: 'PUT',
@@ -946,6 +991,7 @@ export {
   getCreditAndTotalCardsWithRefresh,
   getTraderOfferListRefresh,
   getUserDetailBySearchIdRefresh,
+  acceptTheOfferRefresh,
   claimUserDailyGiftRefresh,
   verifyAccount,
   pickPokeCardsWithRefresh,

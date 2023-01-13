@@ -12,6 +12,7 @@ const ProfileContainer = ({
   userTrades,
   userCredit,
 }) => {
+  // console.log(userTrades);
   const { showcases } = userShowcases;
   const [pokemonData, setPokemonData] = React.useState(showcases[0]);
   const topShowcases = showcases.slice(0, 3);

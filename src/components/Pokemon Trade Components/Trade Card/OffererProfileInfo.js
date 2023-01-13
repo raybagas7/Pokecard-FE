@@ -1,6 +1,60 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { acceptTheOfferRefresh } from '../../../utils/network-data';
 
-const OffererProfileInfo = ({ trainerName, searchId, profileImg }) => {
+const OffererProfileInfo = ({
+  trainerName,
+  searchId,
+  profileImg,
+  pokemonName,
+  offerId,
+}) => {
+  const navigate = useNavigate();
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top',
+    iconColor: 'white',
+    customClass: {
+      popup: 'colored-toast',
+    },
+    showConfirmButton: false,
+    timer: 3500,
+    timerProgressBar: true,
+  });
+
+  const showAlert = () => {
+    Swal.fire({
+      title: `Accept the offer from ${trainerName} (${pokemonName})?`,
+      showDenyButton: true,
+      confirmButtonText: 'Yes',
+      denyButtonText: 'No',
+      customClass: {
+        popup: 'verification-swal',
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+      },
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const result = await acceptTheOfferRefresh({ offer_id: offerId });
+        // console.log(result);
+        if (!result.error) {
+          Toast.fire({
+            icon: 'success',
+            title: `${result.message}`,
+          });
+          navigate('/trades');
+        } else {
+          Toast.fire({
+            icon: 'error',
+            title: `${result.message}`,
+          });
+        }
+      } else if (result.isDenied) {
+      }
+    });
+  };
   //group-hover/offer:animate-moving_brutally
   return (
     <div className="group/offer absolute bottom-0 mt-3 mb-3 flex h-24 w-52 animate-default_offerer_profile items-center rounded-xl bg-white text-black-steam hover:animate-expand_offerer_profile ">
@@ -18,8 +72,11 @@ const OffererProfileInfo = ({ trainerName, searchId, profileImg }) => {
         </p>
         <p>#{searchId}</p>
       </div>
-      <button className="absolute bottom-1/4 left-1/4 hidden h-16 w-32 rounded-xl bg-gold-poke text-xl text-black-steam group-hover/offer:block group-hover/offer:animate-default_quantum">
-        Accept
+      <button
+        onClick={showAlert}
+        className="absolute bottom-1/4 left-1/4 hidden h-16 w-32 rounded-full bg-black-steam text-sm text-white transition duration-500 hover:bg-gold-poke hover:text-black-steam group-hover/offer:block group-hover/offer:animate-default_quantum"
+      >
+        Accept <p className="first-letter:capitalize">{pokemonName}</p>
       </button>
     </div>
   );

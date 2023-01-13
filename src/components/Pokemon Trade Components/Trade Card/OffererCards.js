@@ -2,56 +2,65 @@ import React from 'react';
 import UniCards from '../../UniversalCardsComponent/UniCards';
 import OffererProfileInfo from './OffererProfileInfo';
 
-const OffererCards = ({ offererCards }) => {
+const OffererCards = ({ listOffer, showOffererCard }) => {
   // console.log(offererCards);
-  const { list_offer } = offererCards;
-  const topListOffer = list_offer.slice(0, 3);
-  const botListOffer = list_offer.slice(3, 6);
-  const offerCards = list_offer.map((card) => {
-    let { search_id, trainer_name, profile_img, owner, ...rest } = card;
-    return rest;
-  });
 
-  const offerCardsOwner = list_offer.map((user) => {
-    let { search_id, trainer_name, profile_img, owner } = user;
+  const topListOffer = listOffer.slice(0, 3);
+  console.log(topListOffer);
+  const botListOffer = listOffer.slice(3, 6);
 
-    return { search_id, trainer_name, profile_img, owner };
-  });
+  // const offerCards = listOffer.map((card) => {
+  //   let { search_id, trainer_name, profile_img, owner, ...rest } = card;
+  //   return rest;
+  // });
+
+  // const offerCardsOwner = listOffer.map((user) => {
+  //   let { search_id, trainer_name, profile_img, owner } = user;
+
+  //   return { search_id, trainer_name, profile_img, owner };
+  // });
   // console.log(offerCardsOwner);
 
   return (
-    <div className="flex h-fit w-full items-center p-10">
-      <div className="h-fit w-full rounded-2xl bg-gold-poke p-5 text-white drop-shadow-lg">
+    <div className="flex h-fit w-full items-center p-10 pt-5 pb-5">
+      <div className="flex h-fit w-full flex-col items-center rounded-2xl bg-gold-poke p-5 text-white drop-shadow-lg">
+        <div className="mb-3 w-fit rounded-2xl bg-white/50 p-2 text-2xl text-black-steam drop-shadow-lg">
+          Card Offered
+        </div>
         <div className="flex h-fit w-full flex-wrap justify-center gap-3 rounded-2xl bg-white/50 p-5  text-white drop-shadow-lg">
           <div className="flex gap-3 ">
-            {list_offer
+            {listOffer
               ? topListOffer.map((card) => (
                   <div
                     key={card.offer_id}
                     className="relative flex h-460 w-60 flex-col items-center rounded-xl bg-white/50 p-5 "
                   >
-                    <UniCards {...card} />
+                    <UniCards {...card} showOffererCard={showOffererCard} />
                     <OffererProfileInfo
+                      offerId={card.offer_id}
                       trainerName={card.trainer_name}
                       searchId={card.search_id}
                       profileImg={card.profile_img}
+                      pokemonName={card.name}
                     />
                   </div>
                 ))
               : null}
           </div>
           <div className="flex gap-3 ">
-            {list_offer
+            {listOffer
               ? botListOffer.map((card) => (
                   <div
                     key={card.offer_id}
                     className="relative flex h-460 w-60 flex-col items-center rounded-xl bg-white/50 p-5 "
                   >
-                    <UniCards {...card} />
+                    <UniCards {...card} showOffererCard={showOffererCard} />
                     <OffererProfileInfo
+                      offerId={card.offer_id}
                       trainerName={card.trainer_name}
                       searchId={card.search_id}
                       profileImg={card.profile_img}
+                      pokemonName={card.name}
                     />
                   </div>
                 ))
