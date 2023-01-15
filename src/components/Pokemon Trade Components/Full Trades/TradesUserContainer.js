@@ -4,6 +4,7 @@ import TradeCards from './TradeCards';
 
 const TradesUserContainer = () => {
   const [userTrades, setUserTrades] = useState();
+
   const [initializing, setInitializing] = React.useState(true);
 
   React.useEffect(() => {
@@ -32,9 +33,22 @@ const TradesUserContainer = () => {
     );
   }
 
+  // let setAll = (obj, val) =>
+  //   Object.keys(obj).forEach((k) =>
+  //     k !== 'window_number' ? (obj[k] = val) : null
+  //   );
+  // let setNull = (obj) => setAll(obj, null);
+  // const newTrades = setNull(userTrades['trades'][0]);
+  // setUserTrades(newTrades);
+  //  const removeTradesCard = (windowNumber) => setNull(tradesCard[windowNumber]);1
+  // console.log(userTrades['trades'][0]);
+
   return (
     <div className="flex h-screen w-full items-center justify-center">
-      <div className="rounded-2xl bg-gold-poke p-10">
+      <div className="flex flex-col items-center rounded-2xl bg-gold-poke p-10 pt-3">
+        <div className="mb-3 w-fit rounded-2xl bg-white/50 p-2 text-2xl text-black-steam drop-shadow-lg">
+          Your Trades
+        </div>
         <div className="rounded-2xl bg-white/50 p-5 drop-shadow-lg">
           <TradeCards userTrades={userTrades} />
         </div>

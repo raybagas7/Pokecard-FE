@@ -239,7 +239,7 @@ module.exports = {
         },
       },
       animation: {
-        expand_info_showcase: 'expand_info_showcase 0.5s forwards',
+        expand_info_showcase: 'expand_info_showcase 0.2s forwards',
         default_expand_info: 'default_expand_info 0.5s forwards',
         lift_card: 'lift_card 0.25s forwards',
         fade_in_slide_up: 'fade_in_slide_up 1s forwards',

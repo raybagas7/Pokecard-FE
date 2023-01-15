@@ -586,6 +586,51 @@ const updateCardToWindowRefresh = async (payload) => {
   return result;
 };
 
+const removeCardFromWindow = async (payload) => {
+  const response = await fetchWithToken(`${BASE_URL}/trades/remove`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
+const removeCardFromWindowRefresh = async (payload) => {
+  const result = await removeCardFromWindow(payload).then(
+    ({ error, data, message }) => {
+      if (message === 'Token maximum age exceeded') {
+        const afterRefresh = refreshAccessToken().then(async ({ data }) => {
+          putAccessToken(data.accessToken);
+          const result = await removeCardFromWindow(payload).then(
+            ({ error, data, message }) => {
+              return { error, data, message };
+            }
+          );
+          return result;
+        });
+
+        return afterRefresh;
+      }
+      return { error, data, message };
+    }
+  );
+  // console.log('hasil ownedcard', result);
+  return result;
+};
+
 const getTraderOfferList = async (cardId) => {
   const response = await fetchWithToken(`${BASE_URL}/offers/trader/${cardId}`, {
     method: 'GET',
@@ -983,6 +1028,7 @@ export {
   getShuffledCardRefresh,
   updateCardToCaseRefresh,
   updateCardToWindowRefresh,
+  removeCardFromWindowRefresh,
   getUserShowcases,
   getUserShowcasesRefresh,
   postOfferToTradeCardRefresh,
