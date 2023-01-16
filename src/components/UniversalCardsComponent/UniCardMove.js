@@ -17,7 +17,11 @@ const UniCardMove = ({ move }) => {
           max-xl:max-w-20px"
           >
             <p className="pr-1 first-letter:capitalize">
-              {move !== null ? move.ailment : 'none'}
+              {move !== null
+                ? move.ailment === null
+                  ? 'null'
+                  : move.ailment
+                : 'none'}
             </p>
           </div>
         </div>

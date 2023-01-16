@@ -132,6 +132,7 @@ const HomePage = ({ nextDaily }) => {
         setInitializing2(false);
         console.log('setCreditAvailability', data);
       } catch (e) {
+        setInitializing2(false);
         console.log(e);
       }
     });

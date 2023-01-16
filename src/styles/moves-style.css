@@ -27,6 +27,10 @@
   background-color: #636363;
 }
 
+.ailment-null {
+  background-color: #e41f25;
+}
+
 .ailment-none {
   background-color: #a8a878;
 }

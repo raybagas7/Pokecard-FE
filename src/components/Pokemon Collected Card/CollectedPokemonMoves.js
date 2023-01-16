@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/collected-move-style.css';
-import PokemonMove from './CollectedPokemonMove';
+import CollectedPokemonMove from './CollectedPokemonMove';
 
 const CollectedPokemonMoves = ({ move1, move2 }) => {
   if (!move1 || !move2) {
@@ -8,8 +8,8 @@ const CollectedPokemonMoves = ({ move1, move2 }) => {
   }
   return (
     <div className="moves-container_collected">
-      <PokemonMove move={move1} />
-      <PokemonMove move={move2} />
+      <CollectedPokemonMove move={move1} />
+      <CollectedPokemonMove move={move2} />
     </div>
   );
 };

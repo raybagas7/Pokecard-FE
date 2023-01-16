@@ -10,7 +10,7 @@ const CollectedPokemonMove = ({ move }) => {
         <p
           className={`move-ailment_collected ailment-text-${move.ailment}_collected`}
         >
-          {move.ailment}
+          {move.ailment ? move.ailment : 'null'}
         </p>
       </div>
       <div className={`move-core_collected move-type-${move.type}`}>

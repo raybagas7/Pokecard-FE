@@ -14,7 +14,11 @@ const ProfilePokemonMoves = ({ move }) => {
             {move !== null ? move.id : '0'}
           </p>
           <p className="pr-3 text-sm first-letter:capitalize max-2xl:text-xxs max-md:text-xxxs">
-            {move !== null ? move.ailment : 'none'}
+            {move !== null
+              ? move.ailment === null
+                ? 'null'
+                : move.ailment
+              : 'none'}
           </p>
         </div>
         <div

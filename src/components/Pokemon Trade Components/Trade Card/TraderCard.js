@@ -1,5 +1,5 @@
-import React from 'react';
+// import React from 'react';
 
-const TraderCard = () => {};
+// const TraderCard = () => {};
 
-export default TraderCard;
+// export default TraderCard;

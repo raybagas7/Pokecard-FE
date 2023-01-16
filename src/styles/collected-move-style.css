@@ -27,6 +27,10 @@
   background-color: #404040;
 }
 
+.ailment-null_collected {
+  background-color: #e41f25;
+}
+
 .ailment-none_collected {
   background-color: #a8a878;
 }
@@ -44,14 +48,14 @@
 }
 
 .ailment-burn_collected {
-  background-color: #ed1c24;
+  background-color: #ff7f27;
 }
 
 .ailment-poison_collected {
   background-color: #dd48fd;
 }
 .ailment-confusion_collected {
-  background-color: #d2e900;
+  background-color: #ffcc00;
 }
 .ailment-infatuation_collected {
   background-color: #ff80ff;
@@ -60,13 +64,13 @@
   background-color: #e0c068;
 }
 .ailment-nightmare_collected {
-  background-color: #333333;
+  background-color: #2c2c2c;
 }
 .ailment-torment_collected {
   background-color: #999999;
 }
 .ailment-disable_collected {
-  background-color: #d5f5e9;
+  background-color: #84dfbc;
 }
 .ailment-yawn_collected {
   background-color: #c6c6a7;

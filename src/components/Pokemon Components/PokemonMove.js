@@ -7,7 +7,7 @@ const PokemonMove = ({ move }) => {
       <div className={`move-identifier ailment-${move.ailment}`}>
         <p className="move-id">#{move.id}</p>
         <p className={`move-ailment ailment-text-${move.ailment}`}>
-          {move.ailment}
+          {move.ailment ? move.ailment : 'null'}
         </p>
       </div>
       <div className={`move-core move-type-${move.type}`}>

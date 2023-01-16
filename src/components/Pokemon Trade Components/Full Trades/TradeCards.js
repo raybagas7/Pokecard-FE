@@ -44,9 +44,14 @@ const TradeCards = ({ userTrades }) => {
           key={card.window_number}
           className="flex flex-col rounded-2xl bg-white/50 p-3 drop-shadow-lg"
         >
-          <Link to={`/trades?trader_card_id=${card.card_id}`}>
+          {card.card_id ? (
+            <Link to={`/trades?trader_card_id=${card.card_id}`}>
+              <UniCards {...card} />
+            </Link>
+          ) : (
             <UniCards {...card} />
-          </Link>
+          )}
+
           <TradeTotalOffer
             totalOffer={card.total_offer}
             cardId={card.card_id}
