@@ -31,9 +31,17 @@ const TradeDetail = ({ offererTraderCards }) => {
             <p>Comparation</p>
           </div>
           <div className="flex items-center">
-            <div className="m-2 flex h-fit w-full flex-wrap items-center justify-center gap-3 rounded-2xl bg-white/50 p-5  text-white drop-shadow-lg">
+            <div
+              className="m-2 flex h-fit w-full flex-wrap items-center justify-center gap-3 rounded-2xl bg-white/50 p-5 text-white drop-shadow-lg
+            max-lg:p-3"
+            >
               <UniCards {...traderCard[0]} />
-              <UniPolarStats stats={traderCard[0].stats} />
+              <div
+                className="flex h-full w-full flex-1
+              max-lg:hidden"
+              >
+                <UniPolarStats stats={traderCard[0].stats} />
+              </div>
             </div>
             <div>
               <AiOutlineSwap
@@ -41,14 +49,22 @@ const TradeDetail = ({ offererTraderCards }) => {
             max-sm:h-7 max-sm:w-7"
               />
             </div>
-            <div className="m-2 flex h-fit w-full flex-wrap items-center justify-center gap-3 rounded-2xl bg-white/50 p-5  text-white drop-shadow-lg">
+            <div
+              className="m-2 flex h-fit w-full flex-wrap items-center justify-center gap-3 rounded-2xl bg-white/50 p-5  text-white drop-shadow-lg
+            max-lg:p-3"
+            >
               <UniCards
                 {...chosenOfferCard}
                 key={chosenOfferCard ? chosenOfferCard.offer_id : null}
               />
-              <UniPolarStats
-                stats={chosenOfferCard ? chosenOfferCard.stats : null}
-              />
+              <div
+                className="flex h-full w-full flex-1
+              max-lg:hidden"
+              >
+                <UniPolarStats
+                  stats={chosenOfferCard ? chosenOfferCard.stats : null}
+                />
+              </div>
             </div>
           </div>
         </div>

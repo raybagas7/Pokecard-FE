@@ -44,12 +44,21 @@ const TradesUserContainer = () => {
   // console.log(userTrades['trades'][0]);
 
   return (
-    <div className="flex h-screen w-full items-center justify-center">
-      <div className="flex flex-col items-center rounded-2xl bg-gold-poke p-10 pt-3">
-        <div className="mb-3 w-fit rounded-2xl bg-white/50 p-2 text-2xl text-black-steam drop-shadow-lg">
+    <div className="flex min-h-screen w-full items-center justify-center">
+      <div
+        className="m-10 flex flex-col items-center rounded-2xl bg-gold-poke p-10 pt-3
+      max-sm:p-3"
+      >
+        <div
+          className="mb-3 w-fit rounded-2xl bg-white/50 p-2 text-2xl text-black-steam drop-shadow-lg
+        max-sm:text-xl"
+        >
           Your Trades
         </div>
-        <div className="rounded-2xl bg-white/50 p-5 drop-shadow-lg">
+        <div
+          className="rounded-2xl bg-white/50 p-5 drop-shadow-lg
+        max-sm:p-3"
+        >
           <TradeCards userTrades={userTrades} />
         </div>
       </div>

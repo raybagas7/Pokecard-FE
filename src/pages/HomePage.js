@@ -62,6 +62,9 @@ const HomePage = ({ nextDaily }) => {
           master_ball: data.creditAmount.master_ball,
           coin: data.creditAmount.coin,
         });
+        setPokeBall(data.creditAmount.poke_ball);
+        setUltraBall(data.creditAmount.ultra_ball);
+        setMasterBall(data.creditAmount.master_ball);
         Swal.fire({
           title: `Daily Gift! You recieve PokeBall (7), UltraBall(3), MasterBall(1), and Coin(1000)`,
           customClass: {

@@ -87,8 +87,7 @@ const UniCards = ({
     return (
       <div
         className="flex h-80 w-52 animate-default_lift_card items-center justify-center rounded-xl bg-fb-undefined bg-cover
-      max-xl:h-48 max-xl:w-32
-      max-sm:m-2"
+      max-xl:h-48 max-xl:w-32"
       >
         <img src={`./images/quetion-mark.png`} alt="undefined" />
       </div>
@@ -98,8 +97,7 @@ const UniCards = ({
   return (
     <div
       className={`relative h-80 w-52 animate-default_lift_card rounded-xl hover:animate-lift_card hover:drop-shadow-md
-    max-xl:h-48 max-xl:w-32
-    max-sm:m-2`}
+    max-xl:h-48 max-xl:w-32`}
     >
       <div
         onClick={pickCardToTrade}

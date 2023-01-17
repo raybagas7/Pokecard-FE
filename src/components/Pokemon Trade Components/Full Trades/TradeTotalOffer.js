@@ -81,7 +81,8 @@ const TradeTotalOffer = ({
         {freeBox}
       </div>
       <button
-        className="mt-1 rounded-lg bg-black-steam p-2 transition duration-500 hover:bg-orange-poke disabled:bg-gray-500"
+        className="mt-1 rounded-lg bg-black-steam p-2 transition duration-500 hover:bg-orange-poke disabled:bg-gray-500
+        max-sm:rounded-full max-sm:text-xs"
         onClick={showAlert}
         disabled={cardId === null ? true : false}
       >

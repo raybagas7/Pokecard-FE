@@ -841,7 +841,7 @@ nav li:hover a {
 
 .stat-info {
   display: flex;
-  margin: 5px 5px 5px 5px;
+  margin: 5px;
 }
 
 .stat-icon {
@@ -1693,6 +1693,10 @@ nav li:hover a {
   .box > p {
     font-size: 0.7em;
   }
+  .box img {
+    height: 80%;
+    width: 80%;
+  }
 
   .box h4 {
     font-size: 0.7em;
@@ -1704,7 +1708,9 @@ nav li:hover a {
   .box-2_stats {
     height: auto;
   }
-
+  .stat-info {
+    margin: 0px;
+  }
   .stat-icon > p {
     font-size: 0.6em;
   }

@@ -157,6 +157,18 @@ module.exports = {
             width: '20rem',
           },
         },
+        expand_user_profile_lg: {
+          '0%': {
+            height: '4rem',
+            width: '4rem',
+          },
+          '100%': {
+            margin: '0px',
+            height: '100%',
+            'max-height': '5rem',
+            width: '18rem',
+          },
+        },
         default_user_profile: {
           '0%': {
             margin: '0px',
@@ -167,6 +179,18 @@ module.exports = {
           '100%': {
             height: '5rem',
             width: '5rem',
+          },
+        },
+        default_user_profile_lg: {
+          '0%': {
+            margin: '0px',
+            height: '100%',
+            'max-height': '5rem',
+            width: '18rem',
+          },
+          '100%': {
+            height: '4rem',
+            width: '4rem',
           },
         },
         fade_in_visit: {
@@ -193,12 +217,22 @@ module.exports = {
           '0%': {
             margin: '0px',
             height: '100%',
-            'max-height': '460px',
             width: '15rem',
           },
           '100%': {
             height: '6rem',
             width: '13rem',
+          },
+        },
+        default_offerer_profile_xl: {
+          '0%': {
+            margin: '0px',
+            height: '100%',
+            width: '10rem',
+          },
+          '100%': {
+            height: '4rem',
+            width: '8rem',
           },
         },
         expand_offerer_profile: {
@@ -213,10 +247,26 @@ module.exports = {
             width: '15rem',
           },
         },
+        expand_offerer_profile_xl: {
+          '0%': {
+            height: '4rem',
+            width: '8rem',
+          },
+          '100%': {
+            margin: '0px',
+            height: '100%',
+            width: '10rem',
+          },
+        },
         moving_profile_img: {
           '0%': { left: '0px', top: '180px' },
           '50%': { left: '0px', top: '100px' },
           '100%': { left: '75px', top: '100px' },
+        },
+        moving_profile_img_xl: {
+          '0%': { left: '0px', top: '110px' },
+          '50%': { left: '0px', top: '68px' },
+          '100%': { left: '49px', top: '68px' },
         },
         moving_offerer_name: {
           '0%': {
@@ -233,9 +283,32 @@ module.exports = {
             'margin-top': '12px',
           },
         },
+        moving_offerer_name_xl: {
+          '0%': {
+            top: '120px',
+            right: '0px',
+            transform: 'scale(1)',
+            'margin-top': '6px',
+          },
+          // '50%': { left: '0px', top: '100px' },
+          '100%': {
+            top: '120px',
+            right: '40px',
+            transform: 'scale(1.3)',
+            'margin-top': '12px',
+          },
+        },
         button_scale: {
           '0%': { transform: 'scale(1)' },
           '100%': { transform: 'scale(1.3)' },
+        },
+        default_hide_slide_left: {
+          '0%': { 'margin-right': '177px' },
+          '100%': { 'margin-right': '0px' },
+        },
+        hide_slide_left: {
+          '0%': { 'margin-right': '0px' },
+          '100%': { 'margin-right': '177px' },
         },
       },
       animation: {
@@ -257,10 +330,18 @@ module.exports = {
         spinner: 'spinner 4s linear infinite',
         spin_back: 'spin_back 2s linear infinite',
         default_offerer_profile: 'default_offerer_profile 0.5s forwards',
+        default_offerer_profile_xl: 'default_offerer_profile_xl 0.5s forwards',
+        default_user_profile_lg: 'default_user_profile_lg 0.5s forwards',
+        expand_user_profile_lg: 'expand_user_profile_lg 0.5s forwards',
         expand_offerer_profile: 'expand_offerer_profile 0.5s forwards',
+        expand_offerer_profile_xl: 'expand_offerer_profile_xl 0.5s forwards',
         moving_profile_img: 'moving_profile_img 0.5s forwards',
+        moving_profile_img_xl: 'moving_profile_img_xl 0.5s forwards',
         moving_offerer_name: 'moving_offerer_name 0.5s forwards',
+        moving_offerer_name_xl: 'moving_offerer_name_xl 0.5s forwards',
         button_scale: 'button_scale 0.5s forwards',
+        default_hide_slide_left: 'default_hide_slide_left 0.5s forwards',
+        hide_slide_left: 'hide_slide_left 0.5s forwards',
       },
     },
   },

@@ -94,8 +94,9 @@ const MainContent = ({
 
   const getRandom = () => {
     var num = Math.random();
+    console.log(num);
     let probability = '';
-    num < 0.95 ? (probability = 'normal') : (probability = 'shiny');
+    num < 0.97 ? (probability = 'normal') : (probability = 'shiny');
     return probability;
   };
 

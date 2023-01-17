@@ -8,7 +8,6 @@ const UltraBallCard = (props) => {
         <div className="poke-choose_upper-shiny">
           <div className="ultra-ball__right" />
           <div className="ultra-ball__left" />
-          <p className="master-ball__sign">Shiny</p>
           <div className="line-upper"></div>
           <div className="upper-ball"></div>
           <div className="upper-ball__small"></div>

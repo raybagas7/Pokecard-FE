@@ -22,18 +22,19 @@ const OffererCards = ({ listOffer, showOffererCard }) => {
   // console.log(offerCardsOwner);
 
   return (
-    <div className="flex h-fit w-full items-center p-10 pt-5 pb-5">
-      <div className="flex h-fit w-full flex-col items-center rounded-2xl bg-gold-poke p-5 text-white drop-shadow-lg">
+    <div className="flex h-fit w-full items-center p-3 pt-5 pb-5">
+      <div className="flex h-fit w-full flex-col items-center rounded-2xl bg-gold-poke p-3 text-white drop-shadow-lg">
         <div className="mb-3 w-fit rounded-2xl bg-white/50 p-2 text-2xl text-black-steam drop-shadow-lg">
           Card Offered
         </div>
-        <div className="flex h-fit w-full flex-wrap justify-center gap-3 rounded-2xl bg-white/50 p-5  text-white drop-shadow-lg">
-          <div className="flex gap-3 ">
+        <div className="flex h-fit w-full flex-wrap justify-center gap-3 rounded-2xl bg-white/50 p-3 text-white drop-shadow-lg">
+          <div className="flex gap-3 max-md:flex-col">
             {listOffer
               ? topListOffer.map((card) => (
                   <div
                     key={card.offer_id}
-                    className="relative flex h-460 w-60 flex-col items-center rounded-xl bg-white/50 p-5 "
+                    className="relative flex h-460 w-60 flex-col items-center rounded-xl bg-white/50 p-3 drop-shadow-lg 
+                    max-xl:h-72 max-xl:w-36"
                   >
                     <UniCards {...card} showOffererCard={showOffererCard} />
                     <OffererProfileInfo
@@ -47,12 +48,13 @@ const OffererCards = ({ listOffer, showOffererCard }) => {
                 ))
               : null}
           </div>
-          <div className="flex gap-3 ">
+          <div className="flex gap-3 max-md:flex-col">
             {listOffer
               ? botListOffer.map((card) => (
                   <div
                     key={card.offer_id}
-                    className="relative flex h-460 w-60 flex-col items-center rounded-xl bg-white/50 p-5 "
+                    className="relative flex h-460 w-60 flex-col items-center rounded-xl bg-white/50 p-3 
+                    max-xl:h-72 max-xl:w-36"
                   >
                     <UniCards {...card} showOffererCard={showOffererCard} />
                     <OffererProfileInfo
