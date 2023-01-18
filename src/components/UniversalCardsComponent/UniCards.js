@@ -1,6 +1,7 @@
 import React from 'react';
 import UniCardMove from './UniCardMove';
 import UniCardStats from './UniCardStats';
+import { Link } from 'react-router-dom';
 
 const UniCards = ({
   offer_id,
@@ -17,6 +18,7 @@ const UniCards = ({
   change = null,
   pickTradeCard,
   showOffererCard = null,
+  goTo,
 }) => {
   // let type = 'normal';
   // console.log('stats', stats);
@@ -99,7 +101,8 @@ const UniCards = ({
       className={`relative h-80 w-52 animate-default_lift_card rounded-xl hover:animate-lift_card hover:drop-shadow-md
     max-xl:h-48 max-xl:w-32`}
     >
-      <div
+      <Link
+        to={goTo}
         onClick={pickCardToTrade}
         className={`relative flex h-3/4 w-full cursor-pointer flex-col rounded-t-xl bg-cover
       ${
@@ -144,7 +147,7 @@ const UniCards = ({
             className={`m-auto block h-9/10 w-9/10 object-contain`}
           ></img>
         </div>
-      </div>
+      </Link>
       <div
         className={`absolute bottom-0 flex h-1/4 w-full animate-default_expand_info flex-col overflow-hidden rounded-b-xl bg-black hover:absolute hover:animate-expand_info_showcase`}
       >

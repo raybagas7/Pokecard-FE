@@ -69,12 +69,12 @@ const ProfileTradeCard = ({
   }
 
   return (
-    <Link
+    <div
       className="relative m-5 h-80 w-52 animate-default_lift_card rounded-xl bg-yellow-500 hover:animate-lift_card hover:drop-shadow-md
     max-xl:h-48 max-xl:w-32"
-      to={`/trades?trader_card_id=${card_id}`}
     >
-      <div
+      <Link
+        to={`/trades?trader_card_id=${card_id}`}
         className={`relative flex h-3/4 w-full cursor-pointer flex-col rounded-t-xl bg-cover
       ${
         type === undefined || null
@@ -118,7 +118,7 @@ const ProfileTradeCard = ({
             className={`m-auto block h-9/10 w-9/10 object-contain`}
           ></img>
         </div>
-      </div>
+      </Link>
       <div
         className={`absolute bottom-0 flex h-1/4 w-full animate-default_expand_info flex-col overflow-hidden rounded-b-xl bg-black hover:absolute hover:animate-expand_info_showcase`}
       >
@@ -185,7 +185,7 @@ const ProfileTradeCard = ({
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

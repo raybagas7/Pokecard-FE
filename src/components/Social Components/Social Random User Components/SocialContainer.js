@@ -32,6 +32,14 @@ const SocialContainer = () => {
     );
   }
 
+  if (randUser === null) {
+    return (
+      <div>
+        <div>Nothing</div>
+      </div>
+    );
+  }
+
   const { pool } = randUser;
   return (
     <>

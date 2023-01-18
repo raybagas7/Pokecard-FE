@@ -88,8 +88,9 @@ const SocialOfferCard = ({
   return (
     <div
       className={`relative m-1 mt-3 h-56 w-40 animate-default_lift_card rounded-xl
-    hover:animate-lift_card hover:drop-shadow-md
-    max-sm:m-2`}
+      hover:animate-lift_card hover:drop-shadow-md
+      max-xl:h-48 max-xl:w-32
+    `}
     >
       <div
         onClick={pickCardToOffer}
@@ -109,8 +110,9 @@ const SocialOfferCard = ({
       }`}
       >
         <p
-          className={`rounded-t-xl p-0 indent-2 text-sm
-          text-xxs before:content-['#']
+          className={`rounded-t-xl p-0 indent-2 text-xxs
+          before:content-['#']
+          max-xl:p-0 max-xl:text-xxxs
           ${
             type === 'normal'
               ? 'bg-yellow-300 text-black'
@@ -167,8 +169,8 @@ const SocialOfferCard = ({
               key={element}
               src={`./images/pokemon_elements/${element}.png`}
               alt="normal"
-              className={`mt-2 mb-2 ml-1
-              mr-1 h-6 w-6`}
+              className={`mt-2 mb-2 ml-1 mr-1 h-6 w-6
+              max-xl:m-1 max-xl:h-5 max-xl:w-5`}
             />
           ))}
         </div>

@@ -99,7 +99,9 @@ const OfferDetail = ({
   return (
     <div className="flex w-fit items-center gap-1 rounded-2xl bg-white/50 p-3 drop-shadow-lg">
       <div
-        className={`flex h-36 w-36 flex-col items-center justify-center rounded-2xl bg-cover text-white ${
+        className={`flex h-36 w-36 flex-col items-center justify-center rounded-2xl bg-cover text-white 
+        max-lg:h-20 max-lg:w-20
+        ${
           o_type === undefined || null
             ? 'bg-fb-undefined'
             : o_type === 'normal'
@@ -119,6 +121,7 @@ const OfferDetail = ({
               ? ''
               : `w-full rounded-t-2xl p-1 text-center text-xs first-letter:capitalize
               max-xl:p-0 max-xl:text-xxs
+              max-lg:text-xxxs
               ${
                 o_type === 'normal'
                   ? 'bg-red-poke'
@@ -143,7 +146,8 @@ const OfferDetail = ({
       <MdOutlineDoubleArrow className="h-5 w-5" />
       <div className="flex items-center gap-2">
         <div
-          className={`flex h-36 w-36 flex-col items-center justify-center rounded-2xl bg-cover text-white  ${
+          className={`flex h-36 w-36 flex-col items-center justify-center rounded-2xl bg-cover text-white  
+          max-lg:h-20 max-lg:w-20 ${
             t_type === undefined || null
               ? 'bg-fb-undefined'
               : t_type === 'normal'
@@ -163,6 +167,7 @@ const OfferDetail = ({
                 ? ''
                 : `w-full rounded-t-2xl p-1 text-center text-xs first-letter:capitalize
               max-xl:p-0 max-xl:text-xxs
+              max-lg:text-xxxs
               ${
                 t_type === 'normal'
                   ? 'bg-red-poke'
@@ -184,17 +189,25 @@ const OfferDetail = ({
             className={`m-auto block h-8/10 w-8/10 object-contain`}
           />
         </div>
-        <div className="group/trader  flex h-36 w-24 flex-col items-center justify-center overflow-hidden rounded-2xl bg-white p-2">
+        <div
+          className="group/trader flex h-36 w-24 flex-col items-center justify-center overflow-hidden rounded-2xl bg-white p-2
+        max-lg:h-20 max-lg:w-14 max-lg:text-xxs"
+        >
           {/* <div className="absolute h-full w-full rounded-2xl bg-black"></div> */}
-          <div className="relative flex max-h-20 w-20 animate-default_hide_slide_left items-center rounded-2xl p-1 group-hover/trader:animate-hide_slide_left">
+          <div
+            className="relative flex max-h-20 w-20 animate-default_hide_slide_left items-center rounded-2xl p-1 group-hover/trader:animate-hide_slide_left
+          max-lg:max-h-12 max-lg:w-12 max-lg:animate-default_hide_slide_left_lg max-lg:group-hover/trader:animate-hide_slide_left_lg"
+          >
             <img
-              className="max-h-20 w-20 p-1"
+              className="max-h-20 w-20 p-1
+              max-lg:max-h-12 max-lg:w-12"
               src={`./images/pokemon_elements/normal.png`}
               alt={t_trainer_name}
             />
             <button
               onClick={showAlert}
-              className="ml-5 h-fit w-fit rounded-2xl bg-black-steam p-2 text-white transition duration-500 hover:bg-orange-poke"
+              className="ml-5 h-fit w-fit rounded-2xl bg-black-steam p-2 text-white transition duration-500 hover:bg-orange-poke
+              max-lg:rounded-lg max-lg:p-1"
             >
               Cancel
             </button>

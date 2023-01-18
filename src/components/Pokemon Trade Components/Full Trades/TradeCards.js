@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import UniCards from '../../UniversalCardsComponent/UniCards';
 import TradeTotalOffer from './TradeTotalOffer';
-import { Link } from 'react-router-dom';
 
 const TradeCards = ({ userTrades }) => {
   const { trades: tradesCard } = userTrades;
@@ -44,9 +43,10 @@ const TradeCards = ({ userTrades }) => {
             max-sm:p-1"
           >
             {card.card_id ? (
-              <Link to={`/trades?trader_card_id=${card.card_id}`}>
-                <UniCards {...card} />
-              </Link>
+              <UniCards
+                {...card}
+                goTo={`/trades?trader_card_id=${card.card_id}`}
+              />
             ) : (
               <UniCards {...card} />
             )}
@@ -72,9 +72,10 @@ const TradeCards = ({ userTrades }) => {
             max-sm:p-1"
           >
             {card.card_id ? (
-              <Link to={`/trades?trader_card_id=${card.card_id}`}>
-                <UniCards {...card} />
-              </Link>
+              <UniCards
+                {...card}
+                goTo={`/trades?trader_card_id=${card.card_id}`}
+              />
             ) : (
               <UniCards {...card} />
             )}

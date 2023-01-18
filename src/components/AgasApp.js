@@ -43,7 +43,7 @@ const AgasApp = () => {
 
   const onLogout = () => {
     setAuthedUser(null);
-    logout();
+    logout(authedUser.user.username);
 
     putAccessToken('');
     putRefreshToken('');

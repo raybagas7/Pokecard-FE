@@ -56,12 +56,12 @@ const login = async ({ username, password }) => {
   };
 };
 
-const logout = async () => {
+const logout = async (username) => {
   const refreshToken = getRefreshToken();
   const response = await fetch(`${BASE_URL}/authentications`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ refreshToken }),
+    body: JSON.stringify({ refreshToken, username }),
   });
 
   const responseJson = await response.json();

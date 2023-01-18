@@ -306,9 +306,17 @@ module.exports = {
           '0%': { 'margin-right': '177px' },
           '100%': { 'margin-right': '0px' },
         },
+        default_hide_slide_left_lg: {
+          '0%': { 'margin-right': '116px' },
+          '100%': { 'margin-right': '0px' },
+        },
         hide_slide_left: {
           '0%': { 'margin-right': '0px' },
           '100%': { 'margin-right': '177px' },
+        },
+        hide_slide_left_lg: {
+          '0%': { 'margin-right': '0px' },
+          '100%': { 'margin-right': '116px' },
         },
       },
       animation: {
@@ -341,7 +349,9 @@ module.exports = {
         moving_offerer_name_xl: 'moving_offerer_name_xl 0.5s forwards',
         button_scale: 'button_scale 0.5s forwards',
         default_hide_slide_left: 'default_hide_slide_left 0.5s forwards',
+        default_hide_slide_left_lg: 'default_hide_slide_left_lg 0.5s forwards',
         hide_slide_left: 'hide_slide_left 0.5s forwards',
+        hide_slide_left_lg: 'hide_slide_left_lg 0.5s forwards',
       },
     },
   },

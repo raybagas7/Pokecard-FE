@@ -36,6 +36,18 @@ const HomePage = ({ nextDaily }) => {
   const [masterBall, setMasterBall] = React.useState(0);
   const [ownedCards, setOwnedCards] = React.useState([]);
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top',
+    iconColor: 'white',
+    customClass: {
+      popup: 'colored-toast',
+    },
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+  });
+
   const openCreditBundle = async () => {
     try {
       await addFirstTimeCreditWithRefresh().then(({ error, data, message }) => {
@@ -55,6 +67,12 @@ const HomePage = ({ nextDaily }) => {
   const claimDaily = async () => {
     try {
       await claimUserDailyGiftRefresh().then(({ error, data, message }) => {
+        if (error) {
+          Toast.fire({
+            icon: 'error',
+            title: `${message}`,
+          });
+        }
         setCreditAvailability({
           credit_id: creditAvailability.credit_id,
           poke_ball: data.creditAmount.poke_ball,
@@ -65,12 +83,9 @@ const HomePage = ({ nextDaily }) => {
         setPokeBall(data.creditAmount.poke_ball);
         setUltraBall(data.creditAmount.ultra_ball);
         setMasterBall(data.creditAmount.master_ball);
-        Swal.fire({
+        Toast.fire({
+          icon: 'success',
           title: `Daily Gift! You recieve PokeBall (7), UltraBall(3), MasterBall(1), and Coin(1000)`,
-          customClass: {
-            popup: 'colored-toast-coin colored-toast',
-            closeButton: 'colored-toast-close',
-          },
         });
         setDailyGift(!dailyGift);
       });

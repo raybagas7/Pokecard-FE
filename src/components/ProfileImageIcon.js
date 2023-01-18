@@ -18,6 +18,32 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
     await sendVerification({ targetEmail: userData.user.email });
   };
 
+  const showAlertForVerification = () => {
+    Swal.fire({
+      title: 'Send verification link to your email?',
+      showDenyButton: true,
+      confirmButtonText: 'Yes',
+      denyButtonText: 'No',
+      customClass: {
+        popup: 'verification-swal',
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'You will recieve the email, please check in your inbox or spam!',
+          '',
+          'success'
+        );
+        send();
+      } else if (result.isDenied) {
+        Swal.fire('Verify your account to get more credits', '', 'info');
+      }
+    });
+  };
+
   const showAlert = () => {
     Swal.fire({
       title: 'Do you want to send another verification link to your email?',
@@ -33,7 +59,7 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'You will recieve new email, please check your inbox or spam email!',
+          'You will recieve new email, please check in your inbox or spam!',
           '',
           'success'
         );
@@ -65,9 +91,9 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
               authedUser.user.wait_verify === false &&
               ttlVerification === false ? (
                 <p
-                  className="middle-dropdown"
+                  className="middle-dropdown bg-gold-poke"
                   title="Verification Button"
-                  onClick={send}
+                  onClick={showAlertForVerification}
                 >
                   Verify
                 </p>
@@ -75,7 +101,7 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
                 (authedUser.user.wait_verify === true ||
                   ttlVerification === true) ? (
                 <p
-                  className="middle-dropdown"
+                  className="middle-dropdown bg-gold-poke"
                   title="Wait user to verify account, please check your email"
                   onClick={showAlert}
                 >
@@ -90,11 +116,12 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
               </Link>
               <Link
                 to={'/'}
-                className="bottom-dropdown"
+                className="bottom-dropdown group/logout"
                 title="Logout"
                 onClick={logout}
               >
-                Logout <RiLogoutCircleLine className="circle-logout" />
+                Logout{' '}
+                <RiLogoutCircleLine className="circle-logout group-hover/logout:animate-pulse" />
               </Link>
             </div>
           </div>
