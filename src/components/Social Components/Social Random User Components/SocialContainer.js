@@ -34,8 +34,10 @@ const SocialContainer = () => {
 
   if (randUser === null) {
     return (
-      <div>
-        <div>Nothing</div>
+      <div className="flex h-screen w-full items-center justify-center text-5xl max-md:text-3xl">
+        <div className="text-center">
+          You are the only player who play this game
+        </div>
       </div>
     );
   }

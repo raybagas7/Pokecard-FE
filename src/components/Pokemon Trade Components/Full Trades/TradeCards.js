@@ -46,6 +46,7 @@ const TradeCards = ({ userTrades }) => {
               <UniCards
                 {...card}
                 goTo={`/trades?trader_card_id=${card.card_id}`}
+                linkType={true}
               />
             ) : (
               <UniCards {...card} />
@@ -75,6 +76,7 @@ const TradeCards = ({ userTrades }) => {
               <UniCards
                 {...card}
                 goTo={`/trades?trader_card_id=${card.card_id}`}
+                linkType={true}
               />
             ) : (
               <UniCards {...card} />

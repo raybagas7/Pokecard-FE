@@ -141,7 +141,12 @@ const AgasApp = () => {
                 <Route path="/*" element={<NotFoundPage />} />
                 <Route
                   path="/"
-                  element={<HomePage nextDaily={authedUser.user.next_daily} />}
+                  element={
+                    <HomePage
+                      nextDaily={authedUser.user.next_daily}
+                      isValid={authedUser.user.is_valid}
+                    />
+                  }
                 />
                 <Route
                   path="/profile"

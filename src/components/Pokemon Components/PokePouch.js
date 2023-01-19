@@ -12,7 +12,9 @@ const PokePouch = ({
   pickedBall,
   claimDaily,
   dailyGift,
+  isValid,
 }) => {
+  console.log('valid', isValid);
   // console.log('credit di pouch', pickedBall);
   return credit === null ? (
     <div className="poke-pouch">
@@ -53,7 +55,7 @@ const PokePouch = ({
         <SmallCoin />
         <p>{`${credit.coin}`}</p>
       </div>
-      {dailyGift ? (
+      {dailyGift && isValid ? (
         <div className="mt-1.5" onClick={claimDaily}>
           <DailyGiftSVG />
         </div>

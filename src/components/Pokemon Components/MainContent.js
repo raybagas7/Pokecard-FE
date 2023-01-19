@@ -23,6 +23,7 @@ const MainContent = ({
   coins,
   claimDaily,
   dailyGift,
+  isValid,
 }) => {
   const [pokemonId, setPokemonId] = useState();
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
@@ -96,7 +97,7 @@ const MainContent = ({
     var num = Math.random();
     // console.log(num);
     let probability = '';
-    num < 0.97 ? (probability = 'normal') : (probability = 'shiny');
+    num < 0.965 ? (probability = 'normal') : (probability = 'shiny');
     return probability;
   };
 
@@ -265,6 +266,7 @@ const MainContent = ({
         pickedBall={pickedBall}
         claimDaily={claimDaily}
         dailyGift={dailyGift}
+        isValid={isValid}
       />
       <ContainerContent
         cards={cards}

@@ -17,7 +17,7 @@ import {
 import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
 const moment = require('moment-timezone');
 
-const HomePage = ({ nextDaily }) => {
+const HomePage = ({ nextDaily, isValid }) => {
   const waktuIndoNow = moment().tz('Asia/Jakarta').format('YYYY-MM-DD');
   const userNextDaily = moment(nextDaily).format('YYYY-MM-DD');
   const ableToClaim = moment(userNextDaily).isSameOrBefore(waktuIndoNow, 'day');
@@ -85,7 +85,7 @@ const HomePage = ({ nextDaily }) => {
         setMasterBall(data.creditAmount.master_ball);
         Toast.fire({
           icon: 'success',
-          title: `Daily Gift! You recieve PokeBall (7), UltraBall(3), MasterBall(1), and Coin(1000)`,
+          title: `Daily Gift! You recieve PokeBall (3), UltraBall(1), MasterBall(1), and Coin(1000)`,
         });
         setDailyGift(!dailyGift);
       });
@@ -197,6 +197,7 @@ const HomePage = ({ nextDaily }) => {
         coins={coins}
         claimDaily={claimDaily}
         dailyGift={dailyGift}
+        isValid={isValid}
         // reducePokeBalls={reducePokeBalls}
       />
       <CollectedCardsContainer ownedCards={ownedCards} />

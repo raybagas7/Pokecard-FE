@@ -18,7 +18,8 @@ const UniCards = ({
   change = null,
   pickTradeCard,
   showOffererCard = null,
-  goTo,
+  goTo = null,
+  linkType = false,
 }) => {
   // let type = 'normal';
   // console.log('stats', stats);
@@ -101,10 +102,10 @@ const UniCards = ({
       className={`relative h-80 w-52 animate-default_lift_card rounded-xl hover:animate-lift_card hover:drop-shadow-md
     max-xl:h-48 max-xl:w-32`}
     >
-      <Link
-        to={goTo}
-        onClick={pickCardToTrade}
-        className={`relative flex h-3/4 w-full cursor-pointer flex-col rounded-t-xl bg-cover
+      {linkType ? (
+        <Link
+          to={goTo}
+          className={`relative flex h-3/4 w-full cursor-pointer flex-col rounded-t-xl bg-cover
       ${
         type === undefined || null
           ? 'bg-fb-undefined'
@@ -118,9 +119,9 @@ const UniCards = ({
           ? 'bg-fb-legendary-shine'
           : ''
       }`}
-      >
-        <p
-          className={`rounded-t-xl p-1 indent-2 text-sm before:content-['#']
+        >
+          <p
+            className={`rounded-t-xl p-1 indent-2 text-sm before:content-['#']
           max-xl:p-0 max-xl:text-xxs
           ${
             type === 'normal'
@@ -133,21 +134,70 @@ const UniCards = ({
               ? 'profile-attr-legendary-shine bg-gradient-to-r from-purple-legend-dark via-purple-legend-light to-purple-legend-dark '
               : ''
           }`}
+          >
+            {poke_id}
+          </p>
+          <div className="flex flex-1">
+            <img
+              src={
+                attribute === undefined || attribute === null
+                  ? `./images/quetion-mark.png`
+                  : pokemonImage()
+              }
+              alt="pokemon-images"
+              className={`m-auto block h-9/10 w-9/10 object-contain`}
+            ></img>
+          </div>
+        </Link>
+      ) : (
+        <div
+          onClick={pickCardToTrade}
+          className={`relative flex h-3/4 w-full cursor-pointer flex-col rounded-t-xl bg-cover
+      ${
+        type === undefined || null
+          ? 'bg-fb-undefined'
+          : type === 'normal'
+          ? 'bg-fb-normal'
+          : type === 'shiny'
+          ? 'bg-fb-shiny'
+          : type === 'legendary'
+          ? 'bg-fb-legendary'
+          : type === 'legendary-shine'
+          ? 'bg-fb-legendary-shine'
+          : ''
+      }`}
         >
-          {poke_id}
-        </p>
-        <div className="flex flex-1">
-          <img
-            src={
-              attribute === undefined || attribute === null
-                ? `./images/quetion-mark.png`
-                : pokemonImage()
-            }
-            alt="pokemon-images"
-            className={`m-auto block h-9/10 w-9/10 object-contain`}
-          ></img>
+          <p
+            className={`rounded-t-xl p-1 indent-2 text-sm before:content-['#']
+          max-xl:p-0 max-xl:text-xxs
+          ${
+            type === 'normal'
+              ? 'bg-yellow-300 text-black'
+              : type === 'shiny'
+              ? 'profile-attr-shiny bg-orange-400'
+              : type === 'legendary'
+              ? 'profile-attr-legendary bg-purple-600 '
+              : type === 'legendary-shine'
+              ? 'profile-attr-legendary-shine bg-gradient-to-r from-purple-legend-dark via-purple-legend-light to-purple-legend-dark '
+              : ''
+          }`}
+          >
+            {poke_id}
+          </p>
+          <div className="flex flex-1">
+            <img
+              src={
+                attribute === undefined || attribute === null
+                  ? `./images/quetion-mark.png`
+                  : pokemonImage()
+              }
+              alt="pokemon-images"
+              className={`m-auto block h-9/10 w-9/10 object-contain`}
+            ></img>
+          </div>
         </div>
-      </Link>
+      )}
+
       <div
         className={`absolute bottom-0 flex h-1/4 w-full animate-default_expand_info flex-col overflow-hidden rounded-b-xl bg-black hover:absolute hover:animate-expand_info_showcase`}
       >

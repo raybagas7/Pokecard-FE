@@ -36,7 +36,11 @@ const TradeCardContainer = ({ cardId }) => {
       <TradeDetail offererTraderCards={offererTraderCards} />
     </div>
   ) : (
-    <div>NOTHING</div>
+    <div className="flex h-screen w-full items-center justify-center text-5xl max-md:text-3xl">
+      <div className="text-center">
+        There are no offers yet for this trading card
+      </div>
+    </div>
   );
 };
 

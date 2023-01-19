@@ -21,10 +21,10 @@ const LoginPage = ({ loginSuccess }) => {
   const onLogin = async ({ username, password }) => {
     const { error, data, message } = await login({ username, password });
 
-    // console.log(data);
+    // console.log('mydata', data);
     if (!error) {
       loginSuccess(data);
-      Toast.fire({  
+      Toast.fire({
         icon: 'success',
         title: `Welcome ${username}`,
       });
