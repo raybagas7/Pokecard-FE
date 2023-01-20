@@ -81,7 +81,7 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
             />
             <div className="dropdown-content">
               <Link
-                to={'/profile'}
+                to={'/settings'}
                 className="upper-dropdown"
                 title={`Profile ${authedUser.user.trainer_name}`}
               >

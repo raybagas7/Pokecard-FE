@@ -151,6 +151,7 @@ const CardContent = ({
               min_hits: response.data.meta.min_hits,
               min_turns: response.data.meta.min_turns,
               stat_chance: response.data.meta.stat_chance,
+              target: response.data.target.name,
               type: response.data.type.name,
             })
           : setMoveOne({
@@ -171,6 +172,7 @@ const CardContent = ({
               min_hits: null,
               min_turns: null,
               stat_chance: null,
+              target: response.data.target.name,
               type: response.data.type.name,
             });
       });
@@ -195,6 +197,7 @@ const CardContent = ({
               min_hits: response.data.meta.min_hits,
               min_turns: response.data.meta.min_turns,
               stat_chance: response.data.meta.stat_chance,
+              target: response.data.target.name,
               type: response.data.type.name,
             })
           : setMoveTwo({
@@ -215,6 +218,7 @@ const CardContent = ({
               min_hits: null,
               min_turns: null,
               stat_chance: null,
+              target: response.data.target.name,
               type: response.data.type.name,
             });
       });

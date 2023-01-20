@@ -23,6 +23,7 @@ import ls from 'localstorage-slim';
 import TtlVerifContext from '../context/TtlVerifContext';
 import SocialPage from '../pages/SocialPage';
 import OffersPage from '../pages/OffersPage';
+import SettingPage from '../pages/SettingPage';
 
 const AgasApp = () => {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -153,6 +154,10 @@ const AgasApp = () => {
                   element={<ProfilePage userData={authedUser} />}
                 />
                 <Route path="/social" element={<SocialPage />} />
+                <Route
+                  path="/settings"
+                  element={<SettingPage userData={authedUser.user} />}
+                />
                 <Route path="/offers" element={<OffersPage />} />
                 <Route path="/trades" element={<TradesPage />} />
               </Routes>

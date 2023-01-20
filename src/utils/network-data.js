@@ -56,6 +56,28 @@ const login = async ({ username, password }) => {
   };
 };
 
+const forgotPassword = async (email) => {
+  const response = await fetch(`${BASE_URL}/export/forgot/password`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ targetEmail: email }),
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== 'success') {
+    return { error: true, data: null, message: responseJson.message };
+  }
+
+  return {
+    error: false,
+    data: responseJson.data,
+    message: responseJson.message,
+  };
+};
+
 const logout = async (username) => {
   const refreshToken = getRefreshToken();
   const response = await fetch(`${BASE_URL}/authentications`, {
@@ -1097,6 +1119,7 @@ export {
   putRefreshToken,
   putCreditId,
   login,
+  forgotPassword,
   logout,
   register,
   refreshAccessToken,

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { login } from '../utils/network-data';
+import { forgotPassword, login } from '../utils/network-data';
 import LoginInput from '../components/Login Components/LoginInput';
 
 import Swal from 'sweetalert2';
@@ -35,9 +35,28 @@ const LoginPage = ({ loginSuccess }) => {
       });
     }
   };
+
+  const onForgot = async ({ email }) => {
+    const { error, data, message } = await forgotPassword(email);
+
+    // console.log('mydata', data);
+    if (!error) {
+      loginSuccess(data);
+      Toast.fire({
+        icon: 'success',
+        title: `${message}`,
+      });
+    } else {
+      Toast.fire({
+        icon: 'error',
+        title: `${message}`,
+      });
+    }
+  };
+
   return (
     <section>
-      <LoginInput login={onLogin} />
+      <LoginInput login={onLogin} forgot={onForgot} />
     </section>
   );
 };

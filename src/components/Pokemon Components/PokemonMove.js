@@ -6,7 +6,10 @@ const PokemonMove = ({ move }) => {
     <div className="move-small-container">
       <div className={`move-identifier ailment-${move.ailment}`}>
         <p className="move-id">#{move.id}</p>
-        <p className={`move-ailment ailment-text-${move.ailment}`}>
+        <p
+          className={`move-ailment ailment-text-${move.ailment} 
+          max-sm:w-5 max-sm:overflow-hidden max-sm:text-ellipsis max-sm:whitespace-nowrap`}
+        >
           {move.ailment ? move.ailment : 'null'}
         </p>
       </div>

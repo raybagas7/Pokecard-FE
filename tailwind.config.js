@@ -205,6 +205,25 @@ module.exports = {
           '0%': { opacity: '0%', transform: 'scale(0)' },
           '100%': { opacity: '100%', transform: 'scale(1)' },
         },
+        fade_out_quantum_bouncing: {
+          '0%': { opacity: '100%', transform: 'scale(1)' },
+          '30%': { opacity: '100%', transform: 'scale(1.07)' },
+          '100%': {
+            opacity: '0%',
+            transform: 'scale(0)',
+            visibility: 'hidden',
+          },
+        },
+        default_quantum_bouncing: {
+          '0%': { opacity: '0%', transform: 'scale(0)', visibility: 'visible' },
+          '50%': {
+            opacity: '0%',
+            transform: 'scale(0)',
+            visibility: 'visible',
+          },
+          '80%': { opacity: '100%', transform: 'scale(1.07)' },
+          '100%': { opacity: '100%', transform: 'scale(1)' },
+        },
         spinner: {
           '0%, 40%': { transform: 'rotate(0deg)' },
           '60%, 100%': { transform: 'rotate(-180deg)' },
@@ -335,6 +354,8 @@ module.exports = {
         fade_in_visit: 'fade_in_visit 0.5s forwards',
         fade_out_quantum: 'fade_out_quantum 0.5s forwards',
         default_quantum: 'default_quantum 0.7s forwards',
+        fade_out_quantum_bouncing: 'fade_out_quantum_bouncing 0.5s forwards',
+        default_quantum_bouncing: 'default_quantum_bouncing 1s forwards',
         spinner: 'spinner 4s linear infinite',
         spin_back: 'spin_back 2s linear infinite',
         default_offerer_profile: 'default_offerer_profile 0.5s forwards',

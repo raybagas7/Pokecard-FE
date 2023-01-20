@@ -29,7 +29,10 @@ const RegisterInput = (props) => {
 
   return (
     <div className="register-container">
-      <form onSubmit={onSubmitHandler} className="register-input">
+      <form
+        onSubmit={onSubmitHandler}
+        className="register-input animate-default_quantum_bouncing"
+      >
         <div className="signup-header">
           <h2 className="text-2xl">SIGN UP</h2>
         </div>
@@ -78,7 +81,7 @@ const RegisterInput = (props) => {
           )}
         </div>
       </form>
-      <div className="back-to__login">
+      <div className="back-to__login animate-default_quantum_bouncing">
         <p>
           You already have an account?
           <Link to={'/'} className="link-login">
