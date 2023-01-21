@@ -9,14 +9,19 @@ const NavHeader = () => {
         <nav>
           <ul>
             {/*Will soon move the list into component*/}
-            <li>
+            <li className="max-md:text-xxs">
               <Link to={'/'}>Home</Link>
             </li>
-            <li>
+            <li className="max-md:text-xxs">
               <Link to={'/profile'}>Profile</Link>
             </li>
-            <li>
+            <li className="max-md:text-xxs">
               <Link to={'/social'}>Social</Link>
+            </li>
+            <li className="max-md:text-xxs">
+              <Link to={'/collections'} title="Collections">
+                Manage Collections
+              </Link>
             </li>
           </ul>
         </nav>

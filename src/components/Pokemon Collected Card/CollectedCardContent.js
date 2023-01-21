@@ -15,6 +15,7 @@ const CollectedCardContent = ({
   stats,
   move1,
   move2,
+  doFlip,
 }) => {
   const [isFlipped, setIsFlipped] = React.useState(false);
   let isShiny = false;
@@ -70,7 +71,7 @@ const CollectedCardContent = ({
         <div className="flex-row_collection card-content_collection front-card_collection">
           <div
             className={`box_collection first-box-${pokemonType()}_collection`}
-            onClick={toggleFlip}
+            onClick={doFlip ? toggleFlip : null}
           >
             <p className={`attribute-${pokemonType()}-id_collection`}>
               {poke_id}

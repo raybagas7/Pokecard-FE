@@ -79,6 +79,8 @@ module.exports = {
         '8/10': '80%',
         '9/10': '90%',
         '10/10': '100%',
+        720: '720px',
+        460: '460px',
       },
       backgroundImage: {
         'fb-undefined': "url('/public/images/card-white-gold.png')",

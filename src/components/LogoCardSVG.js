@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const LogoCardSVG = (props) => (
   <svg
-    className="h-auto w-10"
+    className="h-auto w-10 max-md:w-6"
     id="Layer_1"
     data-name="Layer 1"
     xmlns="http://www.w3.org/2000/svg"

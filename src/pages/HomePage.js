@@ -17,7 +17,7 @@ import {
 import { getSocmedBlack, getSocmedWhite } from '../utils/socmed';
 const moment = require('moment-timezone');
 
-const HomePage = ({ nextDaily, isValid }) => {
+const HomePage = ({ nextDaily, isValid, dailyGiftCheck }) => {
   const waktuIndoNow = moment().tz('Asia/Jakarta').format('YYYY-MM-DD');
   const userNextDaily = moment(nextDaily).format('YYYY-MM-DD');
   const ableToClaim = moment(userNextDaily).isSameOrBefore(waktuIndoNow, 'day');
@@ -88,15 +88,16 @@ const HomePage = ({ nextDaily, isValid }) => {
           title: `Daily Gift! You recieve PokeBall (3), UltraBall(1), MasterBall(1), and Coin(1000)`,
         });
         setDailyGift(!dailyGift);
+        dailyGiftCheck(!dailyGift);
       });
     } catch (e) {
       console.log(e);
     }
   };
 
-  const pickCards = async (pickPayload) => {
+  const pickCards = async (pickPayload, cardsPayload) => {
     try {
-      await pickPokeCardsWithRefresh(pickPayload).then(
+      await pickPokeCardsWithRefresh(pickPayload, cardsPayload).then(
         ({ error = false, data = {}, message = '' }) => {
           // console.log('home pickcard', error, data, message);
           setPokeBall(data.balls.poke_ball);
@@ -109,6 +110,11 @@ const HomePage = ({ nextDaily, isValid }) => {
             master_ball: data.balls.master_ball,
             coin: creditAvailability.coin,
           });
+          setOwnedCards(
+            ownedCards.cards
+              ? { cards: [...ownedCards.cards, ...cardsPayload] }
+              : { cards: [...cardsPayload] }
+          );
         }
       );
     } catch (e) {
@@ -167,8 +173,8 @@ const HomePage = ({ nextDaily, isValid }) => {
         console.log(e);
       }
     });
-  }, [pokeBall, ultraBall, masterBall]);
-
+  }, []);
+  //pokeBall, ultraBall, masterBall
   if (initializing || initializing2) {
     return (
       <section className="flex items-center justify-center">
@@ -200,7 +206,7 @@ const HomePage = ({ nextDaily, isValid }) => {
         isValid={isValid}
         // reducePokeBalls={reducePokeBalls}
       />
-      <CollectedCardsContainer ownedCards={ownedCards} />
+      <CollectedCardsContainer ownedCards={ownedCards} doFlip={false} />
     </section>
   );
 };

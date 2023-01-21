@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const SmallCircleSVG = (props) => (
   <svg
-    className="h-auto w-4 animate-horizontal_shake"
+    className="h-auto w-4 animate-horizontal_shake max-md:w-2"
     data-name="Layer 1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 112.04 112.04"

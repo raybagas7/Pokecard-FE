@@ -6,9 +6,10 @@ const ActionButtons = (props) => {
     ...props.pickedBall,
     cardsData: props.choosenPokemonCards,
   };
+  // console.log('chose', );
   // const balls = props.pickedBall;
   const pickChoosenCards = async () => {
-    await props.pickCards(pickPayload);
+    await props.pickCards(pickPayload, props.choosenPokemonCards);
     // await props.reducePokeBalls(balls);
     props.removePokemonPool();
     props.cleanAfterAction();
@@ -27,7 +28,7 @@ const ActionButtons = (props) => {
   ) : (
     <div className="flex-column container-content__second">
       <button
-        className="shuffle-button"
+        className="shuffle-button disabled:animate-pulse"
         onClick={props.insertPokemon}
         disabled={props.buttonDisable}
       >

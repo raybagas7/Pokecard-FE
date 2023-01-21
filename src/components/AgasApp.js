@@ -24,6 +24,7 @@ import TtlVerifContext from '../context/TtlVerifContext';
 import SocialPage from '../pages/SocialPage';
 import OffersPage from '../pages/OffersPage';
 import SettingPage from '../pages/SettingPage';
+import CollectionsPage from '../pages/CollectionsPage';
 
 const AgasApp = () => {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -31,6 +32,11 @@ const AgasApp = () => {
   const [ttlVerification, setTtlVerification] = React.useState(
     ls.get('waitingVerfication') || false
   );
+  const [dailyCheck, setDailyCheck] = React.useState();
+
+  const dailyGiftCheck = (status) => {
+    setDailyCheck(status);
+  };
 
   const onLoginSuccess = async ({ accessToken, refreshToken }) => {
     putAccessToken(accessToken);
@@ -106,7 +112,7 @@ const AgasApp = () => {
         setInitializing(false);
       }
     });
-  }, [ttlVerification]);
+  }, [ttlVerification, dailyCheck]);
 
   if (initializing) {
     return null;
@@ -146,6 +152,7 @@ const AgasApp = () => {
                     <HomePage
                       nextDaily={authedUser.user.next_daily}
                       isValid={authedUser.user.is_valid}
+                      dailyGiftCheck={dailyGiftCheck}
                     />
                   }
                 />
@@ -158,6 +165,7 @@ const AgasApp = () => {
                   path="/settings"
                   element={<SettingPage userData={authedUser.user} />}
                 />
+                <Route path="/collections" element={<CollectionsPage />} />
                 <Route path="/offers" element={<OffersPage />} />
                 <Route path="/trades" element={<TradesPage />} />
               </Routes>

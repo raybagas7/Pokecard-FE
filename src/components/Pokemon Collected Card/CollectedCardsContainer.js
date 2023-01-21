@@ -6,9 +6,16 @@ import CollectedCardContent from './CollectedCardContent';
 import CollectionPageButton from './CollectionPageButton';
 import useInput from '../../hooks/useInput';
 
-const CollectedCardsContainer = ({ ownedCards }) => {
+const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
   const [searchPokemon, handleSearchPokemon] = useInput('');
   const [activePage, setActivePage] = useState(0);
+  // const [tempId, setTempId] = useState(0);
+
+  // const makeTempId = () => {
+  //   const callTempId = `card-${tempId}`;
+
+  //   return callTempId;
+  // };
 
   const cards = getCard();
   const { cards: ownedCollections = [] } = ownedCards;
@@ -80,7 +87,12 @@ const CollectedCardsContainer = ({ ownedCards }) => {
             {filteredByPageCollection
               ? filteredByPageCollection[activePage].map((ownedCards) => (
                   <CollectedCardContent
-                    key={ownedCards.card_id}
+                    key={
+                      ownedCards.card_id
+                        ? ownedCards.card_id
+                        : `card-${ownedCards.id}`
+                    }
+                    doFlip={doFlip}
                     {...ownedCards}
                   />
                 ))

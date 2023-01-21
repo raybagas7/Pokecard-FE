@@ -231,7 +231,7 @@ const MainContent = ({
       setisButtonDisabled(true);
       setTimeout(() => {
         setisButtonDisabled(false);
-      }, 3200);
+      }, 3500);
       const result = await shufflePokemon();
       setTimeout(async () => {
         await shuffleCard();
