@@ -70,7 +70,7 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
 
   return (
     <div className="w-52 rounded-2xl bg-white/80 p-2">
-      <div className="relative rounded-t-lg border-2 border-black-steam/50 p-2">
+      <div className="relative aspect-square rounded-t-lg border-2 border-black-steam/50 p-2">
         <img
           src={
             !localUserPP

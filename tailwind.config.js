@@ -328,7 +328,7 @@ module.exports = {
           '100%': { 'margin-right': '0px' },
         },
         default_hide_slide_left_lg: {
-          '0%': { 'margin-right': '116px' },
+          '0%': { 'margin-right': '114px' },
           '100%': { 'margin-right': '0px' },
         },
         hide_slide_left: {
@@ -337,7 +337,7 @@ module.exports = {
         },
         hide_slide_left_lg: {
           '0%': { 'margin-right': '0px' },
-          '100%': { 'margin-right': '116px' },
+          '100%': { 'margin-right': '114px' },
         },
       },
       animation: {

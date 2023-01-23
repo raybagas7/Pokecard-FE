@@ -20,6 +20,8 @@ const OfferDetail = ({
   t_search_id,
   removeOffer,
 }) => {
+  const splitTrainerName = t_trainer_name.split(' ');
+
   const Toast = Swal.mixin({
     toast: true,
     position: 'top',
@@ -195,24 +197,30 @@ const OfferDetail = ({
         >
           {/* <div className="absolute h-full w-full rounded-2xl bg-black"></div> */}
           <div
-            className="relative flex max-h-20 w-20 animate-default_hide_slide_left items-center rounded-2xl p-1 group-hover/trader:animate-hide_slide_left
-          max-lg:max-h-12 max-lg:w-12 max-lg:animate-default_hide_slide_left_lg max-lg:group-hover/trader:animate-hide_slide_left_lg"
+            className="relative flex h-20 w-20 animate-default_hide_slide_left rounded-2xl p-1 group-hover/trader:animate-hide_slide_left
+          max-lg:h-12 max-lg:w-12 max-lg:animate-default_hide_slide_left_lg max-lg:group-hover/trader:animate-hide_slide_left_lg"
           >
             <img
-              className="max-h-20 w-20 p-1
-              max-lg:max-h-12 max-lg:w-12"
-              src={`./images/pokemon_elements/normal.png`}
+              className="max-w-20 aspect-square max-h-20 rounded-full object-cover p-1
+              max-lg:h-10 max-lg:w-10"
+              src={
+                t_profile_img
+                  ? t_profile_img
+                  : './images/pokemon_elements/normal.png'
+              }
               alt={t_trainer_name}
             />
-            <button
-              onClick={showAlert}
-              className="ml-5 h-fit w-fit rounded-2xl bg-black-steam p-2 text-white transition duration-500 hover:bg-orange-poke
+            <div className="flex items-center">
+              <button
+                onClick={showAlert}
+                className="ml-5 h-fit w-fit rounded-2xl bg-black-steam p-2 text-white transition duration-500 hover:bg-orange-poke
               max-lg:rounded-lg max-lg:p-1"
-            >
-              Cancel
-            </button>
+              >
+                Cancel
+              </button>
+            </div>
           </div>
-          <p>{t_trainer_name}</p>
+          <p>{splitTrainerName[0]}</p>
           <p>#{t_search_id}</p>
         </div>
       </div>

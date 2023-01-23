@@ -10,6 +10,7 @@ const OffererProfileInfo = ({
   pokemonName,
   offerId,
 }) => {
+  const splitTrainerName = trainerName.split(' ');
   const navigate = useNavigate();
   const Toast = Swal.mixin({
     toast: true,
@@ -62,10 +63,10 @@ const OffererProfileInfo = ({
     max-xl:animate-default_offerer_profile_xl max-xl:hover:animate-expand_offerer_profile_xl"
     >
       <img
-        className="absolute m-1.5 max-h-20 w-auto p-1 group-hover/offer:animate-moving_profile_img group-hover/offer:animation-delay-500
-        max-xl:max-h-14 max-xl:group-hover/offer:animate-moving_profile_img_xl
+        className="absolute m-1.5 aspect-square h-20 w-20 rounded-full object-cover p-1 group-hover/offer:animate-moving_profile_img group-hover/offer:animation-delay-500
+        max-xl:h-14 max-xl:w-14 max-xl:group-hover/offer:animate-moving_profile_img_xl
         max-xl:group-hover/offer:animation-delay-500"
-        src={`./images/pokemon_elements/normal.png`}
+        src={profileImg ? profileImg : './images/pokemon_elements/normal.png'}
         alt={trainerName}
       />
       <div
@@ -77,7 +78,7 @@ const OffererProfileInfo = ({
           className="w-24 overflow-hidden text-ellipsis whitespace-nowrap text-center
         max-xl:w-16 max-xl:text-sm"
         >
-          {trainerName}
+          {splitTrainerName[0]}
         </p>
         <p className="max-xl:text-sm">#{searchId}</p>
       </div>

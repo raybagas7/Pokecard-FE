@@ -47,7 +47,7 @@ const SocialUserData = ({ userInfo }) => {
                 : './images/pokemon_elements/normal.png'
             }
             alt="profile pictures"
-            className={`block h-28 w-28 rounded-lg border-2 
+            className={`block aspect-square h-28 w-28 rounded-lg border-2 
             border-white/50 object-cover
             max-lg:m-2 max-lg:h-32 max-lg:w-32
             max-md:h-32 max-md:w-32`}

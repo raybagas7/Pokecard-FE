@@ -47,7 +47,10 @@ const SocialContainer = () => {
   return (
     <>
       <div className="flex h-fit w-full items-center p-10">
-        <div className="flex h-fit w-full flex-wrap justify-center gap-3 rounded-2xl bg-gold-poke p-10 pt-3 drop-shadow-lg">
+        <div
+          className="flex h-fit w-full flex-wrap justify-center gap-3 rounded-2xl bg-gold-poke p-10 pt-3 drop-shadow-lg
+        max-md:p-2"
+        >
           <div className="flex w-full items-center justify-center">
             <p className="mr-1 text-2xl">#</p>
             <form>
