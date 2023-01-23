@@ -37,11 +37,10 @@ const LoginPage = ({ loginSuccess }) => {
   };
 
   const onForgot = async ({ email }) => {
-    const { error, data, message } = await forgotPassword(email);
+    const { error, message } = await forgotPassword(email);
 
     // console.log('mydata', data);
     if (!error) {
-      loginSuccess(data);
       Toast.fire({
         icon: 'success',
         title: `${message}`,

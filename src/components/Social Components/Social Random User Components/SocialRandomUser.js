@@ -24,7 +24,10 @@ const SocialRandomUser = ({
         className="group relative flex h-24 w-full items-center "
         to={`/social?search_id=${search_id}`}
       >
-        <SocialProfilePicture trainerName={splitTrainerName[0]} />
+        <SocialProfilePicture
+          profileImg={profile_img}
+          trainerName={splitTrainerName[0]}
+        />
 
         <div
           className="absolute right-0 mr-2 flex h-20 w-52 flex-1 animate-default_quantum flex-col rounded-2xl bg-white p-1 shadow-md 

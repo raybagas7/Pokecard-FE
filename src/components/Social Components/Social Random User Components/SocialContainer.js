@@ -43,6 +43,7 @@ const SocialContainer = () => {
   }
 
   const { pool } = randUser;
+  console.log('poop', pool);
   return (
     <>
       <div className="flex h-fit w-full items-center p-10">

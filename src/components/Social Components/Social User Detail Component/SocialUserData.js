@@ -41,12 +41,16 @@ const SocialUserData = ({ userInfo }) => {
       >
         <div className="flex flex-1 items-center justify-center">
           <img
-            src="./images/snoop.jpg"
+            src={
+              userInfo.profile_img
+                ? userInfo.profile_img
+                : './images/pokemon_elements/normal.png'
+            }
             alt="profile pictures"
             className={`block h-28 w-28 rounded-lg border-2 
-            border-white/50 object-contain p-1
-            max-lg:m-2 max-lg:h-auto max-lg:w-7/10
-            max-md:h-auto max-md:w-32`}
+            border-white/50 object-cover
+            max-lg:m-2 max-lg:h-32 max-lg:w-32
+            max-md:h-32 max-md:w-32`}
           ></img>
         </div>
       </div>

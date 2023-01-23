@@ -76,7 +76,12 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
         <div className="icon-dropdown">
           <div className="icon-image">
             <img
-              src="./images/pokemon_elements/normal.png"
+              className="object-cover"
+              src={
+                userData.user.profile_img
+                  ? userData.user.profile_img
+                  : './images/pokemon_elements/normal.png'
+              }
               alt="profile pictures"
             />
             <div className="dropdown-content">

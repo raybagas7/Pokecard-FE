@@ -41,18 +41,22 @@ const ProfileUserData = ({ userData, userCredit }) => {
     max-md:w-9/10 max-md:flex-col`}
     >
       <div
-        className={`relative flex flex-1 flex-col rounded-lg p-2.5 text-sm 
+        className={`relative flex flex-1 flex-col items-center rounded-lg p-2.5 text-sm 
       max-xl:mt-2 max-xl:items-center max-xl:justify-center max-xl:p-0.5
       max-lg:mt-0`}
       >
-        <div className="flex flex-1 items-center justify-center">
+        <div className="flex h-36 w-36 flex-1 items-center justify-center">
           <img
-            src="./images/snoop.jpg"
+            src={
+              userData.user.profile_img
+                ? userData.user.profile_img
+                : './images/pokemon_elements/normal.png'
+            }
             alt="profile pictures"
-            className={`block h-fit w-fit rounded-lg border-2 border-white/50 object-contain p-3 
-            max-xl:h-20 max-xl:w-20 max-xl:p-1
-            max-lg:m-2 max-lg:h-auto max-lg:w-7/10
-            max-md:h-auto max-md:w-32`}
+            className={`block h-36 w-36  rounded-lg border-2 border-white/50 object-cover
+            max-xl:h-20 max-xl:w-20
+            max-lg:m-2 max-lg:h-28 max-lg:w-28
+            max-md:h-32 max-md:w-32`}
           ></img>
         </div>
       </div>
