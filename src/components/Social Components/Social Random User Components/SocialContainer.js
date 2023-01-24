@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getRandomUsersRefresh } from '../../../utils/network-data';
+import SocialFindById from './SocialFindById';
 
 import SocialRandomUser from './SocialRandomUser';
 
@@ -51,12 +52,7 @@ const SocialContainer = () => {
           className="flex h-fit w-full flex-wrap justify-center gap-3 rounded-2xl bg-gold-poke p-10 pt-3 drop-shadow-lg
         max-md:p-2"
         >
-          <div className="flex w-full items-center justify-center">
-            <p className="mr-1 text-2xl">#</p>
-            <form>
-              <input type="text" className="rounded-full p-2 text-sm" />
-            </form>
-          </div>
+          <SocialFindById />
           {pool
             ? pool.map((user) => (
                 <SocialRandomUser key={user.search_id} {...user} />

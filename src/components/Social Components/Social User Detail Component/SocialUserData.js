@@ -48,7 +48,7 @@ const SocialUserData = ({ userInfo }) => {
             }
             alt="profile pictures"
             className={`block aspect-square h-28 w-28 rounded-lg border-2 
-            border-white/50 object-cover
+            border-white/50 object-contain
             max-lg:m-2 max-lg:h-32 max-lg:w-32
             max-md:h-32 max-md:w-32`}
           ></img>

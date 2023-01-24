@@ -53,7 +53,7 @@ const ProfileUserData = ({ userData, userCredit }) => {
                 : './images/pokemon_elements/normal.png'
             }
             alt="profile pictures"
-            className={`block aspect-square h-36 w-36 rounded-lg border-2 border-white/50 object-cover
+            className={`block aspect-square h-36 w-36 rounded-lg border-2 border-white/50 object-contain
             max-xl:h-20 max-xl:w-20
             max-lg:m-2 max-lg:h-28 max-lg:w-28
             max-md:h-32 max-md:w-32`}

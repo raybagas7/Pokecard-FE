@@ -76,7 +76,7 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
         <div className="icon-dropdown">
           <div className="icon-image">
             <img
-              className="aspect-square object-cover"
+              className="aspect-square object-contain"
               src={
                 userData.user.profile_img
                   ? userData.user.profile_img

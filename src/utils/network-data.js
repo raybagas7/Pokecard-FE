@@ -1146,26 +1146,32 @@ const changeProfilePicture = async (payload) => {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null, message: responseJson.message };
+    return {
+      error: true,
+      data: null,
+      message: responseJson.message,
+      status: response.status,
+    };
   }
 
   return {
     error: false,
     data: responseJson.data,
     message: responseJson.message,
+    status: response.status,
   };
 };
 
 const changeProfilePictureRefresh = async (payload) => {
   const result = await changeProfilePicture(payload).then(
-    ({ error, data, message }) => {
+    ({ error, data, message, status }) => {
       if (message === 'Token maximum age exceeded') {
         const afterRefresh = refreshAccessToken(payload).then(
           async ({ data }) => {
             putAccessToken(data.accessToken);
             const result = await changeProfilePicture().then(
-              ({ error, data, message }) => {
-                return { error, data, message };
+              ({ error, data, message, status }) => {
+                return { error, data, message, status };
               }
             );
             return result;
@@ -1174,7 +1180,7 @@ const changeProfilePictureRefresh = async (payload) => {
 
         return afterRefresh;
       }
-      return { error, data, message };
+      return { error, data, message, status };
     }
   );
   // console.log('hasil ownedcard', result);

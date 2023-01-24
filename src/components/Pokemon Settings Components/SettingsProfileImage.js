@@ -1,15 +1,48 @@
 import React, { useState } from 'react';
-import useInputFile from '../../hooks/useInputFile';
-import useInputFilePath from '../../hooks/useInputFilePath';
+// import useInputFile from '../../hooks/useInputFile';
 import Swal from 'sweetalert2';
 import { changeProfilePictureRefresh } from '../../utils/network-data';
+import Cropper from 'cropperjs';
 
 const SettingsProfileImage = ({ trainerName, profileImg }) => {
-  const [newUserPP, handlerNewUserPP] = useInputFile();
-  const [localUserPP, handlerLocalUserPP] = useInputFilePath();
-  const [showChangeButton, setShowChangeButton] = useState(
-    newUserPP ? true : false
-  );
+  const [cropped, setCropped] = useState();
+  const [localUserPP, handlerLocalUserPP] = useState();
+  const [showChangeButton, setShowChangeButton] = useState(false);
+  const [newPPUrl, setNewPPUrl] = useState();
+
+  const formatBytes = (bytes, decimals = 2) => {
+    if (!+bytes) return '0 Bytes';
+
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+    return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+  };
+
+  const show = () => {
+    console.log(cropped.size);
+    console.log(formatBytes(cropped.size));
+    console.log(localUserPP);
+  };
+
+  const throttle = (cb, delay) => {
+    let wait = false;
+
+    return (...args) => {
+      if (wait) {
+        return;
+      }
+
+      cb(...args);
+      wait = true;
+      setTimeout(() => {
+        wait = false;
+      }, delay);
+    };
+  };
 
   const Toast = Swal.mixin({
     toast: true,
@@ -37,19 +70,25 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
       },
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const result = await changeProfilePictureRefresh(newUserPP);
+        const result = await changeProfilePictureRefresh(cropped);
         // console.log(result);
         if (!result.error) {
           Toast.fire({
             icon: 'success',
             title: `${result.message}`,
           });
+          console.log(result.status);
           setShowChangeButton(false);
         } else {
           Toast.fire({
             icon: 'error',
-            title: `${result.message}`,
+            title: `${
+              result.status === 413
+                ? 'Maximum of image size is 512kb'
+                : `${result.message}`
+            }`,
           });
+          console.log(result.status);
         }
       } else if (result.isDenied) {
       }
@@ -57,20 +96,56 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
   };
 
   const change = (event) => {
-    handlerNewUserPP(event);
-    handlerLocalUserPP(event);
-    setShowChangeButton(true);
+    // setShowChangeButton(true);
+    if (event.target.files[0] !== undefined) {
+      return Promise.resolve(URL.createObjectURL(event.target.files[0]));
+    }
+    return Promise.reject('Failure');
   };
 
-  //   const show = () => {
-  //     console.log(newUserPP);
-  //     console.log('hehe', showUserPP);
-  //     // console.log(formData);
-  //   };
+  const trueChange = (event) => {
+    let cropper;
+    change(event).then(
+      (url) =>
+        Swal.fire({
+          title: 'CROP',
+          html: `<div><img id="cropperjs" src=${url}></div>`,
+          willOpen: async () => {
+            const image = Swal.getPopup().querySelector('#cropperjs');
+            cropper = new Cropper(image, {
+              aspectRatio: 1,
+              viewMode: 1,
+            });
+          },
+          preConfirm: () => {
+            cropper.getCroppedCanvas().toBlob((blob) => {
+              setCropped(blob);
+              return blob;
+            }, 'image/jpeg');
+
+            // console.log(cropper.getCroppedCanvas().toDataURL());
+
+            return {
+              imageUrl: cropper.getCroppedCanvas().toDataURL(),
+            };
+          },
+        }).then(async (result) => {
+          console.log(result, 'and', cropped);
+          if (result.isConfirmed) {
+            handlerLocalUserPP(result.value.imageUrl);
+            setShowChangeButton(true);
+          }
+        }),
+      () => {
+        return null;
+      }
+    );
+  };
 
   return (
-    <div className="w-52 rounded-2xl bg-white/80 p-2">
-      <div className="relative aspect-square rounded-t-lg border-2 border-black-steam/50 p-2">
+    <div className="w-52 rounded-2xl bg-white/80 p-2 max-lg:w-44">
+      {/* <button onClick={show}>show</button> */}
+      <div className="relative flex aspect-square items-center justify-center rounded-t-lg border-2 border-black-steam/50 p-2">
         <img
           src={
             !localUserPP
@@ -80,10 +155,10 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
               : localUserPP
           }
           alt="profile pictures"
-          className={`block h-44 w-44 rounded-lg border-2 border-black-steam/50 object-cover`}
+          className={`block h-32 w-32 rounded-lg border-2 border-black-steam/50 object-contain`}
         ></img>
         {/* <div className="absolute top-0 right-0 h-full w-full bg-teal-400"></div> */}
-        <div className="absolute right-0 bottom-0 flex w-full flex-col p-2">
+        <div className="absolute right-auto bottom-0 flex w-32 flex-col pb-6.5 ">
           <label
             className="w-full cursor-pointer rounded-b-lg border-b-2 border-r-2 border-l-2 border-black-steam/50 bg-white/80 p-1
             text-center text-sm
@@ -92,23 +167,32 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
             <input
               type="file"
               accept="image/png, image/jpeg"
-              onChange={change}
+              onChange={trueChange}
               className="hidden "
             />
-            <p>Change Picture</p>
+            <p className="max-md:text-xs">Change Picture</p>
           </label>
         </div>
       </div>
-      {showChangeButton ? (
-        <button
-          className="w-full border-r-2 border-l-2 border-black-steam/50 bg-gold-poke text-black
+      {showChangeButton && cropped ? (
+        cropped.size > 512000 ? (
+          <p className="w-full border-r-2 border-l-2 border-black-steam/50 bg-red-poke p-1 text-center text-xs text-white">
+            ({`${formatBytes(cropped.size)}`}) Max size (512 KB)
+          </p>
+        ) : (
+          <button
+            className="w-full border-r-2 border-l-2 border-black-steam/50 bg-gold-poke text-black
           transition duration-300 hover:bg-orange-poke hover:text-white"
-          onClick={showAlert}
-        >
-          Change
-        </button>
+            onClick={showAlert}
+          >
+            Change
+          </button>
+        )
       ) : null}
-      <div className="overflow-hidden whitespace-nowrap rounded-b-2xl bg-black-steam p-1 text-center text-base text-white">
+      <div
+        className="overflow-hidden whitespace-nowrap rounded-b-2xl bg-black-steam p-1 text-center text-base text-white
+      max-md:text-xs"
+      >
         <p>{trainerName}</p>
       </div>
     </div>

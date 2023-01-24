@@ -201,7 +201,7 @@ const OfferDetail = ({
           max-lg:h-12 max-lg:w-12 max-lg:animate-default_hide_slide_left_lg max-lg:group-hover/trader:animate-hide_slide_left_lg"
           >
             <img
-              className="max-w-20 aspect-square max-h-20 rounded-full object-cover p-1
+              className="max-w-20 aspect-square max-h-20 rounded-full object-contain p-1
               max-lg:h-10 max-lg:w-10"
               src={
                 t_profile_img

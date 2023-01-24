@@ -171,7 +171,10 @@ const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
       </div>
     </div>
   ) : (
-    <div className="group/trade flex h-720 w-full animate-default_quantum flex-col rounded-lg bg-gold-poke p-4">
+    <div
+      className="group/trade flex h-720 w-full animate-default_quantum flex-col rounded-lg bg-gold-poke p-4
+    max-xl:h-594"
+    >
       <AiFillCloseCircle
         className="absolute top-0 right-0 m-2 h-10 w-10 cursor-pointer text-black-steam
         transition hover:scale-125 hover:text-red-poke

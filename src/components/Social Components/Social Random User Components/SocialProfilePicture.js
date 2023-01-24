@@ -8,7 +8,7 @@ const SocialProfilePicture = ({ trainerName, profileImg }) => {
       max-lg:h-16 max-lg:animate-default_user_profile_lg max-lg:group-hover:animate-expand_user_profile_lg`}
     >
       <img
-        className="aspect-square max-h-20 w-20 rounded-full object-cover p-2
+        className="aspect-square max-h-20 w-20 rounded-full object-contain p-2
         max-lg:h-16 max-lg:w-16"
         src={profileImg ? profileImg : './images/pokemon_elements/normal.png'}
         alt={trainerName}

@@ -8,7 +8,7 @@ import SettingChangePasswordForm from './SettingChangePasswordForm';
 import SettingsProfileImage from './SettingsProfileImage';
 
 const SettingsContainer = ({ userData }) => {
-  const splitTrainerName = userData.trainer_name.split(' ');
+  // const splitTrainerName = userData.trainer_name.split(' ');
   const navigate = useNavigate();
 
   const Toast = Swal.mixin({
@@ -53,14 +53,27 @@ const SettingsContainer = ({ userData }) => {
   };
   return (
     <div className="flex h-screen w-full items-center justify-center">
-      <div className="rounded-2xl bg-gold-poke p-10">
-        <div className="flex h-fit w-720 rounded-2xl bg-white/50 p-5 drop-shadow-lg">
+      <div
+        className="rounded-2xl bg-gold-poke p-10
+      max-lg:p-3"
+      >
+        <div
+          className="flex h-fit w-720 rounded-2xl bg-white/50 p-5 drop-shadow-lg
+        max-lg:p-3
+        max-md:w-96 max-md:flex-col max-md:items-center max-md:gap-3"
+        >
           <SettingsProfileImage
-            trainerName={splitTrainerName[0]}
+            trainerName={userData.trainer_name}
             profileImg={userData.profile_img}
           />
-          <div className="ml-3 flex flex-1 flex-col rounded-2xl bg-white/80 text-black-steam drop-shadow-lg">
-            <div className="relative m-2 ml-4 flex border-b-2 border-black-steam/50">
+          <div
+            className="ml-3 flex flex-1 flex-col rounded-2xl bg-white/80 text-black-steam drop-shadow-lg
+          max-md:m-0"
+          >
+            <div
+              className="relative m-2 ml-4 flex border-b-2 border-black-steam/50
+            max-md:text-xs"
+            >
               <div className="flex items-center">
                 <p className="indent-3">@{userData.username}</p>
                 {userData.is_valid ? (
@@ -85,7 +98,12 @@ const SettingsContainer = ({ userData }) => {
               </div>
             </div>
             <div className="relative flex flex-1 flex-col items-center justify-center rounded-b-2xl bg-black-steam">
-              <p className="absolute top-0 mt-4 text-white">Change Password</p>
+              <p
+                className="absolute top-0 mt-3 mb-4 text-white
+              max-md:relative max-md:text-sm"
+              >
+                Change Password
+              </p>
               <SettingChangePasswordForm onChangePassword={onChangePassword} />
             </div>
           </div>

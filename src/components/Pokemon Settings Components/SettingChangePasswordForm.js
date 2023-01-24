@@ -59,11 +59,15 @@ const SettingChangePasswordForm = (props) => {
   };
 
   return (
-    <form onSubmit={onSubmitChangePassHandler} className="flex flex-col gap-2">
-      <div className="flex gap-7">
+    <form
+      onSubmit={onSubmitChangePassHandler}
+      className="m-4 mt-10 flex flex-col gap-2 max-md:mt-0"
+    >
+      <div className="flex gap-7 max-md:gap-2">
         <div className="flex">
           <input
-            className={`ml-10 rounded-l-md border-2 border-white p-3 text-xs focus:outline-none
+            className={`ml-7 rounded-l-md border-2 border-white p-3 text-xs focus:outline-none
+            max-md:ml-2 max-md:p-1 max-md:text-xxs
             ${
               newPasswordStrenght <= 2 && newPasswordStrenght > 0
                 ? 'border-red-poke shadow shadow-red-poke'
@@ -85,14 +89,21 @@ const SettingChangePasswordForm = (props) => {
           transition duration-300 hover:bg-black-steam"
           >
             {showNewPassword ? (
-              <FaEye className="text-black-steam transition duration-300 group-hover/show1:text-orange-poke" />
+              <FaEye
+                className="text-black-steam transition duration-300 group-hover/show1:text-orange-poke
+              max-md:h-3 max-md:w-3"
+              />
             ) : (
-              <FaEyeSlash className="text-black-steam transition duration-300 group-hover/show1:text-orange-poke" />
+              <FaEyeSlash
+                className="text-black-steam transition duration-300 group-hover/show1:text-orange-poke
+              max-md:h-3 max-md:w-3"
+              />
             )}
           </div>
         </div>
         <input
-          className="mr-10 rounded-md p-3 text-xs"
+          className="mr-7 rounded-md p-3 text-xs
+          max-md:mr-2 max-md:p-1 max-md:text-xxs "
           type="password"
           placeholder="Confirm New Password"
           value={confirmNewPassword}
@@ -103,7 +114,8 @@ const SettingChangePasswordForm = (props) => {
       <div className="flex">
         <div className="flex">
           <input
-            className={`ml-10 rounded-l-md border-2 border-white p-3 text-xs`}
+            className={`ml-7 rounded-l-md border-2 border-white p-3 text-xs
+            max-md:ml-2 max-md:p-1 max-md:text-xxs `}
             type={showCurrentPassword ? 'text' : 'password'}
             placeholder="Current Password"
             value={currentPassword}
@@ -116,9 +128,15 @@ const SettingChangePasswordForm = (props) => {
             transition duration-300 hover:bg-black-steam"
           >
             {showCurrentPassword ? (
-              <FaEye className="text-black-steam transition duration-300 group-hover/show2:text-orange-poke" />
+              <FaEye
+                className="text-black-steam transition duration-300 group-hover/show2:text-orange-poke
+              max-md:h-3 max-md:w-3"
+              />
             ) : (
-              <FaEyeSlash className="text-black-steam transition duration-300 group-hover/show2:text-orange-poke" />
+              <FaEyeSlash
+                className="text-black-steam transition duration-300 group-hover/show2:text-orange-poke
+              max-md:h-3 max-md:w-3"
+              />
             )}
           </div>
         </div>
@@ -126,7 +144,8 @@ const SettingChangePasswordForm = (props) => {
           newPassword.length < 8 || currentPassword.length < 8 ? (
             <button
               className="ml-7 animate-default_quantum_bouncing rounded-lg p-3 text-xs text-black-steam 
-              transition duration-300 disabled:bg-gray-500"
+              transition duration-300 disabled:bg-gray-500
+              max-md:ml-2 max-md:p-1 max-md:text-xxs "
               disabled={true}
             >
               Old/New Pass Too Short
@@ -134,7 +153,8 @@ const SettingChangePasswordForm = (props) => {
           ) : matchPassword() === true ? (
             <button
               className="ml-7 animate-default_quantum_bouncing rounded-lg bg-gold-poke p-3 text-xs text-black-steam transition duration-300 
-        hover:bg-orange-poke hover:text-white"
+        hover:bg-orange-poke hover:text-white
+        max-md:ml-2 max-md:p-1 max-md:text-xxs "
               disabled={!matchPassword()}
             >
               Change
@@ -142,7 +162,8 @@ const SettingChangePasswordForm = (props) => {
           ) : (
             <button
               className="ml-7 animate-default_quantum_bouncing rounded-lg p-3 text-xs text-black-steam
-              transition duration-300 disabled:bg-gray-500"
+              transition duration-300 disabled:bg-gray-500
+              max-md:ml-2 max-md:p-1 max-md:text-xxs "
               disabled={!matchPassword()}
             >
               New pass not match

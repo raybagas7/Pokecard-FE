@@ -41,7 +41,7 @@ const ActionButtons = (props) => {
       >
         Pick
       </button>
-      <button onClick={props.show}>ini poke</button>
+      {/* <button onClick={props.show}>ini poke</button> */}
       {/* <button onClick={showError}>ini error</button> */}
     </div>
   );

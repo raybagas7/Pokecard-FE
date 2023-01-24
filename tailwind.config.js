@@ -66,6 +66,7 @@ module.exports = {
         '9/10': '90%',
         '10/10': '100%',
         720: '720px',
+        594: '594.61px',
         460: '460px',
       },
       width: {
@@ -92,6 +93,7 @@ module.exports = {
       },
       padding: {
         '2px': '2px',
+        6.5: '26px',
       },
       keyframes: {
         expand_info_showcase: {

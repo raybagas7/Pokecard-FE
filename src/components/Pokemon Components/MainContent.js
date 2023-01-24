@@ -248,15 +248,15 @@ const MainContent = ({
     });
   }, []);
 
-  const show = () => {
-    console.log(
-      'ini pokemon yang dipilih choosenPokemon : ',
-      choosenPokemonCards
-    );
-    console.log('ini pokemon yang shuffle pokemonId : ', pokemonId);
-    console.log('picked ', pickedBall);
-    console.log('owned ', ownedBall);
-  };
+  // const show = () => {
+  //   console.log(
+  //     'ini pokemon yang dipilih choosenPokemon : ',
+  //     choosenPokemonCards
+  //   );
+  //   console.log('ini pokemon yang shuffle pokemonId : ', pokemonId);
+  //   console.log('picked ', pickedBall);
+  //   console.log('owned ', ownedBall);
+  // };
 
   return (
     <div className="main-content">
@@ -279,7 +279,7 @@ const MainContent = ({
       <ActionButtons
         insertPokemon={insertPokemon}
         buttonDisable={isButtonDisabled}
-        show={show}
+        // show={show}
         credit={credit}
         choosenPokemonCards={choosenPokemonCards}
         choosenCardLength={choosenPokemonCards.length}

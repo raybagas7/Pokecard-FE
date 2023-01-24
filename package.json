@@ -10,6 +10,7 @@
     "axios": "^0.27.2",
     "axios-retry": "^3.3.1",
     "chart.js": "^4.1.1",
+    "cropperjs": "^1.5.13",
     "localstorage-slim": "^2.3.0",
     "moment-timezone": "^0.5.40",
     "nanoid": "^3.3.4",

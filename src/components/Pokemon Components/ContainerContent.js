@@ -13,18 +13,42 @@ const ContainerContent = ({
 }) => {
   return (
     <div className="flex-column container-content__first">
-      {pokemonId
-        ? pokemonId.map((pokemonId) => (
-            <CardContent
-              key={pokemonId.id}
-              {...pokemonId}
-              addOrRemoveCard={addOrRemoveCard}
-              ballRelated={ballRelated}
-              pickedBall={pickedBall}
-              ownedBall={ownedBall}
-            />
-          ))
-        : cards.map((card) => <CardContentUndefined key={card.id} {...card} />)}
+      <div className="flex">
+        {pokemonId
+          ? pokemonId
+              .slice(0, 3)
+              .map((pokemonId) => (
+                <CardContent
+                  key={pokemonId.id}
+                  {...pokemonId}
+                  addOrRemoveCard={addOrRemoveCard}
+                  ballRelated={ballRelated}
+                  pickedBall={pickedBall}
+                  ownedBall={ownedBall}
+                />
+              ))
+          : cards.map((card) => (
+              <CardContentUndefined key={card.id} {...card} />
+            ))}
+      </div>
+      <div className="flex">
+        {pokemonId
+          ? pokemonId
+              .slice(3, 6)
+              .map((pokemonId) => (
+                <CardContent
+                  key={pokemonId.id}
+                  {...pokemonId}
+                  addOrRemoveCard={addOrRemoveCard}
+                  ballRelated={ballRelated}
+                  pickedBall={pickedBall}
+                  ownedBall={ownedBall}
+                />
+              ))
+          : cards.map((card) => (
+              <CardContentUndefined key={card.id} {...card} />
+            ))}
+      </div>
     </div>
   );
 };
