@@ -8,7 +8,7 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
   const [cropped, setCropped] = useState();
   const [localUserPP, handlerLocalUserPP] = useState();
   const [showChangeButton, setShowChangeButton] = useState(false);
-  const [newPPUrl, setNewPPUrl] = useState();
+  // const [newPPUrl, setNewPPUrl] = useState();
 
   const formatBytes = (bytes, decimals = 2) => {
     if (!+bytes) return '0 Bytes';
@@ -22,27 +22,27 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
     return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
   };
 
-  const show = () => {
-    console.log(cropped.size);
-    console.log(formatBytes(cropped.size));
-    console.log(localUserPP);
-  };
+  // const show = () => {
+  //   console.log(cropped.size);
+  //   console.log(formatBytes(cropped.size));
+  //   console.log(localUserPP);
+  // };
 
-  const throttle = (cb, delay) => {
-    let wait = false;
+  // const throttle = (cb, delay) => {
+  //   let wait = false;
 
-    return (...args) => {
-      if (wait) {
-        return;
-      }
+  //   return (...args) => {
+  //     if (wait) {
+  //       return;
+  //     }
 
-      cb(...args);
-      wait = true;
-      setTimeout(() => {
-        wait = false;
-      }, delay);
-    };
-  };
+  //     cb(...args);
+  //     wait = true;
+  //     setTimeout(() => {
+  //       wait = false;
+  //     }, delay);
+  //   };
+  // };
 
   const Toast = Swal.mixin({
     toast: true,
@@ -158,7 +158,10 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
           className={`block h-32 w-32 rounded-lg border-2 border-black-steam/50 object-contain`}
         ></img>
         {/* <div className="absolute top-0 right-0 h-full w-full bg-teal-400"></div> */}
-        <div className="absolute right-auto bottom-0 flex w-32 flex-col pb-6.5 ">
+        <div
+          className="absolute right-auto bottom-0 flex w-32 flex-col pb-6.5 
+        max-lg:pb-3"
+        >
           <label
             className="w-full cursor-pointer rounded-b-lg border-b-2 border-r-2 border-l-2 border-black-steam/50 bg-white/80 p-1
             text-center text-sm

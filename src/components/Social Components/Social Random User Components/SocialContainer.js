@@ -4,7 +4,7 @@ import SocialFindById from './SocialFindById';
 
 import SocialRandomUser from './SocialRandomUser';
 
-const SocialContainer = () => {
+const SocialContainer = ({ selfSearchId }) => {
   const [randUser, setRandUser] = useState();
   const [initializing, setInitializing] = React.useState(true);
   React.useEffect(() => {
@@ -44,15 +44,15 @@ const SocialContainer = () => {
   }
 
   const { pool } = randUser;
-  console.log('poop', pool);
+  // console.log('poop', pool);
   return (
     <>
-      <div className="flex h-fit w-full items-center p-10">
+      <div className="flex h-fit w-full items-center p-5">
         <div
-          className="flex h-fit w-full flex-wrap justify-center gap-3 rounded-2xl bg-gold-poke p-10 pt-3 drop-shadow-lg
+          className="flex h-fit w-full flex-wrap justify-center gap-2 rounded-2xl bg-gold-poke p-3 pt-3 drop-shadow-lg
         max-md:p-2"
         >
-          <SocialFindById />
+          <SocialFindById selfSearchId={selfSearchId} />
           {pool
             ? pool.map((user) => (
                 <SocialRandomUser key={user.search_id} {...user} />

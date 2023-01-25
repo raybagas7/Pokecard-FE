@@ -28,7 +28,7 @@ const ProfileContainer = ({
     max-lg:flex-col`}
     >
       <div
-        className={`relative m-10 mr-2  flex-1 flex-col items-center justify-center gap-1
+        className={`relative m-5 mr-2  flex-1 flex-col items-center justify-center gap-1
       max-lg:m-5`}
       >
         <div className="border-1 border-1  h-full w-full rounded-lg border-y-2 border-white bg-white/30 drop-shadow-lg backdrop-blur-md">
@@ -65,7 +65,7 @@ const ProfileContainer = ({
         </div>
       </div>
       <div
-        className={`relative m-10 ml-2 flex-2 flex-col items-center justify-center gap-1 
+        className={`relative m-5 ml-2 flex-2 flex-col items-center justify-center gap-1 
       max-lg:m-5`}
       >
         <div

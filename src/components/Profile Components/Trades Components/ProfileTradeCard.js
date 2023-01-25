@@ -61,7 +61,8 @@ const ProfileTradeCard = ({
     return (
       <div
         className="m-5 flex h-80 w-52 animate-default_lift_card items-center justify-center rounded-xl bg-fb-undefined bg-cover
-      max-xl:h-48 max-xl:w-32"
+      max-xl:h-48 max-xl:w-32
+      max-md:m-1"
       >
         <img src={`./images/quetion-mark.png`} alt="undefined" />
       </div>
@@ -71,7 +72,8 @@ const ProfileTradeCard = ({
   return (
     <div
       className="relative m-5 h-80 w-52 animate-default_lift_card rounded-xl bg-yellow-500 hover:animate-lift_card hover:drop-shadow-md
-    max-xl:h-48 max-xl:w-32"
+    max-xl:h-48 max-xl:w-32
+    max-md:m-1"
     >
       <Link
         to={`/trades?trader_card_id=${card_id}`}

@@ -27,9 +27,9 @@ const ContainerContent = ({
                   ownedBall={ownedBall}
                 />
               ))
-          : cards.map((card) => (
-              <CardContentUndefined key={card.id} {...card} />
-            ))}
+          : cards
+              .slice(0, 3)
+              .map((card) => <CardContentUndefined key={card.id} {...card} />)}
       </div>
       <div className="flex">
         {pokemonId
@@ -45,9 +45,9 @@ const ContainerContent = ({
                   ownedBall={ownedBall}
                 />
               ))
-          : cards.map((card) => (
-              <CardContentUndefined key={card.id} {...card} />
-            ))}
+          : cards
+              .slice(3, 6)
+              .map((card) => <CardContentUndefined key={card.id} {...card} />)}
       </div>
     </div>
   );

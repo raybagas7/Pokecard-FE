@@ -63,10 +63,8 @@
 .register-input input {
   font-family: 'Kanit', sans-serif;
   padding: 15px;
-  border-radius: 10px;
   width: 100%;
   display: block;
-  margin-bottom: 15px;
   outline: none;
   border-color: var(--background-color);
 }

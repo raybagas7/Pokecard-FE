@@ -160,7 +160,12 @@ const AgasApp = () => {
                   path="/profile"
                   element={<ProfilePage userData={authedUser} />}
                 />
-                <Route path="/social" element={<SocialPage />} />
+                <Route
+                  path="/social"
+                  element={
+                    <SocialPage selfSearchId={authedUser.user.search_id} />
+                  }
+                />
                 <Route
                   path="/settings"
                   element={<SettingPage userData={authedUser.user} />}

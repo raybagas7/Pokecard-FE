@@ -14,8 +14,8 @@ const OfferCollection = ({ offerCards }) => {
   };
   return (
     <div>
-      <div className="flex w-full p-10">
-        <div className="flex w-full flex-col items-center rounded-2xl bg-gold-poke p-5">
+      <div className="flex w-full p-5">
+        <div className="flex w-full flex-col items-center rounded-2xl bg-gold-poke p-2.5">
           <div className="mb-3 w-fit rounded-2xl bg-white/50 p-2 text-2xl text-black-steam drop-shadow-lg">
             Your Offers
           </div>

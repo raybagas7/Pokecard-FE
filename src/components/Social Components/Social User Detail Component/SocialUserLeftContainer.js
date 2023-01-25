@@ -23,8 +23,9 @@ const SocialUserLeftContainer = ({
   return (
     <>
       <div
-        className={`relative m-10 mr-2 flex-1 flex-col items-center justify-center gap-1
-      max-lg:m-5`}
+        className={`max-lg:ml relative m-10 mr-2 ml-5 flex-1 flex-col items-center justify-center
+      gap-1 max-lg:m-10
+      max-md:m-2`}
       >
         <div className="border-1 border-1 h-full w-full rounded-lg border-y-2 border-white bg-white/30 drop-shadow-lg backdrop-blur-md">
           <div

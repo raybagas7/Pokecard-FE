@@ -4,13 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import useInput from '../../../hooks/useInput';
 
-const SocialFindById = () => {
+const SocialFindById = ({ selfSearchId }) => {
   const [searchUserByFI, handlerSearchByFI] = useInput('');
   const navigate = useNavigate();
 
   const onSubmitId = (event) => {
     event.preventDefault();
-    navigate(`/social?search_id=${searchUserByFI}`);
+
+    // console.log('asdasd', searchUserByFI, selfSearchId.toString());
+    searchUserByFI === selfSearchId.toString()
+      ? navigate('/profile')
+      : navigate(`/social?search_id=${searchUserByFI}`);
   };
   return (
     <div className="flex w-full items-center justify-center">

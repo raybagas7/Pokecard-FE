@@ -301,7 +301,7 @@ module.exports = {
           // '50%': { left: '0px', top: '100px' },
           '100%': {
             top: '180px',
-            right: '58px',
+            right: '55px',
             transform: 'scale(1.5)',
             'margin-top': '12px',
           },

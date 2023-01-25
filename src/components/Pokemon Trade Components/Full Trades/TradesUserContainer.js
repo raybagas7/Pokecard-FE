@@ -46,7 +46,7 @@ const TradesUserContainer = () => {
   return (
     <div className="flex min-h-screen w-full items-center justify-center">
       <div
-        className="m-10 flex flex-col items-center rounded-2xl bg-gold-poke p-10 pt-3
+        className="m-5 flex flex-col items-center rounded-2xl bg-gold-poke p-5 pt-3
       max-sm:p-3"
       >
         <div

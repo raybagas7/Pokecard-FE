@@ -20,7 +20,7 @@ const SettingChangePasswordForm = (props) => {
 
   const passwordStrenght = (password) => {
     let i = 0;
-    if (password.length >= 4) {
+    if (password.length >= 1) {
       i++;
     }
     if (password.length >= 8) {
@@ -29,14 +29,19 @@ const SettingChangePasswordForm = (props) => {
     if (password.length >= 10) {
       i++;
     }
-    if (/[A - Z]/.test(password)) {
-      i++;
-    }
-    if (/[1 - 9]/.test(password)) {
-      i++;
-    }
-    if (/[A-Za-z0-3]/.test(password)) {
-      i++;
+    if (password.length > 7) {
+      if (/[A-Z]/.test(password)) {
+        i++;
+      }
+      if (/[1-9]/.test(password)) {
+        i++;
+      }
+      if (/[A-Za-z0-3]/.test(password)) {
+        i++;
+      }
+      if (/[!@#$%^&*)(+=._-]/.test(password)) {
+        i++;
+      }
     }
     return i;
   };
@@ -69,11 +74,11 @@ const SettingChangePasswordForm = (props) => {
             className={`ml-7 rounded-l-md border-2 border-white p-3 text-xs focus:outline-none
             max-md:ml-2 max-md:p-1 max-md:text-xxs
             ${
-              newPasswordStrenght <= 2 && newPasswordStrenght > 0
+              newPasswordStrenght > 0 && newPasswordStrenght <= 3
                 ? 'border-red-poke shadow shadow-red-poke'
-                : newPasswordStrenght >= 2 && newPasswordStrenght <= 4
+                : newPasswordStrenght >= 3 && newPasswordStrenght <= 6
                 ? 'border-gold-poke shadow shadow-gold-poke'
-                : newPasswordStrenght > 4
+                : newPasswordStrenght >= 7
                 ? 'border-green-400 shadow shadow-green-400'
                 : 'border-white'
             }`}
@@ -85,8 +90,17 @@ const SettingChangePasswordForm = (props) => {
           />
           <div
             onClick={toggleShowNew}
-            className="group/show1 flex cursor-pointer items-center rounded-r-md border-l-2 border-black-steam bg-white p-1 
-          transition duration-300 hover:bg-black-steam"
+            className={`group/show1 flex cursor-pointer items-center rounded-r-md p-1 
+          transition duration-300 hover:bg-black-steam
+          ${
+            newPasswordStrenght > 0 && newPasswordStrenght <= 3
+              ? 'bg-red-poke shadow shadow-red-poke'
+              : newPasswordStrenght >= 3 && newPasswordStrenght <= 6
+              ? 'bg-gold-poke shadow shadow-gold-poke'
+              : newPasswordStrenght >= 7
+              ? 'bg-green-400 shadow shadow-green-400'
+              : 'bg-white'
+          }`}
           >
             {showNewPassword ? (
               <FaEye
@@ -124,7 +138,7 @@ const SettingChangePasswordForm = (props) => {
           />
           <div
             onClick={toggleShowCurrent}
-            className="group/show2 flex cursor-pointer items-center rounded-r-md border-l-2 border-black-steam bg-white p-1 
+            className="group/show2 flex cursor-pointer items-center rounded-r-md bg-white p-1 
             transition duration-300 hover:bg-black-steam"
           >
             {showCurrentPassword ? (

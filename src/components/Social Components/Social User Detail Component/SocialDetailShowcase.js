@@ -15,7 +15,7 @@ const SocialDetailShowcase = ({ pokemonData }) => {
       max-xl:justify-center max-md:order-1
       max-md:h-full max-md:w-full "
       >
-        <div className="flex flex-1 items-center justify-center rounded-tl-lg max-xl:flex-col">
+        <div className="flex flex-1 shrink-0 items-center justify-center rounded-tl-lg max-xl:flex-col">
           <ProfilePokemonStat stats={pokemonData.stats} />
           <div className="flex h-full w-full flex-1 flex-col items-center justify-center max-xl:flex-row">
             <ProfilePokemonMoves move={pokemonData.move1} />
