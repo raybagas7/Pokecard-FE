@@ -35,7 +35,7 @@ const CollectionPageButton = ({
           ))
         : null}
       {activePage <= array.length - 2 ? (
-        <div className="next-button-coat">
+        <div className="next-button-coat flex items-center">
           <IoArrowForwardCircle
             onClick={nextActivePage}
             className="next-button"
@@ -43,7 +43,7 @@ const CollectionPageButton = ({
           ></IoArrowForwardCircle>
         </div>
       ) : (
-        <div className="next-button-coat-disabled">
+        <div className="next-button-coat-disabled flex items-center">
           <IoArrowForwardCircle
             className="next-button-disabled"
             disabled={true}

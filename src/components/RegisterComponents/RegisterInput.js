@@ -191,7 +191,11 @@ const RegisterInput = (props) => {
         </div>
 
         <div className="register-button">
-          {matchPassword() === true ? (
+          {password.length === 0 ? (
+            <button disabled={false}>Register</button>
+          ) : password.length < 8 ? (
+            <button disabled={true}>Password too short</button>
+          ) : matchPassword() === true ? (
             <button disabled={!matchPassword()}>Register</button>
           ) : (
             <button disabled={!matchPassword()}>Password didn't match</button>

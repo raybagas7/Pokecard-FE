@@ -1,6 +1,7 @@
 import React from 'react';
 import { AiOutlineNumber } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { GoUnverified, GoVerified } from 'react-icons/go';
 import SocialProfilePicture from './SocialProfilePicture';
 import SocialCardsOwned from './SocialCardsOwned';
 
@@ -12,6 +13,7 @@ const SocialRandomUser = ({
   shiny,
   legendarymyth,
   lmshine,
+  is_valid,
 }) => {
   const splitTrainerName = trainer_name.split(' ');
 
@@ -41,6 +43,19 @@ const SocialRandomUser = ({
               </p>
             </div>
             <div className="flex items-center">
+              <div className="text-sm max-lg:text-xs">
+                {is_valid ? (
+                  <GoVerified
+                    className="ml-1 text-orange-poke"
+                    title="Verified"
+                  />
+                ) : (
+                  <GoUnverified
+                    className="ml-1 text-black-steam"
+                    title="Unverified"
+                  />
+                )}
+              </div>
               <AiOutlineNumber />
               <p className="mr-2 text-sm max-lg:text-xs">{search_id}</p>
             </div>

@@ -5,25 +5,77 @@ import { getCard } from '../../utils/card';
 import CollectedCardContent from './CollectedCardContent';
 import CollectionPageButton from './CollectionPageButton';
 import useInput from '../../hooks/useInput';
+import MasterBallCardSVG from '../Profile Components/MasterBallCardSVG';
+import PokeBallCardSVG from '../Profile Components/PokeBallCardSVG';
+import UltraBallCardSVG from '../Profile Components/UltraBallCardSVG';
+import MasterShineBallCardSVG from '../Profile Components/MasterShineBallCardSVG';
+import ExtraSmallCircleSVG from '../Profile Components/ExtraSmallCircleSVG';
 
 const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
   const [searchPokemon, handleSearchPokemon] = useInput('');
   const [activePage, setActivePage] = useState(0);
-  // const [tempId, setTempId] = useState(0);
-
-  // const makeTempId = () => {
-  //   const callTempId = `card-${tempId}`;
-
-  //   return callTempId;
-  // };
+  const [showLMShiny, setShowLMShiny] = useState(false);
+  const [showNormal, setShowNormal] = useState(false);
+  const [showLMNormal, setShowLMNormal] = useState(false);
+  const [showShiny, setShowShiny] = useState(false);
 
   const cards = getCard();
   const { cards: ownedCollections = [] } = ownedCards;
   ownedCollections.sort((a, b) => a.poke_id - b.poke_id);
 
+  const toggleLMShiny = () => {
+    const temp = showLMShiny;
+    setShowLMShiny(!temp);
+    setShowNormal(false);
+    setShowLMNormal(false);
+    setShowShiny(false);
+  };
+
+  const toggleNormal = () => {
+    const temp = showNormal;
+    setShowLMShiny(false);
+    setShowNormal(!temp);
+    setShowLMNormal(false);
+    setShowShiny(false);
+  };
+
+  const toggleShiny = () => {
+    const temp = showShiny;
+    setShowLMShiny(false);
+    setShowNormal(false);
+    setShowLMNormal(false);
+    setShowShiny(!temp);
+  };
+
+  const toggleLMNormal = () => {
+    const temp = showLMNormal;
+    setShowLMShiny(false);
+    setShowNormal(false);
+    setShowLMNormal(!temp);
+    setShowShiny(false);
+  };
+
   const onSearchPokemonHandler = () => {
     const foundPokemon = ownedCollections.filter((collection) =>
-      collection.name.toLowerCase().includes(searchPokemon.toLowerCase())
+      showNormal
+        ? collection.name.toLowerCase().includes(searchPokemon.toLowerCase()) &&
+          collection.legendary === false &&
+          collection.mythical === false &&
+          collection.attribute === 'normal'
+        : showShiny
+        ? collection.name.toLowerCase().includes(searchPokemon.toLowerCase()) &&
+          collection.legendary === false &&
+          collection.mythical === false &&
+          collection.attribute === 'shiny'
+        : showLMNormal
+        ? collection.name.toLowerCase().includes(searchPokemon.toLowerCase()) &&
+          (collection.legendary === true || collection.mythical === true) &&
+          collection.attribute === 'normal'
+        : showLMShiny
+        ? collection.name.toLowerCase().includes(searchPokemon.toLowerCase()) &&
+          (collection.legendary === true || collection.mythical === true) &&
+          collection.attribute === 'shiny'
+        : collection.name.toLowerCase().includes(searchPokemon.toLowerCase())
     );
 
     return foundPokemon;
@@ -54,9 +106,6 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
 
   const jumpActivePage = (number) => {
     setActivePage(number);
-    // if (searchPokemon !== '') {
-    //   setActivePage(0);
-    // }
   };
 
   return onSearchPokemonHandler().length !== 0 ? (
@@ -71,7 +120,7 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
             previousActivePage={previousActivePage}
             jumpActivePage={jumpActivePage}
           />
-          <div className="mt-2 flex justify-center">
+          <div className="mt-2 flex flex-col items-center justify-center gap-2">
             <form>
               <input
                 type="text"
@@ -82,6 +131,52 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
                 disabled={activePage > 0 ? true : false}
               />
             </form>
+            <div className="flex h-10 items-center gap-2">
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                  showNormal ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleNormal}
+              >
+                <PokeBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                  showShiny ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleShiny}
+              >
+                <UltraBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                  showLMNormal ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleLMNormal}
+              >
+                <MasterBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                  showLMShiny ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleLMShiny}
+              >
+                <MasterShineBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+            </div>
           </div>
           <div className="mt-5 flex h-fit w-full flex-wrap justify-center">
             {filteredByPageCollection
@@ -116,15 +211,61 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
             previousActivePage={previousActivePage}
             jumpActivePage={jumpActivePage}
           />
-          <div className="mt-2 flex justify-center">
+          <div className="mt-2 flex flex-col items-center justify-center gap-2">
             <form>
               <input
                 type="text"
-                className="rounded-full p-1 indent-2"
+                className="rounded-full p-2 indent-2 text-sm"
                 value={searchPokemon}
                 onChange={handleSearchPokemon}
               />
             </form>
+            <div className="flex h-10 items-center gap-2">
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                  showNormal ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleNormal}
+              >
+                <PokeBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                  showShiny ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleShiny}
+              >
+                <UltraBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                  showLMNormal ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleLMNormal}
+              >
+                <MasterBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                  showLMShiny ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleLMShiny}
+              >
+                <MasterShineBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -191,10 +191,14 @@ const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
             {...chosenTradeCard}
           />
           <GiCardExchange
-            onClick={showAlert}
-            className="h-16 w-16 animate-spinner cursor-pointer text-black-steam transition duration-500 animation-delay-1000
-            hover:animate-spin_back hover:text-orange-poke
-            max-sm:h-7 max-sm:w-7"
+            onClick={chosenOfferCard ? showAlert : null}
+            className={`h-16 w-16 transition duration-500 animation-delay-1000
+            ${
+              chosenOfferCard
+                ? 'animate-spinner cursor-pointer text-black-steam hover:animate-spin_back hover:text-orange-poke'
+                : 'text-black-steam/30'
+            }
+            max-sm:h-7 max-sm:w-7`}
           />
           <SocialTradeCard
             key={chosenOfferCard ? `offer-${chosenOfferCard.card_id}` : `offer`}

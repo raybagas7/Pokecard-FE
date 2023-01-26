@@ -6,16 +6,54 @@ import SmallPokeball from '../Pokemon Components/SmallPokeball';
 import SmallMasterball from '../Pokemon Components/SmallMasterball';
 import { useState } from 'react';
 import SmallUltraBall from '../Pokemon Components/SmallUltraBall';
+import { FaEyeSlash, FaEye } from 'react-icons/fa';
 
 const LoginInput = (props) => {
   const [username, handleUsernameChange] = useInput('');
   const [email, handleEmailChange] = useInput('');
   const [password, handlePasswordChange] = useInput('');
   const [isLogin, setIsLogin] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
+
   const [showOrHideLogin, setShowOrHideLogin] = useState(
     'animate-default_quantum_bouncing'
   );
   const [showOrHideFP, setShowOrHideFP] = useState('invisible');
+
+  const passwordStrenght = (password) => {
+    let i = 0;
+    if (password.length >= 1) {
+      i++;
+    }
+    if (password.length >= 8) {
+      i++;
+    }
+    if (password.length >= 10) {
+      i++;
+    }
+    if (password.length > 7) {
+      if (/[A-Z]/.test(password)) {
+        i++;
+      }
+      if (/[1-9]/.test(password)) {
+        i++;
+      }
+      if (/[A-Za-z0-3]/.test(password)) {
+        i++;
+      }
+      if (/[!@#$%^&*)(+=._-]/.test(password)) {
+        i++;
+      }
+    }
+    return i;
+  };
+
+  let newPasswordStrenght = passwordStrenght(password);
+
+  const toggleShowPass = () => {
+    const temp = showPassword;
+    setShowPassword(!temp);
+  };
 
   const showHide = () => {
     showOrHideLogin === 'animate-default_quantum_bouncing'
@@ -57,11 +95,12 @@ const LoginInput = (props) => {
           <div className="login-header">
             <h2 className={`text-2xl`}>FORGOT PASSWORD</h2>
           </div>
-          <div className={`username-container`}>
+          <div className={`username-container mb-3`}>
             <div className="mt-3">
               <SmallUltraBall />
             </div>
             <input
+              className="rounded-xl"
               type="email"
               placeholder="Email"
               value={email}
@@ -90,11 +129,12 @@ const LoginInput = (props) => {
           <div className="login-header">
             <h2 className={`text-2xl`}>LOGIN</h2>
           </div>
-          <div className={`username-container`}>
+          <div className={`username-container mb-5`}>
             <div className="mt-3">
               <SmallPokeball />
             </div>
             <input
+              className="rounded-xl"
               type="text"
               placeholder="Username"
               value={username}
@@ -102,18 +142,45 @@ const LoginInput = (props) => {
               required
             />
           </div>
-          <div className={`password-container`}>
+          <div className={`password-container mb-4`}>
             <div className="mt-3">
               <SmallMasterball />
             </div>
             <input
-              type="password"
+              className="rounded-l-xl"
+              type={showPassword ? 'text' : 'password'}
               placeholder="Password"
               autoComplete="current-password"
               value={password}
               onChange={handlePasswordChange}
               required
             />
+            <div
+              onClick={toggleShowPass}
+              className={`group/show2 flex cursor-pointer items-center rounded-r-xl border-l-2 border-black-steam/30 p-2 
+            transition duration-300 hover:bg-black-steam
+            ${
+              newPasswordStrenght > 0 && newPasswordStrenght <= 3
+                ? 'border-l-0 bg-red-poke shadow shadow-red-poke'
+                : newPasswordStrenght >= 3 && newPasswordStrenght <= 6
+                ? 'border-l-0 bg-yellow-poke shadow shadow-gold-poke'
+                : newPasswordStrenght >= 7
+                ? 'border-l-0 bg-green-400 shadow shadow-green-400'
+                : 'bg-white'
+            }`}
+            >
+              {showPassword ? (
+                <FaEye
+                  className="text-black-steam transition duration-300 group-hover/show2:text-orange-poke
+              max-md:h-3 max-md:w-3"
+                />
+              ) : (
+                <FaEyeSlash
+                  className="text-black-steam transition duration-300 group-hover/show2:text-orange-poke
+              max-md:h-3 max-md:w-3"
+                />
+              )}
+            </div>
           </div>
           <div className={`login-button`}>
             <button>Login</button>

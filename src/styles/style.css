@@ -77,7 +77,6 @@ section {
 }
 
 nav li {
-  margin-right: 10px;
   margin-bottom: 5px;
   list-style-type: none;
   display: inline-block;
@@ -1690,6 +1689,9 @@ nav li:hover a {
 }
 
 @media screen and (max-width: 724px) {
+  nav li {
+    padding: 12px 10px 5px 10px;
+  }
   .main-content {
     padding: 10px;
   }

@@ -4,11 +4,13 @@ import ExtraSmallCircleSVG from '../../Profile Components/ExtraSmallCircleSVG';
 import MasterBallCardSVG from '../../Profile Components/MasterBallCardSVG';
 import MasterShineBallCardSVG from '../../Profile Components/MasterShineBallCardSVG';
 import { IoCopy } from 'react-icons/io5';
+import { GoUnverified, GoVerified } from 'react-icons/go';
+
 import PokeBallCardSVG from '../../Profile Components/PokeBallCardSVG';
 import UltraBallCardSVG from '../../Profile Components/UltraBallCardSVG';
 
 const SocialUserData = ({ userInfo }) => {
-  // console.log('asd', userInfo);
+  console.log('asd', userInfo);
   const Toast = Swal.mixin({
     toast: true,
     position: 'top',
@@ -56,9 +58,14 @@ const SocialUserData = ({ userInfo }) => {
       </div>
       <div className="flex flex-2 flex-col p-1.5">
         <header className="flex flex-row items-start justify-between border-b border-white/50 text-sm max-xl:text-xs">
-          <div className="p-1.5">{userInfo.trainer_name}</div>
+          <div className="flex items-center p-1.5">{userInfo.trainer_name}</div>
           <div className="header-info flex items-center justify-center p-1.5 ">
-            Friend Id
+            {userInfo.is_valid ? (
+              <GoVerified className="ml-1 text-orange-poke" title="Verified" />
+            ) : (
+              <GoUnverified className="ml-1 text-white" title="Unverified" />
+            )}
+            <p className="ml-1">Friend Id</p>
             <IoCopy
               className="mr-1 ml-3 cursor-pointer hover:text-yellow-300"
               onClick={showAlert}

@@ -13,11 +13,10 @@ const CollectionTab = ({ activePage, indexPage, jumpActivePage }) => {
     <>
       <button
         onClick={change}
-        className={`page-button ${
+        className={`page-button text-xs ${
           activePage === indexPage ? 'page-active' : ''
         }`}
       >
-        {' '}
         {indexPage + 1}{' '}
       </button>
     </>
