@@ -1,4 +1,4 @@
-const BASE_URL = 'http://18.138.255.1:5000';
+const BASE_URL = 'https://breezy-dog-29.a276.dcdg.xyz';
 
 const getAccessToken = () => {
   return localStorage.getItem('accessToken');
