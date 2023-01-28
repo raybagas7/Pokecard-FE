@@ -52,6 +52,12 @@ const SocialContainer = ({ selfSearchId }) => {
           className="flex h-fit w-full flex-wrap justify-center gap-2 rounded-2xl bg-gold-poke p-3 pt-3 drop-shadow-lg
         max-md:p-2"
         >
+          <div
+            className="mb-1 w-fit rounded-2xl bg-white/50 p-2 text-2xl text-black-steam drop-shadow-lg
+        max-sm:text-xl"
+          >
+            <p>PokéCard User</p>
+          </div>
           <SocialFindById selfSearchId={selfSearchId} />
           {pool
             ? pool.map((user) => (

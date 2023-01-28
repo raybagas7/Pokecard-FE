@@ -3,7 +3,7 @@ import '../../styles/ultra-ball-style.css';
 
 const SmallUltraBall = () => {
   return (
-    <div className="small-pokeball">
+    <div className="small-pokeball hover:animate-spin">
       <div className="small-ultra-upper">
         <div className="small-ultra-ball__box" />
         <div className="small-ultra-ball__inverted" />

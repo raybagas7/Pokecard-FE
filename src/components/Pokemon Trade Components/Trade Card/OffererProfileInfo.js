@@ -85,7 +85,7 @@ const OffererProfileInfo = ({
       <button
         onClick={showAlert}
         className="absolute bottom-1/4 left-1/4 hidden h-16 w-32 rounded-full bg-black-steam text-sm text-white transition duration-500 hover:bg-gold-poke hover:text-black-steam group-hover/offer:block group-hover/offer:animate-default_quantum
-        max-xl:left-12 max-xl:h-fit max-xl:w-fit max-xl:p-2 max-xl:pl-4 max-xl:pr-4 max-xl:text-xs"
+        max-xl:left-10 max-xl:h-fit max-xl:w-fit max-xl:p-2 max-xl:pl-4 max-xl:pr-4 max-xl:text-xs"
       >
         Accept{' '}
         <p className="first-letter:capitalize max-xl:hidden">{pokemonName}</p>

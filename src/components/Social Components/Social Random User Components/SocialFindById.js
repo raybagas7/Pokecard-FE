@@ -17,14 +17,21 @@ const SocialFindById = ({ selfSearchId }) => {
       : navigate(`/social?search_id=${searchUserByFI}`);
   };
   return (
-    <div className="flex w-full items-center justify-center">
-      <p className="mr-1 text-2xl">#</p>
+    <div className="mb-2 flex w-full flex-col items-center justify-center">
+      <div
+        className="rounded-tr-md rounded-tl-md
+       bg-white p-2 pb-0 pt-1 text-xs"
+      >
+        Find Directly
+      </div>
       <form onSubmit={onSubmitId} className="flex h-fit">
+        <p className="rounded-l-full bg-white p-1 pl-2 text-2xl">#</p>
         <input
           value={searchUserByFI}
           onChange={handlerSearchByFI}
+          placeholder="Friend Id"
           type="number"
-          className="none rounded-l-full p-2 pr-1 text-sm outline-none"
+          className="none p-2 pr-1 pl-0 text-sm outline-none"
         />
         <button
           disabled={searchUserByFI.length < 4 ? true : false}

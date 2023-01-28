@@ -10,6 +10,7 @@ import PokeBallCardSVG from '../Profile Components/PokeBallCardSVG';
 import UltraBallCardSVG from '../Profile Components/UltraBallCardSVG';
 import MasterShineBallCardSVG from '../Profile Components/MasterShineBallCardSVG';
 import ExtraSmallCircleSVG from '../Profile Components/ExtraSmallCircleSVG';
+import useDebounce from '../../hooks/useDebounce';
 
 const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
   const [searchPokemon, handleSearchPokemon] = useInput('');
@@ -29,6 +30,7 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
     setShowNormal(false);
     setShowLMNormal(false);
     setShowShiny(false);
+    setActivePage(0);
   };
 
   const toggleNormal = () => {
@@ -37,6 +39,7 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
     setShowNormal(!temp);
     setShowLMNormal(false);
     setShowShiny(false);
+    setActivePage(0);
   };
 
   const toggleShiny = () => {
@@ -45,6 +48,7 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
     setShowNormal(false);
     setShowLMNormal(false);
     setShowShiny(!temp);
+    setActivePage(0);
   };
 
   const toggleLMNormal = () => {
@@ -53,6 +57,7 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
     setShowNormal(false);
     setShowLMNormal(!temp);
     setShowShiny(false);
+    setActivePage(0);
   };
 
   const onSearchPokemonHandler = () => {
@@ -81,13 +86,16 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
     return foundPokemon;
   };
 
+  const debounceValue = useDebounce(onSearchPokemonHandler());
+
   const filteredByPageCollection = [];
   const devideOwnedPokemon = Math.ceil(onSearchPokemonHandler().length / 24);
 
   for (let i = 0; i < devideOwnedPokemon; i++) {
     const min2 = (i + 1) * 24 - 24;
     const max2 = (i + 1) * 24;
-    filteredByPageCollection.push(onSearchPokemonHandler().slice(min2, max2));
+
+    filteredByPageCollection.push(debounceValue.slice(min2, max2));
   }
 
   const nextActivePage = () => {
@@ -133,7 +141,7 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
             </form>
             <div className="flex h-10 items-center gap-2">
               <div
-                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
                   showNormal ? 'animate-pulse border-2 border-white' : null
                 }`}
                 onClick={toggleNormal}
@@ -144,7 +152,7 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
                 </div>
               </div>
               <div
-                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
                   showShiny ? 'animate-pulse border-2 border-white' : null
                 }`}
                 onClick={toggleShiny}
@@ -155,7 +163,7 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
                 </div>
               </div>
               <div
-                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
                   showLMNormal ? 'animate-pulse border-2 border-white' : null
                 }`}
                 onClick={toggleLMNormal}
@@ -166,7 +174,7 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
                 </div>
               </div>
               <div
-                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
                   showLMShiny ? 'animate-pulse border-2 border-white' : null
                 }`}
                 onClick={toggleLMShiny}
@@ -222,7 +230,7 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
             </form>
             <div className="flex h-10 items-center gap-2">
               <div
-                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
                   showNormal ? 'animate-pulse border-2 border-white' : null
                 }`}
                 onClick={toggleNormal}
@@ -233,7 +241,7 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
                 </div>
               </div>
               <div
-                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
                   showShiny ? 'animate-pulse border-2 border-white' : null
                 }`}
                 onClick={toggleShiny}
@@ -244,7 +252,7 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
                 </div>
               </div>
               <div
-                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
                   showLMNormal ? 'animate-pulse border-2 border-white' : null
                 }`}
                 onClick={toggleLMNormal}
@@ -255,7 +263,7 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
                 </div>
               </div>
               <div
-                className={`flex h-fit w-fit cursor-pointer items-center justify-center ${
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
                   showLMShiny ? 'animate-pulse border-2 border-white' : null
                 }`}
                 onClick={toggleLMShiny}

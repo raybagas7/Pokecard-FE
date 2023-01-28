@@ -42,8 +42,9 @@ const SocialUserLeftContainer = ({
             <div
               className="min-h-96 h-96 w-full rounded-lg
            bg-black-steam/90 drop-shadow-md
+           max-xl:h-60
            max-lg:h-72
-           max-md:h-56"
+           max-md:h-60"
             >
               <SocialUserShowcases
                 showcases={topShowcases}
@@ -53,8 +54,9 @@ const SocialUserLeftContainer = ({
             <div
               className="min-h-96 h-96 w-full rounded-lg
            bg-black-steam/90 drop-shadow-md
+           max-xl:h-60
            max-lg:h-72
-           max-md:h-56"
+           max-md:h-60"
             >
               <SocialUserShowcases
                 showcases={botShowcases}

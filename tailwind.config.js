@@ -251,7 +251,7 @@ module.exports = {
           '0%': {
             margin: '0px',
             height: '100%',
-            width: '10rem',
+            width: '9rem',
           },
           '100%': {
             height: '4rem',
@@ -278,7 +278,7 @@ module.exports = {
           '100%': {
             margin: '0px',
             height: '100%',
-            width: '10rem',
+            width: '9rem',
           },
         },
         moving_profile_img: {
@@ -289,7 +289,7 @@ module.exports = {
         moving_profile_img_xl: {
           '0%': { left: '0px', top: '110px' },
           '50%': { left: '0px', top: '68px' },
-          '100%': { left: '49px', top: '68px' },
+          '100%': { left: '42px', top: '68px' },
         },
         moving_offerer_name: {
           '0%': {
@@ -316,7 +316,7 @@ module.exports = {
           // '50%': { left: '0px', top: '100px' },
           '100%': {
             top: '120px',
-            right: '40px',
+            right: '30px',
             transform: 'scale(1.3)',
             'margin-top': '12px',
           },
@@ -330,7 +330,7 @@ module.exports = {
           '100%': { 'margin-right': '0px' },
         },
         default_hide_slide_left_lg: {
-          '0%': { 'margin-right': '114px' },
+          '0%': { 'margin-right': '115px' },
           '100%': { 'margin-right': '0px' },
         },
         hide_slide_left: {
@@ -339,7 +339,7 @@ module.exports = {
         },
         hide_slide_left_lg: {
           '0%': { 'margin-right': '0px' },
-          '100%': { 'margin-right': '114px' },
+          '100%': { 'margin-right': '115px' },
         },
       },
       animation: {

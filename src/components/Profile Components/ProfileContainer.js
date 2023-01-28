@@ -33,7 +33,7 @@ const ProfileContainer = ({
       >
         <div className="border-1 border-1  h-full w-full rounded-lg border-y-2 border-white bg-white/30 drop-shadow-lg backdrop-blur-md">
           <div
-            className={` flex h-full w-full flex-col gap-1 p-5
+            className={`flex h-full w-full flex-col justify-center gap-4 p-5
           max-lg:items-center max-lg:justify-center max-lg:p-2`}
           >
             <div
@@ -44,8 +44,10 @@ const ProfileContainer = ({
               <ProfileUserData userData={userData} userCredit={userCredit} />
             </div>
             <div
-              className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md
-            max-lg:h-96 max-lg:w-9/10 max-lg:p-2"
+              className="h-96 rounded-lg bg-black-steam/90 drop-shadow-md
+              max-xl:h-72
+              max-lg:h-96 max-lg:w-9/10 max-lg:p-2
+              max-md:h-60"
             >
               <ProfileTopShowcases
                 showcases={topShowcases}
@@ -53,8 +55,10 @@ const ProfileContainer = ({
               />
             </div>
             <div
-              className="flex-1 rounded-lg bg-black-steam/90 drop-shadow-md
-            max-lg:h-auto max-lg:w-9/10 max-lg:p-2"
+              className="h-96 rounded-lg bg-black-steam/90 drop-shadow-md
+              max-xl:h-72
+              max-lg:h-auto max-lg:w-9/10 max-lg:p-2
+              max-md:h-60"
             >
               <ProfileTopShowcases
                 showcases={botShowcases}

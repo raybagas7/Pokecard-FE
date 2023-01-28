@@ -91,10 +91,7 @@ const RegisterInput = (props) => {
             maxLength={15}
             required
           />
-          <div
-            onClick={toggleShowPass}
-            className="flex items-center rounded-r-xl bg-white p-2 text-black-steam/50"
-          >
+          <div className="flex items-center rounded-r-xl bg-white p-2 text-black-steam/50">
             <p>{maxUsername - username.length}</p>
           </div>
         </div>
@@ -172,10 +169,7 @@ const RegisterInput = (props) => {
             onChange={handleTrainerNameChange}
             required
           />
-          <div
-            onClick={toggleShowPass}
-            className="flex items-center rounded-r-xl bg-white p-2 text-black-steam/50"
-          >
+          <div className="flex items-center rounded-r-xl bg-white p-2 text-black-steam/50">
             <p>{maxTName - trainer_name.length}</p>
           </div>
         </div>

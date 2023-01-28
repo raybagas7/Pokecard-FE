@@ -7,6 +7,12 @@ import SocialOfferCard from './SocialOfferCard';
 import CollectionPageButton from '../../Pokemon Collected Card/CollectionPageButton';
 import useInput from '../../../hooks/useInput';
 import { postOfferToTradeCardRefresh } from '../../../utils/network-data';
+import useDebounce from '../../../hooks/useDebounce';
+import PokeBallCardSVG from '../../Profile Components/PokeBallCardSVG';
+import ExtraSmallCircleSVG from '../../Profile Components/ExtraSmallCircleSVG';
+import UltraBallCardSVG from '../../Profile Components/UltraBallCardSVG';
+import MasterBallCardSVG from '../../Profile Components/MasterBallCardSVG';
+import MasterShineBallCardSVG from '../../Profile Components/MasterShineBallCardSVG';
 
 const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
   const [searchPokemon, handleSearchPokemon] = useInput('');
@@ -17,10 +23,50 @@ const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
   const [chosenTradeCard, setChosenTradeCard] = useState();
   const [chosenOfferCard, setChosenOfferCard] = useState();
   const [activeOfferPage, setOfferActivePage] = useState(0);
+  const [showLMShiny, setShowLMShiny] = useState(false);
+  const [showNormal, setShowNormal] = useState(false);
+  const [showLMNormal, setShowLMNormal] = useState(false);
+  const [showShiny, setShowShiny] = useState(false);
   const [Choosed, setChoosed] = useState(false);
   const firstBoxTrades = tradeCards.slice(0, 3);
   const secondBoxTrades = tradeCards.slice(3, 6);
-  console.log('offerTrade', offerTradeCards);
+  // console.log('offerTrade', offerTradeCards);
+
+  const toggleLMShiny = () => {
+    const temp = showLMShiny;
+    setShowLMShiny(!temp);
+    setShowNormal(false);
+    setShowLMNormal(false);
+    setShowShiny(false);
+    setOfferActivePage(0);
+  };
+
+  const toggleNormal = () => {
+    const temp = showNormal;
+    setShowLMShiny(false);
+    setShowNormal(!temp);
+    setShowLMNormal(false);
+    setShowShiny(false);
+    setOfferActivePage(0);
+  };
+
+  const toggleShiny = () => {
+    const temp = showShiny;
+    setShowLMShiny(false);
+    setShowNormal(false);
+    setShowLMNormal(false);
+    setShowShiny(!temp);
+    setOfferActivePage(0);
+  };
+
+  const toggleLMNormal = () => {
+    const temp = showLMNormal;
+    setShowLMShiny(false);
+    setShowNormal(false);
+    setShowLMNormal(!temp);
+    setShowShiny(false);
+    setOfferActivePage(0);
+  };
 
   const addAnOfferToTradeCard = async (payload) => {
     const result = await postOfferToTradeCardRefresh(payload).then(
@@ -81,11 +127,31 @@ const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
 
   const onSearchPokemonHandler = () => {
     const foundPokemon = offererOwnedCards.filter((collection) =>
-      collection.name.toLowerCase().includes(searchPokemon.toLowerCase())
+      showNormal
+        ? collection.name.toLowerCase().includes(searchPokemon.toLowerCase()) &&
+          collection.legendary === false &&
+          collection.mythical === false &&
+          collection.attribute === 'normal'
+        : showShiny
+        ? collection.name.toLowerCase().includes(searchPokemon.toLowerCase()) &&
+          collection.legendary === false &&
+          collection.mythical === false &&
+          collection.attribute === 'shiny'
+        : showLMNormal
+        ? collection.name.toLowerCase().includes(searchPokemon.toLowerCase()) &&
+          (collection.legendary === true || collection.mythical === true) &&
+          collection.attribute === 'normal'
+        : showLMShiny
+        ? collection.name.toLowerCase().includes(searchPokemon.toLowerCase()) &&
+          (collection.legendary === true || collection.mythical === true) &&
+          collection.attribute === 'shiny'
+        : collection.name.toLowerCase().includes(searchPokemon.toLowerCase())
     );
 
     return foundPokemon;
   };
+
+  const debounceValue = useDebounce(onSearchPokemonHandler());
 
   const filteredByPageCollection = [];
   const devideOwnedPokemon = Math.ceil(onSearchPokemonHandler().length / 24);
@@ -93,7 +159,7 @@ const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
   for (let i = 0; i < devideOwnedPokemon; i++) {
     const min2 = (i + 1) * 24 - 24;
     const max2 = (i + 1) * 24;
-    filteredByPageCollection.push(onSearchPokemonHandler().slice(min2, max2));
+    filteredByPageCollection.push(debounceValue.slice(min2, max2));
   }
 
   const nextActivePage = () => {
@@ -215,7 +281,7 @@ const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
             previousActivePage={previousActivePage}
             jumpActivePage={jumpActivePage}
           />
-          <div className="mt-2 flex justify-center text-black">
+          <div className="mt-2 flex flex-col items-center justify-center gap-2 text-black">
             <form>
               <input
                 type="text"
@@ -226,6 +292,52 @@ const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
                 disabled={activeOfferPage > 0 ? true : false}
               />
             </form>
+            <div className="relative flex h-10 items-center gap-2 ">
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
+                  showNormal ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleNormal}
+              >
+                <PokeBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
+                  showShiny ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleShiny}
+              >
+                <UltraBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
+                  showLMNormal ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleLMNormal}
+              >
+                <MasterBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
+                  showLMShiny ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleLMShiny}
+              >
+                <MasterShineBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+            </div>
           </div>
           <div className="flex h-full w-full flex-wrap justify-center">
             {filteredByPageCollection[activeOfferPage].map((owned) => (
@@ -247,7 +359,7 @@ const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
             previousActivePage={previousActivePage}
             jumpActivePage={jumpActivePage}
           />
-          <div className="mt-2 flex justify-center text-black">
+          <div className="mt-2 flex flex-col items-center justify-center gap-2 text-black">
             <form>
               <input
                 type="text"
@@ -258,6 +370,52 @@ const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
                 disabled={activeOfferPage > 0 ? true : false}
               />
             </form>
+            <div className="relative flex h-10 items-center gap-2">
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
+                  showNormal ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleNormal}
+              >
+                <PokeBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
+                  showShiny ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleShiny}
+              >
+                <UltraBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
+                  showLMNormal ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleLMNormal}
+              >
+                <MasterBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+              <div
+                className={`flex h-fit w-fit cursor-pointer items-center justify-center hover:animate-horizontal_shake ${
+                  showLMShiny ? 'animate-pulse border-2 border-white' : null
+                }`}
+                onClick={toggleLMShiny}
+              >
+                <MasterShineBallCardSVG />
+                <div className="absolute">
+                  <ExtraSmallCircleSVG />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

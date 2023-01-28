@@ -14,6 +14,7 @@ const LoginInput = (props) => {
   const [password, handlePasswordChange] = useInput('');
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  let maxUsername = 15;
 
   const [showOrHideLogin, setShowOrHideLogin] = useState(
     'animate-default_quantum_bouncing'
@@ -134,13 +135,17 @@ const LoginInput = (props) => {
               <SmallPokeball />
             </div>
             <input
-              className="rounded-xl"
+              className="rounded-l-xl"
               type="text"
               placeholder="Username"
               value={username}
               onChange={handleUsernameChange}
+              maxLength={15}
               required
             />
+            <div className="flex items-center rounded-r-xl bg-white p-2 text-black-steam/50">
+              <p>{maxUsername - username.length}</p>
+            </div>
           </div>
           <div className={`password-container mb-4`}>
             <div className="mt-3">

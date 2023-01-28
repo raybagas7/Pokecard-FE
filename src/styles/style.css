@@ -456,7 +456,7 @@ nav li:hover a {
   /* Properti */
   width: fit-content;
   height: fit-content;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   margin: 0 auto;
   margin-bottom: 30px;
@@ -1617,6 +1617,18 @@ nav li:hover a {
   text-align: center;
   background: #ffd400;
   color: black;
+}
+
+@media screen and (max-width: 1590px) {
+  .main-content {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .container-content__first {
+    width: 840px;
+    height: fit-content;
+  }
 }
 
 @media screen and (max-width: 1000px) {

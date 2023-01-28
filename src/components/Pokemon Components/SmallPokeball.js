@@ -2,7 +2,7 @@ import React from 'react';
 
 const SmallPokeball = () => {
   return (
-    <div className="small-pokeball">
+    <div className="small-pokeball hover:animate-spin">
       <div className="small-pokeball-upper">
         <div className="xsmall-line-upper"></div>
         <div className="xsmall-upper-ball"></div>
