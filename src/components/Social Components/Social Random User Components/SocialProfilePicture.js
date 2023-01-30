@@ -10,7 +10,11 @@ const SocialProfilePicture = ({ trainerName, profileImg }) => {
       <img
         className="aspect-square max-h-20 w-20 rounded-full object-contain p-2
         max-lg:h-16 max-lg:w-16"
-        src={profileImg ? profileImg : './images/pokemon_elements/normal.png'}
+        src={
+          profileImg
+            ? profileImg
+            : '../../../../public/images/pokemon_elements/normal.png'
+        }
         alt={trainerName}
       />
       <div className=" relative flex flex-1 items-center justify-center opacity-0 group-hover:animate-fade_in_visit group-hover:animation-delay-100">
