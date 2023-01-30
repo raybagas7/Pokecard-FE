@@ -13,7 +13,7 @@ const SocialProfilePicture = ({ trainerName, profileImg }) => {
         src={
           profileImg
             ? profileImg
-            : '../../../../public/images/pokemon_elements/normal.png'
+            : 'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/normal.png'
         }
         alt={trainerName}
       />

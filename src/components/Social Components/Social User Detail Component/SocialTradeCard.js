@@ -87,7 +87,10 @@ const SocialTradeCard = ({
       max-xl:h-48 max-xl:w-32
       max-sm:m-2"
       >
-        <img src={`./images/quetion-mark.png`} alt="undefined" />
+        <img
+          src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`}
+          alt="undefined"
+        />
       </div>
     );
   }
@@ -136,7 +139,7 @@ const SocialTradeCard = ({
           <img
             src={
               attribute === undefined || attribute === null
-                ? `./images/quetion-mark.png`
+                ? `https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`
                 : pokemonImage()
             }
             alt="pokemon-images"
@@ -172,7 +175,7 @@ const SocialTradeCard = ({
           {allElement.map((element) => (
             <img
               key={element}
-              src={`./images/pokemon_elements/${element}.png`}
+              src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${element}.png`}
               alt="normal"
               className={`mt-3 mb-3 ml-2 mr-2 h-7 w-7
               max-xl:m-1 max-xl:h-5 max-xl:w-5`}

@@ -12,7 +12,7 @@ const CollectedPokemonElement = ({ types }) => {
           <div className="spesific-element_collection" key={element}>
             <img
               key={element}
-              src={`./images/pokemon_elements/${element}.png`}
+              src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${element}.png`}
               alt={element}
             ></img>
             <div

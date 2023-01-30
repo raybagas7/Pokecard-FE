@@ -5,7 +5,12 @@ const CardContentUndefined = ({ id, imageUrl }) => {
   return (
     <div className="flex-row-card card-content">
       <div className={`box first-box-undefined`}>
-        <img src={'./images/quetion-mark.png'} alt="images" />
+        <img
+          src={
+            'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png'
+          }
+          alt="images"
+        />
       </div>
     </div>
   );

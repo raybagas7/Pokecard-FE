@@ -57,7 +57,7 @@ const SocialCardShowcase = ({
         >
           <div className="flex flex-1">
             <img
-              src={`./images/quetion-mark.png`}
+              src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`}
               alt="pokemon-images"
               className="m-auto block h-full w-full object-contain"
             ></img>
@@ -119,7 +119,7 @@ const SocialCardShowcase = ({
           <img
             src={
               attribute === undefined || attribute === null
-                ? `./images/quetion-mark.png`
+                ? `https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`
                 : attributePokemon()
             }
             alt="pokemon-images"
@@ -167,7 +167,7 @@ const SocialCardShowcase = ({
             {allElement.map((element) => (
               <img
                 key={element}
-                src={`./images/pokemon_elements/${element}.png`}
+                src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${element}.png`}
                 alt="normal"
                 className={`m-1 h-5 w-5
                 max-2xl:h-4 max-2xl:w-4

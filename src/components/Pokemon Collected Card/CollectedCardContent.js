@@ -78,7 +78,11 @@ const CollectedCardContent = ({
             </p>
             <img
               className="sprites-image"
-              src={!spritesUrl ? './images/quetion-mark.png' : spritesUrl}
+              src={
+                !spritesUrl
+                  ? 'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png'
+                  : spritesUrl
+              }
               alt="images"
             />
           </div>

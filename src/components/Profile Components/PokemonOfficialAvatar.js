@@ -52,7 +52,7 @@ const PokemonOfficialAvatar = ({ pokemonData }) => {
             alt={`${pokemonData.poke_id}`}
             src={
               pokemonData === undefined || null
-                ? `./images/quetion-mark.png`
+                ? `https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`
                 : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.poke_id}.png`
             }
             className="h-auto w-9/10 animate-fade_in_slide_left rounded-lg"
@@ -83,7 +83,7 @@ const PokemonOfficialAvatar = ({ pokemonData }) => {
             {allType.map((element) => (
               <img
                 key={element}
-                src={`./images/pokemon_elements/${element}.png`}
+                src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${element}.png`}
                 alt={element}
                 className="m-1.5 h-9 w-9 animate-fade_in max-2xl:h-7 max-2xl:w-7
                 max-md:h-5 max-md:w-5"

@@ -151,7 +151,7 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
             !localUserPP
               ? profileImg
                 ? profileImg
-                : './images/pokemon_elements/normal.png'
+                : 'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/normal.png'
               : localUserPP
           }
           alt="profile pictures"

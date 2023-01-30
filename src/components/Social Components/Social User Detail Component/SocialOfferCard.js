@@ -131,7 +131,7 @@ const SocialOfferCard = ({
           <img
             src={
               attribute === undefined || attribute === null
-                ? `./images/quetion-mark.png`
+                ? `https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`
                 : pokemonImage()
             }
             alt="pokemon-images"
@@ -167,7 +167,7 @@ const SocialOfferCard = ({
           {allElement.map((element) => (
             <img
               key={element}
-              src={`./images/pokemon_elements/${element}.png`}
+              src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${element}.png`}
               alt="normal"
               className={`mt-2 mb-2 ml-1 mr-1 h-6 w-6
               max-xl:m-1 max-xl:h-5 max-xl:w-5`}

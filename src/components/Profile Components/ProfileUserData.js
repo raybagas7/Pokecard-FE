@@ -50,7 +50,7 @@ const ProfileUserData = ({ userData, userCredit }) => {
             src={
               userData.user.profile_img
                 ? userData.user.profile_img
-                : './images/pokemon_elements/normal.png'
+                : 'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/normal.png'
             }
             alt="profile pictures"
             className={`block aspect-square h-36 w-36 rounded-lg border-2 border-white/50 object-contain

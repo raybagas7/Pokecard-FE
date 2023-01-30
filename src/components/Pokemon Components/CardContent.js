@@ -285,7 +285,9 @@ const CardContent = ({
           <p className={`attribute-${pokemonType()}-id`}>{pokeid}</p>
           <img
             src={
-              !spritesNormal ? './images/quetion-mark.png' : attributePokemon()
+              !spritesNormal
+                ? 'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png'
+                : attributePokemon()
             }
             alt="images"
           />

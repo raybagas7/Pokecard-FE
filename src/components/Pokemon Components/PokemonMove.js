@@ -15,7 +15,10 @@ const PokemonMove = ({ move }) => {
       </div>
       <div className={`move-core move-type-${move.type}`}>
         <div className="move-element">
-          <img src={`./images/pokemon_elements/${move.type}.png`} alt="snoop" />
+          <img
+            src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${move.type}.png`}
+            alt="snoop"
+          />
         </div>
         <p className="move-name">{move.name}</p>
       </div>

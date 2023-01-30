@@ -206,7 +206,7 @@ const OfferDetail = ({
               src={
                 t_profile_img
                   ? t_profile_img
-                  : './images/pokemon_elements/normal.png'
+                  : 'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/normal.png'
               }
               alt={t_trainer_name}
             />

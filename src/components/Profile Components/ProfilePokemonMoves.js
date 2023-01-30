@@ -31,8 +31,8 @@ const ProfilePokemonMoves = ({ move }) => {
           <img
             src={
               move !== null
-                ? `./images/pokemon_elements/${move.type}.png`
-                : ' ./images/quetion-mark.png'
+                ? `https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${move.type}.png`
+                : 'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png'
             }
             className={`mr-1 h-14 w-14 animate-fade_in_slide_left 
             max-2xl:h-8 max-2xl:w-8

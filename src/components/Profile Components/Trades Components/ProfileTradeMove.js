@@ -29,8 +29,8 @@ const ProfileTradeMove = ({ move }) => {
         <img
           src={
             move !== null
-              ? `./images/pokemon_elements/${move.type}.png`
-              : ' ./images/quetion-mark.png'
+              ? `https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${move.type}.png`
+              : 'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png'
           }
           className={`h-4 w-4 
           max-xl:h-3 max-xl:w-3 

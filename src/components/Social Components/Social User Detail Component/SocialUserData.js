@@ -46,7 +46,7 @@ const SocialUserData = ({ userInfo }) => {
             src={
               userInfo.profile_img
                 ? userInfo.profile_img
-                : './images/pokemon_elements/normal.png'
+                : 'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/normal.png'
             }
             alt="profile pictures"
             className={`block aspect-square h-28 w-28 rounded-lg border-2 

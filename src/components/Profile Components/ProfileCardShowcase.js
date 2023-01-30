@@ -119,7 +119,7 @@ const ProfileCardShowcase = ({
           <img
             src={
               attribute === undefined || attribute === null
-                ? `./images/quetion-mark.png`
+                ? `https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`
                 : attributePokemon()
             }
             alt="pokemon-images"
