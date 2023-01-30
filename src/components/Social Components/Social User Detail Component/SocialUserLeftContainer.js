@@ -77,3 +77,4 @@ const SocialUserLeftContainer = ({
 };
 
 export default SocialUserLeftContainer;
+//@media screen and (max-width: 1000px)

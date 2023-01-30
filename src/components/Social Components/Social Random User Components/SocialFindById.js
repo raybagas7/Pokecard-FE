@@ -20,7 +20,7 @@ const SocialFindById = ({ selfSearchId }) => {
     <div className="mb-2 flex w-full flex-col items-center justify-center">
       <div
         className="rounded-tr-md rounded-tl-md
-       bg-white p-2 pb-0 pt-1 text-xs"
+       bg-white p-2 pb-0 pt-0.5 text-xxs"
       >
         Find Directly
       </div>

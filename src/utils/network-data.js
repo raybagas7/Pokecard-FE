@@ -1,5 +1,6 @@
-const BASE_URL = 'https://breezy-dog-29.a276.dcdg.xyz';
-
+const BASE_URL = 'http://18.138.255.1:5000';
+//http://18.138.255.1:5000
+//https://www.pokemoncard.lol
 const getAccessToken = () => {
   return localStorage.getItem('accessToken');
 };
