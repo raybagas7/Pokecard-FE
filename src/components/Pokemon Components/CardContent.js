@@ -33,6 +33,19 @@ const CardContent = ({
   const [moveTwo, setMoveTwo] = useState();
   // console.log('myth', isMythical);
   // const [ballType, setBallType] = useState(0);
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top',
+    iconColor: 'white',
+    customClass: {
+      popup: 'colored-toast',
+    },
+    showConfirmButton: false,
+    timer: 3500,
+    timerProgressBar: true,
+  });
+
   let isShiny = false;
   attribute === 'normal' ? (isShiny = false) : (isShiny = true);
 
@@ -247,12 +260,9 @@ const CardContent = ({
     // console.log('picked ', pickedBallTemp);
     // console.log('owned ', ownedBallType);
     if (ownedBallType < pickedBallTemp) {
-      Swal.fire({
+      Toast.fire({
+        icon: 'warning',
         title: `You run out of ${ballName}`,
-        customClass: {
-          popup: `colored-toast-${pokemonType()} colored-toast`,
-          closeButton: 'colored-toast-close',
-        },
       });
     } else {
       addOrRemoveCard(cardData, temp);

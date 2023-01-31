@@ -32,6 +32,18 @@ const MainContent = ({
   const [neededUltraBall, setNeededUltraBall] = useState(0);
   const [neededMasterBall, setNeededMasterBall] = useState(0);
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top',
+    iconColor: 'white',
+    customClass: {
+      popup: 'colored-toast',
+    },
+    showConfirmButton: false,
+    timer: 3500,
+    timerProgressBar: true,
+  });
+
   const pickedBall = {
     pokeball_amount: neededPokeBall,
     ultraball_amount: neededUltraBall,
@@ -97,7 +109,7 @@ const MainContent = ({
     var num = Math.random();
     // console.log(num);
     let probability = '';
-    num < 0.965 ? (probability = 'normal') : (probability = 'shiny');
+    num < 0.985 ? (probability = 'normal') : (probability = 'shiny');
     return probability;
   };
 
@@ -219,12 +231,9 @@ const MainContent = ({
 
   const insertPokemon = async () => {
     if (coins < 100) {
-      Swal.fire({
+      Toast.fire({
+        icon: 'warning',
         title: `No Coin Left`,
-        customClass: {
-          popup: 'colored-toast-coin colored-toast',
-          closeButton: 'colored-toast-close',
-        },
       });
     } else {
       cleanAfterAction();
