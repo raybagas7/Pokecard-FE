@@ -13,7 +13,7 @@ const SocialContainer = ({ selfSearchId }) => {
         setRandUser(data);
         setInitializing(false);
       } catch (e) {
-        console.log(message);
+        // console.log(message);
       }
     });
   }, []);
@@ -44,7 +44,7 @@ const SocialContainer = ({ selfSearchId }) => {
   }
 
   const { pool } = randUser;
-  console.log('pool', pool);
+  // console.log('pool', pool);
   return (
     <>
       <div className="flex h-fit w-full items-center p-5">

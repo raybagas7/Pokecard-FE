@@ -5,11 +5,11 @@
 // }
 // console.log(probability());
 
-const getRandom = () => {
-  var num = Math.random();
-  let probability = '';
-  num < 0.97 ? (probability = 'normal') : (probability = 'shiny');
-  return probability + num;
-};
+// const getRandom = () => {
+//   var num = Math.random();
+//   let probability = '';
+//   num < 0.97 ? (probability = 'normal') : (probability = 'shiny');
+//   return probability + num;
+// };
 
-console.log(getRandom());
+// console.log(getRandom());

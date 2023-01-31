@@ -152,8 +152,7 @@ const ProfileTradeCard = ({
           {allElement.map((element) => (
             <img
               key={element}
-              src={`
-https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${element}.png`}
+              src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${element}.png`}
               alt="normal"
               className={`mt-3 mb-3 ml-2 mr-2 h-7 w-7
               max-xl:m-1 max-xl:h-5 max-xl:w-5`}

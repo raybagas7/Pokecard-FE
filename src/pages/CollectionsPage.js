@@ -12,9 +12,9 @@ const CollectionsPage = () => {
       try {
         setOwnedCards(data);
         setInitializing(false);
-        console.log('get collections', data);
+        // console.log('get collections', data);
       } catch (e) {
-        console.log(e);
+        // console.log(e);
       }
     });
   }, []);

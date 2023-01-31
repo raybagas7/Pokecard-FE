@@ -20,7 +20,7 @@ const TradeCards = ({ userTrades }) => {
     };
 
     const newObj = await g(tradesCard, null);
-    console.log('new', newObj);
+    // console.log('new', newObj);
     setTradesCardState([...newObj]);
   };
 

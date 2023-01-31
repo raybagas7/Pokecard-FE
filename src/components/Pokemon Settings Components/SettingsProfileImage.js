@@ -77,7 +77,7 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
             icon: 'success',
             title: `${result.message}`,
           });
-          console.log(result.status);
+          // console.log(result.status);
           setShowChangeButton(false);
         } else {
           Toast.fire({
@@ -88,7 +88,7 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
                 : `${result.message}`
             }`,
           });
-          console.log(result.status);
+          // console.log(result.status);
         }
       } else if (result.isDenied) {
       }
@@ -130,7 +130,7 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
             };
           },
         }).then(async (result) => {
-          console.log(result, 'and', cropped);
+          // console.log(result, 'and', cropped);
           if (result.isConfirmed) {
             handlerLocalUserPP(result.value.imageUrl);
             setShowChangeButton(true);

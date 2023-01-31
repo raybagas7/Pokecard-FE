@@ -54,7 +54,7 @@ const HomePage = ({ nextDaily, isValid, dailyGiftCheck }) => {
         setCreditId(data);
       });
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 
@@ -91,7 +91,7 @@ const HomePage = ({ nextDaily, isValid, dailyGiftCheck }) => {
         dailyGiftCheck(!dailyGift);
       });
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 
@@ -118,7 +118,7 @@ const HomePage = ({ nextDaily, isValid, dailyGiftCheck }) => {
         }
       );
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 
@@ -137,7 +137,7 @@ const HomePage = ({ nextDaily, isValid, dailyGiftCheck }) => {
         });
       });
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 
@@ -154,10 +154,10 @@ const HomePage = ({ nextDaily, isValid, dailyGiftCheck }) => {
         setUltraBall(data.ultra_ball);
         setMasterBall(data.master_ball);
         setInitializing2(false);
-        console.log('setCreditAvailability', data);
+        // console.log('setCreditAvailability', data);
       } catch (e) {
         setInitializing2(false);
-        console.log(e);
+        // console.log(e);
       }
     });
   }, [creditId]);
@@ -168,9 +168,9 @@ const HomePage = ({ nextDaily, isValid, dailyGiftCheck }) => {
       try {
         setOwnedCards(data);
         setInitializing(false);
-        console.log('get ownerdcards', data);
+        // console.log('get ownerdcards', data);
       } catch (e) {
-        console.log(e);
+        // console.log(e);
       }
     });
   }, []);

@@ -11,7 +11,7 @@ const TradeCardContainer = ({ cardId }) => {
         setOffererTraderCards(data);
         setInitializing(false);
       } catch (e) {
-        console.log(message);
+        // console.log(message);
       }
     });
   }, [cardId]);

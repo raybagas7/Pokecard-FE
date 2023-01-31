@@ -73,7 +73,7 @@ const MainContent = ({
           }
     );
 
-    console.log(newPool);
+    // console.log(newPool);
     await saveShuffledPokemon({ cardsData: newPool });
     setPokemonId(newPool);
   };
@@ -199,7 +199,7 @@ const MainContent = ({
             imageUrl: '',
             attribute: undefined,
           });
-          console.log('FREE, AND ERROR: ', err);
+          // console.log('FREE, AND ERROR: ', err);
         });
     } while (temp < 6);
     return a;
@@ -209,11 +209,11 @@ const MainContent = ({
     try {
       await updateShuffledCardRefresh(payload).then(
         ({ error, data, message }) => {
-          console.log(data);
+          // console.log(data);
         }
       );
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 

@@ -65,11 +65,11 @@ const AgasApp = () => {
         refreshAccessToken().then(({ data }) => {
           putAccessToken(data.accessToken);
           verifyAccount(targetEmail).then(({ message }) => {
-            console.log(message);
+            // console.log(message);
           });
         });
       } else {
-        console.log(message);
+        // console.log(message);
       }
     });
   };
@@ -102,12 +102,12 @@ const AgasApp = () => {
           putAccessToken(data.accessToken);
           getUserLogged().then(({ error, data }) => {
             setAuthedUser(data);
-            console.log('userdata', data);
+            // console.log('userdata', data);
             setInitializing(false);
           });
         });
       } else {
-        console.log('userdata', data);
+        // console.log('userdata', data);
         setAuthedUser(data);
         setInitializing(false);
       }

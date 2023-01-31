@@ -23,7 +23,7 @@ function ProfilePage({ userData }) {
         setUserShowcases(data);
         setInitializing1(false);
       } catch (e) {
-        console.log(message);
+        // console.log(message);
       }
 
       getUserTradesRefresh().then(({ error, data, message }) => {
@@ -31,7 +31,7 @@ function ProfilePage({ userData }) {
           setUserTrades(data);
           setInitializing2(false);
         } catch (e) {
-          console.log(message);
+          // console.log(message);
         }
       });
 
@@ -40,7 +40,7 @@ function ProfilePage({ userData }) {
           setUserCredit(data);
           setInitializing3(false);
         } catch (e) {
-          console.log(e);
+          // console.log(e);
         }
       });
     });

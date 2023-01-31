@@ -13,7 +13,7 @@ const TradesUserContainer = () => {
         setUserTrades(data);
         setInitializing(false);
       } catch (e) {
-        console.log(message);
+        // console.log(message);
       }
     });
   }, []);

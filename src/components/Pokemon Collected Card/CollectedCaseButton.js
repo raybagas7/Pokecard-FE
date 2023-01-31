@@ -20,7 +20,7 @@ const CollectedCaseButton = ({ caseNumber, cardId, name }) => {
   const updateCardCase = async (payload) => {
     const result = await updateCardToCaseRefresh(payload).then(
       ({ error, data, message }) => {
-        console.log(message);
+        // console.log(message);
         return { error, message };
       }
     );

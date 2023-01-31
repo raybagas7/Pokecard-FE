@@ -1,6 +1,4 @@
 const BASE_URL = 'https://www.pokemoncard.lol';
-//http://18.138.255.1:5000
-//https://www.pokemoncard.lol
 const getAccessToken = () => {
   return localStorage.getItem('accessToken');
 };
@@ -1189,7 +1187,7 @@ const changeProfilePictureRefresh = async (payload) => {
 };
 
 const verifyAccount = async (targetEmail) => {
-  console.log('email', targetEmail);
+  // console.log('email', targetEmail);
   const response = await fetchWithToken(`${BASE_URL}/export/email/verify`, {
     method: 'POST',
     headers: {

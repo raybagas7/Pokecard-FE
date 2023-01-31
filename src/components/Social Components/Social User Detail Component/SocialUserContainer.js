@@ -21,7 +21,7 @@ const SocialUserContainer = ({ searchId }) => {
           setInitializing1(false);
         } catch (e) {
           // setUserDataMessage(message);
-          console.log(message);
+          // console.log(message);
         }
       }
     );
@@ -33,7 +33,7 @@ const SocialUserContainer = ({ searchId }) => {
         setInitializing2(false);
         // console.log('get ownerdcards', data);
       } catch (e) {
-        console.log(e);
+        // console.log(e);
       }
     });
   }, [searchId]);

@@ -6,7 +6,7 @@ const OffererCards = ({ listOffer, showOffererCard }) => {
   // console.log(offererCards);
 
   const topListOffer = listOffer.slice(0, 3);
-  console.log(topListOffer);
+  // console.log(topListOffer);
   const botListOffer = listOffer.slice(3, 6);
 
   // const offerCards = listOffer.map((card) => {

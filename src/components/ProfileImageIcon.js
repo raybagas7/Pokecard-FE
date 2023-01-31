@@ -11,7 +11,7 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
   const { ttlVerification, toggleTtlVerification } =
     React.useContext(TtlVerifContext);
 
-  console.log('ttl ', ttlVerification);
+  // console.log('ttl ', ttlVerification);
 
   const send = async () => {
     toggleTtlVerification();
