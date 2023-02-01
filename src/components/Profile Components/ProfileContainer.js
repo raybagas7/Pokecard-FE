@@ -31,14 +31,17 @@ const ProfileContainer = ({
         className={`relative m-5 mr-2  flex-1 flex-col items-center justify-center gap-1
       max-lg:m-5`}
       >
-        <div className="border-1 border-1  h-full w-full rounded-lg border-y-2 border-white bg-white/30 drop-shadow-lg backdrop-blur-md">
+        <div
+          className="border-1 border-1  h-full w-full rounded-lg border-y-2 border-white bg-white/30 drop-shadow-lg backdrop-blur-md
+        max-lg:bg-gold-poke"
+        >
           <div
             className={`flex h-full w-full flex-col justify-center gap-4 p-5
           max-lg:items-center max-lg:justify-center max-lg:p-2`}
           >
             <div
               className={`flex items-center justify-center rounded-lg bg-black-steam/90 drop-shadow-md
-            max-lg:w-fit
+            max-lg:w-fit max-lg:bg-black-steam
             max-md:w-8/10`}
             >
               <ProfileUserData userData={userData} userCredit={userCredit} />
@@ -46,7 +49,7 @@ const ProfileContainer = ({
             <div
               className="h-96 rounded-lg bg-black-steam/90 drop-shadow-md
               max-xl:h-72
-              max-lg:h-96 max-lg:w-9/10 max-lg:p-2
+              max-lg:h-96 max-lg:w-9/10 max-lg:bg-black-steam max-lg:p-2
               max-md:h-60"
             >
               <ProfileTopShowcases
@@ -57,7 +60,7 @@ const ProfileContainer = ({
             <div
               className="h-96 rounded-lg bg-black-steam/90 drop-shadow-md
               max-xl:h-72
-              max-lg:h-auto max-lg:w-9/10 max-lg:p-2
+              max-lg:h-96 max-lg:w-9/10 max-lg:bg-black-steam max-lg:p-2
               max-md:h-60"
             >
               <ProfileTopShowcases
@@ -74,12 +77,18 @@ const ProfileContainer = ({
       >
         <div
           className="border-1 border-1 flex h-full w-full flex-col gap-4 rounded-lg border-y-2 border-white bg-white/30 p-5 drop-shadow-lg backdrop-blur-md
-        max-lg:p-3"
+        max-lg:bg-gold-poke max-lg:p-3"
         >
-          <div className="flex min-h-half-screen flex-1 items-center justify-center rounded-lg bg-black-steam/90 drop-shadow-md">
+          <div
+            className="flex min-h-half-screen flex-1 items-center justify-center rounded-lg bg-black-steam/90 drop-shadow-md
+          max-lg:bg-black-steam"
+          >
             <ProfileTopDetailShowcase pokemonData={pokemonData} />
           </div>
-          <div className="flex flex-1 rounded-lg bg-black-steam/90 drop-shadow-md">
+          <div
+            className="flex flex-1 rounded-lg bg-black-steam/90 drop-shadow-md
+          max-lg:bg-black-steam"
+          >
             <ProfileBottomDetailShowcase userTrades={userTrades} />
           </div>
         </div>

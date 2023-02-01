@@ -48,7 +48,7 @@ const ProfileCardShowcase = ({
       <div
         className={`relative m-1 flex h-52 w-36 animate-default_lift_card cursor-pointer flex-col rounded-xl hover:animate-lift_card
         max-2xl:h-44 max-2xl:w-28
-        max-xl:h-36 max-xl:w-20
+        max-xl:h-32 max-xl:w-20
         max-lg:h-52 max-lg:w-36
         max-md:h-36 max-md:w-24`}
       >

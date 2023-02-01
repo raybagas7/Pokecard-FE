@@ -1,4 +1,6 @@
 const BASE_URL = 'https://www.pokemoncard.lol';
+//http://localhost:5000
+//https://www.pokemoncard.lol
 const getAccessToken = () => {
   return localStorage.getItem('accessToken');
 };
