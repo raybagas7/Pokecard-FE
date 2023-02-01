@@ -4,6 +4,7 @@ import ProfilePokemonMoves from './ProfilePokemonMoves';
 import ProfilePokemonStat from './ProfilePokemonStat';
 
 const ProfileTopDetailShowcase = ({ pokemonData }) => {
+  // console.log(pokemonData);
   return (
     <div
       key={pokemonData.poke_id ? pokemonData.poke_id : 'undefined'}

@@ -12,7 +12,10 @@ const ProfileContainer = ({
   userTrades,
   userCredit,
 }) => {
-  // console.log(userTrades);
+  // console.log('userData', userData);
+  // console.log('userShowcases', userShowcases);
+  // console.log('userTrades', userTrades);
+  // console.log('userCredit', userCredit);
   const { showcases } = userShowcases;
   const [pokemonData, setPokemonData] = React.useState(showcases[0]);
   const topShowcases = showcases.slice(0, 3);
@@ -68,7 +71,7 @@ const ProfileContainer = ({
           </div>
         </div>
       </div>
-      <div
+      {/* <div
         className={`relative m-5 ml-2 flex-2 flex-col items-center justify-center gap-1 
       max-lg:m-5`}
       >
@@ -83,7 +86,7 @@ const ProfileContainer = ({
             <ProfileBottomDetailShowcase userTrades={userTrades} />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

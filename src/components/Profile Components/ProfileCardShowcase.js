@@ -10,6 +10,7 @@ const ProfileCardShowcase = ({
   case_number,
   changePokemonDetails,
 }) => {
+  // console.log(poke_id);
   const chageDetailShowcase = () => {
     changePokemonDetails(case_number - 1);
   };
