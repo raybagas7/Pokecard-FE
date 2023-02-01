@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://www.pokemoncard.lol';
 //http://localhost:5000
 //https://www.pokemoncard.lol
 const getAccessToken = () => {
