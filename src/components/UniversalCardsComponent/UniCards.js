@@ -204,8 +204,7 @@ const UniCards = ({
       )}
 
       <div
-        className={`absolute bottom-0 flex h-1/4 w-full animate-default_expand_info flex-col overflow-hidden rounded-b-xl bg-black hover:absolute hover:animate-expand_info_showcase
-        max-md:animate-none`}
+        className={`absolute bottom-0 flex h-1/4 w-full animate-default_expand_info flex-col overflow-hidden rounded-b-xl bg-black hover:absolute hover:animate-expand_info_showcase`}
       >
         <p
           className={`${
