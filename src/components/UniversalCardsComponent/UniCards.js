@@ -90,7 +90,8 @@ const UniCards = ({
     return (
       <div
         className="flex h-80 w-52 animate-default_lift_card items-center justify-center rounded-xl bg-fb-undefined bg-cover
-      max-xl:h-48 max-xl:w-32"
+      max-xl:h-48 max-xl:w-32
+      max-md:animate-none max-md:hover:animate-none"
       >
         <img
           src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`}
@@ -103,7 +104,8 @@ const UniCards = ({
   return (
     <div
       className={`relative h-80 w-52 animate-default_lift_card rounded-xl hover:animate-lift_card hover:drop-shadow-md
-    max-xl:h-48 max-xl:w-32`}
+    max-xl:h-48 max-xl:w-32
+    max-md:animate-none max-md:hover:animate-none`}
     >
       {linkType ? (
         <Link

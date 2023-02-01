@@ -63,7 +63,7 @@ const TradeTotalOffer = ({
     filledBox.push(
       <div
         key={i}
-        className={`relative h-3 basis-1/6 animate-bounce rounded-md bg-orange-poke`}
+        className={`relative h-3 basis-1/6 animate-bounce rounded-md bg-orange-poke max-md:animate-none`}
       ></div>
     );
   }

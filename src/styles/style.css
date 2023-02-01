@@ -1167,7 +1167,6 @@ nav li:hover a {
   border-top: 2px solid black;
   border-right: 2px solid black;
   background-color: white;
-  animation-name: shake;
   animation-duration: 3s;
   animation-iteration-count: infinite;
 }
@@ -1182,7 +1181,6 @@ nav li:hover a {
   border-top: 1px solid black;
   border-right: 1px solid black;
   background-color: white;
-  animation-name: shake;
   animation-duration: 3s;
   animation-iteration-count: infinite;
 }
@@ -1197,7 +1195,6 @@ nav li:hover a {
   border-bottom: 1px solid black;
   border-right: 1px solid black;
   background-color: white;
-  animation-name: shake;
   animation-duration: 3s;
   animation-iteration-count: infinite;
 }
@@ -1212,7 +1209,6 @@ nav li:hover a {
   border-bottom: 2px solid black;
   border-right: 2px solid black;
   background-color: white;
-  animation-name: shake;
   animation-duration: 3s;
   animation-iteration-count: infinite;
 }
@@ -2280,7 +2276,6 @@ nav li:hover a {
     border-top: 2px solid black;
     border-right: 2px solid black;
     background-color: white;
-    animation-name: shake;
     animation-duration: 3s;
     animation-iteration-count: infinite;
   }
@@ -2295,7 +2290,6 @@ nav li:hover a {
     border-top: 1px solid black;
     border-right: 1px solid black;
     background-color: white;
-    animation-name: shake;
     animation-duration: 3s;
     animation-iteration-count: infinite;
   }
@@ -2310,7 +2304,6 @@ nav li:hover a {
     border-bottom: 1px solid black;
     border-right: 1px solid black;
     background-color: white;
-    animation-name: shake;
     animation-duration: 3s;
     animation-iteration-count: infinite;
   }
@@ -2325,7 +2318,6 @@ nav li:hover a {
     border-bottom: 2px solid black;
     border-right: 2px solid black;
     background-color: white;
-    animation-name: shake;
     animation-duration: 3s;
     animation-iteration-count: infinite;
   }

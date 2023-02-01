@@ -289,7 +289,7 @@ module.exports = {
         moving_profile_img_xl: {
           '0%': { left: '0px', top: '110px' },
           '50%': { left: '0px', top: '68px' },
-          '100%': { left: '42px', top: '68px' },
+          '100%': { left: '37px', top: '68px' },
         },
         moving_offerer_name: {
           '0%': {
@@ -316,7 +316,7 @@ module.exports = {
           // '50%': { left: '0px', top: '100px' },
           '100%': {
             top: '120px',
-            right: '30px',
+            right: '35px',
             transform: 'scale(1.3)',
             'margin-top': '12px',
           },

@@ -35,7 +35,8 @@ const SocialDetailShowcase = ({ pokemonData }) => {
               <img
                 alt={`${pokemonData.poke_id}`}
                 src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`}
-                className="h-auto w-full animate-fade_in_slide_left rounded-lg "
+                className="h-auto w-full animate-fade_in_slide_left rounded-lg
+                max-md:animate-none"
               />
             </div>
           </div>

@@ -2,7 +2,10 @@ import React from 'react';
 
 const ProfilePokemonMoves = ({ move }) => {
   return (
-    <div className="flex h-full w-full flex-1 animate-fade_in_slide_up items-center justify-center max-md:m-5">
+    <div
+      className="flex h-full w-full flex-1 animate-fade_in_slide_up items-center justify-center max-md:m-5
+    max-md:animate-none"
+    >
       <div className="flex h-9/10 w-9/10 flex-col rounded-lg">
         <div
           className={`flex items-center justify-between rounded-t-lg max-2xl:text-xxs 
@@ -37,6 +40,7 @@ const ProfilePokemonMoves = ({ move }) => {
             className={`mr-1 h-14 w-14 animate-fade_in_slide_left 
             max-2xl:h-8 max-2xl:w-8
             max-xl:h-6 max-xl:w-6
+            max-md:animate-none
             ${move !== null ? `rounded-full border-2 border-white` : ''}`}
             alt={`${move !== null ? move.type : ''}`}
           />
@@ -44,7 +48,7 @@ const ProfilePokemonMoves = ({ move }) => {
             className={`ml-1 animate-fade_in text-2xl first-letter:capitalize
           max-2xl:text-base
           max-xl:text-sm
-          max-md:text-xs`}
+          max-md:animate-none max-md:text-xs`}
           >
             {move !== null ? move.name : ''}
           </p>

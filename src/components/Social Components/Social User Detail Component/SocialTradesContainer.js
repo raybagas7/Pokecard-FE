@@ -261,7 +261,7 @@ const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
             className={`h-16 w-16 transition duration-500 animation-delay-1000
             ${
               chosenOfferCard
-                ? 'animate-spinner cursor-pointer text-black-steam hover:animate-spin_back hover:text-orange-poke'
+                ? 'animate-spinner cursor-pointer text-black-steam hover:animate-spin_back hover:text-orange-poke max-md:animate-none max-md:hover:animate-none'
                 : 'text-black-steam/30'
             }
             max-sm:h-7 max-sm:w-7`}

@@ -50,7 +50,7 @@ const SocialCardShowcase = ({
         max-2xl:h-44 max-2xl:w-28
         max-xl:h-36 max-xl:w-20
         max-lg:h-52 max-lg:w-36
-        max-md:h-36 max-md:w-24`}
+        max-md:h-36 max-md:w-24 max-md:animate-none max-md:hover:animate-none`}
       >
         <div
           className={`relative flex h-full w-full flex-col rounded-xl bg-fb-undefined bg-cover`}
@@ -74,7 +74,7 @@ const SocialCardShowcase = ({
       max-2xl:h-44 max-2xl:w-28
       max-xl:h-32 max-xl:w-20
       max-lg:h-52 max-lg:w-36
-      max-md:h-36 max-md:w-24`}
+      max-md:h-36 max-md:w-24 max-md:animate-none max-md:hover:animate-none`}
     >
       <div
         className={`relative flex w-full flex-col bg-cover ${

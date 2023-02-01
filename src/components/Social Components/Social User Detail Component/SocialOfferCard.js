@@ -90,6 +90,7 @@ const SocialOfferCard = ({
       className={`relative m-1 mt-3 h-56 w-40 animate-default_lift_card rounded-xl
       hover:animate-lift_card hover:drop-shadow-md
       max-xl:h-48 max-xl:w-32
+      max-md:animate-none max-md:hover:animate-none
     `}
     >
       <div
