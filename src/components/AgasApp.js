@@ -98,13 +98,19 @@ const AgasApp = () => {
   React.useEffect(() => {
     getUserLogged().then(({ error, data, tokenExpired }) => {
       if (error && tokenExpired) {
-        refreshAccessToken().then(({ data }) => {
-          putAccessToken(data.accessToken);
-          getUserLogged().then(({ error, data }) => {
-            setAuthedUser(data);
+        refreshAccessToken().then(({ error, data }) => {
+          if (!error) {
+            putAccessToken(data.accessToken);
+            getUserLogged().then(({ error, data }) => {
+              setAuthedUser(data);
+              // console.log('userdata', data);
+              setInitializing(false);
+            });
+          } else {
             // console.log('userdata', data);
+            setAuthedUser(data);
             setInitializing(false);
-          });
+          }
         });
       } else {
         // console.log('userdata', data);

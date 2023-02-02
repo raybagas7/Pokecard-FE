@@ -109,7 +109,7 @@ const MainContent = ({
     var num = Math.random();
     // console.log(num);
     let probability = '';
-    num < 0.985 ? (probability = 'normal') : (probability = 'shiny');
+    num < 0.995 ? (probability = 'normal') : (probability = 'shiny');
     return probability;
   };
 
