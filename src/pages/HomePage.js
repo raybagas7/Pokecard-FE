@@ -83,6 +83,7 @@ const HomePage = ({ nextDaily, isValid, dailyGiftCheck }) => {
         setPokeBall(data.creditAmount.poke_ball);
         setUltraBall(data.creditAmount.ultra_ball);
         setMasterBall(data.creditAmount.master_ball);
+        setCoins(data.creditAmount.coin);
         Toast.fire({
           icon: 'success',
           title: `Daily Gift! You recieve PokeBall (3), UltraBall(1), MasterBall(1), and Coin(1000)`,
