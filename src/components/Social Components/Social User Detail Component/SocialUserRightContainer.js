@@ -29,6 +29,7 @@ const SocialUserRightContainer = ({
           <SocialTradesContainer
             tradeCards={tradeCards}
             ownedCards={ownedCards}
+            userTrainerName={userTrainerName}
           />
         </div>
       </div>

@@ -14,7 +14,7 @@ import UltraBallCardSVG from '../../Profile Components/UltraBallCardSVG';
 import MasterBallCardSVG from '../../Profile Components/MasterBallCardSVG';
 import MasterShineBallCardSVG from '../../Profile Components/MasterShineBallCardSVG';
 
-const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
+const SocialTradesContainer = ({ tradeCards, ownedCards, userTrainerName }) => {
   const [searchPokemon, handleSearchPokemon] = useInput('');
   const [offerTradeCards, setOfferTradeCards] = useState({
     offerer_card_id: '',
@@ -214,32 +214,42 @@ const SocialTradesContainer = ({ tradeCards, ownedCards }) => {
   };
 
   return !Choosed ? (
-    <div className="group/trade flex flex-1 flex-wrap items-center justify-center rounded-lg">
-      <div className="flex max-sm:flex-1 max-sm:flex-wrap max-sm:items-center max-sm:justify-center">
-        {firstBoxTrades.map((trade) => (
-          <SocialTradeCard
-            key={`trade-${trade.window_number}`}
-            {...trade}
-            change={change}
-            pickTradeCard={pickTradeCard}
-          />
-        ))}
+    <>
+      <div className="flex justify-center">
+        <p
+          className="mt-3 w-fit rounded-2xl bg-white/50 p-2 text-base text-white drop-shadow-lg
+              max-md:mb-3 max-md:text-sm"
+        >
+          {userTrainerName}'s Trading Cards
+        </p>
       </div>
-      <div className="flex max-sm:flex-1 max-sm:flex-wrap max-sm:items-center max-sm:justify-center">
-        {secondBoxTrades.map((trade) => (
-          <SocialTradeCard
-            key={`trade-${trade.window_number}`}
-            {...trade}
-            change={change}
-            pickTradeCard={pickTradeCard}
-          />
-        ))}
+      <div className="group/trade flex flex-1 flex-wrap items-center justify-center rounded-lg">
+        <div className="flex max-sm:flex-1 max-sm:flex-wrap max-sm:items-center max-sm:justify-center">
+          {firstBoxTrades.map((trade) => (
+            <SocialTradeCard
+              key={`trade-${trade.window_number}`}
+              {...trade}
+              change={change}
+              pickTradeCard={pickTradeCard}
+            />
+          ))}
+        </div>
+        <div className="flex max-sm:flex-1 max-sm:flex-wrap max-sm:items-center max-sm:justify-center">
+          {secondBoxTrades.map((trade) => (
+            <SocialTradeCard
+              key={`trade-${trade.window_number}`}
+              {...trade}
+              change={change}
+              pickTradeCard={pickTradeCard}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   ) : (
     <div
-      className="group/trade flex h-720 w-full animate-default_quantum flex-col rounded-lg bg-gold-poke p-4
-    max-xl:h-594"
+      className="group/trade flex h-[772px] w-full animate-default_quantum flex-col rounded-lg bg-gold-poke p-4
+    max-xl:h-[684px]"
     >
       <AiFillCloseCircle
         className="absolute top-0 right-0 m-2 h-10 w-10 cursor-pointer text-black-steam

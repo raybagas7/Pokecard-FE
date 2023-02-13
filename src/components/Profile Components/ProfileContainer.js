@@ -82,7 +82,15 @@ const ProfileContainer = ({
           <div className="flex min-h-half-screen flex-1 items-center justify-center rounded-lg bg-black-steam/90 drop-shadow-md">
             <ProfileTopDetailShowcase pokemonData={pokemonData} />
           </div>
-          <div className="flex flex-1 rounded-lg bg-black-steam/90 drop-shadow-md">
+          <div className="flex flex-1 flex-col rounded-lg bg-black-steam/90 drop-shadow-md">
+            <div className="flex justify-center">
+              <p
+                className="mt-3 w-fit rounded-2xl bg-white/50 p-2 text-base text-white drop-shadow-lg
+              max-md:mb-3 max-md:text-sm"
+              >
+                Your Trading Cards
+              </p>
+            </div>
             <ProfileBottomDetailShowcase userTrades={userTrades} />
           </div>
         </div>

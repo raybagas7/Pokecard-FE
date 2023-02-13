@@ -120,7 +120,14 @@ const CollectedCardsContainer = ({ ownedCards, doFlip }) => {
     <div className="collections-content">
       <div className="all-cards__container">
         <div className="collections-title">
-          <p className="text-center text-2xl">Pokécard Collections</p>
+          <div className="flex justify-center">
+            <div
+              className="mb-1 w-fit rounded-2xl bg-white/50 p-2 text-2xl text-black-steam drop-shadow-lg
+        max-sm:text-xl"
+            >
+              <p>Pokécard Collections</p>
+            </div>
+          </div>
           <CollectionPageButton
             array={filteredByPageCollection}
             activePage={activePage}
