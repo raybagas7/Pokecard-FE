@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import JumboTron from '../components/JumboTron';
 import CollectedCardsContainer from '../components/Pokemon Collected Card/CollectedCardsContainer';
 import MainContent from '../components/Pokemon Components/MainContent';
@@ -213,3 +214,9 @@ const HomePage = ({ nextDaily, isValid, dailyGiftCheck }) => {
 };
 
 export default HomePage;
+
+HomePage.propTypes = {
+  nextDaily: PropTypes.string.isRequired,
+  isValid: PropTypes.bool.isRequired,
+  dailyGiftCheck: PropTypes.func.isRequired,
+};

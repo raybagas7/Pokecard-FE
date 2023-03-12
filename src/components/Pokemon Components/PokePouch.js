@@ -70,6 +70,9 @@ PokePouch.propTypes = {
   pickedBall: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.number, PropTypes.string])
   ).isRequired,
+  claimDaily: PropTypes.func.isRequired,
+  dailyGift: PropTypes.bool.isRequired,
+  isValid: PropTypes.bool.isRequired,
 };
 
 export default PokePouch;

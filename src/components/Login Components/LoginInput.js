@@ -216,6 +216,7 @@ const LoginInput = (props) => {
 
 LoginInput.propTypes = {
   login: PropTypes.func.isRequired,
+  forgot: PropTypes.func.isRequired,
 };
 
 export default LoginInput;

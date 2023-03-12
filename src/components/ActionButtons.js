@@ -6,21 +6,12 @@ const ActionButtons = (props) => {
     ...props.pickedBall,
     cardsData: props.choosenPokemonCards,
   };
-  // console.log('chose', );
-  // const balls = props.pickedBall;
+
   const pickChoosenCards = async () => {
     await props.pickCards(pickPayload, props.choosenPokemonCards);
-    // await props.reducePokeBalls(balls);
     props.removePokemonPool();
     props.cleanAfterAction();
   };
-  // const showError = () => {
-  //   console.log(pickPayload);
-  // };
-
-  // if (props.pickError === false) {
-
-  // }
   let status = true;
   props.choosenCardLength > 0 ? (status = false) : (status = true);
   return props.credit === null ? (
@@ -41,8 +32,6 @@ const ActionButtons = (props) => {
       >
         Pick
       </button>
-      {/* <button onClick={props.show}>ini poke</button> */}
-      {/* <button onClick={showError}>ini error</button> */}
     </div>
   );
 };

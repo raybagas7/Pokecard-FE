@@ -85,7 +85,6 @@ const MainContent = ({
           }
     );
 
-    // console.log(newPool);
     await saveShuffledPokemon({ cardsData: newPool });
     setPokemonId(newPool);
   };
@@ -107,14 +106,12 @@ const MainContent = ({
 
   const getRandom = () => {
     var num = Math.random();
-    // console.log(num);
     let probability = '';
     num < 0.995 ? (probability = 'normal') : (probability = 'shiny');
     return probability;
   };
 
   function* shuffleMoveGenerator(array) {
-    // console.log('aneh', array);
     var i = array.length;
 
     while (i--) {
@@ -211,7 +208,6 @@ const MainContent = ({
             imageUrl: '',
             attribute: undefined,
           });
-          // console.log('FREE, AND ERROR: ', err);
         });
     } while (temp < 6);
     return a;
@@ -220,13 +216,9 @@ const MainContent = ({
   const saveShuffledPokemon = async (payload) => {
     try {
       await updateShuffledCardRefresh(payload).then(
-        ({ error, data, message }) => {
-          // console.log(data);
-        }
+        ({ error, data, message }) => {}
       );
-    } catch (e) {
-      // console.log(e);
-    }
+    } catch (e) {}
   };
 
   const insertPokemon = async () => {
@@ -252,20 +244,9 @@ const MainContent = ({
 
   React.useEffect(() => {
     getShuffledCardRefresh().then(({ error, data, message }) => {
-      // console.log('dataku', data.cards);
       setPokemonId(data.cards);
     });
   }, []);
-
-  // const show = () => {
-  //   console.log(
-  //     'ini pokemon yang dipilih choosenPokemon : ',
-  //     choosenPokemonCards
-  //   );
-  //   console.log('ini pokemon yang shuffle pokemonId : ', pokemonId);
-  //   console.log('picked ', pickedBall);
-  //   console.log('owned ', ownedBall);
-  // };
 
   return (
     <div className="main-content">
@@ -288,7 +269,6 @@ const MainContent = ({
       <ActionButtons
         insertPokemon={insertPokemon}
         buttonDisable={isButtonDisabled}
-        // show={show}
         credit={credit}
         choosenPokemonCards={choosenPokemonCards}
         choosenCardLength={choosenPokemonCards.length}
@@ -309,6 +289,9 @@ MainContent.propTypes = {
   pickCards: PropTypes.func.isRequired,
   ownedBall: PropTypes.objectOf(PropTypes.number),
   coins: PropTypes.number,
+  claimDaily: PropTypes.func.isRequired,
+  dailyGift: PropTypes.bool.isRequired,
+  isValid: PropTypes.bool.isRequired,
 };
 
 export default MainContent;
