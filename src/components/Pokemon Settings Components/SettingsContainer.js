@@ -6,8 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import { changePasswordRefresh } from '../../utils/network-data';
 import SettingChangePasswordForm from './SettingChangePasswordForm';
 import SettingsProfileImage from './SettingsProfileImage';
+import { useSelector } from 'react-redux';
 
-const SettingsContainer = ({ userData }) => {
+const SettingsContainer = () => {
+  const userData = useSelector((state) => state.auth.authedUser.user);
   // const splitTrainerName = userData.trainer_name.split(' ');
   const navigate = useNavigate();
 

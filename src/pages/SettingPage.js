@@ -1,12 +1,12 @@
 import React from 'react';
 import SettingsContainer from '../components/Pokemon Settings Components/SettingsContainer';
 
-const SettingPage = ({ userData }) => {
+const SettingPage = () => {
   // console.log('setting', userData);
   return (
     <div>
       <div>
-        <SettingsContainer userData={userData} />
+        <SettingsContainer />
       </div>
     </div>
   );

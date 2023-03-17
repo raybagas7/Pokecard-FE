@@ -2,16 +2,10 @@ import React from 'react';
 import '../../styles/profile-style.css';
 import ProfileTopShowcases from './ProfileTopShowcases';
 import ProfileUserData from './ProfileUserData';
-import PropTypes from 'prop-types';
 import ProfileTopDetailShowcase from './ProfileTopDetailShowcase';
 import ProfileBottomDetailShowcase from './ProfileBottomDetailShowcase';
 
-const ProfileContainer = ({
-  userData,
-  userShowcases,
-  userTrades,
-  userCredit,
-}) => {
+const ProfileContainer = ({ userShowcases, userTrades, userCredit }) => {
   // console.log('userData', userData);
   // console.log('userShowcases', userShowcases);
   // console.log('userTrades', userTrades);
@@ -44,7 +38,7 @@ const ProfileContainer = ({
             max-lg:w-fit
             max-md:w-8/10`}
             >
-              <ProfileUserData userData={userData} userCredit={userCredit} />
+              <ProfileUserData userCredit={userCredit} />
             </div>
             <div
               className="h-96 rounded-lg bg-black-steam/90 drop-shadow-md
@@ -97,11 +91,6 @@ const ProfileContainer = ({
       </div>
     </div>
   );
-};
-
-ProfileContainer.propTypes = {
-  userData: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.object]))
-    .isRequired,
 };
 
 export default ProfileContainer;

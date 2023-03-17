@@ -3,7 +3,6 @@ import SmallCoin from '../Pokemon Components/SmallCoin';
 import SmallMasterball from '../Pokemon Components/SmallMasterball';
 import SmallPokeball from '../Pokemon Components/SmallPokeball';
 import SmallUltraBall from '../Pokemon Components/SmallUltraBall';
-import PropTypes from 'prop-types';
 import { IoCopy } from 'react-icons/io5';
 import Swal from 'sweetalert2';
 import PokeBallCardSVG from './PokeBallCardSVG';
@@ -11,8 +10,10 @@ import UltraBallCardSVG from './UltraBallCardSVG';
 import MasterBallCardSVG from './MasterBallCardSVG';
 import ExtraSmallCircleSVG from './ExtraSmallCircleSVG';
 import MasterShineBallCardSVG from './MasterShineBallCardSVG';
+import { useSelector } from 'react-redux';
 
-const ProfileUserData = ({ userData, userCredit }) => {
+const ProfileUserData = ({ userCredit }) => {
+  const userData = useSelector((state) => state.auth.authedUser);
   // console.log('creditnya', userData);
   const Toast = Swal.mixin({
     toast: true,
@@ -160,11 +161,6 @@ const ProfileUserData = ({ userData, userCredit }) => {
       </div>
     </div>
   );
-};
-
-ProfileUserData.propTypes = {
-  userData: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.object]))
-    .isRequired,
 };
 
 export default ProfileUserData;

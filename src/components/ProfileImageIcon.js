@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { RiLogoutCircleLine } from 'react-icons/ri';
-import ValidationContext from '../context/ValidationContext';
 import TtlVerifContext from '../context/TtlVerifContext';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
-  const { authedUser } = React.useContext(ValidationContext);
+const ProfileImageIcon = ({ logout, sendVerification }) => {
+  const userData = useSelector((state) => state.auth.authedUser);
   const { ttlVerification, toggleTtlVerification } =
     React.useContext(TtlVerifContext);
 
@@ -88,12 +88,12 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
               <Link
                 to={'/settings'}
                 className="upper-dropdown"
-                title={`Profile ${authedUser.user.trainer_name}`}
+                title={`Profile ${userData.user.trainer_name}`}
               >
                 {userData.user.trainer_name}
               </Link>
-              {authedUser.user.is_valid === false &&
-              authedUser.user.wait_verify === false &&
+              {userData.user.is_valid === false &&
+              userData.user.wait_verify === false &&
               ttlVerification === false ? (
                 <p
                   className="middle-dropdown bg-gold-poke"
@@ -102,8 +102,8 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
                 >
                   Verify
                 </p>
-              ) : authedUser.user.is_valid === false &&
-                (authedUser.user.wait_verify === true ||
+              ) : userData.user.is_valid === false &&
+                (userData.user.wait_verify === true ||
                   ttlVerification === true) ? (
                 <p
                   className="middle-dropdown bg-gold-poke"
@@ -145,7 +145,6 @@ const ProfileImageIcon = ({ logout, userData, sendVerification }) => {
 
 ProfileImageIcon.propTypes = {
   logout: PropTypes.func.isRequired,
-  userData: PropTypes.object.isRequired,
   sendVerification: PropTypes.func.isRequired,
 };
 

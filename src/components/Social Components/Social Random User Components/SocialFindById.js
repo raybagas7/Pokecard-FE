@@ -1,10 +1,14 @@
 import React from 'react';
 import { RiSearchEyeLine } from 'react-icons/ri';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import useInput from '../../../hooks/useInput';
 
-const SocialFindById = ({ selfSearchId }) => {
+const SocialFindById = () => {
+  const selfSearchId = useSelector(
+    (state) => state.auth.authedUser.user.search_id
+  );
   const [searchUserByFI, handlerSearchByFI] = useInput('');
   const navigate = useNavigate();
 

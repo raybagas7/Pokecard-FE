@@ -4,7 +4,7 @@ import SocialFindById from './SocialFindById';
 
 import SocialRandomUser from './SocialRandomUser';
 
-const SocialContainer = ({ selfSearchId }) => {
+const SocialContainer = () => {
   const [randUser, setRandUser] = useState();
   const [initializing, setInitializing] = React.useState(true);
   React.useEffect(() => {
@@ -58,7 +58,7 @@ const SocialContainer = ({ selfSearchId }) => {
           >
             <p>PokéCard User</p>
           </div>
-          <SocialFindById selfSearchId={selfSearchId} />
+          <SocialFindById />
           {pool
             ? pool.map((user) => (
                 <SocialRandomUser key={user.search_id} {...user} />

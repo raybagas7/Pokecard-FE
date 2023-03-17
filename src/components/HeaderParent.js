@@ -4,22 +4,17 @@ import ProfileImageIcon from './ProfileImageIcon';
 import '../styles/header-style.css';
 import PropTypes from 'prop-types';
 
-const HeaderParent = ({ logout, userData, sendVerification }) => {
+const HeaderParent = ({ logout, sendVerification }) => {
   return (
     <div className="agaz-header">
       <LogoSite />
-      <ProfileImageIcon
-        logout={logout}
-        userData={userData}
-        sendVerification={sendVerification}
-      />
+      <ProfileImageIcon logout={logout} sendVerification={sendVerification} />
     </div>
   );
 };
 
 HeaderParent.propTypes = {
   logout: PropTypes.func.isRequired,
-  userData: PropTypes.object.isRequired,
   sendVerification: PropTypes.func.isRequired,
 };
 

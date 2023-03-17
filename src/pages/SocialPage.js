@@ -2,7 +2,7 @@ import SocialContainer from '../components/Social Components/Social Random User 
 import SocialUserContainer from '../components/Social Components/Social User Detail Component/SocialUserContainer';
 import useQuery from '../hooks/useQuery';
 
-const SocialPage = ({ selfSearchId }) => {
+const SocialPage = () => {
   let query = useQuery();
   const searched = query.get('search_id');
 
@@ -15,7 +15,7 @@ const SocialPage = ({ selfSearchId }) => {
   return searched ? (
     <SocialUserContainer searchId={searched} />
   ) : (
-    <SocialContainer selfSearchId={selfSearchId} />
+    <SocialContainer />
   );
 };
 

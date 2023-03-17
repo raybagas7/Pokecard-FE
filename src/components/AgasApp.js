@@ -25,9 +25,13 @@ import SocialPage from '../pages/SocialPage';
 import OffersPage from '../pages/OffersPage';
 import SettingPage from '../pages/SettingPage';
 import CollectionsPage from '../pages/CollectionsPage';
+import { useDispatch, useSelector } from 'react-redux';
+import { authActions } from '../store/auth.slice';
 
 const AgasApp = () => {
-  const [authedUser, setAuthedUser] = React.useState(null);
+  const dispatch = useDispatch();
+  // const [authedUser, setAuthedUser] = React.useState(null);
+  const authedUser = useSelector((state) => state.auth.authedUser);
   const [initializing, setInitializing] = React.useState(true);
   const [ttlVerification, setTtlVerification] = React.useState(
     ls.get('waitingVerfication') || false
@@ -45,11 +49,12 @@ const AgasApp = () => {
     const { data } = await getUserLogged();
     setTtlVerification(data.user.is_valid);
     ls.set('waitingVerfication', data.user.is_valid);
-    setAuthedUser(data);
+    dispatch(authActions.fillAuthedUserData(data));
   };
 
   const onLogout = () => {
-    setAuthedUser(null);
+    // setAuthedUser(null);
+    dispatch(authActions.emptyAuthedUserData());
     logout(authedUser.user.username);
 
     putAccessToken('');
@@ -102,23 +107,23 @@ const AgasApp = () => {
           if (!error) {
             putAccessToken(data.accessToken);
             getUserLogged().then(({ error, data }) => {
-              setAuthedUser(data);
-              // console.log('userdata', data);
+              // setAuthedUser(data);
+              dispatch(authActions.fillAuthedUserData(data));
               setInitializing(false);
             });
           } else {
-            // console.log('userdata', data);
-            setAuthedUser(data);
+            // setAuthedUser(data);
+            dispatch(authActions.fillAuthedUserData(data));
             setInitializing(false);
           }
         });
       } else {
-        // console.log('userdata', data);
-        setAuthedUser(data);
+        // setAuthedUser(data);
+        dispatch(authActions.fillAuthedUserData(data));
         setInitializing(false);
       }
     });
-  }, [ttlVerification, dailyCheck]);
+  }, [ttlVerification, dailyCheck, dispatch]);
 
   if (initializing) {
     return null;
@@ -143,7 +148,6 @@ const AgasApp = () => {
           <header>
             <HeaderParent
               logout={onLogout}
-              userData={authedUser}
               sendVerification={sendVerification}
             />
             <NavHeader />
@@ -162,20 +166,9 @@ const AgasApp = () => {
                     />
                   }
                 />
-                <Route
-                  path="/profile"
-                  element={<ProfilePage userData={authedUser} />}
-                />
-                <Route
-                  path="/social"
-                  element={
-                    <SocialPage selfSearchId={authedUser.user.search_id} />
-                  }
-                />
-                <Route
-                  path="/settings"
-                  element={<SettingPage userData={authedUser.user} />}
-                />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/social" element={<SocialPage />} />
+                <Route path="/settings" element={<SettingPage />} />
                 <Route path="/collections" element={<CollectionsPage />} />
                 <Route path="/offers" element={<OffersPage />} />
                 <Route path="/trades" element={<TradesPage />} />

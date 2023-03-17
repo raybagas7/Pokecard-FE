@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ProfileContainer from '../components/Profile Components/ProfileContainer';
 import {
   getCreditAndTotalCardsWithRefresh,
@@ -7,7 +6,7 @@ import {
   getUserTradesRefresh,
 } from '../utils/network-data';
 
-function ProfilePage({ userData }) {
+function ProfilePage() {
   // console.log('profile page', userData);
 
   const [userShowcases, setUserShowcases] = React.useState();
@@ -64,7 +63,6 @@ function ProfilePage({ userData }) {
   return (
     <section>
       <ProfileContainer
-        userData={userData}
         userShowcases={userShowcases}
         userTrades={userTrades}
         userCredit={userCredit}
@@ -72,10 +70,5 @@ function ProfilePage({ userData }) {
     </section>
   );
 }
-
-ProfilePage.propTypes = {
-  userData: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.object]))
-    .isRequired,
-};
 
 export default ProfilePage;
