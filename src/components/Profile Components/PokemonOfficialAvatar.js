@@ -1,4 +1,5 @@
 import React from 'react';
+import { elementUrl } from '../../utils/element';
 const PokemonOfficialAvatar = ({ pokemonData }) => {
   // console.log('aa', pokemonData);
 
@@ -52,7 +53,7 @@ const PokemonOfficialAvatar = ({ pokemonData }) => {
             alt={`${pokemonData.poke_id}`}
             src={
               pokemonData === undefined || null
-                ? `https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`
+                ? `https://firebasestorage.googleapis.com/v0/b/pokecard-agas.appspot.com/o/misc%2Fquetion-mark.png?alt=media&token=225670ea-f313-4abe-9e19-788f6bf619f8`
                 : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.poke_id}.png`
             }
             className="h-auto w-9/10 animate-fade_in_slide_left rounded-lg
@@ -84,7 +85,12 @@ const PokemonOfficialAvatar = ({ pokemonData }) => {
             {allType.map((element) => (
               <img
                 key={element}
-                src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${element}.png`}
+                src={elementUrl
+                  .filter(
+                    (chosenElement) =>
+                      chosenElement.id.toLowerCase() === element.toLowerCase()
+                  )
+                  .map((chosenElement) => chosenElement.imageUrl)}
                 alt={element}
                 className="m-1.5 h-9 w-9 animate-fade_in max-2xl:h-7 max-2xl:w-7
                 max-md:h-5 max-md:w-5 max-md:animate-none"

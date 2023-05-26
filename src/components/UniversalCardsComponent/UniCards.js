@@ -2,6 +2,7 @@ import React from 'react';
 import UniCardMove from './UniCardMove';
 import UniCardStats from './UniCardStats';
 import { Link } from 'react-router-dom';
+import { elementUrl } from '../../utils/element';
 
 const UniCards = ({
   offer_id,
@@ -94,7 +95,7 @@ const UniCards = ({
       max-md:animate-none max-md:hover:animate-none"
       >
         <img
-          src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`}
+          src={`https://firebasestorage.googleapis.com/v0/b/pokecard-agas.appspot.com/o/misc%2Fquetion-mark.png?alt=media&token=225670ea-f313-4abe-9e19-788f6bf619f8`}
           alt="undefined"
         />
       </div>
@@ -146,7 +147,7 @@ const UniCards = ({
             <img
               src={
                 attribute === undefined || attribute === null
-                  ? `https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`
+                  ? `https://firebasestorage.googleapis.com/v0/b/pokecard-agas.appspot.com/o/misc%2Fquetion-mark.png?alt=media&token=225670ea-f313-4abe-9e19-788f6bf619f8`
                   : pokemonImage()
               }
               alt="pokemon-images"
@@ -193,7 +194,7 @@ const UniCards = ({
             <img
               src={
                 attribute === undefined || attribute === null
-                  ? `https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`
+                  ? `https://firebasestorage.googleapis.com/v0/b/pokecard-agas.appspot.com/o/misc%2Fquetion-mark.png?alt=media&token=225670ea-f313-4abe-9e19-788f6bf619f8`
                   : pokemonImage()
               }
               alt="pokemon-images"
@@ -231,7 +232,12 @@ const UniCards = ({
           {allElement.map((element) => (
             <img
               key={element}
-              src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${element}.png`}
+              src={elementUrl
+                .filter(
+                  (chosenElement) =>
+                    chosenElement.id.toLowerCase() === element.toLowerCase()
+                )
+                .map((chosenElement) => chosenElement.imageUrl)}
               alt="normal"
               className={`mt-3 mb-3 ml-2 mr-2 h-7 w-7
               max-xl:m-1 max-xl:h-5 max-xl:w-5`}

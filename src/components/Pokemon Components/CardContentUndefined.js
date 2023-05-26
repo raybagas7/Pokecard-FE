@@ -1,24 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const CardContentUndefined = ({ id, imageUrl }) => {
+const CardContentUndefined = () => {
   return (
     <div className="flex-row-card card-content">
       <div className={`box first-box-undefined`}>
         <img
           src={
-            'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png'
+            'https://firebasestorage.googleapis.com/v0/b/pokecard-agas.appspot.com/o/misc%2Fquetion-mark.png?alt=media&token=225670ea-f313-4abe-9e19-788f6bf619f8'
           }
           alt="images"
         />
       </div>
     </div>
   );
-};
-
-CardContentUndefined.propTypes = {
-  id: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
 };
 
 export default CardContentUndefined;

@@ -34,7 +34,7 @@ const SocialDetailShowcase = ({ pokemonData }) => {
             <div>
               <img
                 alt={`${pokemonData.poke_id}`}
-                src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`}
+                src={`https://firebasestorage.googleapis.com/v0/b/pokecard-agas.appspot.com/o/misc%2Fquetion-mark.png?alt=media&token=225670ea-f313-4abe-9e19-788f6bf619f8`}
                 className="h-auto w-full animate-fade_in_slide_left rounded-lg
                 max-md:animate-none"
               />

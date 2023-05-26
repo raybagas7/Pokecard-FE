@@ -1,4 +1,5 @@
 import React from 'react';
+import { elementUrl } from '../../../utils/element';
 
 const SocialCardShowcase = ({
   poke_id,
@@ -57,7 +58,7 @@ const SocialCardShowcase = ({
         >
           <div className="flex flex-1">
             <img
-              src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`}
+              src={`https://firebasestorage.googleapis.com/v0/b/pokecard-agas.appspot.com/o/misc%2Fquetion-mark.png?alt=media&token=225670ea-f313-4abe-9e19-788f6bf619f8`}
               alt="pokemon-images"
               className="m-auto block h-full w-full object-contain"
             ></img>
@@ -119,7 +120,7 @@ const SocialCardShowcase = ({
           <img
             src={
               attribute === undefined || attribute === null
-                ? `https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`
+                ? `https://firebasestorage.googleapis.com/v0/b/pokecard-agas.appspot.com/o/misc%2Fquetion-mark.png?alt=media&token=225670ea-f313-4abe-9e19-788f6bf619f8`
                 : attributePokemon()
             }
             alt="pokemon-images"
@@ -167,7 +168,12 @@ const SocialCardShowcase = ({
             {allElement.map((element) => (
               <img
                 key={element}
-                src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${element}.png`}
+                src={elementUrl
+                  .filter(
+                    (chosenElement) =>
+                      chosenElement.id.toLowerCase() === element.toLowerCase()
+                  )
+                  .map((chosenElement) => chosenElement.imageUrl)}
                 alt="normal"
                 className={`m-1 h-5 w-5
                 max-2xl:h-4 max-2xl:w-4

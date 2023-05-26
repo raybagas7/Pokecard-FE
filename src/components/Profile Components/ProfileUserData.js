@@ -51,7 +51,7 @@ const ProfileUserData = ({ userCredit }) => {
             src={
               userData.user.profile_img
                 ? userData.user.profile_img
-                : 'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/normal.png'
+                : 'https://firebasestorage.googleapis.com/v0/b/pokecard-agas.appspot.com/o/pokemon_element%2Fnormal.png?alt=media&token=1974e729-fae8-4ff4-bc9c-c9fc2fd434ff'
             }
             alt="profile pictures"
             className={`block aspect-square h-36 w-36 rounded-lg border-2 border-white/50 object-contain

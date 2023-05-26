@@ -13,8 +13,6 @@ const CardContent = ({
   name,
   spritesNormal,
   spritesShiny,
-  animatedSpritesNormal,
-  animatedSpritesShiny,
   types,
   pokeid,
   speciesUrl,
@@ -296,7 +294,7 @@ const CardContent = ({
           <img
             src={
               !spritesNormal
-                ? 'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png'
+                ? 'https://firebasestorage.googleapis.com/v0/b/pokecard-agas.appspot.com/o/misc%2Fquetion-mark.png?alt=media&token=225670ea-f313-4abe-9e19-788f6bf619f8'
                 : attributePokemon()
             }
             alt="images"
@@ -312,7 +310,7 @@ const CardContent = ({
           <img
             src={
               !spritesNormal
-                ? 'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png'
+                ? 'https://firebasestorage.googleapis.com/v0/b/pokecard-agas.appspot.com/o/misc%2Fquetion-mark.png?alt=media&token=225670ea-f313-4abe-9e19-788f6bf619f8'
                 : attributePokemon()
             }
             alt="images"

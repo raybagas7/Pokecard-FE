@@ -1,4 +1,5 @@
 import React from 'react';
+import { elementUrl } from '../../../utils/element';
 
 const SocialOfferMove = ({ move }) => {
   return (
@@ -29,8 +30,13 @@ const SocialOfferMove = ({ move }) => {
         <img
           src={
             move !== null
-              ? `https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${move.type}.png`
-              : 'https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png'
+              ? elementUrl
+                  .filter(
+                    (chosenElement) =>
+                      chosenElement.id.toLowerCase() === move.type.toLowerCase()
+                  )
+                  .map((chosenElement) => chosenElement.imageUrl)
+              : 'https://firebasestorage.googleapis.com/v0/b/pokecard-agas.appspot.com/o/misc%2Fquetion-mark.png?alt=media&token=225670ea-f313-4abe-9e19-788f6bf619f8'
           }
           className={`
           h-3 w-3 

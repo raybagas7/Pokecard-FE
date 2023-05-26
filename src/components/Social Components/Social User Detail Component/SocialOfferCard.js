@@ -1,6 +1,7 @@
 import React from 'react';
 import SocialOfferMove from './SocialOfferMove';
 import SocialOfferStats from './SocialOfferStats';
+import { elementUrl } from '../../../utils/element';
 
 const SocialOfferCard = ({
   card_id,
@@ -132,7 +133,7 @@ const SocialOfferCard = ({
           <img
             src={
               attribute === undefined || attribute === null
-                ? `https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/quetion-mark.png`
+                ? `https://firebasestorage.googleapis.com/v0/b/pokecard-agas.appspot.com/o/misc%2Fquetion-mark.png?alt=media&token=225670ea-f313-4abe-9e19-788f6bf619f8`
                 : pokemonImage()
             }
             alt="pokemon-images"
@@ -168,7 +169,12 @@ const SocialOfferCard = ({
           {allElement.map((element) => (
             <img
               key={element}
-              src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${element}.png`}
+              src={elementUrl
+                .filter(
+                  (chosenElement) =>
+                    chosenElement.id.toLowerCase() === element.toLowerCase()
+                )
+                .map((chosenElement) => chosenElement.imageUrl)}
               alt="normal"
               className={`mt-2 mb-2 ml-1 mr-1 h-6 w-6
               max-xl:m-1 max-xl:h-5 max-xl:w-5`}

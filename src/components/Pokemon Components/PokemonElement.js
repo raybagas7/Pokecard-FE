@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { elementUrl } from '../../utils/element';
 
 const PokemonElement = ({ types }) => {
   const allType = [];
@@ -9,6 +10,16 @@ const PokemonElement = ({ types }) => {
       allType.push(take);
     }
   }
+
+  const fakeEle = 'Bug';
+  const chosen = elementUrl
+    .filter(
+      (chosenElement) =>
+        chosenElement.id.toLowerCase() === fakeEle.toLowerCase()
+    )
+    .map((chosenElement) => chosenElement.imageUrl);
+
+  console.log(chosen);
 
   // const show = () => {
   //   console.log('ini pokemon id di cc', types, ' ini all type ', allType);
@@ -21,7 +32,12 @@ const PokemonElement = ({ types }) => {
           <div className="spesific-element" key={element}>
             <img
               key={element}
-              src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${element}.png`}
+              src={elementUrl
+                .filter(
+                  (chosenElement) =>
+                    chosenElement.id.toLowerCase() === element.toLowerCase()
+                )
+                .map((chosenElement) => chosenElement.imageUrl)}
               alt={element}
             ></img>
             <div className={`tooltip-text tooltip-${element}`}>

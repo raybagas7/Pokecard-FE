@@ -1,4 +1,5 @@
 import React from 'react';
+import { elementUrl } from '../../utils/element';
 
 const CollectedPokemonMove = ({ move }) => {
   return (
@@ -16,7 +17,12 @@ const CollectedPokemonMove = ({ move }) => {
       <div className={`move-core_collected move-type-${move.type}`}>
         <div className="move-element_collected">
           <img
-            src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${move.type}.png`}
+            src={elementUrl
+              .filter(
+                (chosenElement) =>
+                  chosenElement.id.toLowerCase() === move.type.toLowerCase()
+              )
+              .map((chosenElement) => chosenElement.imageUrl)}
             alt="snoop"
           />
         </div>

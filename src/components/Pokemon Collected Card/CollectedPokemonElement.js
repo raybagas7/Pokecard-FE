@@ -1,4 +1,5 @@
 import React from 'react';
+import { elementUrl } from '../../utils/element';
 
 const CollectedPokemonElement = ({ types }) => {
   //   const show = () => {
@@ -12,7 +13,12 @@ const CollectedPokemonElement = ({ types }) => {
           <div className="spesific-element_collection" key={element}>
             <img
               key={element}
-              src={`https://pokecard-agas.s3.ap-southeast-1.amazonaws.com/PokeCardMaterial/pokemon_elements/${element}.png`}
+              src={elementUrl
+                .filter(
+                  (chosenElement) =>
+                    chosenElement.id.toLowerCase() === element.toLowerCase()
+                )
+                .map((chosenElement) => chosenElement.imageUrl)}
               alt={element}
             ></img>
             <div
