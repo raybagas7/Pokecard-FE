@@ -15,7 +15,6 @@ const SocialFindById = () => {
   const onSubmitId = (event) => {
     event.preventDefault();
 
-    // console.log('asdasd', searchUserByFI, selfSearchId.toString());
     searchUserByFI === selfSearchId.toString()
       ? navigate('/profile')
       : navigate(`/social?search_id=${searchUserByFI}`);

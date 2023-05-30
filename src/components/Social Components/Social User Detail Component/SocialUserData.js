@@ -10,7 +10,6 @@ import PokeBallCardSVG from '../../Profile Components/PokeBallCardSVG';
 import UltraBallCardSVG from '../../Profile Components/UltraBallCardSVG';
 
 const SocialUserData = ({ userInfo }) => {
-  // console.log('asd', userInfo);
   const Toast = Swal.mixin({
     toast: true,
     position: 'top',

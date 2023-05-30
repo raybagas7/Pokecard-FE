@@ -30,7 +30,6 @@ const SocialTradesContainer = ({ tradeCards, ownedCards, userTrainerName }) => {
   const [Choosed, setChoosed] = useState(false);
   const firstBoxTrades = tradeCards.slice(0, 3);
   const secondBoxTrades = tradeCards.slice(3, 6);
-  // console.log('offerTrade', offerTradeCards);
 
   const toggleLMShiny = () => {
     const temp = showLMShiny;
@@ -104,7 +103,6 @@ const SocialTradesContainer = ({ tradeCards, ownedCards, userTrainerName }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const result = await addAnOfferToTradeCard(offerTradeCards);
-        // console.log(result);
         if (!result.error) {
           Toast.fire({
             icon: 'success',
@@ -183,7 +181,6 @@ const SocialTradesContainer = ({ tradeCards, ownedCards, userTrainerName }) => {
   const change = () => {
     const temp = !Choosed;
     setChoosed(temp);
-    // console.log(Choosed);
   };
 
   const closeOffer = () => {

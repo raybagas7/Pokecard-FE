@@ -16,7 +16,6 @@ const ProfileTradeCard = ({
   move1,
   move2,
 }) => {
-  // console.log(card_id);
   let type = '';
   (legendary === true || mythical === true) && attribute === 'shiny'
     ? (type = 'legendary-shine')

@@ -39,7 +39,6 @@ const SettingsContainer = () => {
       newPassword,
     });
 
-    // console.log('mydata', data);
     if (!error) {
       Toast.fire({
         icon: 'success',

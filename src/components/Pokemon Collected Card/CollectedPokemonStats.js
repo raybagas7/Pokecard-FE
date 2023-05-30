@@ -19,12 +19,8 @@ const CollectedPokemonStats = ({ pokemonStats, box }) => {
   const leftStat = pokemonStats.slice(0, 3);
   const rightStat = pokemonStats.slice(3, 6);
 
-  // const show = () => {
-  //   console.log('ini stats', pokemonStats);
-  // };
   return (
     <>
-      {/* <button onClick={show}>ini stats</button> */}
       {box === 'left'
         ? leftStat.map((stat) => (
             <div className="stat-info_collection" key={Object.keys(stat)}>

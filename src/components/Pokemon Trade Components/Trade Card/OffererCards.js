@@ -3,23 +3,8 @@ import UniCards from '../../UniversalCardsComponent/UniCards';
 import OffererProfileInfo from './OffererProfileInfo';
 
 const OffererCards = ({ listOffer, showOffererCard }) => {
-  // console.log(offererCards);
-
   const topListOffer = listOffer.slice(0, 3);
-  // console.log(topListOffer);
   const botListOffer = listOffer.slice(3, 6);
-
-  // const offerCards = listOffer.map((card) => {
-  //   let { search_id, trainer_name, profile_img, owner, ...rest } = card;
-  //   return rest;
-  // });
-
-  // const offerCardsOwner = listOffer.map((user) => {
-  //   let { search_id, trainer_name, profile_img, owner } = user;
-
-  //   return { search_id, trainer_name, profile_img, owner };
-  // });
-  // console.log(offerCardsOwner);
 
   return (
     <div className="flex h-fit w-full items-center p-3 pt-5 pb-5">

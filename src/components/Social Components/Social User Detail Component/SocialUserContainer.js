@@ -19,37 +19,17 @@ const SocialUserContainer = ({ searchId }) => {
           setUserData(data);
           setUserDataMessage(message);
           setInitializing1(false);
-        } catch (e) {
-          // setUserDataMessage(message);
-          // console.log(message);
-        }
+        } catch (e) {}
       }
     );
 
     getOwnerCardsRefresh().then(({ error, data, message }) => {
-      // console.log('home ownedcard', error, data, message);
       try {
         setOwnedCards(data);
         setInitializing2(false);
-        // console.log('get ownerdcards', data);
-      } catch (e) {
-        // console.log(e);
-      }
+      } catch (e) {}
     });
   }, [searchId]);
-
-  // React.useEffect(() => {
-  //   getOwnerCardsRefresh().then(({ error, data, message }) => {
-  //     // console.log('home ownedcard', error, data, message);
-  //     try {
-  //       setOwnedCards(data);
-  //       setInitializing2(false);
-  //       // console.log('get ownerdcards', data);
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   });
-  // }, []);
 
   if (initializing1 || initializing2) {
     return (
@@ -65,9 +45,6 @@ const SocialUserContainer = ({ searchId }) => {
       </section>
     );
   }
-
-  // console.log(userData);
-  // console.log('own', ownedCards);
 
   return userData ? (
     <div

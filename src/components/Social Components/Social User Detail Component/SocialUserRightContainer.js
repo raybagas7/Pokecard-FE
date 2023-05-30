@@ -8,9 +8,6 @@ const SocialUserRightContainer = ({
   userTrainerName,
   ownedCards,
 }) => {
-  // console.log('data', pokemonData.poke_id);
-  // console.log('showtrade', tradeCards);
-
   return (
     <div
       className={`relative m-10 mr-5 ml-2 flex-2 flex-col items-center justify-center gap-1 

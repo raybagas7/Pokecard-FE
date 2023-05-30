@@ -17,8 +17,6 @@ const SocialTradeCard = ({
   change = null,
   pickTradeCard,
 }) => {
-  // let type = 'normal';
-  // console.log('stats', stats);
   const chosenCard = {
     card_id,
     attribute,

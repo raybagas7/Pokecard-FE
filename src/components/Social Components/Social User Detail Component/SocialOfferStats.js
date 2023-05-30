@@ -1,13 +1,6 @@
 import React from 'react';
 
 const SocialOfferStats = ({ statName, statValue }) => {
-  // console.log('my', statValue);
-  // let trueStat = null;
-  // if (stat) {
-  //   trueStat = `${Object.keys(stat)}`;
-  //   // console.log('2', statName2);
-  // }
-  // console.log(trueStat);
   return (
     <div className="flex w-full justify-center">
       <div

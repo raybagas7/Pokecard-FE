@@ -9,9 +9,6 @@ const SocialUserLeftContainer = ({
   tradeCards,
   ownedCards,
 }) => {
-  //   console.log(showcases, totalCards);
-  // console.log('showc', showcases);
-  // console.log('showtrade', tradeCards);
   const [pokemonData, setPokemonData] = useState(showcases[0]);
   const topShowcases = showcases.slice(0, 3);
   const botShowcases = showcases.slice(3, 6);

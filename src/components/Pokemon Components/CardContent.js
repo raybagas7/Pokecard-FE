@@ -29,8 +29,6 @@ const CardContent = ({
   const [isMythical, setIsMythical] = useState();
   const [moveOne, setMoveOne] = useState();
   const [moveTwo, setMoveTwo] = useState();
-  // console.log('myth', isMythical);
-  // const [ballType, setBallType] = useState(0);
 
   const Toast = Swal.mixin({
     toast: true,
@@ -142,7 +140,6 @@ const CardContent = ({
     }
     if (moves) {
       Axios.get(`${moves[0].url}`).then((response) => {
-        // console.log('cc', response.data);
         response.data.meta !== null
           ? setMoveOne({
               id: response.data.id,
@@ -188,7 +185,6 @@ const CardContent = ({
             });
       });
       Axios.get(`${moves[1].url}`).then((response) => {
-        // console.log(response);
         response.data.meta !== null
           ? setMoveTwo({
               id: response.data.id,
@@ -248,15 +244,12 @@ const CardContent = ({
     move1: moveOne,
     move2: moveTwo,
   };
-  // console.log('aa', moves[1].url);
 
   const change = () => {
     const temp = !Choosed;
     let changeBall = 0;
     temp === true ? (changeBall = 1) : (changeBall = -1);
     const pickedBallTemp = pickedBallType + changeBall;
-    // console.log('picked ', pickedBallTemp);
-    // console.log('owned ', ownedBallType);
     if (ownedBallType < pickedBallTemp) {
       Toast.fire({
         icon: 'warning',
@@ -270,22 +263,12 @@ const CardContent = ({
   };
 
   const attributePokemon = () => {
-    // if (animatedSpritesNormal && animatedSpritesShiny) {
-    //   if (attribute === 'shiny') {
-    //     return animatedSpritesShiny;
-    //   }
-    //   return animatedSpritesNormal;
-    // }
     if (attribute === 'shiny') {
       return spritesShiny;
     }
     return spritesNormal;
   };
 
-  // const show = () => {
-  //   console.log('firstMoveDetail ', moveOne);
-  //   console.log('secondMoveDetail ', moveTwo);
-  // };
   return !Choosed ? (
     pokemonType() === undefined ? (
       <div className="card-content flex-row-card">

@@ -2,13 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NavHeader = () => {
-  // console.log(lists);
   return (
     <div className="nav-header">
       <header>
         <nav>
           <ul>
-            {/*Will soon move the list into component*/}
             <Link to={'/'} className="hover:text-white">
               <li className="max-md:text-xxs">Home</li>
             </Link>

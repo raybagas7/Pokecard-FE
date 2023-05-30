@@ -12,9 +12,7 @@ const SocialContainer = () => {
       try {
         setRandUser(data);
         setInitializing(false);
-      } catch (e) {
-        // console.log(message);
-      }
+      } catch (e) {}
     });
   }, []);
 
@@ -44,7 +42,6 @@ const SocialContainer = () => {
   }
 
   const { pool } = randUser;
-  // console.log('pool', pool);
   return (
     <>
       <div className="flex h-fit w-full items-center p-5">

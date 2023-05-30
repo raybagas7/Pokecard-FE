@@ -50,7 +50,6 @@ const OfferDetail = ({
     }).then(async (result) => {
       if (result.isConfirmed) {
         const result = await deleteTheOfferRefresh({ offer_id: offer_id });
-        // console.log(result);
         if (!result.error) {
           Toast.fire({
             icon: 'success',

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ProfileTradeStats = ({ statName, statValue }) => {
-  // console.log(statValue);
   return (
     <div className="flex w-full justify-center">
       <div

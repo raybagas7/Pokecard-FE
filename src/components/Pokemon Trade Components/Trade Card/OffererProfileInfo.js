@@ -39,7 +39,6 @@ const OffererProfileInfo = ({
     }).then(async (result) => {
       if (result.isConfirmed) {
         const result = await acceptTheOfferRefresh({ offer_id: offerId });
-        // console.log(result);
         if (!result.error) {
           Toast.fire({
             icon: 'success',
@@ -56,7 +55,6 @@ const OffererProfileInfo = ({
       }
     });
   };
-  //group-hover/offer:animate-moving_brutally
   return (
     <div
       className="group/offer absolute bottom-0 mt-3 mb-3 flex h-24 w-52 animate-default_offerer_profile items-center rounded-xl bg-white text-black-steam hover:animate-expand_offerer_profile

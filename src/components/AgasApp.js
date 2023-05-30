@@ -69,12 +69,9 @@ const AgasApp = () => {
       if (error && cond) {
         refreshAccessToken().then(({ data }) => {
           putAccessToken(data.accessToken);
-          verifyAccount(targetEmail).then(({ message }) => {
-            // console.log(message);
-          });
+          verifyAccount(targetEmail).then(({ message }) => {});
         });
       } else {
-        // console.log(message);
       }
     });
   };

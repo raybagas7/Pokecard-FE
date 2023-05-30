@@ -58,9 +58,7 @@ const CollectedCardContent = ({
   const toggleFlip = () => {
     setIsFlipped(!isFlipped);
   };
-  // const show = () => {
-  //   console.log('ini status', stats, 'ini filternya ', allStat);
-  // };
+
   return (
     <div className="show-card-container_collection">
       <div

@@ -2,10 +2,6 @@ import React from 'react';
 import { elementUrl } from '../../utils/element';
 
 const CollectedPokemonElement = ({ types }) => {
-  //   const show = () => {
-  //     console.log('ini pokemon id di cc', types, ' ini all type ', allType);
-  //   };
-
   return (
     <div className="all-elemets_collection">
       <div className="pokemon-types_collection">

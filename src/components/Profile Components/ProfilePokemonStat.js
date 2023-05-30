@@ -11,7 +11,6 @@ import {
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
 const ProfilePokemonStat = ({ stats }) => {
-  // console.log(stats);
   let allStat = [];
   if (stats) {
     for (let i = 0; i < stats.length; i++) {
@@ -20,8 +19,6 @@ const ProfilePokemonStat = ({ stats }) => {
       allStat.push({ [name_stat]: base_stat });
     }
   }
-
-  // console.log(stats.length);
 
   const data = {
     labels: ['Hp', 'Attack', 'Defense', 'Sp.Defense', 'Sp.Attack', 'Speed'],

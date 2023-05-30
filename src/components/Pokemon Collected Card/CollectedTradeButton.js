@@ -41,7 +41,6 @@ const CollectedTradeButton = ({ windowNumber, cardId, name }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const result = await updateCardWindow(tradesPayload);
-        // console.log(result);
         if (!result.error) {
           Toast.fire({
             icon: 'success',

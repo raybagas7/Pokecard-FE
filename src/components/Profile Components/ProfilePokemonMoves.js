@@ -2,7 +2,6 @@ import React from 'react';
 import { elementUrl } from '../../utils/element';
 
 const ProfilePokemonMoves = ({ move }) => {
-  // console.log(move);
   return (
     <div
       className="flex h-full w-full flex-1 animate-fade_in_slide_up items-center justify-center max-md:m-5

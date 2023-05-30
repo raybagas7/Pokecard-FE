@@ -14,8 +14,6 @@ const PokePouch = ({
   dailyGift,
   isValid,
 }) => {
-  // console.log('valid', isValid);
-  // console.log('credit di pouch', pickedBall);
   return credit === null ? (
     <div className="poke-pouch">
       <button className="open-credit" onClick={openCredit}>

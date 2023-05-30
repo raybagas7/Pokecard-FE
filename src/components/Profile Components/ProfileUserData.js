@@ -14,7 +14,6 @@ import { useSelector } from 'react-redux';
 
 const ProfileUserData = ({ userCredit }) => {
   const userData = useSelector((state) => state.auth.authedUser);
-  // console.log('creditnya', userData);
   const Toast = Swal.mixin({
     toast: true,
     position: 'top',

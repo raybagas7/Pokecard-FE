@@ -11,8 +11,6 @@ const ProfileImageIcon = ({ logout, sendVerification }) => {
   const { ttlVerification, toggleTtlVerification } =
     React.useContext(TtlVerifContext);
 
-  // console.log('ttl ', ttlVerification);
-
   const send = async () => {
     toggleTtlVerification();
     await sendVerification({ targetEmail: userData.user.email });

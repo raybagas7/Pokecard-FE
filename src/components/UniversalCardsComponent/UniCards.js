@@ -22,8 +22,6 @@ const UniCards = ({
   goTo = null,
   linkType = false,
 }) => {
-  // let type = 'normal';
-  // console.log('stats', stats);
   const chosenCard = {
     offer_id,
     card_id,

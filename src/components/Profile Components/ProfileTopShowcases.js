@@ -2,7 +2,6 @@ import React from 'react';
 import ProfileCardShowcase from './ProfileCardShowcase';
 
 const ProfileTopShowcases = ({ showcases, changePokemonDetails }) => {
-  // console.log(changePokemonDetails);
   return (
     <>
       <div className="flex h-1/10 w-full items-center justify-center ">

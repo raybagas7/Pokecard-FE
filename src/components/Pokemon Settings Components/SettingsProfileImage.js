@@ -22,12 +22,6 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
     return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
   };
 
-  // const show = () => {
-  //   console.log(cropped.size);
-  //   console.log(formatBytes(cropped.size));
-  //   console.log(localUserPP);
-  // };
-
   // const throttle = (cb, delay) => {
   //   let wait = false;
 
@@ -71,13 +65,11 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const result = await changeProfilePictureRefresh(cropped);
-        // console.log(result);
         if (!result.error) {
           Toast.fire({
             icon: 'success',
             title: `${result.message}`,
           });
-          // console.log(result.status);
           setShowChangeButton(false);
         } else {
           Toast.fire({
@@ -88,7 +80,6 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
                 : `${result.message}`
             }`,
           });
-          // console.log(result.status);
         }
       } else if (result.isDenied) {
       }
@@ -123,14 +114,11 @@ const SettingsProfileImage = ({ trainerName, profileImg }) => {
               return blob;
             }, 'image/jpeg');
 
-            // console.log(cropper.getCroppedCanvas().toDataURL());
-
             return {
               imageUrl: cropper.getCroppedCanvas().toDataURL(),
             };
           },
         }).then(async (result) => {
-          // console.log(result, 'and', cropped);
           if (result.isConfirmed) {
             handlerLocalUserPP(result.value.imageUrl);
             setShowChangeButton(true);

@@ -11,20 +11,6 @@ const PokemonElement = ({ types }) => {
     }
   }
 
-  const fakeEle = 'Bug';
-  const chosen = elementUrl
-    .filter(
-      (chosenElement) =>
-        chosenElement.id.toLowerCase() === fakeEle.toLowerCase()
-    )
-    .map((chosenElement) => chosenElement.imageUrl);
-
-  console.log(chosen);
-
-  // const show = () => {
-  //   console.log('ini pokemon id di cc', types, ' ini all type ', allType);
-  // };
-
   return (
     <div className="all-elemets">
       <div className="pokemon-types">

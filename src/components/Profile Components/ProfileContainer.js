@@ -6,10 +6,6 @@ import ProfileTopDetailShowcase from './ProfileTopDetailShowcase';
 import ProfileBottomDetailShowcase from './ProfileBottomDetailShowcase';
 
 const ProfileContainer = ({ userShowcases, userTrades, userCredit }) => {
-  // console.log('userData', userData);
-  // console.log('userShowcases', userShowcases);
-  // console.log('userTrades', userTrades);
-  // console.log('userCredit', userCredit);
   const { showcases } = userShowcases;
   const [pokemonData, setPokemonData] = React.useState(showcases[0]);
   const topShowcases = showcases.slice(0, 3);

@@ -10,9 +10,7 @@ const TradeCardContainer = ({ cardId }) => {
       try {
         setOffererTraderCards(data);
         setInitializing(false);
-      } catch (e) {
-        // console.log(message);
-      }
+      } catch (e) {}
     });
   }, [cardId]);
 
@@ -30,7 +28,6 @@ const TradeCardContainer = ({ cardId }) => {
       </section>
     );
   }
-  // console.log(offererTraderCards);
   return offererTraderCards ? (
     <div>
       <TradeDetail offererTraderCards={offererTraderCards} />

@@ -1,12 +1,9 @@
 import React from 'react';
 import { elementUrl } from '../../utils/element';
 const PokemonOfficialAvatar = ({ pokemonData }) => {
-  // console.log('aa', pokemonData);
-
   const allType = pokemonData.types.map((element) => {
     return element.name;
   });
-  // console.log('bb', allType);
   let type = '';
   (pokemonData.legendary === true || pokemonData.mythical === true) &&
   pokemonData.attribute === 'shiny'
