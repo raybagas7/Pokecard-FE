@@ -1,4 +1,4 @@
-const BASE_URL = 'https://www.pokemoncard.lol';
+const BASE_URL = 'https://api.pokemoncard.my.id';
 //http://localhost:5000
 //https://www.pokemoncard.lol
 const getAccessToken = () => {
